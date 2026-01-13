@@ -25,16 +25,18 @@ const reasons = [
 
 const WhyUs = () => {
   return (
-    <section className="py-24 bg-midnight text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+    <section className="py-24 bg-midnight text-white relative overflow-hidden" id="about">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
         <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-          <div className="text-gold font-bold tracking-[0.2em] uppercase text-sm mb-4">Why Choose Us</div>
+          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-white/10">Why Choose Us</div>
           <h2 className="text-4xl md:text-5xl font-playfair font-medium text-white mb-6">
-            Your Trusted Insurance Partner
+            Your Trusted Insurance <span className="text-gold italic">Partner</span>
           </h2>
-          <p className="text-lg text-gray-300">
+          <p className="text-lg text-gray-300 font-light leading-relaxed">
             Experience the difference of working with a dedicated and experienced LIC advisor who puts your family's security first.
           </p>
         </div>
@@ -43,13 +45,17 @@ const WhyUs = () => {
           {reasons.map((reason, index) => (
             <div 
               key={index} 
-              className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 text-center group"
+              className="group bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 text-center relative overflow-hidden"
             >
-              <div className="w-16 h-16 mx-auto bg-linear-to-br from-gold to-yellow-700 rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <reason.icon size={32} className="text-white" />
+              <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="w-16 h-16 mx-auto bg-linear-to-br from-gold to-gold-dark rounded-2xl rotate-3 group-hover:rotate-6 flex items-center justify-center mb-6 shadow-lg shadow-gold/20 transition-transform duration-300">
+                    <reason.icon size={32} className="text-midnight -rotate-3 group-hover:-rotate-6 transition-transform duration-300" />
+                </div>
+                <h3 className="text-xl font-bold font-playfair mb-3 text-white group-hover:text-gold transition-colors">{reason.title}</h3>
+                <p className="text-sm text-gray-400 leading-relaxed font-light group-hover:text-gray-200 transition-colors">{reason.description}</p>
               </div>
-              <h3 className="text-xl font-bold font-playfair mb-3">{reason.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed">{reason.description}</p>
             </div>
           ))}
         </div>

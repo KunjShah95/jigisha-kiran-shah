@@ -74,19 +74,20 @@ const Reviews = () => {
   ];
 
   return (
-    <section className="py-32 bg-white relative overflow-hidden" id="reviews">
+    <section className="py-32 bg-midnight-light relative overflow-hidden" id="reviews">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50/50 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-          <div className="text-gold font-bold tracking-[0.2em] uppercase text-sm mb-4">Client Reviews</div>
-          <h2 className="text-4xl md:text-5xl font-playfair font-medium text-midnight mb-6">
+          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-white/10">Client Reviews</div>
+          <h2 className="text-4xl md:text-5xl font-playfair font-medium text-white mb-6">
             What Our <span className="text-gold italic">Clients Say</span>
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-300 leading-relaxed font-light">
             Join thousands of satisfied families across Gujarat who trust us for their financial security. 
             Read authentic reviews from our valued clients.
           </p>
@@ -97,13 +98,13 @@ const Reviews = () => {
           {stats.map((stat, index) => (
             <div 
               key={index} 
-              className="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300"
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 mx-auto bg-gold/10 rounded-full flex items-center justify-center mb-4">
-                <stat.icon className="w-6 h-6 text-gold fill-gold" />
+              <div className="w-12 h-12 mx-auto bg-linear-to-br from-gold to-gold-dark rounded-full flex items-center justify-center mb-4 shadow-lg shadow-gold/10 group-hover:scale-110 transition-transform">
+                <stat.icon className="w-5 h-5 text-midnight" />
               </div>
-              <div className="text-3xl font-bold text-midnight mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-500">{stat.label}</div>
+              <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-sm text-gold/80 font-medium uppercase tracking-wider">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -113,39 +114,45 @@ const Reviews = () => {
           {customerReviews.map((review, index) => (
             <div 
               key={index} 
-              className="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 relative group"
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-gold/5 transition-all duration-500 relative group overflow-hidden"
             >
-              <Quote className="absolute top-6 right-6 w-10 h-10 text-gray-100 group-hover:text-gold/20 transition-colors" />
+               {/* Hover Gradient */}
+               <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+               
+              <Quote className="absolute top-6 right-6 w-10 h-10 text-white/5 group-hover:text-gold/10 transition-colors" />
               
               {/* Rating */}
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-1 mb-4 relative z-10">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-gold text-gold" />
                 ))}
               </div>
               
               {/* Tag */}
-              <div className="inline-block px-3 py-1 bg-gold/10 rounded-full text-xs text-gold font-semibold uppercase tracking-wider mb-4">
+              <div className="inline-block px-3 py-1 bg-gold/10 rounded-lg text-[10px] text-gold font-bold uppercase tracking-wider mb-6 border border-amber-500/10 relative z-10">
                 {review.tag}
               </div>
               
               {/* Review Text */}
-              <p className="text-gray-600 leading-relaxed mb-6 italic">
+              <p className="text-gray-300 leading-relaxed mb-8 italic font-light relative z-10">
                 "{review.text}"
               </p>
               
               {/* Reviewer Info */}
-              <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
-                <div className="w-12 h-12 rounded-full bg-linear-to-br from-midnight to-blue-900 flex items-center justify-center text-white font-bold text-lg">
+              <div className="flex items-center gap-4 pt-6 border-t border-white/10 relative z-10">
+                <div className="w-10 h-10 rounded-full bg-linear-to-br from-white/10 to-white/5 flex items-center justify-center text-gold font-bold text-sm border border-white/10">
                   {review.initials}
                 </div>
                 <div className="flex-1">
-                  <h4 className="font-semibold text-midnight">{review.name}</h4>
-                  <p className="text-sm text-gray-500">{review.location}</p>
+                  <h4 className="font-semibold text-white group-hover:text-gold transition-colors">{review.name}</h4>
+                  <p className="text-xs text-gray-500">{review.location}</p>
                 </div>
                 <div className="text-right">
-                  <div className="text-xs text-gray-400">{review.date}</div>
-                  <div className="text-xs text-gold font-medium">via {review.source}</div>
+                  <div className="text-[10px] text-gray-500 mb-1">{review.date}</div>
+                  <div className="text-[10px] text-gold font-bold uppercase tracking-wider inline-flex items-center gap-1">
+                    via {review.source}
+                    <ExternalLink size={10} />
+                  </div>
                 </div>
               </div>
             </div>
@@ -153,14 +160,16 @@ const Reviews = () => {
         </div>
 
         {/* YouTube Video Testimonials Section */}
-        <div className="bg-midnight rounded-3xl p-8 lg:p-12 reveal">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="bg-linear-to-br from-gold/5 to-transparent border border-white/5 rounded-3xl p-8 lg:p-12 reveal overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+          
+          <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
             <div>
-              <div className="text-gold font-bold tracking-[0.2em] uppercase text-sm mb-4">Video Testimonials</div>
+              <div className="inline-block px-3 py-1 bg-red-500/10 text-red-400 text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-red-500/20">Video Testimonials</div>
               <h3 className="text-3xl md:text-4xl font-playfair font-medium text-white mb-6">
-                Watch Customer Stories on <span className="text-gold italic">YouTube</span>
+                Watch Customer Stories on <span className="text-red-500 italic">YouTube</span>
               </h3>
-              <p className="text-gray-300 leading-relaxed mb-8">
+              <p className="text-gray-300 leading-relaxed mb-8 font-light">
                 Hear directly from our satisfied clients about their experience with retirement planning, 
                 pension solutions, and life insurance. Subscribe to our YouTube channel for more financial insights.
               </p>
@@ -168,7 +177,7 @@ const Reviews = () => {
                 href="https://www.youtube.com/@jigishakiranshah4636" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-colors shadow-lg hover:shadow-red-900/40"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M23 9.71a8.5 8.5 0 0 0-.91-4.13 2.92 2.92 0 0 0-1.72-1A78.36 78.36 0 0 0 12 4.27a78.45 78.45 0 0 0-8.34.3 2.87 2.87 0 0 0-1.46.74c-.9.83-1 2.25-1.1 3.45a48.29 48.29 0 0 0 0 6.48 9.55 9.55 0 0 0 .3 2 3.14 3.14 0 0 0 .71 1.36 2.86 2.86 0 0 0 1.49.78 45.18 45.18 0 0 0 6.5.33c3.5.05 6.57 0 10.2-.28a2.88 2.88 0 0 0 1.53-.78 2.49 2.49 0 0 0 .61-1 10.58 10.58 0 0 0 .52-3.4c.04-.56.04-3.94.04-4.54zM9.74 14.85V8.66l5.92 3.11c-1.66.92-3.85 1.96-5.92 3.08z"/>
@@ -179,11 +188,11 @@ const Reviews = () => {
             </div>
             
             {/* Video Thumbnail */}
-            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl group cursor-pointer border border-white/10">
               <img 
                 src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80" 
                 alt="Customer Testimonial Video" 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-midnight/60 group-hover:bg-midnight/40 transition-colors flex items-center justify-center">
                 <a 
@@ -196,8 +205,10 @@ const Reviews = () => {
                 </a>
               </div>
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <div className="font-semibold">Customer Reviews About Retirement Planning</div>
-                <div className="text-sm text-white/80">Watch on YouTube</div>
+                <div className="font-semibold text-lg">Customer Reviews About Retirement Planning</div>
+                <div className="text-sm text-white/80 flex items-center gap-1">
+                   <Play size={12} /> Watch on YouTube
+                </div>
               </div>
             </div>
           </div>
@@ -205,39 +216,39 @@ const Reviews = () => {
 
         {/* Review Sources Links */}
         <div className="mt-16 text-center reveal">
-          <p className="text-gray-500 mb-6">Read more reviews on these platforms:</p>
+          <p className="text-gray-500 mb-6 font-light">Read more reviews on these platforms:</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
               href="https://www.justdial.com/Ahmedabad/Jigisha-Kiran-Shah-Near-Jayhind-High-School-Maninagar-Daxini-Society/079PXX79-XX79-130706134100-Z7T3_BZDET" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-orange-50 border border-orange-200 text-orange-700 rounded-full hover:bg-orange-100 transition-colors font-medium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-orange-500/10 hover:text-orange-400 hover:border-orange-500/30 transition-all font-medium group"
             >
-              <Star className="w-4 h-4 fill-orange-500 text-orange-500" />
+              <Star className="w-4 h-4 text-orange-500 group-hover:fill-orange-500" />
               Justdial Reviews (5.0 ★)
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
             </a>
             <a 
               href="https://www.youtube.com/@jigishakiranshah4636" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-red-50 border border-red-200 text-red-700 rounded-full hover:bg-red-100 transition-colors font-medium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-red-500/10 hover:text-red-400 hover:border-red-500/30 transition-all font-medium group"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23 9.71a8.5 8.5 0 0 0-.91-4.13 2.92 2.92 0 0 0-1.72-1A78.36 78.36 0 0 0 12 4.27a78.45 78.45 0 0 0-8.34.3 2.87 2.87 0 0 0-1.46.74c-.9.83-1 2.25-1.1 3.45a48.29 48.29 0 0 0 0 6.48 9.55 9.55 0 0 0 .3 2 3.14 3.14 0 0 0 .71 1.36 2.86 2.86 0 0 0 1.49.78 45.18 45.18 0 0 0 6.5.33c3.5.05 6.57 0 10.2-.28a2.88 2.88 0 0 0 1.53-.78 2.49 2.49 0 0 0 .61-1 10.58 10.58 0 0 0 .52-3.4c.04-.56.04-3.94.04-4.54zM9.74 14.85V8.66l5.92 3.11c-1.66.92-3.85 1.96-5.92 3.08z"/>
               </svg>
               YouTube Channel
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
             </a>
             <a 
               href="https://wa.me/919824025435" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-50 border border-green-200 text-green-700 rounded-full hover:bg-green-100 transition-colors font-medium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 text-gray-300 rounded-full hover:bg-green-500/10 hover:text-green-400 hover:border-green-500/30 transition-all font-medium group"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 text-green-500" />
               WhatsApp Us
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
             </a>
           </div>
         </div>

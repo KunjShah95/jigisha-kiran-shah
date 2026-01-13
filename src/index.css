@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #c5a059;
-  --color-midnight: #0a1128;
+  --color-gold: #d4af37;
+  --color-gold-light: #f4e5b0;
+  --color-gold-dark: #aa8c2c;
+  --color-midnight: #0b1c33;
+  --color-midnight-light: #162a45;
   --font-playfair: "Playfair Display", serif;
   --font-inter: "Inter", sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-beam: beam 2s linear infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
 
   @keyframes float {
     0%,
@@ -24,6 +28,17 @@
       transform: translateX(100%);
     }
   }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 @layer base {
@@ -31,11 +46,23 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-sans antialiased text-gray-900 bg-white;
+    @apply font-sans antialiased text-gray-900 bg-white selection:bg-gold/30;
   }
 }
 
 @layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(to right, #d4af37, #f4e5b0, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(30px);
