@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import Services from '@/components/Services'
-import About from '@/components/About'
-import WhyUs from '@/components/WhyUs'
-import Testimonials from '@/components/Testimonials'
-import Calculator from '@/components/Calculator'
-import Contact from '@/components/Contact'
-import Footer from '@/components/Footer'
-import WhatsAppButton from '@/components/WhatsAppButton'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Services from './components/Services'
+import About from './components/About'
+import WhyUs from './components/WhyUs'
+import Testimonials from './components/Testimonials'
+import Reviews from './components/Reviews'
+import Calculator from './components/Calculator'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -61,7 +62,7 @@ function App() {
           left: 0,
           right: 0,
           height: '4px',
-          backgroundColor: 'var(--accent-gold)',
+          backgroundColor: '#C5A059',
           zIndex: 2000,
           transition: 'width 0.1s ease-out'
         }}
@@ -73,6 +74,7 @@ function App() {
         <About />
         <WhyUs />
         <Testimonials />
+        <Reviews />
         <Calculator />
         <Contact />
       </main>

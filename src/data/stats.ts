@@ -5,10 +5,10 @@ export const stats: Stat[] = [
   {
     id: 'experience',
     icon: Calendar,
-    value: 20,
-    suffix: '+',
+    value: 22,
+    suffix: '',
     label: 'Years of Experience',
-    description: 'Serving families since 2004'
+    description: 'Expert guidance since 2004'
   },
   {
     id: 'families',
@@ -21,10 +21,10 @@ export const stats: Stat[] = [
   {
     id: 'mdrt',
     icon: Award,
-    value: 1,
+    value: 2,
     suffix: '',
-    label: 'MDRT Member',
-    description: 'Million Dollar Round Table'
+    label: 'Double MDRT Member',
+    description: 'Million Dollar Round Table (USA)'
   },
   {
     id: 'claims',
@@ -37,7 +37,7 @@ export const stats: Stat[] = [
   {
     id: 'crores',
     icon: TrendingUp,
-    value: 50,
+    value: 100,
     suffix: 'Cr+',
     label: 'Sum Assured',
     description: 'Total coverage provided'
@@ -45,7 +45,7 @@ export const stats: Stat[] = [
   {
     id: 'satisfaction',
     icon: Heart,
-    value: 98,
+    value: 99,
     suffix: '%',
     label: 'Client Satisfaction',
     description: 'Happy clients, secured futures'
