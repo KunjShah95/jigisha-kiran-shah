@@ -103,6 +103,10 @@
     transform: scale(1);
   }
 
+  .container {
+    @apply mx-auto px-4;
+  }
+
   .btn-beam {
     @apply relative overflow-hidden;
   }

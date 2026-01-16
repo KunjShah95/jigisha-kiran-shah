@@ -56,21 +56,21 @@ const Contact = () => {
   ]
 
   return (
-    <section className="py-24 bg-slate-50 relative overflow-hidden" id="contact">
+    <section className="py-16 lg:py-24 bg-slate-50 relative overflow-hidden" id="contact">
       <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
       {/* Decorative Orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-100 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
 
       <div className="container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
           <div className="reveal-left">
-            <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6">Get In Touch</div>
-            <h2 className="text-4xl md:text-5xl font-playfair font-medium text-midnight mb-6">
+            <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Get In Touch</div>
+            <h2 className="text-3xl md:text-5xl font-playfair font-medium text-midnight mb-4 lg:mb-6">
               Let's Discuss Your <span className="text-gold italic">Legacy</span>
             </h2>
-            <p className="text-lg text-gray-600 mb-10 leading-relaxed font-light">
+            <p className="text-base lg:text-lg text-gray-600 mb-8 lg:mb-10 leading-relaxed font-light">
               Have questions about insurance plans? Want to know which policy is right for you? 
               Reach out and I'll be happy to help you make an informed decision.
             </p>

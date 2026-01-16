@@ -41,18 +41,18 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-32 bg-gray-50 relative overflow-hidden" id="services">
+    <section className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden" id="services">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       
       <div className="container relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 reveal">
-          <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6">Our Expertise</div>
-          <h2 className="text-4xl md:text-5xl font-playfair font-medium text-midnight mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-20 reveal">
+          <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Our Expertise</div>
+          <h2 className="text-3xl md:text-5xl font-playfair font-medium text-midnight mb-4 lg:mb-6">
             Curated LIC <span className="text-gold italic">Portfolios</span>
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed font-light">
+          <p className="text-base lg:text-lg text-gray-600 leading-relaxed font-light">
             We curate comprehensive insurance portfolios tailored to protect your family's future and meet your specific financial goals with the trust of LIC.
           </p>
         </div>

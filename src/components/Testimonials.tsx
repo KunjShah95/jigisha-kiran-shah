@@ -29,17 +29,17 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-32 bg-midnight text-white relative overflow-hidden" id="testimonials">
+    <section className="py-16 lg:py-32 bg-midnight text-white relative overflow-hidden" id="testimonials">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl pointer-events-none translate-y-1/4 -translate-x-1/4" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 reveal">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 lg:mb-20 gap-8 reveal">
           <div className="max-w-2xl">
-            <div className="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 max-w-fit">Client Stories</div>
-            <h2 className="text-4xl md:text-5xl font-playfair font-medium text-white mb-6">
+            <div className="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 max-w-fit">Client Stories</div>
+            <h2 className="text-3xl md:text-5xl font-playfair font-medium text-white mb-4 lg:mb-6">
               Relationships Built on <span className="text-gold italic">Trust</span>
             </h2>
             <p className="text-lg text-gray-300 leading-relaxed max-w-xl font-light">

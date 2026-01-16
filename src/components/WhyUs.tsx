@@ -25,15 +25,15 @@ const reasons = [
 
 const WhyUs = () => {
   return (
-    <section className="py-24 bg-midnight text-white relative overflow-hidden" id="about">
+    <section className="py-16 lg:py-24 bg-midnight text-white relative overflow-hidden" id="about">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-white/10">Why Choose Us</div>
-          <h2 className="text-4xl md:text-5xl font-playfair font-medium text-white mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16 reveal">
+          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 border border-white/10">Why Choose Us</div>
+          <h2 className="text-3xl md:text-5xl font-playfair font-medium text-white mb-4 lg:mb-6">
             Your Trusted Insurance <span className="text-gold italic">Partner</span>
           </h2>
           <p className="text-lg text-gray-300 font-light leading-relaxed">

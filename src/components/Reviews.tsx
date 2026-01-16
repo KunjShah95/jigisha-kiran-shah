@@ -1,8 +1,9 @@
-import { Star, ExternalLink, Play, Quote, MessageCircle } from 'lucide-react';
+import { Star, ExternalLink, Play, Quote, MessageCircle, MapPin, ThumbsUp } from 'lucide-react';
 
 const Reviews = () => {
 
   // Actual customer reviews from Justdial and business pages
+  // structured to highlight real-world use cases
   const customerReviews = [
     {
       name: 'Bhavesh Patel',
@@ -10,6 +11,9 @@ const Reviews = () => {
       initials: 'BP',
       rating: 5,
       date: 'October 2025',
+      useCase: 'Retirement Security',
+      challenge: 'Unclear about post-retirement income',
+      solution: 'Comprehensive pension planning',
       text: 'Jigisha ben provided perfect guidance and complete explanation of retirement planning. Her knowledge of LIC pension plans is exceptional. Highly recommended for anyone looking to secure their future.',
       source: 'Justdial',
       tag: 'Retirement Planning'
@@ -20,6 +24,9 @@ const Reviews = () => {
       initials: 'PS',
       rating: 5,
       date: 'September 2025',
+      useCase: 'Family Protection',
+      challenge: 'Choosing the right life cover',
+      solution: 'Tailored insurance portfolio',
       text: 'Her professionalism and genuine advice regarding various LIC plans helped me choose the right insurance for my family. The documentation support was excellent and claims process was smooth.',
       source: 'Justdial',
       tag: 'Life Insurance'
@@ -30,6 +37,9 @@ const Reviews = () => {
       initials: 'AD',
       rating: 5,
       date: 'August 2025',
+      useCase: 'Financial Freedom',
+      challenge: 'Need for structured wealth growth',
+      solution: 'Salary insurance & pension mix',
       text: 'With 22+ years of experience, Jigisha ben truly understands the insurance industry. She helped me with salary insurance and pension planning. Now I feel secure about my retirement expenses.',
       source: 'Justdial',
       tag: 'Salary Insurance'
@@ -40,6 +50,9 @@ const Reviews = () => {
       initials: 'MJ',
       rating: 5,
       date: 'July 2025',
+      useCase: 'Child\'s Future',
+      challenge: 'Securing education funds',
+      solution: 'Dedicated education policy',
       text: 'Found her through YouTube videos on retirement planning. The personal consultation was even better! She explained every detail about LIC plans and helped me secure my children\'s education fund.',
       source: 'Google',
       tag: 'Education Fund'
@@ -50,6 +63,9 @@ const Reviews = () => {
       initials: 'RM',
       rating: 5,
       date: 'June 2025',
+      useCase: 'Risk Management',
+      challenge: 'Seeking trustworthy advice',
+      solution: 'Double MDRT expertise',
       text: 'Excellent service! The entire insurance process was handled professionally. Jigisha ben is a Double MDRT achiever which shows her expertise. Highly trustworthy advisor.',
       source: 'Justdial',
       tag: 'Term Insurance'
@@ -60,6 +76,9 @@ const Reviews = () => {
       initials: 'KS',
       rating: 5,
       date: 'May 2025',
+      useCase: 'Holistic Planning',
+      challenge: 'Complex family needs',
+      solution: 'Customized policy combinations',
       text: 'Best LIC advisor in Ahmedabad! Her office at Orchid Legacy is convenient to visit. She took time to understand our family needs and suggested perfect policy combinations.',
       source: 'Google',
       tag: 'Family Insurance'
@@ -69,12 +88,12 @@ const Reviews = () => {
   const stats = [
     { value: '5.0', label: 'Justdial Rating', icon: Star },
     { value: '83+', label: 'Customer Reviews', icon: MessageCircle },
-    { value: '100%', label: 'Positive Feedback', icon: Star },
-    { value: '2.7k+', label: 'Families Served', icon: Star }
+    { value: '100%', label: 'Positive Feedback', icon: ThumbsUp },
+    { value: '2.7k+', label: 'Families Served', icon: MapPin }
   ];
 
   return (
-    <section className="py-32 bg-midnight-light relative overflow-hidden" id="reviews">
+    <section className="py-20 lg:py-32 bg-midnight-light relative overflow-hidden" id="reviews">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
@@ -82,14 +101,14 @@ const Reviews = () => {
       
       <div className="container relative z-10 w-full">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 reveal">
-          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-white/10">Client Reviews</div>
-          <h2 className="text-4xl md:text-5xl font-playfair font-medium text-white mb-6">
-            What Our <span className="text-gold italic">Clients Say</span>
+        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16 reveal">
+          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 border border-white/10">Real World Impact</div>
+          <h2 className="text-3xl md:text-5xl font-playfair font-medium text-white mb-4 lg:mb-6">
+            Client <span className="text-gold italic">Success Stories</span>
           </h2>
-          <p className="text-lg text-gray-300 leading-relaxed font-light">
-            Join thousands of satisfied families across Gujarat who trust us for their financial security. 
-            Read authentic reviews from our valued clients.
+          <p className="text-base lg:text-lg text-gray-300 leading-relaxed font-light">
+            See how we've helped families across Gujarat achieve financial security through tailored insurance solutions.
+            Real challenges, real solutions.
           </p>
         </div>
 
@@ -109,17 +128,53 @@ const Reviews = () => {
           ))}
         </div>
 
+        {/* Rate Us CTA - New Section for 'Adding' Reviews */}
+        <div className="mb-20 reveal">
+            <div className="bg-linear-to-r from-gold/10 to-midnight border border-gold/20 rounded-3xl p-8 md:p-12 relative overflow-hidden text-center md:text-left">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-[80px] pointer-events-none" />
+                
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                    <div>
+                        <h3 className="text-2xl md:text-3xl font-playfair text-white mb-3">
+                            Have you worked with us?
+                        </h3>
+                        <p className="text-gray-300 font-light max-w-xl">
+                            Your feedback helps us serve better. Share your experience and help others make informed decisions about their financial future.
+                        </p>
+                    </div>
+                    <div className="flex gap-4 flex-wrap justify-center">
+                        <a 
+                            href="https://share.google/qxMfvT9Vz6vulyXIE" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-midnight font-bold rounded-xl hover:bg-white hover:text-midnight transition-all shadow-lg hover:shadow-gold/20 transform hover:-translate-y-1"
+                        >
+                            <Star className="w-5 h-5 fill-midnight" />
+                            Rate Us on Google
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         {/* Reviews Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 reveal">
           {customerReviews.map((review, index) => (
             <div 
               key={index} 
-              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-gold/5 transition-all duration-500 relative group overflow-hidden"
+              className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 shadow-lg hover:shadow-2xl hover:shadow-gold/5 transition-all duration-500 relative group overflow-hidden flex flex-col"
             >
                {/* Hover Gradient */}
                <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                
               <Quote className="absolute top-6 right-6 w-10 h-10 text-white/5 group-hover:text-gold/10 transition-colors" />
+              
+              {/* Use Case Badge */}
+              <div className="mb-6 relative z-10">
+                <span className="inline-block px-3 py-1 bg-gold/10 rounded-lg text-xs text-gold font-bold uppercase tracking-wider border border-amber-500/10">
+                    {review.useCase}
+                </span>
+              </div>
               
               {/* Rating */}
               <div className="flex gap-1 mb-4 relative z-10">
@@ -128,18 +183,25 @@ const Reviews = () => {
                 ))}
               </div>
               
-              {/* Tag */}
-              <div className="inline-block px-3 py-1 bg-gold/10 rounded-lg text-[10px] text-gold font-bold uppercase tracking-wider mb-6 border border-amber-500/10 relative z-10">
-                {review.tag}
-              </div>
-              
               {/* Review Text */}
-              <p className="text-gray-300 leading-relaxed mb-8 italic font-light relative z-10">
+              <p className="text-gray-300 leading-relaxed mb-8 italic font-light relative z-10 text-sm grow">
                 "{review.text}"
               </p>
               
+              {/* Challenge & Solution (Mini Case Study) */}
+              <div className="space-y-2 mb-6 relative z-10 bg-white/5 p-4 rounded-xl border border-white/5 hover:border-white/10 transition-colors">
+                <div className="flex gap-2 items-start">
+                    <span className="text-gold/60 shrink-0 text-[10px] uppercase font-bold tracking-wider mt-0.5">Problem:</span>
+                    <p className="text-xs text-gray-400 font-light leading-snug">{review.challenge}</p>
+                </div>
+                <div className="flex gap-2 items-start">
+                    <span className="text-green-400/60 shrink-0 text-[10px] uppercase font-bold tracking-wider mt-0.5">Solution:</span>
+                    <p className="text-xs text-gray-400 font-light leading-snug">{review.solution}</p>
+                </div>
+              </div>
+              
               {/* Reviewer Info */}
-              <div className="flex items-center gap-4 pt-6 border-t border-white/10 relative z-10">
+              <div className="flex items-center gap-4 pt-6 border-t border-white/10 relative z-10 mt-auto">
                 <div className="w-10 h-10 rounded-full bg-linear-to-br from-white/10 to-white/5 flex items-center justify-center text-gold font-bold text-sm border border-white/10">
                   {review.initials}
                 </div>

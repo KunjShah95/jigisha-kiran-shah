@@ -35,25 +35,25 @@ const Calculator = () => {
   ]
 
   return (
-    <section className="py-24 bg-midnight-light relative overflow-hidden" id="calculator">
+    <section className="py-16 lg:py-24 bg-midnight-light relative overflow-hidden" id="calculator">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl animate-pulse pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/4" />
       
       <div className="container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           <div className="reveal-left text-white">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gold/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gold/20 mb-4 lg:mb-6">
                 <CalcIcon className="w-4 h-4 text-gold" />
                 <span className="text-gold font-bold tracking-[0.2em] uppercase text-[10px]">Legacy Estimator</span>
             </div>
             
-            <h2 className="text-4xl md:text-5xl font-playfair font-medium mb-6">
+            <h2 className="text-3xl md:text-5xl font-playfair font-medium mb-4 lg:mb-6">
               Calculate Your Family's <span className="text-gold italic">Security Gap</span>
             </h2>
-            <p className="text-lg text-gray-300 mb-10 leading-relaxed font-light">
+            <p className="text-base lg:text-lg text-gray-300 mb-8 lg:mb-10 leading-relaxed font-light">
               Understand the true coverage your family needs to maintain their lifestyle in your absence. Fill out the form for a personalized legacy assessment.
             </p>
             
