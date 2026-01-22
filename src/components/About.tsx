@@ -37,9 +37,9 @@ const About = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/5 border border-gray-100 group">
               <div className="absolute inset-0 bg-linear-to-t from-midnight/90 via-transparent to-transparent z-10" />
               <img 
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80" 
+                src="src/assets/images/about.jpeg" 
                 alt="Meeting with clients" 
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-700"
               />
               
               <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8 z-20">
