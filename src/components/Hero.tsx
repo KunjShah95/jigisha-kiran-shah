@@ -20,7 +20,11 @@ const Hero = () => {
           <div className="lg:col-span-7 hero__content reveal">
             <div className="inline-flex items-center gap-2 px-4 py-2 lg:px-6 lg:py-2.5 rounded-full bg-white border border-gold/30 shadow-md mb-6 lg:mb-8 hover:shadow-lg transition-shadow duration-300">
               <Award className="w-4 h-4 lg:w-5 lg:h-5 text-gold fill-gold" />
-              <span className="text-xs lg:text-sm font-bold text-midnight tracking-wide uppercase">Double MDRT (USA) Achiever</span>
+              <span className="text-xs lg:text-sm font-bold text-midnight tracking-wide uppercase">2 Times MDRT Achiever 2023 & 2024</span>
+            </div>
+
+            <div className="inline-flex items-center gap-2 px-4 py-2 lg:px-5 lg:py-2 rounded-full bg-gold/10 border border-gold/30 mb-4 lg:mb-6">
+              <span className="text-xs lg:text-sm font-bold text-gold tracking-wide uppercase">Your Wealth, Your Legacy, Our Expertise</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-playfair font-bold text-midnight leading-[1.1] mb-6 lg:mb-8 tracking-tight">
@@ -34,7 +38,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-base lg:text-xl text-gray-600 mb-8 lg:mb-10 max-w-xl leading-relaxed font-light">
-              Trusted by <strong className="text-midnight">2,700+ families</strong> for comprehensive retirement planning and life insurance strategies. Experience the peace of mind that comes with expert guidance.
+              Trusted by <strong className="text-midnight">2,700+ families</strong> for comprehensive retirement planning and life insurance strategies. Rated <strong className="text-gold">5.0 ★ on Google</strong> — Experience the peace of mind that comes with expert guidance.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-5 mb-12 lg:mb-16">
@@ -77,9 +81,9 @@ const Hero = () => {
               <div className="reveal-scale group cursor-default" style={{ transitionDelay: '0.8s' }}>
                 <div className="flex items-center gap-2 mb-1">
                   <Award className="w-5 h-5 text-gold" />
-                  <div className="text-2xl lg:text-3xl font-bold text-midnight">Double</div>
+                  <div className="text-2xl lg:text-3xl font-bold text-midnight">MDRT</div>
                 </div>
-                <div className="text-[10px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">MDRT USA</div>
+                <div className="text-[10px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">2023 & 2024</div>
               </div>
             </div>
           </div>

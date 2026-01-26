@@ -6,11 +6,13 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
+    age: '',
+    income: '',
     subject: '',
     message: ''
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -19,7 +21,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const message = `Contact Form Inquiry:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nSubject: ${formData.subject}\nMessage: ${formData.message}`
+    const message = `New Inquiry:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nAge: ${formData.age}\nIncome: ${formData.income}\nSubject: ${formData.subject}\nMessage: ${formData.message}`
     const whatsappUrl = `https://wa.me/919824025435?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
@@ -42,15 +44,15 @@ const Contact = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'jigisha.licadvisor@gmail.com',
-      link: 'mailto:jigisha.licadvisor@gmail.com',
+      value: 'jkshahlic@gmail.com',
+      link: 'mailto:jkshahlic@gmail.com',
       cta: 'Send Email'
     },
     {
       icon: MapPin,
       title: 'Office',
-      value:'Orchid Legacy, D3-1303, Applewoods Twp Main Rd, Shela, Ahmedabad, Gujarat 380058',
-      link: 'https://maps.google.com/?q=Orchid+Legacy+D3-1303+Applewoods+Twp+Main+Rd+Shela+Ahmedabad',
+      value:'Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058',
+      link: 'https://share.google/VQAFgVhdk114U2ozd',
       cta: 'Get Directions'
     }
   ]
@@ -130,18 +132,72 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-1">
-                  <label htmlFor="contact-phone" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Phone Number *</label>
-                  <input
-                    type="tel"
-                    id="contact-phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
-                    required
-                  />
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-1">
+                    <label htmlFor="contact-phone" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Phone Number *</label>
+                    <input
+                      type="tel"
+                      id="contact-phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 98765 43210"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-1">
+                    <label htmlFor="contact-age" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Age</label>
+                    <input
+                      type="number"
+                      id="contact-age"
+                      name="age"
+                      value={formData.age}
+                      onChange={handleChange}
+                      placeholder="e.g., 35"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
+                      min="18"
+                      max="75"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-1">
+                    <label htmlFor="contact-income" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Annual Income</label>
+                    <select
+                      id="contact-income"
+                      name="income"
+                      value={formData.income}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium appearance-none"
+                    >
+                      <option value="">Select Range</option>
+                      <option value="below-10l">Below ₹10 Lakhs</option>
+                      <option value="10l-25l">₹10 - 25 Lakhs</option>
+                      <option value="25l-50l">₹25 - 50 Lakhs</option>
+                      <option value="above-50l">Above ₹50 Lakhs</option>
+                    </select>
+                  </div>
+                  <div className="space-y-1">
+                    <label htmlFor="contact-subject" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Interest *</label>
+                    <select
+                      id="contact-subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium appearance-none"
+                      required
+                    >
+                      <option value="">Select Interest</option>
+                      <option value="term">Term Life Protection</option>
+                      <option value="wealth">Wealth Creation</option>
+                      <option value="child">Child Education</option>
+                      <option value="retirement">Retirement Planning</option>
+                      <option value="nri">NRI Services</option>
+                      <option value="other">Other Inquiry</option>
+                    </select>
+                  </div>
                 </div>
                 
                 <div className="space-y-1">

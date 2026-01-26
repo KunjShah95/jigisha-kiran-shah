@@ -45,7 +45,7 @@ const About = () => {
               <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8 z-20">
                  <div className="inline-block px-3 py-1 bg-gold text-midnight text-[10px] font-bold tracking-widest uppercase rounded-sm mb-4">Since 2004</div>
                  <h3 className="text-2xl lg:text-3xl font-playfair font-bold text-white mb-2">Jigisha Kiran Shah</h3>
-                 <p className="text-white/80 uppercase tracking-widest text-xs font-medium">Senior Wealth Advisor • Double MDRT</p>
+                 <p className="text-white/80 uppercase tracking-widest text-xs font-medium">Senior Wealth Advisor • 2 Times MDRT</p>
               </div>
             </div>
 
@@ -67,12 +67,60 @@ const About = () => {
             </h2>
             
             <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
-              Since 2004, I have dedicated my career to serving families across Gujarat from my office at Ganesh Glory 11, Sarkhej-Gandhinagar Highway, Ahmedabad. As a <strong className="text-midnight font-semibold">Double MDRT (USA)</strong> member, I specialize in retirement planning, LIC pension plans, salary insurance, and comprehensive life insurance with the highest ethical standards.
+              For over two decades, I've been building futures, not just selling policies. Since 2004, I've dedicated myself to serving families across Gujarat from my office at Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad—helping them navigate life's biggest financial decisions with confidence and clarity.
             </p>
             
-            <p className="text-lg text-gray-600 mb-12 leading-relaxed font-light">
-              My approach goes beyond simple policy sales. I architect comprehensive wealth protection strategies that ensure your family's future remains secure, come what may.
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
+              As a <strong className="text-midnight font-semibold">2-time MDRT achiever (2023 & 2024)</strong>, I don't believe in one-size-fits-all solutions. Instead, I architect personalized wealth protection strategies that evolve with your life—from retirement planning and pension optimization to salary protection and comprehensive life insurance. Every recommendation I make is rooted in deep expertise and unwavering ethical standards.
             </p>
+            
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed font-light">
+              My clients have rewarded this approach with over <strong className="text-gold font-semibold">100 five-star Google reviews</strong> and a perfect <strong className="text-gold font-semibold">5.0★ rating</strong>. But those numbers represent something deeper: families who sleep better at night knowing their future is protected, and their legacy is secure.
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-6 mb-10">
+              <div className="p-4 md:p-5 rounded-2xl border border-gray-100 bg-white shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-2">What we do</p>
+                <p className="text-sm text-gray-600 leading-relaxed font-light">Protecting your future and securing your dreams through retirement planning, pension solutions, salary protection, and comprehensive life cover.</p>
+              </div>
+              <div className="p-4 md:p-5 rounded-2xl border border-gray-100 bg-white shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-2">Who we serve</p>
+                <p className="text-sm text-gray-600 leading-relaxed font-light">Families, salaried professionals, business owners, and NRI investors who value trustworthy, proactive guidance.</p>
+              </div>
+              <div className="p-4 md:p-5 rounded-2xl border border-gray-100 bg-white shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-2">Mission</p>
+                <p className="text-sm text-gray-600 leading-relaxed font-light">To deliver honest, transparent advice with zero compromise on claim readiness, so your family is protected when it matters most.</p>
+              </div>
+              <div className="p-4 md:p-5 rounded-2xl border border-gray-100 bg-white shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold mb-2">Values</p>
+                <p className="text-sm text-gray-600 leading-relaxed font-light">Integrity, empathy, and responsiveness—every policy curated around your goals with concierge-level support.</p>
+              </div>
+            </div>
+
+            {/* Google Business Trust Badge */}
+            <a 
+              href="https://share.google/VQAFgVhdk114U2ozd" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-3 mb-12 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-blue-500/30 transition-all duration-300 group"
+            >
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <div className="text-left">
+                <div className="text-sm font-bold text-midnight flex items-center gap-1 group-hover:text-blue-600 transition-colors">
+                  See Google Business Reviews
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <div className="flex items-center gap-1 text-xs text-gray-500">
+                  <span className="text-gold">★★★★★</span>
+                  <span className="font-semibold text-midnight">5.0</span> • 100+ reviews
+                </div>
+              </div>
+            </a>
             
             <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10 mb-12">
               {features.map((feature, index) => (

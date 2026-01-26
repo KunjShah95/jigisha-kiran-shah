@@ -23,7 +23,7 @@ export const stats: Stat[] = [
     icon: Award,
     value: 2,
     suffix: '',
-    label: 'Double MDRT Member',
+    label: ' 2 Times MDRT 2023 & 2024',
     description: 'Million Dollar Round Table (USA)'
   },
   {

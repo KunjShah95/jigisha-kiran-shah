@@ -44,9 +44,13 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 17px;
   }
   body {
-    @apply font-sans antialiased text-gray-900 bg-white selection:bg-gold/30;
+    @apply font-sans antialiased selection:bg-gold/30;
+    color: #0f172a;
+    background: #f8fafc;
+    line-height: 1.7;
   }
 }
 

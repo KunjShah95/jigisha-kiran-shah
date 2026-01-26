@@ -4,7 +4,7 @@ const reasons = [
   {
     icon: Award,
     title: 'Elite Certification',
-    description: 'Double MDRT (USA) achiever and top-tier LIC certified advisor since 2004.'
+    description: '2 Times MDRT achiever in 2023 & 2024 and top-tier LIC certified advisor since 2004.',
   },
   {
     icon: ShieldCheck,
@@ -39,6 +39,19 @@ const WhyUs = () => {
           <p className="text-lg text-gray-300 font-light leading-relaxed">
             Experience the difference of working with a dedicated and experienced LIC advisor who puts your family's security first.
           </p>
+        </div>
+
+        <div className="max-w-4xl mx-auto mb-12 reveal">
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-lg shadow-black/10">
+            <p className="text-sm text-gray-200 leading-relaxed mb-4 font-light">
+              Protecting your future and securing your dreams with MDRT-grade expertise, proactive claim readiness, and concierge-level guidance for every milestone.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4 text-sm text-gray-300 font-light">
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">Transparent advice with zero compromise on documentation and claims.</div>
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">Tailored plans for families, salaried professionals, business owners, and NRIs.</div>
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">Responsive, single-point support—from policy curation to settlements.</div>
+            </div>
+          </div>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">

@@ -2,26 +2,26 @@ import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Rajesh Mehta',
-    role: 'Retired Banker, Ahmedabad',
-    initials: 'RM',
+    name: 'Dr. Jayesh Gajjar',
+    role: 'ENT Specialist, Ahmedabad',
+    initials: 'JG',
     text: 'Jigisha Ben provided perfect guidance and complete explanation regarding my retirement planning. Her expertise in LIC pension plans and 22+ years of experience helped me secure a comfortable post-retirement life. Truly exceptional service!',
     rating: 5,
     tag: 'Retirement Planning'
   },
   {
-    name: 'Neha Desai',
-    role: 'Business Professional, Shela',
-    initials: 'ND',
-    text: "Her professionalism and genuine advice set her apart from other advisors. She took time to understand my family's needs and suggested the perfect insurance policies. As a Double MDRT achiever, her expertise is unmatched. Highly recommend her services!",
+    name: 'Umesh Panchal',
+    role: 'Business Professional, Ahmedabad',
+    initials: 'UP',
+    text: "Her professionalism and genuine advice set her apart from other advisors. She took time to understand my family's needs and suggested the perfect insurance policies. As a 2 Times MDRT achiever, her expertise is unmatched. Highly recommend her services!",
     rating: 5,
     tag: 'Life Insurance'
   },
   {
-    name: 'Dr. Vikram Shah',
-    role: 'Medical Practitioner, Gujarat',
-    initials: 'VS',
-    text: 'I was looking for salary insurance and pension planning options. Jigisha Ben explained all LIC plans in detail and helped me choose the right combination. Her office at Orchid Legacy, Applewoods is convenient, and her 22+ years of experience really shows in her advice.',
+    name: 'Sapan Shah',
+    role: 'Business Owner, Ahmedabad',
+    initials: 'SS',
+    text: 'I was looking for salary insurance and pension planning options. Jigisha Ben explained all LIC plans in detail and helped me choose the right combination. Her office at Orchid Legacy, D3-1303, Applewoods is convenient, and her 22+ years of experience really shows in her advice.',
     rating: 5,
     tag: 'Pension & Salary Insurance'
   }

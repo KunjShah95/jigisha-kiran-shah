@@ -6,7 +6,6 @@ import About from './components/About'
 import WhyUs from './components/WhyUs'
 import Testimonials from './components/Testimonials'
 import Reviews from './components/Reviews'
-import Calculator from './components/Calculator'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -75,7 +74,6 @@ function App() {
         <WhyUs />
         <Testimonials />
         <Reviews />
-        <Calculator />
         <Contact />
       </main>
       <Footer />
