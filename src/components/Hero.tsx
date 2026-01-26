@@ -119,7 +119,7 @@ const Hero = () => {
                   {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 fill-current" />)}
                 </div>
                 <p className="text-xs text-gray-700 font-medium leading-relaxed italic">
-                  "The best investment decision we ever made for our family."
+                  "She transformed how we think about our family's financial future."
                 </p>
               </div>
             </div>
