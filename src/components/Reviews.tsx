@@ -182,21 +182,21 @@ const Reviews = () => {
   return (
     <section className="py-24 lg:py-32 bg-gradient-to-b from-midnight to-midnight-light relative overflow-hidden" id="reviews">
       {/* Enhanced Background Elements */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-gold/10 via-amber-500/5 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-500/10 via-indigo-500/5 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '10s' }} />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-gold/15 via-gold-dark/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-gold-dark/10 via-midnight-light/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '10s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
         {/* Modern Hero Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20 reveal">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 via-amber-500/10 to-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30 shadow-lg shadow-gold/5 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 via-gold-dark/20 to-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30 shadow-lg shadow-gold/5 backdrop-blur-sm">
             <Star className="w-3 h-3 fill-gold" />
             <span>TRUSTED BY 2,700+ FAMILIES</span>
             <Star className="w-3 h-3 fill-gold" />
           </div>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6 leading-tight">
-            Real Stories, <span className="bg-gradient-to-r from-gold via-amber-400 to-gold bg-clip-text text-transparent italic">Real Results</span>
+            Real Stories, <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent italic">Real Results</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
             Discover how families across Gujarat transformed their financial future through personalized insurance solutions and expert guidance.
@@ -211,10 +211,10 @@ const Reviews = () => {
               className="group relative bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-6 md:p-8 text-center hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
             >
               {/* Animated background on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-gold-dark/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               
               <div className="relative z-10">
-                <div className="w-14 h-14 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-gold via-amber-400 to-gold-dark rounded-2xl flex items-center justify-center mb-5 shadow-xl shadow-gold/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <div className="w-14 h-14 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-gold via-gold-dark to-gold-dark rounded-2xl flex items-center justify-center mb-5 shadow-xl shadow-gold/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   <stat.icon className="w-6 h-6 md:w-7 md:h-7 text-midnight" />
                 </div>
                 <div className="text-4xl md:text-5xl font-extrabold bg-gradient-to-br from-white to-gray-300 bg-clip-text text-transparent mb-2">{stat.value}</div>
@@ -231,7 +231,7 @@ const Reviews = () => {
         <div className="mb-24">
           <div className="text-center mb-12 reveal">
             <h3 className="text-3xl md:text-4xl font-playfair font-bold text-white mb-4">
-              Customer <span className="bg-gradient-to-r from-gold via-amber-400 to-gold bg-clip-text text-transparent">Experiences</span>
+              Customer <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">Experiences</span>
             </h3>
             <p className="text-gray-400 text-lg">Real stories from real people who trusted us with their future</p>
           </div>
@@ -243,7 +243,7 @@ const Reviews = () => {
                 className="group bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col hover:scale-[1.02] hover:-translate-y-1"
               >
                 {/* Animated gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-gold-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 
                 {/* Decorative corner element */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-gold/20 to-transparent rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -252,7 +252,7 @@ const Reviews = () => {
                 
                 {/* Use Case Badge - Modern Style */}
                 <div className="mb-6 relative z-10">
-                  <span className="inline-block px-4 py-2 bg-gradient-to-r from-gold/20 to-amber-500/20 rounded-xl text-xs text-gold font-bold uppercase tracking-widest border border-gold/30 shadow-lg shadow-gold/5">
+                  <span className="inline-block px-4 py-2 bg-gradient-to-r from-gold/20 to-gold-dark/20 rounded-xl text-xs text-gold font-bold uppercase tracking-widest border border-gold/30 shadow-lg shadow-gold/5">
                     {review.useCase}
                   </span>
                 </div>
@@ -297,7 +297,7 @@ const Reviews = () => {
                 
                 {/* Reviewer Info - Enhanced */}
                 <div className="flex items-center gap-4 pt-6 border-t border-white/20 relative z-10 mt-auto">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold/30 via-amber-500/20 to-gold/30 flex items-center justify-center text-gold font-bold text-base border border-gold/30 shadow-lg shadow-gold/10 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold/30 via-gold-dark/20 to-gold/30 flex items-center justify-center text-gold font-bold text-base border border-gold/30 shadow-lg shadow-gold/10 group-hover:scale-110 transition-transform duration-300">
                     {review.initials}
                   </div>
                   <div className="flex-1">
@@ -400,13 +400,13 @@ const Reviews = () => {
 
         {/* Google Business Reviews Slider */}
         <div className="mb-24 reveal">
-          <div className="bg-gradient-to-br from-blue-500/10 via-white/5 to-indigo-500/10 border border-blue-500/20 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl">
-            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-blue-500/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '7s' }} />
+          <div className="bg-gradient-to-br from-gold-dark/10 via-white/5 to-midnight-light/10 border border-gold/20 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl">
+            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-gold-dark/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '7s' }} />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '9s' }} />
 
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/20 text-blue-400 text-xs font-bold tracking-[0.2em] uppercase rounded-full border border-blue-500/30 mb-4 backdrop-blur-sm">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full border border-gold/30 mb-4 backdrop-blur-sm">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -416,12 +416,12 @@ const Reviews = () => {
                   LIVE REVIEWS
                 </div>
                 <h3 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-3">
-                  Latest from <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400 bg-clip-text text-transparent">Google</span>
+                  Latest from <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">Google</span>
                 </h3>
                 <p className="text-gray-300 text-base md:text-lg max-w-2xl">Fresh feedback from real clients. Slide through to see why we maintain a perfect 5.0★ rating.</p>
               </div>
               <div className="flex flex-wrap items-center gap-4">
-                <div className="px-6 py-3 bg-gradient-to-r from-gold/20 to-amber-500/20 rounded-2xl border border-gold/30 backdrop-blur-sm">
+                <div className="px-6 py-3 bg-gradient-to-r from-gold/20 to-gold-dark/20 rounded-2xl border border-gold/30 backdrop-blur-sm">
                   <div className="flex items-center gap-2">
                     <span className="text-2xl font-extrabold text-gold">5.0</span>
                     <div className="flex gap-0.5">
@@ -443,7 +443,7 @@ const Reviews = () => {
 
             <div className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-10 shadow-2xl">
               <div className="flex items-start gap-5 mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-amber-500/20 flex items-center justify-center text-gold font-extrabold text-xl border-2 border-gold/30 shadow-lg shadow-gold/10 flex-shrink-0">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold-dark/20 flex items-center justify-center text-gold font-extrabold text-xl border-2 border-gold/30 shadow-lg shadow-gold/10 flex-shrink-0">
                   {googleSliderReviews[activeSlide].name.substring(0,2).toUpperCase()}
                 </div>
                 <div className="flex-1">
@@ -472,7 +472,7 @@ const Reviews = () => {
                     aria-label={`Go to review ${idx + 1}`}
                     className={`h-3 rounded-full transition-all duration-500 ${
                       activeSlide === idx 
-                        ? 'w-10 bg-gradient-to-r from-gold via-amber-400 to-gold shadow-lg shadow-gold/30' 
+                        ? 'w-10 bg-gradient-to-r from-gold via-gold-dark to-gold shadow-lg shadow-gold/30' 
                         : 'w-3 bg-white/30 hover:bg-white/50 hover:scale-110'
                     }`}
                   />
@@ -484,7 +484,7 @@ const Reviews = () => {
 
         {/* Modern CTA Section - Share Your Experience */}
         <div className="mb-20 reveal">
-          <div className="bg-gradient-to-r from-gold/20 via-amber-500/10 to-gold/20 border-2 border-gold/30 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl text-center">
+          <div className="bg-gradient-to-r from-gold/20 via-gold-dark/10 to-gold/20 border-2 border-gold/30 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl text-center">
             <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
             
             <div className="relative z-10 max-w-4xl mx-auto">
@@ -493,7 +493,7 @@ const Reviews = () => {
                 YOUR FEEDBACK MATTERS
               </div>
               <h3 className="text-3xl md:text-5xl font-playfair font-bold text-white mb-5">
-                Have You Worked <span className="bg-gradient-to-r from-gold via-amber-400 to-gold bg-clip-text text-transparent">With Us?</span>
+                Have You Worked <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">With Us?</span>
               </h3>
               <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
                 Your experience helps others make informed decisions about their financial future. Share your story and be part of our growing community.
@@ -503,7 +503,7 @@ const Reviews = () => {
                   href="https://share.google/VQAFgVhdk114U2ozd" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold via-amber-400 to-gold text-midnight font-extrabold rounded-2xl hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 transform hover:scale-105 text-lg"
+                  className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold via-gold-dark to-gold text-midnight font-extrabold rounded-2xl hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 transform hover:scale-105 text-lg"
                 >
                   <Star className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                   Write a Review
@@ -530,7 +530,7 @@ const Reviews = () => {
               href="https://share.google/VQAFgVhdk114U2ozd" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-2 border-blue-500/20 text-white rounded-2xl hover:from-blue-500/20 hover:to-indigo-500/20 hover:border-blue-500/40 transition-all duration-300 font-semibold hover:scale-105"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold/10 to-midnight-light/10 border-2 border-gold/20 text-white rounded-2xl hover:from-gold/20 hover:to-midnight-light/20 hover:border-gold/40 transition-all duration-300 font-semibold hover:scale-105"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>

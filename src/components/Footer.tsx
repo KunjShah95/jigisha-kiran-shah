@@ -29,7 +29,7 @@ const Footer = () => {
       <footer className="bg-midnight text-white pt-24 pb-10 border-t border-white/5 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#3a2a20]/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container relative z-10 top-0">
           <div className="grid lg:grid-cols-4 gap-12 mb-16">
@@ -58,7 +58,7 @@ const Footer = () => {
 
               <div className="flex gap-4">
                 {/* Social Icons */}
-                <a href="https://share.google/VQAFgVhdk114U2ozd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all duration-300" title="Google Business Reviews">
+                <a href="https://share.google/VQAFgVhdk114U2ozd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-gold hover:text-midnight transition-all duration-300" title="Google Business Reviews">
                   <span className="sr-only">Google Business</span>
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>

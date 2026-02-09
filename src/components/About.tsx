@@ -25,9 +25,9 @@ const About = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-32 bg-white relative overflow-hidden" id="about">
+    <section className="py-16 lg:py-32 bg-[#fbf6ef] relative overflow-hidden" id="about">
        {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-[50%] h-full bg-linear-to-bl from-gray-50 to-transparent pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[50%] h-full bg-linear-to-bl from-[#f3ede4] to-transparent pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container relative z-10 w-full">
@@ -102,7 +102,7 @@ const About = () => {
               href="https://share.google/VQAFgVhdk114U2ozd" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-6 py-3 mb-12 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-blue-500/30 transition-all duration-300 group"
+              className="inline-flex items-center gap-3 px-6 py-3 mb-12 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-gold/30 transition-all duration-300 group"
             >
               <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -111,7 +111,7 @@ const About = () => {
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
               </svg>
               <div className="text-left">
-                <div className="text-sm font-bold text-midnight flex items-center gap-1 group-hover:text-blue-600 transition-colors">
+                <div className="text-sm font-bold text-midnight flex items-center gap-1 group-hover:text-gold transition-colors">
                   See Google Business Reviews
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>

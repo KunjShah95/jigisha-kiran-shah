@@ -3,12 +3,12 @@ import heroImage from '../assets/images/hero-image.jpeg';
 
 const Hero = () => {
   return (
-    <section className="hero relative overflow-hidden min-h-screen lg:min-h-[95vh] flex items-center bg-slate-50" id="home">
+    <section className="hero relative overflow-hidden min-h-screen lg:min-h-[95vh] flex items-center bg-transparent" id="home">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-blue-50/50 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-tr from-amber-50/30 to-transparent" />
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-blue-100/30 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-[#f2e6d8]/60 to-transparent" />
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-tr from-[#f7e9d7]/50 to-transparent" />
+        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#ead6c1]/45 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[700px] h-[700px] bg-gold-light/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
         {/* Subtle grid pattern */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
@@ -60,14 +60,14 @@ const Hero = () => {
               <div className="reveal-scale group cursor-default" style={{ transitionDelay: '0.2s' }}>
                 <div className="flex items-center gap-2 mb-1">
                   <Shield className="w-5 h-5 text-gold" />
-                  <div className="text-2xl lg:text-3xl font-bold text-midnight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-midnight group-hover:to-blue-600 transition-all">22+</div>
+                  <div className="text-2xl lg:text-3xl font-bold text-midnight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-midnight group-hover:to-[#b5622f] transition-all">22+</div>
                 </div>
                 <div className="text-[10px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">Years Exp.</div>
               </div>
               <div className="reveal-scale group cursor-default" style={{ transitionDelay: '0.4s' }}>
                 <div className="flex items-center gap-2 mb-1">
                   <Users className="w-5 h-5 text-gold" />
-                  <div className="text-2xl lg:text-3xl font-bold text-midnight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-midnight group-hover:to-blue-600 transition-all">2.7k+</div>
+                  <div className="text-2xl lg:text-3xl font-bold text-midnight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-midnight group-hover:to-[#b5622f] transition-all">2.7k+</div>
                 </div>
                 <div className="text-[10px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">Families</div>
               </div>

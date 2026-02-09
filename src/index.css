@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #d4af37;
-  --color-gold-light: #f4e5b0;
-  --color-gold-dark: #aa8c2c;
-  --color-midnight: #0b1c33;
-  --color-midnight-light: #162a45;
-  --font-playfair: "Playfair Display", serif;
-  --font-inter: "Inter", sans-serif;
+  --color-gold: #c4772a;
+  --color-gold-light: #f3d6b4;
+  --color-gold-dark: #8b4d1d;
+  --color-midnight: #171717;
+  --color-midnight-light: #2a2a30;
+  --font-playfair: "Fraunces", serif;
+  --font-inter: "Plus Jakarta Sans", sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-beam: beam 2s linear infinite;
@@ -48,15 +48,19 @@
   }
   body {
     @apply font-sans antialiased selection:bg-gold/30;
-    color: #0f172a;
-    background: #f8fafc;
+    color: #1a1a1a;
+    background-color: #f7f1e9;
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(196, 119, 42, 0.12), transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(42, 42, 48, 0.12), transparent 40%),
+      linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(247, 241, 233, 0.9));
     line-height: 1.7;
   }
 }
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(to right, #d4af37, #f4e5b0, #d4af37);
+    background: linear-gradient(to right, #c4772a, #f3d6b4, #c4772a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;

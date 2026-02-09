@@ -41,9 +41,9 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-20 lg:py-32 bg-gray-50 relative overflow-hidden" id="services">
+    <section className="py-20 lg:py-32 bg-[#f6efe6] relative overflow-hidden" id="services">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#f1e4d5]/60 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       
       <div className="container relative z-10">
@@ -69,7 +69,7 @@ const Services = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-midnight group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-inner">
+                <div className="w-16 h-16 bg-[#f4e7d9] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-midnight group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-inner">
                   <service.icon size={32} className="text-midnight group-hover:text-gold transition-colors duration-500" />
                 </div>
                 

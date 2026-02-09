@@ -61,7 +61,7 @@ function App() {
           left: 0,
           right: 0,
           height: '4px',
-          backgroundColor: '#C5A059',
+          backgroundColor: '#c4772a',
           zIndex: 2000,
           transition: 'width 0.1s ease-out'
         }}
