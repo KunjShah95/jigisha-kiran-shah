@@ -60,8 +60,9 @@
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(to right, #c4772a, #f3d6b4, #c4772a);
+    background: linear-gradient(to right, #8b4d1d, #c4772a, #8b4d1d);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;
     animation: shimmer 3s linear infinite;
