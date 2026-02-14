@@ -1,4 +1,4 @@
-import { GraduationCap, Sunset, Shield, TrendingUp, HeartPulse, Briefcase } from 'lucide-react';
+import { GraduationCap, Sunset, Shield, TrendingUp, HeartPulse, Briefcase, Building2, Users, Handshake, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { Service } from '@/types';
 
 export const services: Service[] = [
@@ -89,6 +89,17 @@ export const services: Service[] = [
           'Level or increasing cover options',
           'Special premium rates for females',
           'Optional riders for added protection',
+          'Tax benefits under Section 80C & 10(10D)'
+        ],
+        type: 'Term Plan'
+      },
+      {
+        name: 'Term Life Assurance Pure Pro',
+        description: 'Comprehensive term plan with enhanced coverage and rider options.',
+        benefits: [
+          'High coverage at affordable premiums',
+          'Option to increase cover at life milestones',
+          'Terminal illness benefit',
           'Tax benefits under Section 80C & 10(10D)'
         ],
         type: 'Term Plan'
@@ -185,6 +196,70 @@ export const services: Service[] = [
           'Premium discounts available'
         ],
         type: 'Money Back'
+      }
+    ]
+  },
+  {
+    id: 'corporate-insurance',
+    title: 'Corporate Insurance',
+    tagline: 'Secure Your Business & Employees',
+    description: 'Comprehensive insurance solutions for businesses — from employer-employee benefits to partnership protections and liability coverage.',
+    icon: Building2,
+    products: [
+      {
+        name: 'Employer-Employee Insurance',
+        description: 'Group insurance cover for employees under a single master policy.',
+        benefits: [
+          'Group term insurance for all employees',
+          'Employee family coverage options',
+          'Tax benefits for employer',
+          'Customizable sum assured per employee'
+        ],
+        type: 'Group Insurance'
+      },
+      {
+        name: 'Partnership Insurance',
+        description: 'Protect your partnership business against loss of a key partner.',
+        benefits: [
+          'Compensation on partner\'s death',
+          'Business continuity assurance',
+          'Buy-sell agreement support',
+          'Tax efficient death claim'
+        ],
+        type: 'Business Protection'
+      },
+      {
+        name: 'MWP Insurance',
+        description: 'Married Women\'s Property Act policy to protect your family\'s financial future.',
+        benefits: [
+          'Creditors cannot attach the policy',
+          'Nominee receives death benefit directly',
+          'Protection from husband\'s business liabilities',
+          'Secure family\'s financial future'
+        ],
+        type: 'MWP'
+      },
+      {
+        name: 'HUF Insurance',
+        description: 'Insurance solutions specifically designed for Hindu Undivided Families.',
+        benefits: [
+          'HUF can be proposer and life assured',
+          'Tax benefits under Section 80C',
+          'Protection from business risks',
+          'Smooth succession planning'
+        ],
+        type: 'HUF'
+      },
+      {
+        name: 'Liability Insurance',
+        description: 'Protect your business against legal liabilities and third-party claims.',
+        benefits: [
+          'Public liability coverage',
+          'Product liability protection',
+          'Professional liability cover',
+          'Legal defense costs covered'
+        ],
+        type: 'Liability'
       }
     ]
   }

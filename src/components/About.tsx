@@ -71,7 +71,7 @@ const About = () => {
             </h2>
 
             <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">
-              For over two decades, I've been building futures, not just selling policies. Since 2004, I've dedicated myself to serving families across Gujarat from my office at Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad—helping them navigate life's biggest financial decisions with confidence and clarity.
+              Since two decades, I've been building futures, not just selling policies. Since 2004, I've dedicated myself to serving families across Gujarat from my office at Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad—helping them navigate life's biggest financial decisions with confidence and clarity.
             </p>
 
             <p className="text-lg text-gray-600 mb-6 leading-relaxed font-light">

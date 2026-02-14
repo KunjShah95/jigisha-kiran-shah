@@ -2,6 +2,15 @@ import { Testimonial } from '@/types';
 
 export const testimonials: Testimonial[] = [
   {
+    id: 'testimonial-0',
+    clientName: 'Dev Chhajed',
+    location: 'Ranip, Ahmedabad',
+    story: 'I took the Whole Life Insurance Plan through Jigisha ben and it has been an excellent decision. She guided me through every detail and helped me choose the best plan for long-term security. The policy benefits are comprehensive and her service is outstanding. Highly recommended for whole life coverage.',
+    journeyType: 'investment',
+    year: 2024,
+    rating: 5
+  },
+  {
     id: 'testimonial-1',
     clientName: 'Rajesh Patel',
     location: 'Bodakdev, Ahmedabad',

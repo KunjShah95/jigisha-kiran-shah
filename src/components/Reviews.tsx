@@ -60,11 +60,11 @@ const Reviews = () => {
     },
     {
       name: 'Dev Chhajed',
-      location: 'Daxini Society, Ahmedabad',
+      location: 'Ranip, Ahmedabad',
       initials: 'DC',
       rating: 5,
       date: 'June 2024',
-      useCase: 'Financial Security',
+      useCase: 'Whole Life Plan',
       challenge: 'Seeking trustworthy advice',
       solution: 'End-to-end policy management',
       text: 'Excellent service! The entire insurance process was handled professionally. Jigisha ben achieved MDRT status in 2023 and 2024, which demonstrates her expertise. Highly trustworthy advisor.',

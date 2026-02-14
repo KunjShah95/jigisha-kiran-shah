@@ -15,13 +15,13 @@ const services = [
   },
   {
     icon: TrendingUp,
-    title: 'Investment Linked (ULIP)',
+    title: 'ULIP plans',
     description: 'Participate in market growth while maintaining robust life protection for your dependents.',
     features: ['Market Growth', 'Flexible Switching', 'Wealth Creation']
   },
   {
     icon: Umbrella,
-    title: 'Retirement Concierge',
+    title: 'Retirement Planning',
     description: 'Ensure a dignified lifestyle in your golden years with guaranteed lifetime pension streams.',
     features: ['Lifetime Income', 'Family Protection', 'Inflation Hedge']
   },
