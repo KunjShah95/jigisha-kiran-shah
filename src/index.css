@@ -44,7 +44,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-size: 17px;
+    font-size: 16px;
   }
   body {
     @apply font-sans antialiased selection:bg-gold/30;

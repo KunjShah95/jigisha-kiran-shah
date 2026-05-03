@@ -1,5 +1,5 @@
 import { Calendar, Users, Award, Shield, TrendingUp, Heart } from 'lucide-react';
-import { Stat } from '@/types';
+import { Stat } from '../types';
 
 export const stats: Stat[] = [
   {

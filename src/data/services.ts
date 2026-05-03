@@ -1,5 +1,5 @@
 import { GraduationCap, Sunset, Shield, TrendingUp, HeartPulse, Briefcase, Building2, Users, Handshake, ShieldCheck, AlertTriangle } from 'lucide-react';
-import { Service } from '@/types';
+import { Service } from '../types';
 
 export const services: Service[] = [
   {
