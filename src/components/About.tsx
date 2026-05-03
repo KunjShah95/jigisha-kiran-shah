@@ -1,4 +1,5 @@
 import { Target, Phone, Zap, Lock, ArrowRight } from 'lucide-react';
+import aboutImage from '../assets/images/about.jpeg';
 
 const About = () => {
   const features = [
@@ -41,7 +42,7 @@ const About = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/5 border border-gold/20 group bg-midnight/5 z-10">
               <div className="absolute inset-0 bg-linear-to-t from-midnight/90 via-transparent to-transparent z-10" />
               <img
-                src="src/assets/images/about.jpeg"
+                src={aboutImage}
                 alt="Meeting with clients"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
