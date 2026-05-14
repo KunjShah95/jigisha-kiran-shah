@@ -37,14 +37,14 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-16 lg:py-32 bg-midnight text-white relative overflow-hidden" id="testimonials">
+    <section className="py-12 lg:py-20 bg-midnight text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#2a1f1a]/40 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl pointer-events-none translate-y-1/4 -translate-x-1/4" />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-soft-light" />
+      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-5 mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 lg:mb-20 gap-8 reveal">
+        <div                   className="flex flex-col md:flex-row justify-between items-end mb-8 lg:mb-12 gap-8 reveal">
           <div className="max-w-2xl">
             <div className="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 max-w-fit">Client Stories</div>
             <h2 className="text-3xl md:text-5xl font-playfair font-medium text-white mb-4 lg:mb-6">
@@ -69,7 +69,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index} 
-              className="group bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl relative hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold/5 transition-all duration-500 overflow-hidden"
+              className="group bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-3xl relative hover:-translate-y-2 hover:shadow-2xl hover:shadow-gold/5 transition-all duration-500 overflow-hidden"
               style={{ transitionDelay: `${index * 150}ms` }}
             >
                {/* Hover Gradient */}
@@ -88,7 +88,7 @@ const Testimonials = () => {
                     {testimonial.tag}
                 </div>
                 
-                <p className="text-gray-300 leading-relaxed mb-8 italic font-light h-32 overflow-hidden">
+                <p className="text-gray-300 leading-relaxed mb-6 italic font-light text-sm line-clamp-5">
                     "{testimonial.text}"
                 </p>
                 

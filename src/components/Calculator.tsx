@@ -35,14 +35,14 @@ const Calculator = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-24 bg-midnight-light relative overflow-hidden" id="calculator">
+    <section className="py-12 lg:py-20 bg-midnight-light relative overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'url("/noise.svg")' }} />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl animate-pulse pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#2a1f1a]/40 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/4" />
       
       <div className="container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
           <div className="reveal-left text-white">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gold/20 mb-4 lg:mb-6">
@@ -70,7 +70,7 @@ const Calculator = () => {
           </div>
           
           <div className="reveal-right">
-            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 lg:p-10 shadow-2xl relative overflow-hidden ring-1 ring-white/20">
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden ring-1 ring-white/20">
               <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-gold to-gold-light" />
               
               <h3 className="text-2xl font-playfair font-bold text-midnight mb-2">Request Assessment</h3>
@@ -79,7 +79,7 @@ const Calculator = () => {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-1">
-                    <label htmlFor="calc-name" className="text-xs font-bold text-gray-500 uppercase tracking-wider мл-1">Full Name</label>
+                    <label htmlFor="calc-name" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Full Name</label>
                     <input
                       type="text"
                       id="calc-name"
@@ -92,7 +92,7 @@ const Calculator = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label htmlFor="calc-phone" className="text-xs font-bold text-gray-500 uppercase tracking-wider мл-1">Phone Number</label>
+                    <label htmlFor="calc-phone" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Phone Number</label>
                     <input
                       type="tel"
                       id="calc-phone"
@@ -108,7 +108,7 @@ const Calculator = () => {
                 
                 <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-1">
-                    <label htmlFor="calc-age" className="text-xs font-bold text-gray-500 uppercase tracking-wider мл-1">Age</label>
+                    <label htmlFor="calc-age" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Age</label>
                     <input
                       type="number"
                       id="calc-age"
@@ -122,7 +122,7 @@ const Calculator = () => {
                     />
                   </div>
                   <div className="space-y-1">
-                    <label htmlFor="calc-income" className="text-xs font-bold text-gray-500 uppercase tracking-wider мл-1">Annual Income</label>
+                    <label htmlFor="calc-income" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Annual Income</label>
                     <select
                       id="calc-income"
                       name="income"
@@ -140,7 +140,7 @@ const Calculator = () => {
                 </div>
                 
                 <div className="space-y-1">
-                  <label htmlFor="calc-plan" className="text-xs font-bold text-gray-500 uppercase tracking-wider мл-1">Interested In</label>
+                  <label htmlFor="calc-plan" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Interested In</label>
                   <select
                     id="calc-plan"
                     name="planType"

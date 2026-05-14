@@ -180,16 +180,16 @@ const Reviews = () => {
   }, [googleSliderReviews.length]);
 
   return (
-    <section className="py-24 lg:py-32 bg-gradient-to-b from-midnight to-midnight-light relative overflow-hidden" id="reviews">
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-midnight to-midnight-light relative overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-gold/15 via-gold-dark/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-gold-dark/10 via-midnight-light/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '10s' }} />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-soft-light" />
+      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.03] mix-blend-soft-light" />
 
       <div className="container relative z-10 w-full">
         {/* Modern Hero Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20 reveal">
+          <div className="text-center max-w-4xl mx-auto mb-10 lg:mb-16 reveal">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gold/20 via-gold-dark/20 to-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30 shadow-lg shadow-gold/5 backdrop-blur-sm">
             <Star className="w-3 h-3 fill-gold" />
             <span>TRUSTED BY 2,700+ FAMILIES</span>
@@ -240,7 +240,7 @@ const Reviews = () => {
             {customerReviews.map((review, index) => (
               <div
                 key={index}
-                className="group bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col hover:scale-[1.02] hover:-translate-y-1"
+                className="group bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col hover:scale-[1.02] hover:-translate-y-1"
               >
                 {/* Animated gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-gold-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -280,8 +280,8 @@ const Reviews = () => {
                       <div className="w-2 h-2 bg-red-400 rounded-full" />
                     </div>
                     <div>
-                      <span className="text-red-400/80 text-[10px] uppercase font-bold tracking-wider block mb-1">Challenge</span>
-                      <p className="text-sm text-gray-300 font-light leading-snug">{review.challenge}</p>
+                  <span className="text-red-400/80 text-[10px] uppercase font-bold tracking-wider block mb-1">Challenge</span>
+                  <p className="text-xs text-gray-300 font-light leading-snug">{review.challenge}</p>
                     </div>
                   </div>
                   <div className="flex gap-3 items-start">
@@ -289,8 +289,8 @@ const Reviews = () => {
                       <div className="w-2 h-2 bg-green-400 rounded-full" />
                     </div>
                     <div>
-                      <span className="text-green-400/80 text-[10px] uppercase font-bold tracking-wider block mb-1">Solution</span>
-                      <p className="text-sm text-gray-300 font-light leading-snug">{review.solution}</p>
+                  <span className="text-green-400/80 text-[10px] uppercase font-bold tracking-wider block mb-1">Solution</span>
+                  <p className="text-xs text-gray-300 font-light leading-snug">{review.solution}</p>
                     </div>
                   </div>
                 </div>

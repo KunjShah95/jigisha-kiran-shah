@@ -58,14 +58,14 @@ const Contact = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-24 bg-[#f7f1ea] relative overflow-hidden" id="contact">
-      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }} />
+    <section className="py-12 lg:py-20 bg-[#f7f1ea] relative overflow-hidden">
+      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'url("/noise.svg")' }} />
       {/* Decorative Orbs */}
       <div className="absolute top-20 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#ead6c1] rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
 
       <div className="container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           
           <div className="reveal-left">
             <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Get In Touch</div>
@@ -99,7 +99,7 @@ const Contact = () => {
           </div>
           
           <div className="reveal-right">
-            <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-8 lg:p-10 border border-white/50 relative overflow-hidden backdrop-blur-sm">
+            <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-6 lg:p-8 border border-white/50 relative overflow-hidden backdrop-blur-sm">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
                
               <h3 className="text-2xl font-playfair font-bold text-midnight mb-8">Send a Message</h3>

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /services
+Allow: /about
+Allow: /reviews
+Allow: /contact
+
+Sitemap: https://jigishakiran.vercel.app/sitemap.xml

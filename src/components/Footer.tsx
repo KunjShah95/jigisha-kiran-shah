@@ -1,50 +1,53 @@
 import { Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const quickLinks = [
-      { label: 'Home', href: '#home' },
-      { label: 'Services', href: '#services' },
-      { label: 'About', href: '#about' },
-      { label: 'Testimonials', href: '#testimonials' },
-      { label: 'Reviews', href: '#reviews' },
-      { label: 'Contact', href: '#contact' }
+      { label: 'Home', to: '/' },
+      { label: 'Services', to: '/services' },
+      { label: 'About', to: '/about' },
+      { label: 'Testimonials', to: '/reviews' },
+      { label: 'Reviews', to: '/reviews' },
+      { label: 'Contact', to: '/contact' }
     ]
-  
+
     const services = [
-      { label: 'Term Life Assurance', href: '#services' },
-      { label: 'Wealth Endowment', href: '#services' },
-      { label: 'Investment Linked (ULIP)', href: '#services' },
-      { label: 'Retirement Concierge', href: '#services' },
-      { label: 'Child Education Legacy', href: '#services' }
+      { label: 'Term Life Assurance', to: '/services' },
+      { label: 'Wealth Endowment', to: '/services' },
+      { label: 'Investment Linked (ULIP)', to: '/services' },
+      { label: 'Retirement Concierge', to: '/services' },
+      { label: 'Child Education Legacy', to: '/services' }
     ]
-  
+
     const resources = [
       { label: 'LIC Official Website', href: 'https://licindia.in' },
-      { label: 'Premium Calculator', href: '#contact' },
+      { label: 'Premium Calculator', to: '/contact' },
       { label: 'Claim Status', href: 'https://licindia.in' },
       { label: 'Policy Status', href: 'https://licindia.in' }
     ]
-  
+
     return (
-      <footer className="bg-midnight text-white pt-24 pb-10 border-t border-white/5 relative overflow-hidden">
+      <footer className="bg-midnight text-white pt-16 pb-8 border-t border-white/5 relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#3a2a20]/30 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container relative z-10 top-0">
-          <div className="grid lg:grid-cols-4 gap-12 mb-16">
+          <div className="grid lg:grid-cols-4 gap-8 mb-12">
             <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center font-bold font-playfair text-xl text-midnight shadow-lg">JK</div>
-                <div className="font-playfair font-bold text-2xl">
-                  Jigisha Kiran<span className="text-gold"> Shah</span>
-                </div>
+                <Link to="/" className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-linear-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center font-bold font-playfair text-xl text-midnight shadow-lg">JK</div>
+                  <div className="font-playfair font-bold text-2xl">
+                    Jigisha Kiran<span className="text-gold"> Shah</span>
+                  </div>
+                </Link>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light">
                 Trusted LIC Advisor in Ahmedabad with 22+ years of legacy. 
                 Safeguarding your future and securing your dreams with personalized insurance solutions.
               </p>
-              
+
               <div className="space-y-4 mb-8">
                 <div className="flex items-start gap-3 text-sm text-gray-300 group">
                     <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5 group-hover:text-white transition-colors" />
@@ -57,7 +60,6 @@ const Footer = () => {
               </div>
 
               <div className="flex gap-4">
-                {/* Social Icons */}
                 <a href="https://share.google/VQAFgVhdk114U2ozd" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center hover:bg-gold hover:text-midnight transition-all duration-300" title="Google Business Reviews">
                   <span className="sr-only">Google Business</span>
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -77,40 +79,46 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-            
+
             <div>
               <h4 className="font-playfair font-bold text-lg mb-6 text-gold">Quick Links</h4>
               <nav className="flex flex-col gap-3">
                 {quickLinks.map((link, index) => (
-                  <a key={index} href={link.href} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm flex items-center gap-2">
+                  <Link key={index} to={link.to} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm flex items-center gap-2">
                     <span className="w-1 h-1 rounded-full bg-gold opacity-0 hover:opacity-100 transition-opacity" />
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
-            
+
             <div>
               <h4 className="font-playfair font-bold text-lg mb-6 text-gold">Our Expertise</h4>
               <nav className="flex flex-col gap-3">
                 {services.map((link, index) => (
-                  <a key={index} href={link.href} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                  <Link key={index} to={link.to} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </div>
-            
+
             <div>
               <h4 className="font-playfair font-bold text-lg mb-6 text-gold">Resources</h4>
               <nav className="flex flex-col gap-3">
                 {resources.map((link, index) => (
-                  <a key={index} href={link.href} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm" target={link.href.startsWith('http') ? '_blank' : undefined} rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
-                    {link.label}
-                  </a>
+                  link.to ? (
+                    <Link key={index} to={link.to} className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a key={index} href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                      {link.label}
+                    </a>
+                  )
                 ))}
               </nav>
-              
+
               <div className="mt-8 p-4 rounded-xl bg-white/5 border border-white/5">
                 <p className="text-xs text-gray-400 mb-2 font-bold uppercase tracking-wider">Certifications</p>
                 <div className="flex gap-2">
@@ -120,10 +128,10 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Jigisha Kiran Shah. All rights reserved.
+              &copy; {new Date().getFullYear()} Jigisha Kiran Shah. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
@@ -134,6 +142,5 @@ const Footer = () => {
       </footer>
     )
   }
-  
+
   export default Footer
-  

@@ -1,4 +1,5 @@
 import { Target, Phone, Zap, Lock, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom'
 import aboutImage from '../assets/images/about.jpeg';
 
 const About = () => {
@@ -26,13 +27,13 @@ const About = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-32 bg-[#fbf6ef] relative overflow-hidden" id="about">
+    <section className="py-12 lg:py-20 bg-[#fbf6ef] relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-[50%] h-full bg-linear-to-bl from-[#f3ede4] to-transparent pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
 
           <div className="relative reveal-left text-white lg:pt-6">
             {/* Decorative background frames to remove "white" feel */}
@@ -43,7 +44,7 @@ const About = () => {
               <div className="absolute inset-0 bg-linear-to-t from-midnight/90 via-transparent to-transparent z-10" />
               <img
                 src={aboutImage}
-                alt="Meeting with clients"
+                alt="Jigisha Kiran Shah meeting clients at Orchid Legacy, Shela, Ahmedabad"
                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
               />
 
@@ -141,10 +142,10 @@ const About = () => {
               ))}
             </div>
 
-            <a href="#contact" className="inline-flex items-center justify-center px-8 py-4 bg-midnight text-white font-semibold rounded-xl hover:bg-midnight-light transition-all duration-300 btn-beam gap-2 group shadow-lg hover:shadow-xl hover:-translate-y-1">
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-midnight text-white font-semibold rounded-xl hover:bg-midnight-light transition-all duration-300 btn-beam gap-2 group shadow-lg hover:shadow-xl hover:-translate-y-1">
               <span>Schedule a Meeting</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
 
         </div>
