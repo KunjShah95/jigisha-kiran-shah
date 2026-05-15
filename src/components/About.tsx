@@ -33,9 +33,9 @@ const About = () => {
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="container relative z-10 w-full">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-          <div className="relative reveal-left text-white lg:pt-6">
+          <div className="relative reveal-left text-white lg:pt-6 max-w-xs mx-auto w-full">
             {/* Decorative background frames to remove "white" feel */}
             <div className="absolute inset-0 bg-gold/10 rounded-3xl -rotate-3 scale-105 z-0" />
             <div className="absolute inset-0 bg-midnight/5 rounded-3xl rotate-2 scale-105 z-0" />

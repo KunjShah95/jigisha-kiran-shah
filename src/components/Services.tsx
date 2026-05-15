@@ -1,4 +1,4 @@
-import { Shield, Sparkles, TrendingUp, Umbrella, GraduationCap, Cross, Check } from 'lucide-react';
+import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check } from 'lucide-react';
 
 const services = [
   {
@@ -14,10 +14,10 @@ const services = [
     features: ['Guaranteed Returns', 'Bonuses', 'Liquidity Options']
   },
   {
-    icon: TrendingUp,
-    title: 'ULIP plans',
-    description: 'Participate in market growth while maintaining robust life protection for your dependents.',
-    features: ['Market Growth', 'Flexible Switching', 'Wealth Creation']
+    icon: Building2,
+    title: 'Business Insurance',
+    description: 'Comprehensive insurance solutions designed to protect your business, partnerships, and key relationships.',
+    features: ['Employer Employee Insurance', 'Partnership Insurance', 'MWP Insurance', 'HUF Insurance']
   },
   {
     icon: Umbrella,
