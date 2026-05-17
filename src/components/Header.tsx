@@ -6,6 +6,10 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
 
+  // Pages with a dark midnight background — nav text must be white when unscrolled
+  const darkPages = ['/reviews']
+  const isDarkPage = darkPages.includes(location.pathname)
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -40,7 +44,9 @@ const Header = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-white/80 backdrop-blur-md shadow-md py-3'
-            : 'bg-transparent py-6'
+            : isDarkPage
+              ? 'bg-midnight/60 backdrop-blur-md py-6 border-b border-white/10'
+              : 'bg-transparent py-6'
         }`}
       >
         <div className="container flex items-center justify-between w-full">
@@ -53,10 +59,14 @@ const Header = () => {
               JK
             </div>
             <div className="flex flex-col">
-              <span className={`font-playfair font-bold text-lg leading-none transition-colors ${isScrolled ? 'text-midnight' : 'text-midnight'}`}>
+              <span className={`font-playfair font-bold text-lg leading-none transition-colors ${
+                isScrolled ? 'text-midnight' : isDarkPage ? 'text-white' : 'text-midnight'
+              }`}>
                 Jigisha Kiran<span className="text-gold"> Shah</span>
               </span>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-medium">LIC Advisor</span>
+              <span className={`text-[10px] uppercase tracking-[0.2em] font-medium ${
+                isScrolled ? 'text-gray-500' : isDarkPage ? 'text-white/60' : 'text-gray-500'
+              }`}>LIC Advisor</span>
             </div>
           </Link>
 
@@ -67,7 +77,13 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 className={`text-sm font-medium transition-colors relative group py-2 ${
-                  isActive(link.to) ? 'text-gold' : 'text-gray-700 hover:text-gold'
+                  isActive(link.to)
+                    ? 'text-gold'
+                    : isScrolled
+                      ? 'text-gray-700 hover:text-gold'
+                      : isDarkPage
+                        ? 'text-white/80 hover:text-gold'
+                        : 'text-gray-700 hover:text-gold'
                 }`}
               >
                 {link.label}
@@ -87,8 +103,12 @@ const Header = () => {
               href="tel:+919824025435"
               className="hidden lg:flex flex-col items-end text-right mr-2"
             >
-              <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Advisory Support</span>
-              <span className="font-semibold text-midnight hover:text-gold transition-colors font-inter text-sm">+91 98240 25435</span>
+              <span className={`text-[10px] uppercase tracking-widest font-bold ${
+                isScrolled ? 'text-gray-500' : isDarkPage ? 'text-white/60' : 'text-gray-500'
+              }`}>Advisory Support</span>
+              <span className={`font-semibold hover:text-gold transition-colors font-inter text-sm ${
+                isScrolled ? 'text-midnight' : isDarkPage ? 'text-white' : 'text-midnight'
+              }`}>+91 98240 25435</span>
             </a>
 
             <Link
@@ -103,9 +123,9 @@ const Header = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              <span className={`w-6 h-0.5 bg-midnight rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`w-6 h-0.5 bg-midnight rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`w-6 h-0.5 bg-midnight rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              <span className={`w-6 h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''} ${isDarkPage && !isScrolled ? 'bg-white' : 'bg-midnight'}`} />
+              <span className={`w-6 h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''} ${isDarkPage && !isScrolled ? 'bg-white' : 'bg-midnight'}`} />
+              <span className={`w-6 h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''} ${isDarkPage && !isScrolled ? 'bg-white' : 'bg-midnight'}`} />
             </button>
           </div>
         </div>
