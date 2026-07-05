@@ -11,7 +11,8 @@ export default function HomePage() {
     title: 'LIC Advisor Ahmedabad | Retirement & Life Insurance',
     description: 'Jigisha Kiran Shah, trusted LIC advisor in Ahmedabad with 22+ years of experience. 2 Times MDRT Achiever. Expert in retirement planning, pension plans, term insurance & ULIP at Orchid Legacy, Shela.',
     ogTitle: 'Jigisha Kiran Shah - LIC Advisor Ahmedabad | 2 Times MDRT',
-    ogDescription: 'Expert LIC advisor in Shela, Ahmedabad. Specializing in retirement planning, pension plans & life insurance. 2 Times MDRT Achiever 2023 & 2024.'
+    ogDescription: 'Expert LIC advisor in Shela, Ahmedabad. Specializing in retirement planning, pension plans & life insurance. 2 Times MDRT Achiever 2023 & 2024.',
+    path: '/'
   })
   useScrollReveal()
 
