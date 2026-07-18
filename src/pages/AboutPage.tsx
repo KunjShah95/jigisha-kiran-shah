@@ -4,10 +4,10 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function AboutPage() {
   useSEO({
-    title: 'About | 2 Times MDRT LIC Advisor Ahmedabad',
-    description: 'Meet Jigisha Kiran Shah, senior LIC advisor in Ahmedabad with 22+ years of experience. 2 Times MDRT Achiever (2023 & 2024). Office at Orchid Legacy, Shela. Serving 2700+ families since 2004.',
-    ogTitle: 'About Jigisha Kiran Shah - 2 Times MDRT Advisor',
-    ogDescription: 'Senior LIC advisor with 22+ years of experience. 2 Times MDRT Achiever. Serving 2700+ families in Ahmedabad.',
+    title: 'About Jigisha Kiran Shah | Life Insurance Advisor Ahmedabad',
+    description: 'Meet Jigisha Kiran Shah - senior life insurance advisor & LIC agent in Ahmedabad (Shela, Satellite, SG Highway areas). 22+ years experience, 2 Times MDRT Achiever 2023 & 2024. Trusted by 2,700+ families. Specializing in retirement planning, pension & life insurance.',
+    ogTitle: 'Jigisha Kiran Shah - Top LIC Agent in Ahmedabad',
+    ogDescription: 'Senior life insurance advisor with 22+ years expertise. 2 Times MDRT award winner. Serving all Ahmedabad areas with personalized retirement & insurance planning.',
     path: '/about'
   })
   useScrollReveal()

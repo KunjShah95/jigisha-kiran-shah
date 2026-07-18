@@ -4,10 +4,10 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function ServicesPage() {
   useSEO({
-    title: 'Insurance Services | LIC Plans in Ahmedabad',
-    description: 'Explore LIC insurance plans in Ahmedabad: Term Life, Endowment, ULIP, Retirement Planning, Child Education & Health Cover. Expert guidance from 2 Times MDRT advisor Jigisha Kiran Shah.',
-    ogTitle: 'LIC Insurance Plans | Jigisha Kiran Shah',
-    ogDescription: 'Comprehensive LIC insurance solutions in Ahmedabad. Term life, retirement planning, ULIP, child education plans & more.',
+    title: 'LIC Insurance Plans Ahmedabad | Life Insurance Agent Services',
+    description: 'Explore all LIC insurance plans & services in Ahmedabad: Term Life Insurance, Endowment, ULIP, Retirement Planning, Pension Plans, Child Education Plans & Health Cover. Expert guidance from life insurance advisor Jigisha Kiran Shah serving all Ahmedabad areas.',
+    ogTitle: 'LIC Insurance Plans & Services Ahmedabad',
+    ogDescription: 'Comprehensive LIC insurance solutions in Ahmedabad. Term life, retirement planning, ULIP, pension plans, child education & health insurance. Find your nearest LIC agent now.',
     path: '/services'
   })
   useScrollReveal()

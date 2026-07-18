@@ -8,10 +8,10 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function HomePage() {
   useSEO({
-    title: 'LIC Advisor Ahmedabad | Retirement & Life Insurance',
-    description: 'Jigisha Kiran Shah, trusted LIC advisor in Ahmedabad with 22+ years of experience. 2 Times MDRT Achiever. Expert in retirement planning, pension plans, term insurance & ULIP at Orchid Legacy, Shela.',
-    ogTitle: 'Jigisha Kiran Shah - LIC Advisor Ahmedabad | 2 Times MDRT',
-    ogDescription: 'Expert LIC advisor in Shela, Ahmedabad. Specializing in retirement planning, pension plans & life insurance. 2 Times MDRT Achiever 2023 & 2024.',
+    title: 'LIC Advisor Near Me Ahmedabad | Life Insurance Agent Shela',
+    description: 'Jigisha Kiran Shah - Top LIC advisor & life insurance agent near you in Ahmedabad, Shela. 22+ years experience, 2 Times MDRT Achiever. Expert retirement planning, term life, ULIP, pension plans & child education policies in all Ahmedabad areas.',
+    ogTitle: 'Best LIC Agent Near Me in Ahmedabad | Jigisha Kiran Shah',
+    ogDescription: 'Find trusted life insurance advisor in Ahmedabad. Jigisha Kiran Shah offers expert LIC policies, retirement planning & pension solutions. Serving all areas including Shela, Satellite, SG Highway.',
     path: '/'
   })
   useScrollReveal()
