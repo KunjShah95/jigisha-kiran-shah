@@ -208,7 +208,7 @@ const Reviews = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="group relative bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-6 md:p-8 text-center hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
+              className="group relative bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-4 sm:p-6 md:p-8 text-center hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
             >
               {/* Animated background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-gold-dark/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -217,7 +217,7 @@ const Reviews = () => {
                 <div className="w-14 h-14 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-gold via-gold-dark to-gold-dark rounded-2xl flex items-center justify-center mb-5 shadow-xl shadow-gold/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   <stat.icon className="w-6 h-6 md:w-7 md:h-7 text-midnight" />
                 </div>
-                <div className="text-4xl md:text-5xl font-extrabold bg-gradient-to-br from-white to-gray-300 bg-clip-text text-transparent mb-2">{stat.value}</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold whitespace-nowrap bg-gradient-to-br from-white to-gray-300 bg-clip-text text-transparent mb-2">{stat.value}</div>
                 <div className="text-xs md:text-sm text-gold font-semibold uppercase tracking-widest">{stat.label}</div>
               </div>
 
@@ -296,15 +296,15 @@ const Reviews = () => {
                 </div>
 
                 {/* Reviewer Info - Enhanced */}
-                <div className="flex items-center gap-4 pt-6 border-t border-white/20 relative z-10 mt-auto">
+                <div className="flex items-center gap-4 pt-6 border-t border-white/20 relative z-10 mt-auto flex-wrap">
                   <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gold/30 via-gold-dark/20 to-gold/30 flex items-center justify-center text-gold font-bold text-base border border-gold/30 shadow-lg shadow-gold/10 group-hover:scale-110 transition-transform duration-300">
                     {review.initials}
                   </div>
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-[130px]">
                     <h4 className="font-bold text-white group-hover:text-gold transition-colors text-base">{review.name}</h4>
                     <p className="text-xs text-gray-400">{review.location}</p>
                   </div>
-                  <div className="text-right">
+                  <div className="text-right shrink-0 ml-auto">
                     <div className="text-[10px] text-gray-500 mb-1">{review.date}</div>
                     <div className="text-[10px] text-gold font-bold uppercase tracking-wider inline-flex items-center gap-1.5 bg-gold/10 px-2 py-1 rounded-lg border border-gold/20">
                       {review.source}
@@ -318,7 +318,7 @@ const Reviews = () => {
         </div>
 
         <div className="mb-24 reveal">
-          <div className="bg-gradient-to-br from-gold/5 via-midnight-light/40 to-gold/5 border border-gold/20 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl">
+          <div className="bg-gradient-to-br from-gold/5 via-midnight-light/40 to-gold/5 border border-gold/20 rounded-[2.5rem] p-6 md:p-14 relative overflow-hidden backdrop-blur-xl">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-gold/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
 
             <div className="relative z-10">
@@ -399,7 +399,7 @@ const Reviews = () => {
 
         {/* Google Business Reviews Slider */}
         <div className="mb-24 reveal">
-          <div className="bg-gradient-to-br from-gold-dark/10 via-white/5 to-midnight-light/10 border border-gold/20 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl">
+          <div className="bg-gradient-to-br from-gold-dark/10 via-white/5 to-midnight-light/10 border border-gold/20 rounded-[2.5rem] p-6 md:p-14 relative overflow-hidden backdrop-blur-xl">
             <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-gold-dark/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '7s' }} />
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '9s' }} />
 
@@ -440,12 +440,12 @@ const Reviews = () => {
               </div>
             </div>
 
-            <div className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 lg:p-10 shadow-2xl">
+            <div className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-5 lg:p-10 shadow-2xl">
               <div className="flex items-start gap-5 mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold-dark/20 flex items-center justify-center text-gold font-extrabold text-xl border-2 border-gold/30 shadow-lg shadow-gold/10 flex-shrink-0">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold-dark/20 flex items-center justify-center text-gold font-extrabold text-xl border-2 border-gold/30 shadow-lg shadow-gold/10 flex-shrink-0">
                   {googleSliderReviews[activeSlide].name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
                     {Array.from({ length: googleSliderReviews[activeSlide].rating }).map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-gold text-gold" />
@@ -482,7 +482,7 @@ const Reviews = () => {
 
         {/* Modern CTA Section - Share Your Experience */}
         <div className="mb-20 reveal">
-          <div className="bg-gradient-to-r from-gold/20 via-gold-dark/10 to-gold/20 border-2 border-gold/30 rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden backdrop-blur-xl text-center">
+          <div className="bg-gradient-to-r from-gold/20 via-gold-dark/10 to-gold/20 border-2 border-gold/30 rounded-[2.5rem] p-6 md:p-14 relative overflow-hidden backdrop-blur-xl text-center">
             <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
 
             <div className="relative z-10 max-w-4xl mx-auto">
