@@ -6,8 +6,40 @@
   --color-gold-dark: #8b4d1d;
   --color-midnight: #171717;
   --color-midnight-light: #2a2a30;
-  --font-playfair: "Fraunces", serif;
-  --font-inter: "Plus Jakarta Sans", sans-serif;
+  --color-cream: #f7f1e9;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1da851;
+
+  /* Back-compat aliases — shadcn/ui tokens mapped to brand system */
+  --color-navy: #171717;
+  --color-navy-dark: #0f0f0f;
+  --color-navy-light: #2a2a30;
+  --color-primary: #171717;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f3d6b4;
+  --color-secondary-foreground: #171717;
+  --color-accent: #c4772a;
+  --color-accent-foreground: #ffffff;
+  --color-muted: #efe6d8;
+  --color-muted-foreground: #6b6259;
+  --color-card: #ffffff;
+  --color-card-foreground: #171717;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #171717;
+  --color-background: #f7f1e9;
+  --color-foreground: #1a1a1a;
+  --color-border: #e7dccb;
+  --color-input: #e7dccb;
+  --color-ring: #c4772a;
+  --color-destructive: #b3261e;
+  --color-destructive-foreground: #ffffff;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-playfair: "Fraunces", ui-serif, Georgia, serif;
+  --font-inter: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-4xl: 2rem;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-beam: beam 2s linear infinite;
@@ -49,6 +81,7 @@
 @layer base {
   html {
     font-size: 16px;
+    scroll-behavior: smooth;
   }
   body {
     @apply font-sans antialiased selection:bg-gold/30;
@@ -59,6 +92,63 @@
       radial-gradient(circle at 85% 20%, rgba(42, 42, 48, 0.12), transparent 40%),
       linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(247, 241, 233, 0.9));
     line-height: 1.7;
+    text-rendering: optimizeLegibility;
+  }
+  main {
+    /* offset for fixed header */
+    scroll-margin-top: 5rem;
+  }
+  :focus-visible {
+    outline: 2px solid #c4772a;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: rgba(196, 119, 42, 0.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ── Mobile hardening ─────────────────────────────────────────── */
+@layer base {
+  html, body {
+    overflow-x: clip;
+  }
+  body {
+    -webkit-tap-highlight-color: rgba(196, 119, 42, 0.2);
+    -webkit-text-size-adjust: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
+  /* Prevent iOS auto-zoom on form focus: keep form text at 16px+ */
+  input, select, textarea {
+    font-size: 1rem;
+  }
+}
+
+@layer utilities {
+  /* Large desktop radius that collapses gracefully on phones */
+  .radius-display {
+    @apply rounded-3xl md:rounded-[2.5rem];
+  }
+  /* Long unbroken strings (reviews, addresses) must wrap, not overflow */
+  .wrap-anywhere {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 
@@ -73,43 +163,45 @@
   }
 
   .glass-card {
-    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-xl;
+    @apply bg-white/85 backdrop-blur-lg border border-border shadow-xl;
   }
 
-  .reveal {
+  /* Reveal animations — visible by default, hidden only when JS opts in.
+     useScrollReveal should add `js-reveal` to <html> on mount. */
+  .js-reveal .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.active {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .reveal-left {
+  .js-reveal .reveal-left {
     opacity: 0;
     transform: translateX(-30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-left.active {
     opacity: 1;
     transform: translateX(0);
   }
 
-  .reveal-right {
+  .js-reveal .reveal-right {
     opacity: 0;
     transform: translateX(30px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-right.active {
     opacity: 1;
     transform: translateX(0);
   }
 
-  .reveal-scale {
+  .js-reveal .reveal-scale {
     opacity: 0;
     transform: scale(0.95);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-scale.active {
     opacity: 1;
@@ -117,8 +209,26 @@
   }
 
   .container {
-    @apply mx-auto px-4 w-full;
+    @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
     max-width: 1280px;
+  }
+
+  /* Unified section rhythm: py-16 mobile / py-24 desktop */
+  .section {
+    @apply py-16 lg:py-24;
+  }
+  .section-sm {
+    @apply py-12 lg:py-20;
+  }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #c4772a;
+    z-index: 60;
   }
 
   .btn-beam {

@@ -4,11 +4,16 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function ContactPage() {
   useSEO({
-    title: 'Contact Life Insurance Advisor Ahmedabad | Book Free Consultation',
-    description: 'Contact Jigisha Kiran Shah - best LIC advisor & life insurance agent in Ahmedabad (Shela, Satellite, SG Highway). Book your free consultation for retirement planning, pension plans, term insurance & more. Call +91 98240 25435 or WhatsApp now.',
-    ogTitle: 'Free Consultation - LIC Agent Near Me in Ahmedabad',
-    ogDescription: 'Book free consultation with top-rated LIC advisor Jigisha Kiran Shah in Ahmedabad. Call +91 98240 25435. Serving all areas including Shela, Satellite & SG Highway.',
-    path: '/contact'
+    title: 'Contact LIC Advisor Ahmedabad | Book Free Consultation',
+    description:
+      'Contact Jigisha Kiran Shah — LIC advisor in Shela, Ahmedabad. Free consultation for retirement, pension, term insurance & child plans. Call +91 98240 25435, WhatsApp, or visit Orchid Legacy, Applewoods Township. Mon–Sat 9–6.',
+    ogTitle: 'Free Consultation — LIC Agent Near Me in Ahmedabad',
+    ogDescription:
+      'Book free consultation with top-rated LIC advisor in Ahmedabad. Call +91 98240 25435. Shela, Satellite, SG Highway & all areas served.',
+    path: '/contact',
+    keywords:
+      'contact LIC advisor Ahmedabad, book LIC consultation, LIC agent phone number Shela, Jigisha Kiran Shah contact, free insurance consultation Ahmedabad',
+    breadcrumbLabel: 'Contact',
   })
   useScrollReveal()
 

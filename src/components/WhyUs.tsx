@@ -26,36 +26,23 @@ const reasons = [
 
 const WhyUs = () => {
   return (
-    <section className="py-12 lg:py-20 bg-midnight text-white relative overflow-hidden">
+    <section className="py-16 lg:py-24 bg-midnight text-white relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#2a1f1a]/40 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-5 mix-blend-soft-light" />
+      <div aria-hidden="true" className="absolute top-0 left-0 w-[600px] h-[600px] bg-gold-dark/20 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div aria-hidden="true" className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.06] mix-blend-soft-light" />
       
       <div className="container relative z-10 w-full">
         <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-12 reveal">
-          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 border border-white/10">Why Choose Us</div>
-          <h2 className="text-3xl md:text-5xl font-playfair font-medium text-white mb-4 lg:mb-6">
+          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 border border-white/10">Why Choose Us</div>
+          <h2 className="text-3xl md:text-4xl font-display font-medium text-white mb-4 lg:mb-6">
             Your Trusted Insurance <span className="text-gold italic">Partner</span>
           </h2>
-          <p className="text-lg text-gray-300 font-light leading-relaxed">
-            Experience the difference of working with a dedicated and experienced LIC advisor who puts your family's security first.
+          <p className="text-base lg:text-lg text-gray-300 font-light leading-relaxed">
+            MDRT-grade expertise, proactive claim readiness, and concierge-level guidance for every milestone — protecting your future and securing your dreams.
           </p>
         </div>
-
-        <div className="max-w-4xl mx-auto mb-8 reveal">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 shadow-lg shadow-black/10">
-            <p className="text-sm text-gray-200 leading-relaxed mb-4 font-light">
-              Protecting your future and securing your dreams with MDRT-grade expertise, proactive claim readiness, and concierge-level guidance for every milestone.
-            </p>
-            <div className="grid sm:grid-cols-3 gap-4 text-sm text-gray-300 font-light">
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">Transparent advice with zero compromise on documentation and claims.</div>
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">Tailored plans for families, salaried professionals, business owners, and NRIs.</div>
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">Responsive, single-point support—from policy curation to settlements.</div>
-            </div>
-          </div>
-        </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 reveal">
           {reasons.map((reason, index) => (
             <div 
               key={index} 
@@ -67,7 +54,7 @@ const WhyUs = () => {
                 <div className="w-14 h-14 mx-auto bg-linear-to-br from-gold to-gold-dark rounded-2xl rotate-3 group-hover:rotate-6 flex items-center justify-center mb-4 shadow-lg shadow-gold/20 transition-transform duration-300">
                     <reason.icon size={24} className="text-midnight -rotate-3 group-hover:-rotate-6 transition-transform duration-300" />
                 </div>
-                <h3 className="text-lg font-bold font-playfair mb-2 text-white group-hover:text-gold transition-colors">{reason.title}</h3>
+                <h3 className="text-lg font-bold font-display mb-2 text-white group-hover:text-gold transition-colors">{reason.title}</h3>
                 <p className="text-sm text-gray-400 leading-relaxed font-light group-hover:text-gray-200 transition-colors">{reason.description}</p>
               </div>
             </div>
@@ -77,10 +64,10 @@ const WhyUs = () => {
         <div className="text-center mt-12 lg:mt-16 reveal">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-midnight font-bold rounded-xl hover:bg-gold-dark hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 text-base"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-white font-bold rounded-xl hover:bg-gold-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 text-base min-h-11"
           >
-            Start Your Journey
-            <ArrowRight className="w-5 h-5" />
+            Book Free Consultation
+            <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </Link>
         </div>
       </div>

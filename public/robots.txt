@@ -1,8 +1,29 @@
 User-agent: *
 Allow: /
-Allow: /services
-Allow: /about
-Allow: /reviews
-Allow: /contact
+Disallow: /*?*
+Allow: /llms.txt
+Allow: /google1f87f3a8e55096ba.html
+
+# AI search / answer-engine crawlers — explicitly allowed for GEO/AEO citations
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://jigishakiran.vercel.app/sitemap.xml

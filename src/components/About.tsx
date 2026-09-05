@@ -1,21 +1,27 @@
-import { Award, Star, Users, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, ZoomIn, ExternalLink } from 'lucide-react';
+import { Award, Star, Users, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, ZoomIn, ExternalLink, MapPin, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import aboutImage from '../assets/images/about.jpeg';
-import heroImage from '../assets/images/hero-image.jpeg';
 
-// ─── Image Gallery Data ───────────────────────────────────────────────────────
-const galleryImages = [
+// ─── Gallery: one real photo + one branded office card ──────────────────────
+// NOTE: only one photo asset exists in the repo, so the second slide is an
+// honest styled card (address / hours / CTA) — not a duplicated photo.
+type GallerySlide =
+  | { kind: 'photo'; src: string; label: string; caption: string }
+  | { kind: 'office'; label: string; caption: string };
+
+const gallerySlides: GallerySlide[] = [
   {
+    kind: 'photo',
     src: aboutImage,
-    label: 'Our Services',
+    label: 'Advisory Office',
     caption: 'Comprehensive LIC advisory — life, health & wealth',
   },
   {
-    src: heroImage,
-    label: 'Jigisha Ben',
-    caption: 'Senior Wealth Advisor & 2× MDRT Achiever',
-  }
+    kind: 'office',
+    label: 'Visit Us',
+    caption: 'Orchid Legacy, Shela, Ahmedabad',
+  },
 ];
 
 
@@ -39,8 +45,9 @@ const About = () => {
   const [activeImg, setActiveImg] = useState(0);
   const [lightbox, setLightbox] = useState(false);
 
-  const prev = () => setActiveImg(i => (i - 1 + galleryImages.length) % galleryImages.length);
-  const next = () => setActiveImg(i => (i + 1) % galleryImages.length);
+  const prev = () => setActiveImg(i => (i - 1 + gallerySlides.length) % gallerySlides.length);
+  const next = () => setActiveImg(i => (i + 1) % gallerySlides.length);
+  const activeSlide = gallerySlides[activeImg];
 
   return (
     <>
@@ -49,47 +56,69 @@ const About = () => {
         <div
           className="fixed inset-0 z-[999] bg-midnight/90 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setLightbox(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${activeSlide.label}: ${activeSlide.caption}`}
         >
           <button
-            className="absolute top-5 right-6 text-white/60 hover:text-white text-3xl font-light"
+            className="absolute top-5 right-6 w-11 h-11 flex items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition-colors"
             onClick={() => setLightbox(false)}
-          >✕</button>
+            aria-label="Close image viewer"
+          >
+            <span aria-hidden="true" className="text-2xl font-light leading-none">✕</span>
+          </button>
           <button
-            className="absolute left-4 text-white/60 hover:text-white p-3 bg-white/10 rounded-full"
+            className="absolute left-4 w-11 h-11 flex items-center justify-center text-white/60 hover:text-white bg-white/10 rounded-full"
             onClick={e => { e.stopPropagation(); prev(); }}
+            aria-label="Previous image"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-6 h-6" aria-hidden="true" />
           </button>
-          <img
-            src={galleryImages[activeImg].src}
-            alt={galleryImages[activeImg].caption}
-            className="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl object-contain"
-            onClick={e => e.stopPropagation()}
-          />
+          {activeSlide.kind === 'photo' ? (
+            <img
+              src={activeSlide.src}
+              alt={activeSlide.caption}
+              className="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl object-contain"
+              onClick={e => e.stopPropagation()}
+            />
+          ) : (
+            <div
+              className="max-h-[85vh] max-w-[90vw] w-full sm:w-[420px] rounded-2xl shadow-2xl bg-midnight border border-gold/30 p-8 text-white"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="w-12 h-12 rounded-xl bg-gold flex items-center justify-center mb-4">
+                <MapPin className="w-6 h-6 text-midnight" aria-hidden="true" />
+              </div>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-gold mb-2">{activeSlide.label}</p>
+              <p className="text-lg font-semibold leading-snug mb-4">{activeSlide.caption}</p>
+              <p className="text-sm text-white/70 leading-relaxed">Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058 · Mon–Sat, 9am–6pm</p>
+            </div>
+          )}
           <button
-            className="absolute right-4 text-white/60 hover:text-white p-3 bg-white/10 rounded-full"
+            className="absolute right-4 w-11 h-11 flex items-center justify-center text-white/60 hover:text-white bg-white/10 rounded-full"
             onClick={e => { e.stopPropagation(); next(); }}
+            aria-label="Next image"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-6 h-6" aria-hidden="true" />
           </button>
-          <p className="absolute bottom-6 text-center text-white/60 text-sm">
-            {galleryImages[activeImg].caption}
+          <p className="absolute bottom-6 left-0 right-0 text-center text-white/60 text-sm px-4">
+            {activeSlide.caption}
           </p>
         </div>
       )}
 
       {/* ── Main Section ──────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-24 bg-[#faf6f0] relative overflow-hidden">
+      <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-[#faf6f0] relative overflow-hidden">
         {/* Background accents */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#f0e8da] to-transparent pointer-events-none rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div aria-hidden="true" className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#f0e8da] to-transparent pointer-events-none rounded-full blur-3xl" />
+        <div aria-hidden="true" className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container relative z-10 w-full">
 
           {/* Section label */}
           <div className="flex items-center gap-3 mb-12 lg:mb-16 reveal">
-            <div className="h-px w-12 bg-gold" />
-            <span className="text-xs font-bold text-gold uppercase tracking-[0.3em]">About Jigisha Ben</span>
+            <div aria-hidden="true" className="h-px w-12 bg-gold" />
+            <span className="text-[11px] font-bold text-gold-dark uppercase tracking-[0.3em]">About Jigisha Ben</span>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -98,100 +127,124 @@ const About = () => {
             <div className="reveal-left">
 
               {/* Main image card */}
-              <div className="relative group cursor-pointer" onClick={() => setLightbox(true)}>
+              <div className="relative group cursor-pointer max-w-md w-full mx-auto lg:mx-0" onClick={() => setLightbox(true)}>
                 {/* Tilt background */}
-                <div className="absolute inset-2 bg-gradient-to-br from-midnight/10 to-gold/10 rounded-[2rem] rotate-2 scale-100 pointer-events-none" />
+                <div aria-hidden="true" className="absolute inset-2 bg-gradient-to-br from-midnight/10 to-gold/10 rounded-[2rem] rotate-2 scale-100 pointer-events-none" />
 
                 {/* Image frame */}
-                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gold/20 aspect-[4/5] max-h-[480px]">
-                  <img
-                    key={activeImg}
-                    src={galleryImages[activeImg].src}
-                    alt={galleryImages[activeImg].caption}
-                    className="w-full h-full object-cover object-top transition-all duration-500"
-                    style={{ animation: 'fadeIn 0.4s ease' }}
-                  />
+                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white ring-1 ring-gold/20 aspect-[4/5] max-h-[480px] bg-midnight">
+                  {activeSlide.kind === 'photo' ? (
+                    <img
+                      key={activeImg}
+                      src={activeSlide.src}
+                      alt={activeSlide.caption}
+                      loading={activeImg === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      className="w-full h-full object-cover object-top transition-all duration-500"
+                      style={{ animation: 'fadeIn 0.4s ease' }}
+                    />
+                  ) : (
+                    <div key={activeImg} className="w-full h-full flex flex-col justify-end p-6 sm:p-8 bg-gradient-to-br from-midnight via-midnight-light to-gold-dark" style={{ animation: 'fadeIn 0.4s ease' }}>
+                      <div className="w-12 h-12 rounded-xl bg-gold flex items-center justify-center mb-4">
+                        <MapPin className="w-6 h-6 text-midnight" aria-hidden="true" />
+                      </div>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-gold-light mb-2">{activeSlide.label}</p>
+                      <p className="font-display text-2xl font-bold text-white leading-tight mb-3">{activeSlide.caption}</p>
+                      <p className="text-sm text-white/70 leading-relaxed">Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad 380058</p>
+                      <p className="mt-3 inline-flex items-center gap-2 text-xs font-semibold text-gold-light"><Clock className="w-3.5 h-3.5" aria-hidden="true" /> Mon–Sat · 9:00am–6:00pm</p>
+                    </div>
+                  )}
 
                   {/* Gradient + caption overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/10 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="inline-block px-3 py-1 bg-gold text-midnight text-[10px] font-bold tracking-widest uppercase rounded-sm mb-3">
-                      {galleryImages[activeImg].label}
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/10 to-transparent pointer-events-none" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
+                    <span className="inline-block px-3 py-1 bg-gold text-white text-[11px] font-bold tracking-widest uppercase rounded mb-3">
+                      {activeSlide.label}
                     </span>
-                    <p className="text-white text-sm font-medium">{galleryImages[activeImg].caption}</p>
+                    <p className="text-white text-sm font-medium">{activeSlide.caption}</p>
                   </div>
 
                   {/* Zoom hint */}
-                  <div className="absolute top-4 right-4 w-9 h-9 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div aria-hidden="true" className="absolute top-4 right-4 w-9 h-9 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity">
                     <ZoomIn className="w-4 h-4 text-white" />
                   </div>
 
                   {/* Prev / Next arrows */}
                   <button
-                    className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-white/40"
                     onClick={e => { e.stopPropagation(); prev(); }}
+                    aria-label="Previous image"
                   >
-                    <ChevronLeft className="w-4 h-4 text-white" />
+                    <ChevronLeft className="w-4 h-4 text-white" aria-hidden="true" />
                   </button>
                   <button
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white/40"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 transition-opacity hover:bg-white/40"
                     onClick={e => { e.stopPropagation(); next(); }}
+                    aria-label="Next image"
                   >
-                    <ChevronRight className="w-4 h-4 text-white" />
+                    <ChevronRight className="w-4 h-4 text-white" aria-hidden="true" />
                   </button>
                 </div>
 
                 {/* Floating badges */}
-                <div className="absolute -top-4 -left-4 z-20 bg-midnight text-white rounded-2xl px-4 py-2.5 shadow-xl border border-white/10 flex items-center gap-2.5 pointer-events-none">
+                <div className="absolute top-2 -left-2 sm:-top-4 sm:-left-4 z-20 bg-midnight text-white rounded-2xl px-4 py-2.5 shadow-xl border border-white/10 flex items-center gap-2.5 pointer-events-none">
                   <div className="w-7 h-7 rounded-lg bg-gold flex items-center justify-center shrink-0">
-                    <Award className="w-3.5 h-3.5 text-midnight" />
+                    <Award className="w-3.5 h-3.5 text-midnight" aria-hidden="true" />
                   </div>
                   <div>
-                    <div className="text-[9px] text-white/50 uppercase tracking-widest">Serving Since</div>
-                    <div className="text-sm font-bold font-playfair leading-none">2004</div>
+                    <div className="text-[11px] text-white/50 uppercase tracking-widest">Serving Since</div>
+                    <div className="text-sm font-bold font-display leading-none">2004</div>
                   </div>
                 </div>
 
-                <div className="absolute -bottom-4 -right-4 z-20 bg-white rounded-2xl px-5 py-3.5 shadow-xl border border-gold/20 flex items-center gap-3 animate-float pointer-events-none hidden md:flex">
-                  <div className="text-3xl font-extrabold font-playfair text-midnight leading-none">
+                <div className="absolute -bottom-4 right-2 sm:-right-4 z-20 bg-white rounded-2xl px-5 py-3.5 shadow-xl border border-gold/20 flex items-center gap-3 animate-float pointer-events-none hidden md:flex" aria-hidden="true">
+                  <div className="text-3xl font-extrabold font-display text-midnight leading-none">
                     22<span className="text-gold">+</span>
                   </div>
-                  <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider leading-snug">
+                  <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider leading-snug">
                     Years of<br />Excellence
                   </div>
                 </div>
               </div>
 
               {/* Thumbnail strip */}
-              <div className="flex gap-3 mt-8 justify-center">
-                {galleryImages.map((img, i) => (
+              <div className="flex gap-3 mt-8 justify-center" role="tablist" aria-label="About photos">
+                {gallerySlides.map((slide, i) => (
                   <button
                     key={i}
+                    role="tab"
+                    aria-selected={activeImg === i}
                     onClick={() => setActiveImg(i)}
-                    className={`relative w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 shadow-md hover:scale-105 focus:outline-none ${activeImg === i
+                    className={`relative w-20 h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 shadow-md hover:scale-105 focus-visible:ring-2 focus-visible:ring-gold ${activeImg === i
                         ? 'border-gold ring-2 ring-gold/40 scale-105'
                         : 'border-white/50 opacity-60 hover:opacity-90'
                       }`}
-                    aria-label={img.label}
+                    aria-label={`View: ${slide.label}`}
                   >
-                    <img src={img.src} alt={img.label} className="w-full h-full object-cover object-top" />
+                    {slide.kind === 'photo' ? (
+                      <img src={slide.src} alt="" aria-hidden="true" loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />
+                    ) : (
+                      <span aria-hidden="true" className="w-full h-full flex items-center justify-center bg-midnight">
+                        <MapPin className="w-6 h-6 text-gold" />
+                      </span>
+                    )}
                     {activeImg === i && (
-                      <div className="absolute bottom-0 inset-x-0 bg-gold/90 text-midnight text-[8px] font-bold text-center py-0.5 uppercase tracking-wide">
-                        {img.label}
+                      <div aria-hidden="true" className="absolute bottom-0 inset-x-0 bg-gold/90 text-white text-[11px] font-bold text-center py-0.5 uppercase tracking-wide truncate px-1">
+                        {slide.label}
                       </div>
                     )}
                   </button>
                 ))}
               </div>
-              <p className="text-center text-xs text-gray-400 mt-3">Click image to zoom · Use arrows to browse</p>
+              <p className="text-center text-xs text-gray-400 mt-3">Tap image to zoom · Use arrows to browse</p>
             </div>
 
             {/* ── RIGHT: Bio content ───────────────────────────────────────────── */}
             <div className="reveal-right">
-              <h2 className="text-4xl md:text-5xl lg:text-5xl font-playfair font-semibold text-midnight mb-4 leading-[1.1]">
+              <h1 className="text-4xl md:text-4xl lg:text-5xl font-display font-semibold text-midnight mb-4 leading-[1.1]">
                 Dedicated to Your<br />
                 Family's <span className="text-gold italic">Security</span>
-              </h2>
+              </h1>
 
               <div className="flex items-center gap-4 mb-8">
                 <div className="h-0.5 w-16 bg-gold" />
@@ -217,14 +270,14 @@ const About = () => {
               </ul>
 
               {/* Stats row */}
-              <div className="grid grid-cols-3 gap-4 mb-10 p-5 bg-white rounded-2xl border border-gray-100 shadow-sm">
+              <div className="grid grid-cols-3 gap-4 mb-10 p-5 bg-white rounded-2xl border border-border shadow-sm">
                 {stats.map((stat, i) => (
                   <div key={i} className="text-center group">
                     <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center mx-auto mb-2 group-hover:bg-gold transition-all duration-300">
-                      <stat.icon className="w-5 h-5 text-gold group-hover:text-midnight transition-colors" />
+                      <stat.icon className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
                     </div>
-                    <div className="text-xl font-extrabold text-midnight font-playfair leading-none mb-1">{stat.value}</div>
-                    <div className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">{stat.label}</div>
+                    <div className="text-xl font-extrabold text-midnight font-display leading-none mb-1">{stat.value}</div>
+                    <div className="text-[11px] text-gray-400 uppercase tracking-wider font-semibold">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -256,17 +309,17 @@ const About = () => {
               </a>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-midnight text-white font-semibold rounded-xl hover:bg-gold hover:text-midnight transition-all duration-300 shadow-lg hover:shadow-gold/30 hover:-translate-y-1 group"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-midnight text-white font-semibold rounded-xl hover:bg-gold transition-all duration-300 shadow-lg hover:shadow-gold/30 hover:-translate-y-1 group min-h-11 w-full sm:w-auto"
                 >
-                  <span>Schedule a Meeting</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span>Book Free Consultation</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </Link>
                 <a
                   href="tel:+919824025435"
-                  className="inline-flex items-center gap-2 px-8 py-4 border-2 border-midnight/20 text-midnight font-semibold rounded-xl hover:border-gold hover:text-gold transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-midnight/20 text-midnight font-semibold rounded-xl hover:border-gold hover:text-gold-dark transition-all duration-300 min-h-11 w-full sm:w-auto"
                 >
                   +91 98240 25435
                 </a>
@@ -280,9 +333,9 @@ const About = () => {
       {/* ── Google Business Sample Photos Strip ──────────────────────────────── */}
       <section className="py-12 bg-white border-t border-gray-100">
         <div className="container w-full">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
             <div>
-              <h3 className="text-xl font-playfair font-semibold text-midnight">
+              <h3 className="text-xl font-display font-semibold text-midnight">
                 From Our <span className="text-gold">Google Business</span> Page
               </h3>
               <p className="text-sm text-gray-400 mt-1">Real photos from our office and client sessions</p>
@@ -291,13 +344,50 @@ const About = () => {
               href="https://share.google/VQAFgVhdk114U2ozd"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-gold hover:text-midnight transition-colors group"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-gold-dark hover:text-midnight transition-colors group min-h-11"
             >
               See all on Google
-              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
             </a>
           </div>
 
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+            {gallerySlides.map((slide, i) => (
+              <button
+                key={i}
+                onClick={() => { setActiveImg(i); setLightbox(true); }}
+                className="group relative rounded-2xl overflow-hidden border border-border aspect-[4/3] focus-visible:ring-2 focus-visible:ring-gold bg-midnight"
+                aria-label={`Open: ${slide.label}`}
+              >
+                {slide.kind === 'photo' ? (
+                  <img
+                    src={slide.src}
+                    alt={slide.caption}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <span aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-midnight to-gold-dark p-4 text-center">
+                    <MapPin className="w-6 h-6 text-gold" />
+                    <span className="text-white text-xs font-bold leading-snug">{slide.caption}</span>
+                  </span>
+                )}
+                <span className="absolute bottom-2 left-2 px-2 py-0.5 bg-midnight/70 backdrop-blur-sm text-white text-[11px] font-semibold rounded">
+                  {slide.label}
+                </span>
+              </button>
+            ))}
+            <a
+              href="https://share.google/VQAFgVhdk114U2ozd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative rounded-2xl overflow-hidden border border-dashed border-gold/40 bg-gold/5 aspect-[4/3] flex flex-col items-center justify-center gap-2 text-gold-dark hover:bg-gold/10 transition-colors min-h-11"
+            >
+              <span className="text-sm font-bold">View all photos</span>
+              <span className="text-[11px] text-gray-500">on Google Business</span>
+            </a>
+          </div>
         </div>
       </section>
     </>

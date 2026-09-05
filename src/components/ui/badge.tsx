@@ -13,7 +13,7 @@ const Badge = React.forwardRef<
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/80',
     outline: 'text-foreground border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-    gold: 'bg-gold text-navy-dark hover:bg-gold-light',
+    gold: 'bg-gold text-white hover:bg-gold-dark',
     navy: 'bg-navy text-white hover:bg-navy-light',
   }
 

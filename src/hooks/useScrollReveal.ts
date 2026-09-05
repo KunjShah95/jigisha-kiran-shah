@@ -2,6 +2,10 @@ import { useEffect } from 'react'
 
 export function useScrollReveal() {
   useEffect(() => {
+    // Opt in to hidden-before-reveal only when JS is running,
+    // so content stays visible if JS fails.
+    document.documentElement.classList.add('js-reveal')
+
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
 
     const reveal = () => {
@@ -15,7 +19,7 @@ export function useScrollReveal() {
       })
     }
 
-    window.addEventListener('scroll', reveal)
+    window.addEventListener('scroll', reveal, { passive: true })
     reveal()
 
     return () => window.removeEventListener('scroll', reveal)

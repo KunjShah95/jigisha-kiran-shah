@@ -171,13 +171,15 @@ const Reviews = () => {
   ];
 
   const [activeSlide, setActiveSlide] = useState(0);
+  const [sliderPaused, setSliderPaused] = useState(false);
 
   useEffect(() => {
+    if (sliderPaused) return;
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % googleSliderReviews.length);
     }, 5200);
     return () => clearInterval(interval);
-  }, [googleSliderReviews.length]);
+  }, [googleSliderReviews.length, sliderPaused]);
 
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-midnight to-midnight-light relative overflow-hidden">
@@ -195,16 +197,16 @@ const Reviews = () => {
             <span>TRUSTED BY 2,700+ FAMILIES</span>
             <Star className="w-3 h-3 fill-gold" />
           </div>
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-bold text-white mb-6 leading-tight">
-            Real Stories, <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent italic">Real Results</span>
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+            Real Stories, <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent italic">Real Results</span>
+          </h1>
+          <p className="text-base md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
             Discover how families across Gujarat transformed their financial future through personalized insurance solutions and expert guidance.
           </p>
         </div>
 
         {/* Redesigned Stats with Modern Cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-20 reveal">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-16 lg:mb-20 reveal">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -217,8 +219,8 @@ const Reviews = () => {
                 <div className="w-14 h-14 md:w-16 md:h-16 mx-auto bg-gradient-to-br from-gold via-gold-dark to-gold-dark rounded-2xl flex items-center justify-center mb-5 shadow-xl shadow-gold/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                   <stat.icon className="w-6 h-6 md:w-7 md:h-7 text-midnight" />
                 </div>
-                <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold whitespace-nowrap bg-gradient-to-br from-white to-gray-300 bg-clip-text text-transparent mb-2">{stat.value}</div>
-                <div className="text-xs md:text-sm text-gold font-semibold uppercase tracking-widest">{stat.label}</div>
+                <div className="text-2xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-br from-white to-gray-300 bg-clip-text text-transparent mb-2">{stat.value}</div>
+                <div className="text-[11px] md:text-sm text-gold font-semibold uppercase tracking-widest">{stat.label}</div>
               </div>
 
               {/* Corner accent */}
@@ -228,15 +230,15 @@ const Reviews = () => {
         </div>
 
         {/* Modern Customer Reviews Section with Featured Layout */}
-        <div className="mb-24">
+        <div className="mb-16 lg:mb-20">
           <div className="text-center mb-12 reveal">
-            <h3 className="text-3xl md:text-4xl font-playfair font-bold text-white mb-4">
-              Customer <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">Experiences</span>
+            <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+              Customer <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">Experiences</span>
             </h3>
-            <p className="text-gray-400 text-lg">Real stories from real people who trusted us with their future</p>
+            <p className="text-gray-400 text-base lg:text-lg">Real stories from real people who trusted us with their future</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 reveal">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 reveal">
             {customerReviews.map((review, index) => (
               <div
                 key={index}
@@ -269,7 +271,7 @@ const Reviews = () => {
                 </div>
 
                 {/* Review Text */}
-                <p className="text-gray-200 leading-relaxed mb-8 relative z-10 text-base font-light grow">
+                <p className="text-gray-200 leading-relaxed mb-8 relative z-10 text-[15px] md:text-base font-light grow wrap-anywhere">
                   "{review.text}"
                 </p>
 
@@ -280,7 +282,7 @@ const Reviews = () => {
                       <div className="w-2 h-2 bg-red-400 rounded-full" />
                     </div>
                     <div>
-                  <span className="text-red-400/80 text-[10px] uppercase font-bold tracking-wider block mb-1">Challenge</span>
+                  <span className="text-red-400/80 text-[11px] uppercase font-bold tracking-wider block mb-1">Challenge</span>
                   <p className="text-xs text-gray-300 font-light leading-snug">{review.challenge}</p>
                     </div>
                   </div>
@@ -289,7 +291,7 @@ const Reviews = () => {
                       <div className="w-2 h-2 bg-green-400 rounded-full" />
                     </div>
                     <div>
-                  <span className="text-green-400/80 text-[10px] uppercase font-bold tracking-wider block mb-1">Solution</span>
+                  <span className="text-green-400/80 text-[11px] uppercase font-bold tracking-wider block mb-1">Solution</span>
                   <p className="text-xs text-gray-300 font-light leading-snug">{review.solution}</p>
                     </div>
                   </div>
@@ -305,8 +307,8 @@ const Reviews = () => {
                     <p className="text-xs text-gray-400">{review.location}</p>
                   </div>
                   <div className="text-right shrink-0 ml-auto">
-                    <div className="text-[10px] text-gray-500 mb-1">{review.date}</div>
-                    <div className="text-[10px] text-gold font-bold uppercase tracking-wider inline-flex items-center gap-1.5 bg-gold/10 px-2 py-1 rounded-lg border border-gold/20">
+                    <div className="text-[11px] text-gray-500 mb-1">{review.date}</div>
+                    <div className="text-[11px] text-gold font-bold uppercase tracking-wider inline-flex items-center gap-1.5 bg-gold/10 px-2 py-1 rounded-lg border border-gold/20">
                       {review.source}
                       <ExternalLink size={10} />
                     </div>
@@ -317,18 +319,18 @@ const Reviews = () => {
           </div>
         </div>
 
-        <div className="mb-24 reveal">
-          <div className="bg-gradient-to-br from-gold/5 via-midnight-light/40 to-gold/5 border border-gold/20 rounded-[2.5rem] p-6 md:p-14 relative overflow-hidden backdrop-blur-xl">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-gold/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="mb-16 lg:mb-20 reveal">
+          <div className="bg-gradient-to-br from-gold/5 via-midnight-light/40 to-gold/5 border border-gold/20 radius-display p-6 md:p-14 relative overflow-hidden backdrop-blur-xl">
+            <div aria-hidden="true" className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-gold/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
 
             <div className="relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30 backdrop-blur-sm">
-                  <Play className="w-3 h-3 fill-gold" />
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30 backdrop-blur-sm">
+                  <Play className="w-3 h-3 fill-gold" aria-hidden="true" />
                   <span>VIDEO TESTIMONIALS</span>
                 </div>
-                <h3 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-6">
-                  Watch <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">Real Stories</span>
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+                  Watch <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">Real Stories</span>
                 </h3>
                 <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed font-light">
                   Hear directly from clients about their journey to financial security. Real voice testimonials that showcase pension planning, family protection, and lasting legacy building.
@@ -336,7 +338,7 @@ const Reviews = () => {
               </div>
 
               {/* Video Grid - Enhanced Design */}
-              <div className="grid md:grid-cols-2 gap-8 mb-10">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-10">
                 {[
                   {
                     title: 'Customer Feedback: Retirement & Pension Planning',
@@ -349,18 +351,19 @@ const Reviews = () => {
                 ].map((video) => (
                   <div
                     key={video.videoId}
-                    className="group relative overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20 hover:border-red-500/50 transition-all duration-500 bg-midnight/60 backdrop-blur-sm hover:scale-[1.02]"
+                    className="group relative overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20 hover:border-gold/50 transition-all duration-500 bg-midnight/60 backdrop-blur-sm hover:scale-[1.02]"
                   >
                     <div className="relative w-full pt-[56.25%]">
                       <iframe
                         className="absolute inset-0 w-full h-full rounded-3xl"
                         src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&showinfo=0`}
                         title={video.title}
+                        loading="lazy"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-midnight via-midnight/90 to-transparent p-6">
+                    <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-midnight via-midnight/90 to-transparent p-6 pointer-events-none">
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 rounded-xl bg-gold/20 flex items-center justify-center flex-shrink-0 border border-gold/30">
                           <Play size={18} className="text-gold fill-gold" />
@@ -398,15 +401,15 @@ const Reviews = () => {
         </div>
 
         {/* Google Business Reviews Slider */}
-        <div className="mb-24 reveal">
-          <div className="bg-gradient-to-br from-gold-dark/10 via-white/5 to-midnight-light/10 border border-gold/20 rounded-[2.5rem] p-6 md:p-14 relative overflow-hidden backdrop-blur-xl">
-            <div className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-gold-dark/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '7s' }} />
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '9s' }} />
+        <div className="mb-16 lg:mb-20 reveal">
+          <div className="bg-gradient-to-br from-gold-dark/10 via-white/5 to-midnight-light/10 border border-gold/20 radius-display p-6 md:p-14 relative overflow-hidden backdrop-blur-xl">
+            <div aria-hidden="true" className="absolute top-0 left-0 w-80 h-80 bg-gradient-to-br from-gold-dark/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '7s' }} />
+            <div aria-hidden="true" className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gold/20 to-transparent rounded-full blur-3xl animate-pulse pointer-events-none" style={{ animationDuration: '9s' }} />
 
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full border border-gold/30 mb-4 backdrop-blur-sm">
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full border border-gold/30 mb-4 backdrop-blur-sm">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
@@ -414,8 +417,8 @@ const Reviews = () => {
                   </svg>
                   LIVE REVIEWS
                 </div>
-                <h3 className="text-4xl md:text-5xl font-playfair font-bold text-white mb-3">
-                  Latest from <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">Google</span>
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-3">
+                  Latest from <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">Google</span>
                 </h3>
                 <p className="text-gray-300 text-base md:text-lg max-w-2xl">Fresh feedback from real clients. Slide through to see why we maintain a perfect 5.0★ rating.</p>
               </div>
@@ -440,7 +443,13 @@ const Reviews = () => {
               </div>
             </div>
 
-            <div className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-5 lg:p-10 shadow-2xl">
+            <div
+              className="relative z-10 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-5 lg:p-10 shadow-2xl"
+              onMouseEnter={() => setSliderPaused(true)}
+              onMouseLeave={() => setSliderPaused(false)}
+              onFocus={() => setSliderPaused(true)}
+              onBlur={() => setSliderPaused(false)}
+            >
               <div className="flex items-start gap-5 mb-6">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-gold/30 to-gold-dark/20 flex items-center justify-center text-gold font-extrabold text-xl border-2 border-gold/30 shadow-lg shadow-gold/10 flex-shrink-0">
                   {googleSliderReviews[activeSlide].name.split(' ').map(n => n[0]).join('')}
@@ -458,22 +467,27 @@ const Reviews = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-white text-lg md:text-xl leading-relaxed font-light mb-8">
+              <p className="text-white text-base md:text-xl leading-relaxed font-light mb-8 wrap-anywhere">
                 "{googleSliderReviews[activeSlide].text}"
               </p>
 
               {/* Pagination Dots - Enhanced */}
-              <div className="flex items-center gap-3 pt-6 border-t border-white/20">
+              <div className="flex items-center gap-1 pt-6 border-t border-white/20">
                 {googleSliderReviews.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setActiveSlide(idx)}
                     aria-label={`Go to review ${idx + 1}`}
-                    className={`h-3 rounded-full transition-all duration-500 ${activeSlide === idx
-                        ? 'w-10 bg-gradient-to-r from-gold via-gold-dark to-gold shadow-lg shadow-gold/30'
-                        : 'w-3 bg-white/30 hover:bg-white/50 hover:scale-110'
-                      }`}
-                  />
+                    className="flex items-center justify-center min-w-11 min-h-11 -m-1 p-1"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`h-3 rounded-full transition-all duration-500 ${activeSlide === idx
+                          ? 'w-10 bg-gradient-to-r from-gold via-gold-light to-gold shadow-lg shadow-gold/30'
+                          : 'w-3 bg-white/30'
+                        }`}
+                    />
+                  </button>
                 ))}
               </div>
             </div>
@@ -481,19 +495,19 @@ const Reviews = () => {
         </div>
 
         {/* Modern CTA Section - Share Your Experience */}
-        <div className="mb-20 reveal">
-          <div className="bg-gradient-to-r from-gold/20 via-gold-dark/10 to-gold/20 border-2 border-gold/30 rounded-[2.5rem] p-6 md:p-14 relative overflow-hidden backdrop-blur-xl text-center">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="mb-16 lg:mb-20 reveal">
+          <div className="bg-gradient-to-r from-gold/20 via-gold-dark/10 to-gold/20 border-2 border-gold/30 radius-display p-6 md:p-14 relative overflow-hidden backdrop-blur-xl text-center">
+            <div aria-hidden="true" className="absolute top-0 right-0 w-96 h-96 bg-gold/20 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDuration: '6s' }} />
 
             <div className="relative z-10 max-w-4xl mx-auto">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30">
-                <MessageCircle className="w-3 h-3" />
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-6 border border-gold/30">
+                <MessageCircle className="w-3 h-3" aria-hidden="true" />
                 YOUR FEEDBACK MATTERS
               </div>
-              <h3 className="text-3xl md:text-5xl font-playfair font-bold text-white mb-5">
-                Have You Worked <span className="bg-gradient-to-r from-gold via-gold-dark to-gold bg-clip-text text-transparent">With Us?</span>
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-5">
+                Have You Worked <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">With Us?</span>
               </h3>
-              <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+              <p className="text-gray-200 text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-light">
                 Your experience helps others make informed decisions about their financial future. Share your story and be part of our growing community.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
@@ -501,18 +515,24 @@ const Reviews = () => {
                   href="https://share.google/VQAFgVhdk114U2ozd"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-gold via-gold-dark to-gold text-midnight font-extrabold rounded-2xl hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 transform hover:scale-105 text-lg"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold via-gold-dark to-gold text-midnight font-extrabold rounded-2xl hover:shadow-2xl hover:shadow-gold/40 transition-all duration-300 transform hover:scale-105 text-base min-h-11"
                 >
-                  <Star className="w-6 h-6 group-hover:rotate-12 transition-transform" />
+                  <Star className="w-6 h-6 group-hover:rotate-12 transition-transform" aria-hidden="true" />
                   Write a Review
+                </a>
+                <a
+                  href="/contact"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white text-midnight font-bold rounded-2xl hover:bg-gold transition-all duration-300 text-base min-h-11"
+                >
+                  Book Free Consultation
                 </a>
                 <a
                   href="https://share.google/VQAFgVhdk114U2ozd"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-10 py-5 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50 text-lg"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all duration-300 border-2 border-white/30 hover:border-white/50 text-base min-h-11"
                 >
-                  <MapPin className="w-6 h-6" />
+                  <MapPin className="w-6 h-6" aria-hidden="true" />
                   Find Us on Maps
                 </a>
               </div>

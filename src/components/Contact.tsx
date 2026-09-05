@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Phone, MessageCircle, Mail, MapPin, Send } from 'lucide-react';
+import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass } from './lead-fields';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -58,40 +59,41 @@ const Contact = () => {
   ]
 
   return (
-    <section className="py-12 lg:py-20 bg-[#f7f1ea] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'url("/noise.svg")' }} />
+    <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'url("/noise.svg")' }} />
       {/* Decorative Orbs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#ead6c1] rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
+      <div aria-hidden="true" className="absolute top-20 left-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
+      <div aria-hidden="true" className="absolute bottom-20 right-10 w-96 h-96 bg-gold-light/60 rounded-full blur-3xl mix-blend-multiply pointer-events-none" />
 
       <div className="container relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           
           <div className="reveal-left">
-            <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Get In Touch</div>
-            <h2 className="text-3xl md:text-5xl font-playfair font-medium text-midnight mb-4 lg:mb-6">
+            <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Get In Touch</div>
+            <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4 lg:mb-6">
               Let's Discuss Your <span className="text-gold italic">Legacy</span>
-            </h2>
+            </h1>
             <p className="text-base lg:text-lg text-gray-600 mb-8 lg:mb-10 leading-relaxed font-light">
               Have questions about insurance plans? Want to know which policy is right for you? 
               Reach out and I'll be happy to help you make an informed decision.
             </p>
             
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
               {contactMethods.map((method, index) => (
                 <a 
                     key={index} 
                     href={method.link}
                     target={method.link.startsWith('http') ? '_blank' : undefined}
-                    className="flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:shadow-gold/5 hover:border-gold/30 transition-all duration-300 group"
+                    rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-border hover:shadow-xl hover:shadow-gold/5 hover:border-gold/30 transition-all duration-300 group"
                 >
-                  <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
-                    <method.icon size={18} />
+                  <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center text-gold-dark mb-4 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
+                    <method.icon size={18} aria-hidden="true" />
                   </div>
-                  <h4 className="font-bold text-midnight mb-1 group-hover:text-gold transition-colors">{method.title}</h4>
-                  <p className="text-sm text-gray-500 mb-4 line-clamp-2 h-10">{method.value}</p>
-                  <span className="text-xs font-bold text-gold uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all">
-                    {method.cta} <span className="text-lg leading-none">→</span>
+                  <h4 className="font-bold text-midnight mb-1 group-hover:text-gold-dark transition-colors">{method.title}</h4>
+                  <p className="text-sm text-gray-500 mb-4 leading-relaxed break-words">{method.value}</p>
+                  <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
+                    {method.cta} <span aria-hidden="true" className="text-lg leading-none">→</span>
                   </span>
                 </a>
               ))}
@@ -102,11 +104,10 @@ const Contact = () => {
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-6 lg:p-8 border border-white/50 relative overflow-hidden backdrop-blur-sm">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
                
-              <h3 className="text-2xl font-playfair font-bold text-midnight mb-8">Send a Message</h3>
+              <h3 className="text-2xl font-display font-bold text-midnight mb-8">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label htmlFor="contact-name" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Your Name *</label>
+                  <Field id="contact-name" label="Your Name" required>
                     <input
                       type="text"
                       id="contact-name"
@@ -114,12 +115,12 @@ const Contact = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your name"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
+                      autoComplete="name"
+                      className={inputClass}
                       required
                     />
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="contact-email" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Email Address</label>
+                  </Field>
+                  <Field id="contact-email" label="Email Address">
                     <input
                       type="email"
                       id="contact-email"
@@ -127,14 +128,14 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
+                      autoComplete="email"
+                      className={inputClass}
                     />
-                  </div>
+                  </Field>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label htmlFor="contact-phone" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Phone Number *</label>
+                  <Field id="contact-phone" label="Phone Number" required>
                     <input
                       type="tel"
                       id="contact-phone"
@@ -142,12 +143,12 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
+                      autoComplete="tel"
+                      className={inputClass}
                       required
                     />
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="contact-age" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Age</label>
+                  </Field>
+                  <Field id="contact-age" label="Age">
                     <input
                       type="number"
                       id="contact-age"
@@ -155,53 +156,38 @@ const Contact = () => {
                       value={formData.age}
                       onChange={handleChange}
                       placeholder="e.g., 35"
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium"
+                      className={inputClass}
                       min="18"
                       max="75"
                     />
-                  </div>
+                  </Field>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-1">
-                    <label htmlFor="contact-income" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Annual Income</label>
-                    <select
+                  <Field id="contact-income" label="Annual Income">
+                    <SelectField
                       id="contact-income"
                       name="income"
                       value={formData.income}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium appearance-none"
-                    >
-                      <option value="">Select Range</option>
-                      <option value="below-10l">Below ₹10 Lakhs</option>
-                      <option value="10l-25l">₹10 - 25 Lakhs</option>
-                      <option value="25l-50l">₹25 - 50 Lakhs</option>
-                      <option value="above-50l">Above ₹50 Lakhs</option>
-                    </select>
-                  </div>
-                  <div className="space-y-1">
-                    <label htmlFor="contact-subject" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Interest *</label>
-                    <select
+                      placeholder="Select Range"
+                      options={INCOME_OPTIONS}
+                    />
+                  </Field>
+                  <Field id="contact-subject" label="Interest" required>
+                    <SelectField
                       id="contact-subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium appearance-none"
+                      placeholder="Select Interest"
+                      options={[...INTEREST_OPTIONS, { value: 'other', label: 'Other Inquiry' }]}
                       required
-                    >
-                      <option value="">Select Interest</option>
-                      <option value="term">Term Life Protection</option>
-                      <option value="wealth">Wealth Creation</option>
-                      <option value="child">Child Education</option>
-                      <option value="retirement">Retirement Planning</option>
-                      <option value="nri">NRI Services</option>
-                      <option value="other">Other Inquiry</option>
-                    </select>
-                  </div>
+                    />
+                  </Field>
                 </div>
                 
-                <div className="space-y-1">
-                  <label htmlFor="contact-message" className="text-xs font-bold text-gray-500 uppercase tracking-wider ml-1">Your Message *</label>
+                <Field id="contact-message" label="Your Message" required>
                   <textarea
                     id="contact-message"
                     name="message"
@@ -209,20 +195,20 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Tell me about your insurance requirements..."
                     rows={4}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold focus:ring-1 focus:ring-gold outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium resize-y"
+                    className={`${inputClass} resize-y`}
                     required
                   ></textarea>
-                </div>
+                </Field>
                 
                 <button 
                   type="submit" 
-                  className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-midnight-light transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden relative"
+                  className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gold hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden relative min-h-11"
                 >
                     <span className="relative z-10 flex items-center gap-2">
                         Send Message
-                         <Send size={18} className="group-hover:translate-x-1 transition-transform" />
+                         <Send size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </span>
-                   <div className="absolute inset-0 bg-gold/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                   <div aria-hidden="true" className="absolute inset-0 bg-gold/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                 </button>
               </form>
             </div>

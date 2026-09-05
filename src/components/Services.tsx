@@ -41,23 +41,23 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-12 lg:py-20 bg-[#f6efe6] relative overflow-hidden">
+    <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-[#f6efe6] relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#f1e4d5]/60 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div aria-hidden="true" className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#f1e4d5]/60 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div aria-hidden="true" className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
       
       <div className="container relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-12 reveal">
-          <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-xs font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Our Expertise</div>
-          <h2 className="text-3xl md:text-5xl font-playfair font-medium text-midnight mb-4 lg:mb-6">
+          <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Our Expertise</div>
+          <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4 lg:mb-6">
             Curated LIC <span className="text-gold italic">Portfolios</span>
-          </h2>
+          </h1>
           <p className="text-base lg:text-lg text-gray-600 leading-relaxed font-light">
             We curate comprehensive insurance portfolios tailored to protect your family's future and meet your specific financial goals with the trust of LIC.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 reveal">
           {services.map((service, index) => (
             <div 
               key={index} 
@@ -69,11 +69,11 @@ const Services = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-gold transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
               
               <div className="relative z-10">
-                <div className="w-14 h-14 bg-[#f4e7d9] rounded-2xl flex items-center justify-center mb-5 group-hover:bg-midnight group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-inner">
-                  <service.icon size={32} className="text-midnight group-hover:text-gold transition-colors duration-500" />
+                <div className="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-midnight group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                  <service.icon size={28} className="text-gold-dark group-hover:text-gold transition-colors duration-500" aria-hidden="true" />
                 </div>
                 
-                <h3 className="text-lg font-bold text-midnight mb-2 font-playfair group-hover:text-gold-dark transition-colors">{service.title}</h3>
+                <h3 className="text-lg font-bold text-midnight mb-2 font-display group-hover:text-gold-dark transition-colors">{service.title}</h3>
                 <p className="text-gray-600 mb-5 leading-relaxed text-sm">
                   {service.description}
                 </p>
