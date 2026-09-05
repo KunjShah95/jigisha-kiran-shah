@@ -1,14 +1,15 @@
+# Allow all crawlers (Google, Bing + AI answer engines)
 User-agent: *
 Allow: /
-Disallow: /*?*
-Allow: /llms.txt
-Allow: /google1f87f3a8e55096ba.html
 
-# AI search / answer-engine crawlers — explicitly allowed for GEO/AEO citations
+# Explicit AI / answer-engine bots (for GEO/AEO citations) — all allowed
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -23,7 +24,28 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
 User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: YouBot
 Allow: /
 
 Sitemap: https://jigishakiran.vercel.app/sitemap.xml
