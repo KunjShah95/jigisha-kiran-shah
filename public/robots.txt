@@ -48,4 +48,4 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-Sitemap: https://jigisha-kiran-shah.vercel.app/sitemap.xml
+Sitemap: https://jigishakiranshah.in/sitemap.xml
