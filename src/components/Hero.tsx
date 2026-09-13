@@ -1,16 +1,15 @@
 import { ArrowRight, Star, Shield, Award, Users, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom'
 import heroImage from '../assets/images/hero-image.jpeg';
+import CountUp from './CountUp';
+import HeroCoverageWidget from './HeroCoverageWidget';
 
 const Hero = () => {
   return (
     <section className="hero relative overflow-hidden flex items-center bg-transparent py-8 lg:py-0 lg:min-h-[95vh]">
-      {/* Premium Background Elements */}
-      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-bl from-[#f2e6d8]/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-linear-to-tr from-[#f7e9d7]/50 to-transparent" />
-        <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#ead6c1]/45 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[700px] h-[700px] bg-gold-light/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+      {/* Signature: drifting aurora mesh */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="aurora" />
         <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.06]" />
       </div>
 
@@ -45,7 +44,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-12">
               <Link
                 to="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3.5 lg:px-8 lg:py-4 bg-midnight text-white font-bold rounded-xl hover:bg-gold transition-all duration-300 gap-2 group btn-beam shadow-lg hover:shadow-xl hover:-translate-y-1 text-sm lg:text-base w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-midnight text-white font-bold rounded-xl hover:bg-gold transition-all duration-300 gap-2 group btn-beam shadow-lg hover:shadow-xl hover:-translate-y-1 text-sm w-full sm:w-auto"
               >
                 <span>Book Free Consultation</span>
                 <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -54,14 +53,14 @@ const Hero = () => {
                 href="https://wa.me/919824025435"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3.5 lg:px-8 lg:py-4 bg-whatsapp text-white font-bold rounded-xl hover:bg-whatsapp-dark transition-all duration-300 gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1 text-sm lg:text-base w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-whatsapp text-white font-bold rounded-xl hover:bg-whatsapp-dark transition-all duration-300 gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1 text-sm w-full sm:w-auto"
               >
                 <MessageCircle className="w-4 h-4 lg:w-5 lg:h-5 fill-current" aria-hidden="true" />
                 <span>WhatsApp Now</span>
               </a>
               <Link
                 to="/services" 
-                className="inline-flex items-center justify-center px-6 py-3.5 lg:px-8 lg:py-4 bg-white border border-border text-midnight font-semibold rounded-xl hover:border-gold/60 hover:text-gold-dark transition-all duration-300 shadow-sm hover:shadow-md text-sm lg:text-base w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-white border border-border text-midnight font-semibold rounded-xl hover:border-gold/60 hover:text-gold-dark transition-all duration-300 shadow-sm hover:shadow-md text-sm w-full sm:w-auto"
               >
                 Explore Services
               </Link>
@@ -72,21 +71,21 @@ const Hero = () => {
               <div className="reveal-scale group cursor-default" style={{ transitionDelay: '0.2s' }}>
                 <div className="flex items-center gap-1.5 lg:gap-2 mb-0.5">
                   <Shield className="w-4 h-4 lg:w-5 lg:h-5 text-gold" aria-hidden="true" />
-                  <div className="text-xl lg:text-3xl font-bold text-midnight">22+</div>
+                  <CountUp end={22} suffix="+" className="text-xl lg:text-3xl font-bold text-midnight tabular-nums" />
                 </div>
                 <div className="text-[11px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">Years Exp.</div>
               </div>
               <div className="reveal-scale group cursor-default" style={{ transitionDelay: '0.4s' }}>
                 <div className="flex items-center gap-1.5 lg:gap-2 mb-0.5">
                   <Users className="w-4 h-4 lg:w-5 lg:h-5 text-gold" aria-hidden="true" />
-                  <div className="text-xl lg:text-3xl font-bold text-midnight">2.7k+</div>
+                  <CountUp end={2.7} decimals={1} suffix="k+" className="text-xl lg:text-3xl font-bold text-midnight tabular-nums" />
                 </div>
                 <div className="text-[11px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">Families</div>
               </div>
                <div className="reveal-scale group cursor-default" style={{ transitionDelay: '0.6s' }}>
                 <div className="flex items-center gap-1.5 lg:gap-2 mb-0.5">
                   <Star className="w-4 h-4 lg:w-5 lg:h-5 text-gold fill-gold" aria-hidden="true" />
-                  <div className="text-xl lg:text-3xl font-bold text-midnight">5.0</div>
+                  <CountUp end={5} decimals={1} className="text-xl lg:text-3xl font-bold text-midnight tabular-nums" />
                 </div>
                 <div className="text-[11px] lg:text-xs text-gray-500 uppercase tracking-widest font-semibold">Google Rate</div>
               </div>
@@ -139,6 +138,9 @@ const Hero = () => {
                 </p>
               </div>
             </div>
+
+            {/* Interactive artifact: live coverage estimate */}
+            <HeroCoverageWidget />
           </div>
         </div>
       </div>

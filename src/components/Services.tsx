@@ -1,4 +1,5 @@
 import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check } from 'lucide-react';
+import { useSpotlight } from '../hooks/useSpotlight';
 
 const services = [
   {
@@ -40,6 +41,7 @@ const services = [
 ]
 
 const Services = () => {
+  const onMove = useSpotlight()
   return (
     <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-[#f6efe6] relative overflow-hidden">
       {/* Background decoration */}
@@ -59,9 +61,10 @@ const Services = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 reveal">
           {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col h-full"
+            <div
+              key={index}
+              onMouseMove={onMove}
+              className="spotlight-card group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col h-full"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Card gradient effect */}

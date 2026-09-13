@@ -143,10 +143,6 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               &copy; {new Date().getFullYear()} Jigisha Kiran Shah. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <Link to="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</Link>
-              <Link to="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</Link>
-            </div>
           </div>
           </div>
         </div>

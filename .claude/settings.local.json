@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm run *)",
-      "Bash(curl -s http://localhost:5173/)"
+      "Bash(curl -s http://localhost:5173/)",
+      "Skill(shadcn)",
+      "Bash(agent-browser close *)",
+      "Bash(rm -f _v.png)",
+      "Bash(pkill -f \"vite preview\")"
     ]
   }
 }

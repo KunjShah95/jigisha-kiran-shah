@@ -1,5 +1,6 @@
 import { Award, ShieldCheck, HeartPulse, Headphones, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSpotlight } from '../hooks/useSpotlight';
 
 const reasons = [
   {
@@ -25,6 +26,7 @@ const reasons = [
 ]
 
 const WhyUs = () => {
+  const onMove = useSpotlight()
   return (
     <section className="py-16 lg:py-24 bg-midnight text-white relative overflow-hidden">
       {/* Background Elements */}
@@ -44,9 +46,10 @@ const WhyUs = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 reveal">
           {reasons.map((reason, index) => (
-            <div 
-              key={index} 
-              className="group bg-white/5 border border-white/10 p-6 rounded-3xl hover:bg-white/10 transition-all duration-300 text-center relative overflow-hidden"
+            <div
+              key={index}
+              onMouseMove={onMove}
+              className="spotlight-card spotlight-dark group bg-white/5 border border-white/10 p-6 rounded-3xl hover:bg-white/10 transition-all duration-300 text-center relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               

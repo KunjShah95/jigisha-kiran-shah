@@ -1,15 +1,18 @@
+import { lazy } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import ServicesPage from './pages/ServicesPage'
-import AboutPage from './pages/AboutPage'
-import ReviewsPage from './pages/ReviewsPage'
-import ContactPage from './pages/ContactPage'
-import AreasIndexPage from './pages/AreasIndexPage'
-import AreaPage from './pages/AreaPage'
-import BlogIndexPage from './pages/BlogIndexPage'
-import BlogPostPage from './pages/BlogPostPage'
 import { useSEO } from './hooks/useSEO'
+
+// Route-level code splitting: home eager (LCP), rest lazy.
+const ServicesPage = lazy(() => import('./pages/ServicesPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ReviewsPage = lazy(() => import('./pages/ReviewsPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const AreasIndexPage = lazy(() => import('./pages/AreasIndexPage'))
+const AreaPage = lazy(() => import('./pages/AreaPage'))
+const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'))
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'))
 
 function NotFound() {
   useSEO({

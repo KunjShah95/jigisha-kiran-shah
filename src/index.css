@@ -231,6 +231,50 @@
     z-index: 60;
   }
 
+  /* ── Signature: hero aurora ─────────────────────────────────────
+     Drifting mesh of brand-tinted radial glows. GPU-only (transform),
+     killed under prefers-reduced-motion via the global rule above. */
+  .aurora {
+    position: absolute;
+    inset: -25%;
+    pointer-events: none;
+    background:
+      radial-gradient(38% 38% at 22% 28%, rgba(196, 119, 42, 0.30), transparent 62%),
+      radial-gradient(34% 34% at 78% 18%, rgba(243, 214, 180, 0.42), transparent 60%),
+      radial-gradient(44% 44% at 62% 82%, rgba(139, 77, 29, 0.22), transparent 62%),
+      radial-gradient(30% 30% at 8% 72%, rgba(196, 119, 42, 0.18), transparent 60%);
+    filter: blur(64px);
+    animation: aurora-drift 20s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  @keyframes aurora-drift {
+    0%   { transform: translate3d(-3%, -2%, 0) rotate(0deg)  scale(1.05); }
+    50%  { transform: translate3d(4%, 3%, 0)   rotate(7deg)  scale(1.16); }
+    100% { transform: translate3d(-2%, 4%, 0)  rotate(-6deg) scale(1.08); }
+  }
+
+  /* ── Spotlight-follow card reward ───────────────────────────────
+     JS sets --mx/--my on pointer move (useSpotlight). Glow tracks cursor. */
+  .spotlight-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(196, 119, 42, 0.16), transparent 68%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .spotlight-card:hover::before {
+    opacity: 1;
+  }
+  /* On dark (WhyUs) cards a warmer, brighter tint reads better */
+  .spotlight-card.spotlight-dark::before {
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(243, 214, 180, 0.14), transparent 68%);
+  }
+
   .btn-beam {
     @apply relative overflow-hidden;
   }
