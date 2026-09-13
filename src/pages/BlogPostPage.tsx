@@ -33,10 +33,9 @@ export default function BlogPostPage() {
             dateModified: post.updated,
             author: {
               '@type': 'Person',
+              '@id': `${SITE_URL}/#person`,
               name: 'Jigisha Kiran Shah',
-              jobTitle: 'LIC Advisor',
-              description: 'Senior LIC advisor in Ahmedabad since 2004. 2-time MDRT achiever (2023 & 2024). 1000+ claims supported.',
-              url: `${SITE_URL}/about`,
+              url: `${SITE_URL}/#person`,
             },
             publisher: { '@id': `${SITE_URL}/#business` },
             inLanguage: 'en-IN',

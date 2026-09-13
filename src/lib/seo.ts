@@ -131,6 +131,35 @@ export function localBusinessJsonLd() {
   };
 }
 
+export function personJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
+    name: 'Jigisha Kiran Shah',
+    jobTitle: 'LIC Advisor',
+    description:
+      'Senior LIC advisor in Ahmedabad since 2004. 2-time MDRT achiever (2023 & 2024). 2,700+ families served, 1,000+ claims supported to settlement.',
+    url: `${SITE_URL}/about`,
+    telephone: PHONE,
+    email: EMAIL,
+    image: OG_IMAGE,
+    worksFor: { '@id': `${SITE_URL}/#business` },
+    alumniOf: { '@type': 'Organization', name: 'Million Dollar Round Table (MDRT)' },
+    knowsAbout: [
+      'Life Insurance', 'Term Insurance', 'Retirement Planning', 'Pension Plans',
+      'Child Education Planning', 'Endowment Plans', 'ULIP', 'Health Insurance',
+      'LIC Claims', 'HUF Insurance', 'NRI Insurance',
+    ],
+    knowsLanguage: ['en', 'hi', 'gu'],
+    sameAs: [
+      'https://www.youtube.com/@jigishakiranshah4636',
+      'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
+    ],
+    award: ['MDRT 2023', 'MDRT 2024', 'LIC Club'],
+  };
+}
+
 export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',

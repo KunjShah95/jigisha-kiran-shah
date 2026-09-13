@@ -7,7 +7,7 @@ import Calculator from '../components/Calculator'
 import FAQ from '../components/FAQ'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSEO } from '../hooks/useSEO'
-import { faqJsonLd, localBusinessJsonLd, websiteJsonLd } from '../lib/seo'
+import { faqJsonLd, localBusinessJsonLd, websiteJsonLd, personJsonLd } from '../lib/seo'
 
 export default function HomePage() {
   useSEO({
@@ -20,7 +20,7 @@ export default function HomePage() {
     path: '/',
     keywords:
       'LIC advisor Ahmedabad, LIC agent near me, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
-    jsonLd: [websiteJsonLd(), localBusinessJsonLd(), faqJsonLd()],
+    jsonLd: [websiteJsonLd(), localBusinessJsonLd(), personJsonLd(), faqJsonLd()],
   })
   useScrollReveal()
 
