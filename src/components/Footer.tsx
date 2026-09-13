@@ -7,6 +7,7 @@ const Footer = () => {
       { label: 'Services', to: '/services' },
       { label: 'About', to: '/about' },
       { label: 'Testimonials', to: '/reviews' },
+      { label: 'Stories & Guides', to: '/blog' },
       { label: 'Contact', to: '/contact' }
     ]
 
@@ -127,7 +128,18 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="border-t border-white/10 pt-8 flex flex-col gap-4">
+            <nav aria-label="Areas served" className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+              <span className="text-gray-400">Areas served:</span>
+              <Link to="/areas/shela" className="text-gray-300 hover:text-white transition-colors">Shela</Link>
+              <Link to="/areas/south-bopal" className="text-gray-300 hover:text-white transition-colors">South Bopal</Link>
+              <Link to="/areas/bopal" className="text-gray-300 hover:text-white transition-colors">Bopal</Link>
+              <Link to="/areas/satellite" className="text-gray-300 hover:text-white transition-colors">Satellite</Link>
+              <Link to="/areas/sg-highway" className="text-gray-300 hover:text-white transition-colors">SG Highway</Link>
+              <Link to="/areas/science-city" className="text-gray-300 hover:text-white transition-colors">Science City</Link>
+              <Link to="/areas" className="text-gold hover:text-white transition-colors">All areas →</Link>
+            </nav>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
               &copy; {new Date().getFullYear()} Jigisha Kiran Shah. All rights reserved.
             </p>
@@ -135,6 +147,7 @@ const Footer = () => {
               <Link to="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</Link>
               <Link to="/contact" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</Link>
             </div>
+          </div>
           </div>
         </div>
       </footer>

@@ -3,6 +3,7 @@ export const SITE_NAME = 'Jigisha Kiran Shah - LIC Advisor Ahmedabad';
 export const OG_IMAGE = `${SITE_URL}/hero-image.jpeg`;
 export const PHONE = '+919824025435';
 export const PHONE_DISPLAY = '+91 98240 25435';
+export const REVIEW_URL = 'https://share.google/VQAFgVhdk114U2ozd';
 export const EMAIL = 'jkshahlic@gmail.com';
 export const ADDRESS = 'Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058';
 

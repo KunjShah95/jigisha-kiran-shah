@@ -5,6 +5,10 @@ import ServicesPage from './pages/ServicesPage'
 import AboutPage from './pages/AboutPage'
 import ReviewsPage from './pages/ReviewsPage'
 import ContactPage from './pages/ContactPage'
+import AreasIndexPage from './pages/AreasIndexPage'
+import AreaPage from './pages/AreaPage'
+import BlogIndexPage from './pages/BlogIndexPage'
+import BlogPostPage from './pages/BlogPostPage'
 import { useSEO } from './hooks/useSEO'
 
 function NotFound() {
@@ -32,6 +36,10 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/areas" element={<AreasIndexPage />} />
+        <Route path="/areas/:slug" element={<AreaPage />} />
+        <Route path="/blog" element={<BlogIndexPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
