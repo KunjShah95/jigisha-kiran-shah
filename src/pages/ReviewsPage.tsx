@@ -16,14 +16,6 @@ export default function ReviewsPage() {
     keywords:
       'LIC agent reviews Ahmedabad, Jigisha Kiran Shah reviews, best LIC advisor ratings, life insurance testimonials Gujarat',
     breadcrumbLabel: 'Reviews',
-    jsonLd: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: 'LIC Advisory Services — Jigisha Kiran Shah',
-        aggregateRating: { '@type': 'AggregateRating', ratingValue: '5.0', reviewCount: 100, bestRating: '5' },
-      },
-    ],
   })
   useScrollReveal()
 

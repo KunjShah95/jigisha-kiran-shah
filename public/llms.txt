@@ -31,9 +31,9 @@ Shela, Satellite, SG Highway, South Bopal, Bopal, Science City, Vastrapur, Ambaw
 - Booking: call/WhatsApp +91 98240 25435 with age, income range, goal (term, retirement, child education, health).
 
 ## Pages
-- Home: https://jigishakiran.vercel.app/
-- Services: https://jigishakiran.vercel.app/services
-- About: https://jigishakiran.vercel.app/about
-- Reviews: https://jigishakiran.vercel.app/reviews
-- Contact: https://jigishakiran.vercel.app/contact
-- Sitemap: https://jigishakiran.vercel.app/sitemap.xml
+- Home: https://jigisha-kiran-shah.vercel.app/
+- Services: https://jigisha-kiran-shah.vercel.app/services
+- About: https://jigisha-kiran-shah.vercel.app/about
+- Reviews: https://jigisha-kiran-shah.vercel.app/reviews
+- Contact: https://jigisha-kiran-shah.vercel.app/contact
+- Sitemap: https://jigisha-kiran-shah.vercel.app/sitemap.xml

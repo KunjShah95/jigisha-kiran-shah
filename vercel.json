@@ -11,7 +11,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|llms\\.txt|google.*\\.html|.*\\..*).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],

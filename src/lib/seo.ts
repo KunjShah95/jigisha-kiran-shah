@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://jigishakiran.vercel.app';
+export const SITE_URL = 'https://jigisha-kiran-shah.vercel.app';
 export const SITE_NAME = 'Jigisha Kiran Shah - LIC Advisor Ahmedabad';
 export const OG_IMAGE = `${SITE_URL}/hero-image.jpeg`;
 export const PHONE = '+919824025435';
@@ -97,15 +97,8 @@ export function localBusinessJsonLd() {
     employee: { '@type': 'Person', name: 'Jigisha Kiran Shah' },
     sameAs: [
       'https://www.youtube.com/@jigishakiranshah4636',
-      'https://share.google/VQAFgVhdk114U2ozd',
-      'https://licindia.in',
+      'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: 100,
-      bestRating: '5',
-    },
     areaServed: [
       { '@type': 'City', name: 'Ahmedabad' },
       { '@type': 'AdministrativeArea', name: 'Gujarat' },
