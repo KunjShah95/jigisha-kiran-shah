@@ -48,4 +48,4 @@ Allow: /
 User-agent: YouBot
 Allow: /
 
-Sitemap: https://jigishakiranshah.in/sitemap.xml
+Sitemap: https://www.jigishakiranshah.in/sitemap.xml

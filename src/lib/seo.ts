@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://jigishakiranshah.in';
+export const SITE_URL = 'https://www.jigishakiranshah.in';
 export const SITE_NAME = 'Jigisha Kiran Shah - LIC Advisor Ahmedabad';
 export const OG_IMAGE = `${SITE_URL}/hero-image.jpeg`;
 export const PHONE = '+919824025435';
