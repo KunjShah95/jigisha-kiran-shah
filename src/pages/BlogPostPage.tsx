@@ -122,6 +122,9 @@ export default function BlogPostPage() {
               {copied ? <Check className="w-4 h-4 text-green-600" aria-hidden="true" /> : <Link2 className="w-4 h-4" aria-hidden="true" />}
               {copied ? 'Copied!' : 'Copy link'}
             </button>
+            <a href="https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2" target="_blank" rel="noopener noreferrer" aria-label="Follow on LinkedIn" title="Follow Jigisha on LinkedIn" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-white border border-border text-[#0A66C2] hover:border-[#0A66C2]/50 transition-colors min-h-9">
+              <Linkedin className="w-4 h-4" aria-hidden="true" /> Follow
+            </a>
           </div>
         </header>
 

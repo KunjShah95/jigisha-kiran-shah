@@ -110,6 +110,7 @@ const Calculator = () => {
                   <Field id="calc-age" label="Age">
                     <input
                       type="number"
+                      inputMode="numeric"
                       id="calc-age"
                       name="age"
                       value={formData.age}

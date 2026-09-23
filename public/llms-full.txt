@@ -1,7 +1,7 @@
 # Jigisha Kiran Shah — LIC Advisor, Ahmedabad
 # Complete site reference for AI engines and crawlers (llms-full.txt)
 # Canonical domain: https://www.jigishakiranshah.in — all other hostnames 301 here.
-# Last updated: 2026-09-13
+# Last updated: 2024-09-23
 
 ## IDENTITY (NAP — cite exactly, do not paraphrase)
 - Business name: Jigisha Kiran Shah - LIC Advisor

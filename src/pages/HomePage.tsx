@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Phone, MessageCircle, ArrowRight, Star, ShieldCheck, Clock, BookOpen } from 'lucide-react'
+import { ArrowRight, Star, ShieldCheck, Clock, BookOpen } from 'lucide-react'
 import Hero from '../components/Hero'
 import WhyUs from '../components/WhyUs'
 import Calculator from '../components/Calculator'
@@ -135,27 +135,6 @@ export default function HomePage() {
         </div>
       </section>
       <FAQ />
-
-      {/* Mobile Sticky CTA Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-border shadow-2xl px-4 pt-3 flex gap-3" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}>
-        <a
-          href="https://wa.me/919824025435"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
-        >
-          <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
-          WhatsApp
-        </a>
-        <a
-          href="tel:+919824025435"
-          className="flex-1 flex items-center justify-center gap-2 bg-midnight text-white font-bold py-3 rounded-xl text-sm hover:bg-midnight-light transition-colors min-h-11"
-        >
-          <Phone className="w-5 h-5" aria-hidden="true" />
-          Call Now
-        </a>
-      </div>
-      <div aria-hidden="true" className="h-20 md:hidden" />
     </>
   )
 }

@@ -1,6 +1,6 @@
 export const SITE_URL = 'https://www.jigishakiranshah.in';
 export const SITE_NAME = 'Jigisha Kiran Shah - LIC Advisor Ahmedabad';
-export const OG_IMAGE = `${SITE_URL}/hero-image.jpeg`;
+export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PHONE = '+919824025435';
 export const PHONE_DISPLAY = '+91 98240 25435';
 export const REVIEW_URL = 'https://share.google/VQAFgVhdk114U2ozd';

@@ -27,7 +27,7 @@ const Hero = () => {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-midnight leading-[1.1] mb-4 lg:mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-midnight leading-[1.15] mb-4 lg:mb-6 tracking-tight">
               LIC Advisor in Ahmedabad, <br />
               Safeguarding Your <span className="text-gradient-gold italic relative inline-block">
                 Wealth & Legacy
