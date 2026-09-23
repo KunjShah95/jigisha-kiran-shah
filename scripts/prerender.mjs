@@ -98,6 +98,15 @@ const ROUTES = [
       'True-to-life stories and practical rules from 22 years of advising Ahmedabad families: term cover, pensions, children\u2019s education, and getting claims paid.',
     crumbs: 'Stories & Guides',
   }),
+  page('/guides', {
+    title: 'LIC Plan Comparisons & Guides for Ahmedabad Families | Term, Pension, Child Plans',
+    description:
+      'Compare LIC plans side-by-side: term vs endowment, Jeevan Akshay vs Umang, Labh vs Tarun. Persona guides for salaried, business owners & seniors. Free advice: +91 98240 25435.',
+    h1: 'Compare LIC Plans Side by Side',
+    intro:
+      'Honest plan-vs-plan comparisons and guides for salaried employees, business owners and senior citizens in Ahmedabad — the same advice given across the Shela desk.',
+    crumbs: 'Comparisons & Guides',
+  }),
 ];
 
 const AREAS = [
@@ -146,6 +155,36 @@ const POSTS = [
 ];
 for (const [slug, seoTitle, desc, h1, intro] of POSTS) {
   ROUTES.push(page(`/blog/${slug}`, { title: seoTitle, description: desc, h1, intro, crumbs: seoTitle }));
+}
+
+const GUIDES = [
+  ['term-vs-endowment', 'Term vs Endowment LIC in Ahmedabad: Honest Comparison',
+    'Term vs endowment LIC in Ahmedabad: term gives max cover per rupee, endowment gives guaranteed savings + cover. Free mapping: +91 98240 25435.',
+    'Term insurance vs endowment: which LIC plan fits your family?',
+    'Protection first, savings second: term for income replacement, endowment for dated milestones — or both.'],
+  ['jeevan-akshay-vs-jeevan-umang', 'Jeevan Akshay vs Jeevan Umang in Ahmedabad: Which to Pick',
+    'Jeevan Akshay VII gives immediate pension from next month; Jeevan Umang gives lifelong annual payouts after the premium term. Free comparison: +91 98240 25435.',
+    'Jeevan Akshay VII vs Jeevan Umang: pension now or income for life?',
+    'Akshay converts lump sums into next-month pension; Umang builds whole-life cover with lifelong payouts.'],
+  ['jeevan-labh-vs-jeevan-tarun', 'Jeevan Labh vs Jeevan Tarun for Child Education in Ahmedabad',
+    'Jeevan Labh offers flexible endowment maturity; Jeevan Tarun staggers payouts at ages 20/22/24/25. Free child-plan sizing: +91 98240 25435.',
+    'Jeevan Labh vs Jeevan Tarun: which LIC plan for your child\u2019s education?',
+    'Labh times one maturity to a milestone year; Tarun spreads payouts across the college years.'],
+  ['lic-plans-salaried-employees', 'LIC Plans for Salaried Employees in Ahmedabad | 80C + Cover',
+    'Salaried in Ahmedabad? Term cover 10–15x salary, 80C-saving endowment, and pension top-ups. Free salary-first plan: +91 98240 25435.',
+    'LIC plans for salaried employees in Ahmedabad: the salary-first portfolio',
+    'Term sized to salary plus loans, 80C endowment with a milestone, and pension top-ups before 45.'],
+  ['lic-plans-business-owners', 'LIC Plans for Business Owners in Ahmedabad | Keyman, HUF, Loans',
+    'Business owner in Ahmedabad? Keyman cover, loan protection, HUF policies and succession-safe savings. Free business review: +91 98240 25435.',
+    'LIC plans for business owners in Ahmedabad: continuity beyond the founder',
+    'Loan cover, keyman and partnership structures, HUF policies, and turning volatile profits into milestones.'],
+  ['lic-plans-senior-citizens', 'LIC Plans for Senior Citizens in Ahmedabad | Pension + Health',
+    'Senior citizen in Ahmedabad? Immediate pension via Jeevan Akshay VII, health cover, and claim support for old policies. Free review: +91 98240 25435.',
+    'LIC plans for senior citizens in Ahmedabad: guaranteed income, zero stress',
+    'Immediate pension, health buffers beside the pension, and paperwork your children can use.'],
+];
+for (const [slug, seoTitle, desc, h1, intro] of GUIDES) {
+  ROUTES.push(page(`/guides/${slug}`, { title: seoTitle, description: desc, h1, intro, crumbs: seoTitle }));
 }
 
 const SERVICES = [

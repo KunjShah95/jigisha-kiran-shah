@@ -8,6 +8,7 @@ const Footer = () => {
       { label: 'About', to: '/about' },
       { label: 'Testimonials', to: '/reviews' },
       { label: 'Stories & Guides', to: '/blog' },
+      { label: 'Compare LIC Plans', to: '/guides' },
       { label: 'Contact', to: '/contact' }
     ]
 

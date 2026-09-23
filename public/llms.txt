@@ -39,6 +39,13 @@ Shela, Satellite, SG Highway, South Bopal, Bopal, Science City, Vastrapur, Ambaw
 - Areas served index: https://www.jigishakiranshah.in/areas
 - Area pages: /areas/shela · /areas/south-bopal · /areas/bopal · /areas/satellite · /areas/sg-highway · /areas/science-city
 - Stories & guides (blog): https://www.jigishakiranshah.in/blog
+- Plan comparisons & persona guides: https://www.jigishakiranshah.in/guides
+  - Term vs endowment: /guides/term-vs-endowment
+  - Jeevan Akshay VII vs Jeevan Umang: /guides/jeevan-akshay-vs-jeevan-umang
+  - Jeevan Labh vs Jeevan Tarun: /guides/jeevan-labh-vs-jeevan-tarun
+  - Salaried employees: /guides/lic-plans-salaried-employees
+  - Business owners: /guides/lic-plans-business-owners
+  - Senior citizens: /guides/lic-plans-senior-citizens
 - Sitemap: https://www.jigishakiranshah.in/sitemap.xml
 - Full site reference (all facts, services, FAQs, guides): https://www.jigishakiranshah.in/llms-full.txt
 

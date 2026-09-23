@@ -48,6 +48,13 @@ export default function BlogIndexPage() {
           These are true-to-life stories — names changed — and the practical rules behind them:
           term cover, pensions, children&rsquo;s education, and getting claims paid.
         </p>
+        <p className="text-sm text-gray-600 mb-10 font-light max-w-3xl">
+          Comparing plans instead? See the{' '}
+          <Link to="/guides" className="font-bold text-gold-dark hover:underline">
+            side-by-side LIC comparisons & persona guides
+          </Link>
+          .
+        </p>
         {POSTS.length === 0 ? (
           <div className="bg-white rounded-2xl border border-border p-10 text-center">
             <p className="text-lg font-display font-bold text-midnight mb-2">No stories yet</p>
