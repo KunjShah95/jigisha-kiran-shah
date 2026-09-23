@@ -1,40 +1,47 @@
-import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check } from 'lucide-react';
+import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useSpotlight } from '../hooks/useSpotlight';
 
 const services = [
   {
     icon: Shield,
     title: 'Term Life Assurance',
+    href: '/services/term-insurance',
     description: 'Pure protection for your legacy. High-value coverage designed to secure your family\'s standard of living.',
     features: ['High Sum Assured', 'Affordable Premiums', 'Tax Efficiency']
   },
   {
     icon: Sparkles,
     title: 'Wealth Endowment',
+    href: '/services/wealth-creation',
     description: 'A sophisticated blend of life protection and guaranteed savings for future milestones.',
     features: ['Guaranteed Returns', 'Bonuses', 'Liquidity Options']
   },
   {
     icon: Building2,
     title: 'Business Insurance',
+    href: '/services/corporate-insurance',
     description: 'Comprehensive insurance solutions designed to protect your business, partnerships, and key relationships.',
     features: ['Employer Employee Insurance', 'Partnership Insurance', 'MWP Insurance', 'HUF Insurance']
   },
   {
     icon: Umbrella,
     title: 'Retirement Planning',
+    href: '/services/retirement',
     description: 'Ensure a dignified lifestyle in your golden years with guaranteed lifetime pension streams.',
     features: ['Lifetime Income', 'Family Protection', 'Inflation Hedge']
   },
   {
     icon: GraduationCap,
     title: 'Child Education Legacy',
+    href: '/services/child-education',
     description: 'Guarantee the funding for your children\'s global education and professional aspirations.',
     features: ['Milestone Funding', 'Premium Waiver', 'Target Savings']
   },
   {
     icon: Cross,
     title: 'Health & Wellness Cover',
+    href: '/services/health-insurance',
     description: 'Comprehensive medical protection ensuring world-class healthcare without financial strain.',
     features: ['Cashless Network', 'Critical Illness', 'Family Coverage']
   }
@@ -64,7 +71,9 @@ const Services = () => {
             <div
               key={index}
               onMouseMove={onMove}
-              className="spotlight-card group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col h-full"
+              tabIndex={0}
+              aria-label={`${service.title} — ${service.description}`}
+              className="spotlight-card group bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gold/10 focus-visible:shadow-2xl focus-visible:border-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold transition-all duration-500 relative overflow-hidden flex flex-col h-full"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Card gradient effect */}
@@ -91,6 +100,14 @@ const Services = () => {
                     </div>
                   ))}
                 </div>
+
+                <Link
+                  to={service.href}
+                  className="relative z-10 inline-flex items-center gap-2 mt-5 text-sm font-bold text-gold-dark hover:gap-3 transition-all"
+                  aria-label={`Learn more about ${service.title} in Ahmedabad`}
+                >
+                  Learn more <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
                 
                 {/* Decorative circle */}
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/5 rounded-full blur-xl group-hover:bg-gold/10 transition-colors" />

@@ -467,12 +467,20 @@ const Reviews = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-white text-base md:text-xl leading-relaxed font-light mb-8 wrap-anywhere">
+              <p className="text-white text-base md:text-xl leading-relaxed font-light mb-8 wrap-anywhere" aria-live="polite" aria-atomic="true">
                 "{googleSliderReviews[activeSlide].text}"
               </p>
 
-              {/* Pagination Dots - Enhanced */}
+              {/* Pagination Dots + prev/next - Enhanced */}
               <div className="flex items-center gap-1 pt-6 border-t border-white/20">
+                <button
+                  type="button"
+                  onClick={() => setActiveSlide((activeSlide - 1 + googleSliderReviews.length) % googleSliderReviews.length)}
+                  aria-label="Previous review"
+                  className="flex items-center justify-center min-w-11 min-h-11 -m-1 p-1 text-white/70 hover:text-white active:scale-95 transition-all"
+                >
+                  <span aria-hidden="true" className="text-xl leading-none">‹</span>
+                </button>
                 {googleSliderReviews.map((_, idx) => (
                   <button
                     key={idx}
@@ -489,6 +497,14 @@ const Reviews = () => {
                     />
                   </button>
                 ))}
+                <button
+                  type="button"
+                  onClick={() => setActiveSlide((activeSlide + 1) % googleSliderReviews.length)}
+                  aria-label="Next review"
+                  className="flex items-center justify-center min-w-11 min-h-11 -m-1 p-1 text-white/70 hover:text-white active:scale-95 transition-all"
+                >
+                  <span aria-hidden="true" className="text-xl leading-none">›</span>
+                </button>
               </div>
             </div>
           </div>

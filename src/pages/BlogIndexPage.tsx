@@ -48,6 +48,13 @@ export default function BlogIndexPage() {
           These are true-to-life stories — names changed — and the practical rules behind them:
           term cover, pensions, children&rsquo;s education, and getting claims paid.
         </p>
+        {POSTS.length === 0 ? (
+          <div className="bg-white rounded-2xl border border-border p-10 text-center">
+            <p className="text-lg font-display font-bold text-midnight mb-2">No stories yet</p>
+            <p className="text-sm text-gray-600 font-light mb-6">New guides are on the way. Meanwhile, explore LIC plans or book a free consultation.</p>
+            <Link to="/contact" className="inline-flex items-center justify-center px-6 py-3 bg-midnight text-white text-sm font-bold rounded-xl hover:bg-gold active:scale-[0.98] transition-all min-h-11">Book free consultation</Link>
+          </div>
+        ) : (
         <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
           {POSTS.map((post) => (
             <Link
@@ -75,6 +82,7 @@ export default function BlogIndexPage() {
             </Link>
           ))}
         </div>
+        )}
       </div>
     </section>
   );

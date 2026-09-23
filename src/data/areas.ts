@@ -123,6 +123,120 @@ export const AREAS: Area[] = [
       },
     ],
   },
+  {
+    slug: 'vastrapur',
+    name: 'Vastrapur',
+    mapQuery: 'Vastrapur, Ahmedabad, Gujarat',
+    intro:
+      'Vastrapur\u2019s mix of professors, doctors, and long-settled business families makes it a natural fit for planned insurance. Jigisha Kiran Shah advises Vastrapur clients on retirement annuities (Jeevan Akshay VII), Jeevan Umang whole-life cover, and term top-ups — mostly over phone and WhatsApp, with scheduled in-person reviews.',
+    landmarks: ['Vastrapur Lake', 'IIM Ahmedabad', 'Sola–Vastrapur corridor', 'Judges Bungalow Road'],
+    commute: 'Vastrapur is about 30–40 minutes from the Shela office. Most clients start on phone/WhatsApp and meet in person for documentation and annual reviews.',
+    faqs: [
+      {
+        q: 'Do you serve Vastrapur, Ahmedabad for LIC retirement planning?',
+        a: 'Yes. Vastrapur clients get pension-gap calculations, Jeevan Akshay VII illustrations, and annuity comparisons by phone or video call, with in-person meetings scheduled as needed. Call +91 98240 25435.',
+      },
+      {
+        q: 'Can you service LIC policies bought years ago in Vastrapur?',
+        a: 'Yes. Policy reviews, nominee updates, maturity tracking, and 1000+ settled claims of experience back every existing policyholder — not just new clients.',
+      },
+    ],
+  },
+  {
+    slug: 'ambawadi',
+    name: 'Ambawadi',
+    mapQuery: 'Ambawadi, Ahmedabad, Gujarat',
+    intro:
+      'Central Ahmedabad professionals around Ambawadi, Commerce Six Roads, and H.L. College work tight schedules — so consultations run WhatsApp-first. Jigisha Kiran Shah structures term cover (Tech Term, Jeevan Amar), endowment savings (Jeevan Labh), and pension plans for Ambawadi families without office visits.',
+    landmarks: ['Commerce Six Roads', 'H.L. College', 'Parimal Garden', 'ATMA House'],
+    commute: 'Ambawadi is roughly 25–35 minutes from Shela. Working clients usually complete the full advice process on phone/WhatsApp and meet once for documentation.',
+    faqs: [
+      {
+        q: 'Is there an LIC advisor near Ambawadi, Ahmedabad?',
+        a: 'Yes. Jigisha Kiran Shah serves Ambawadi families with term, endowment, pension, and health cover advice over phone/WhatsApp, plus in-person meetings by appointment. Call +91 98240 25435.',
+      },
+      {
+        q: 'I work full-time near Commerce Six Roads. How do consultations fit my day?',
+        a: 'Evening phone and WhatsApp slots are available Monday to Saturday. Share age, income range, and goal once — you receive personalised illustrations without repeated calls.',
+      },
+    ],
+  },
+  {
+    slug: 'maninagar',
+    name: 'Maninagar',
+    mapQuery: 'Maninagar, Ahmedabad, Gujarat',
+    intro:
+      'East Ahmedabad families in Maninagar, Kankaria, and Rambaug often hold older LIC policies bought decades ago — exactly the ones needing nominee checks and maturity tracking today. Jigisha Kiran Shah serves Maninagar with policy reviews, claims support, and new term, pension, and child plans.',
+    landmarks: ['Kankaria Lake', 'Maninagar Railway Station', 'Swaminarayan Temple', 'Rambaug'],
+    commute: 'Maninagar is across the river, about 35–45 minutes from Shela. Policy reviews and consultations run on phone/WhatsApp; in-person meetings are scheduled for documentation and claims.',
+    faqs: [
+      {
+        q: 'Do you help with old LIC policies and claims in Maninagar?',
+        a: 'Yes — this is core work. Nominee verification, maturity tracking, policy tracing from PAN and date of birth, and full claims documentation support for Maninagar families. Call +91 98240 25435.',
+      },
+      {
+        q: 'Can I buy a new LIC pension or term plan from Maninagar?',
+        a: 'Yes. Consultations happen over phone/WhatsApp with illustrations for Jeevan Akshay VII, Tech Term, and Jeevan Tarun, followed by assisted documentation as per LIC process.',
+      },
+    ],
+  },
+  {
+    slug: 'naranpura',
+    name: 'Naranpura',
+    mapQuery: 'Naranpura, Ahmedabad, Gujarat',
+    intro:
+      'Naranpura\u2019s established residential societies hold many dual-income families balancing home loans with children\u2019s education goals. Jigisha Kiran Shah advises Naranpura clients on term cover sized to liabilities, Jeevan Labh endowment for milestones, and Jeevan Tarun for education — with phone-first consultations.',
+    landmarks: ['Naranpura Crossroads', 'Sardar Patel Stadium area', 'Riverfront West Bank', 'Sola Road connection'],
+    commute: 'Naranpura is about 30–40 minutes from the Shela office. First meetings run on phone/WhatsApp; in-person reviews are scheduled around your availability.',
+    faqs: [
+      {
+        q: 'Which LIC plans suit a dual-income family in Naranpura with a home loan?',
+        a: 'Term cover of 10–15x income plus the outstanding loan (Tech Term, Jeevan Amar), paired with Jeevan Labh or money-back plans for education milestones. A free consultation sizes both precisely.',
+      },
+      {
+        q: 'Do you offer evening consultations for Naranpura working couples?',
+        a: 'Yes. Evening phone and WhatsApp appointments run Monday to Saturday, 9 AM to 6 PM window plus on-request evening slots. Call +91 98240 25435.',
+      },
+    ],
+  },
+  {
+    slug: 'gota',
+    name: 'Gota',
+    mapQuery: 'Gota, Ahmedabad, Gujarat',
+    intro:
+      'Gota and Ognaj\u2019s newer societies are full of first-home buyers — the exact families who need term cover most and buy it least. Jigisha Kiran Shah helps Gota families with Tech Term and Jeevan Amar sized to home loans, plus Jeevan Tarun child plans with premium-waiver protection.',
+    landmarks: ['Gota Crossroads', 'Narmada Canal Road', 'Bhagwat Vidyapith', 'Ognaj corridor'],
+    commute: 'Gota is roughly 30–40 minutes from Shela via Sola and the SP Ring Road. Consultations start on phone/WhatsApp with in-person meetings as needed.',
+    faqs: [
+      {
+        q: 'I just bought a flat in Gota. How much term insurance do I need?',
+        a: 'Cover the outstanding home loan plus 10–15x annual income, so EMIs and family expenses both survive you. Share loan and income details on +91 98240 25435 for an exact Tech Term illustration.',
+      },
+      {
+        q: 'Which child plans work for young Gota families?',
+        a: 'Jeevan Tarun and the New Children\u2019s Money Back plan, both with premium-waiver benefit — if anything happens to you, premiums stop but payouts continue. Maturities can be timed to ages 18–25.',
+      },
+    ],
+  },
+  {
+    slug: 'chandkheda',
+    name: 'Chandkheda',
+    mapQuery: 'Chandkheda, Ahmedabad, Gujarat',
+    intro:
+      'Chandkheda\u2019s ONGC colony, bank townships, and highway-corridor professionals value guaranteed, no-surprise products. Jigisha Kiran Shah serves Chandkheda with pension annuities (Jeevan Akshay VII), endowment savings (Jeevan Labh, Bima Shree), and term cover — consultations by phone, WhatsApp, and scheduled visits.',
+    landmarks: ['ONGC Colony', 'Visat–Gandhinagar Highway', 'Chandkheda Village Centre', 'Sughad corridor'],
+    commute: 'Chandkheda is about 35–45 minutes from Shela. North Ahmedabad clients typically consult over phone/WhatsApp with in-person meetings for documentation.',
+    faqs: [
+      {
+        q: 'Do you serve Chandkheda, Ahmedabad for LIC pension plans?',
+        a: 'Yes. Jeevan Akshay VII annuity illustrations, pension-gap math, and joint-life options for Chandkheda retirees and pre-retirees — free consultation on +91 98240 25435.',
+      },
+      {
+        q: 'Can salaried professionals in Chandkheda get 80C tax-saving LIC plans?',
+        a: 'Yes. Endowment, money-back, and term premiums qualify under Section 80C with maturity/death benefits under 10(10D) conditions. A review matches the right plan to your salary structure.',
+      },
+    ],
+  },
 ];
 
 export function getArea(slug: string | undefined): Area | undefined {

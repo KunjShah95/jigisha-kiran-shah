@@ -10,6 +10,7 @@ const Calculator = () => {
     income: '',
     planType: '',
   })
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -20,10 +21,13 @@ const Calculator = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     // Short lead form — full message thread continues on WhatsApp
     const message = `Free Consultation Request:\nName: ${formData.name}\nPhone: ${formData.phone}\nAge: ${formData.age}\nAnnual Income: ${formData.income}\nPlan Type: ${formData.planType}`
     const whatsappUrl = `https://wa.me/919824025435?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
+    setTimeout(() => setIsSubmitting(false), 1500);
   }
 
   const benefits = [
@@ -100,6 +104,8 @@ const Calculator = () => {
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
                       autoComplete="tel"
+                      pattern="[0-9+\-() ]{10,18}"
+                      title="Enter a valid phone number"
                       className={inputClass}
                       required
                     />
@@ -145,15 +151,20 @@ const Calculator = () => {
                 </Field>
                 
                 <button 
-                  type="submit" 
-                  className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gold hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden min-h-11"
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
+                  className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gold hover:text-white active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none transition-all duration-300 flex items-center justify-center gap-2 group relative overflow-hidden min-h-11"
                 >
                     <span className="relative z-10 flex items-center gap-2">
-                        Book Free Consultation
+                        {isSubmitting ? 'Opening WhatsApp…' : 'Book Free Consultation'}
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </span>
                     <div aria-hidden="true" className="absolute inset-0 bg-gold/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                 </button>
+                <p aria-live="polite" className="text-xs text-gray-500 min-h-4">
+                  {isSubmitting ? 'Opening WhatsApp — press send there to complete.' : 'Submits via WhatsApp. No spam, no sharing.'}
+                </p>
               </form>
             </div>
           </div>

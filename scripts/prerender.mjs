@@ -107,6 +107,12 @@ const AREAS = [
   ['satellite', 'Satellite', 'pension plans, Jeevan Umang whole-life cover, and term insurance top-ups for professionals and business families, by phone, WhatsApp or in-person.'],
   ['sg-highway', 'SG Highway', 'high-value term cover (Tech Term, Jeevan Amar), employer-employee insurance, HUF policies, and retirement annuities for busy professionals.'],
   ['science-city', 'Science City', 'Jeevan Tarun and Children\u2019s Money Back plans with premium-waiver benefits, plus term cover sized to outstanding home loans for young families.'],
+  ['vastrapur', 'Vastrapur', 'pension annuities (Jeevan Akshay VII), Jeevan Umang whole-life cover, and term top-ups for professors, doctors, and business families.'],
+  ['ambawadi', 'Ambawadi', 'term cover (Tech Term, Jeevan Amar), endowment savings (Jeevan Labh), and pension plans for central-Ahmedabad professionals — WhatsApp-first.'],
+  ['maninagar', 'Maninagar', 'policy reviews, nominee checks, maturity tracking, and claims support for old LIC policies — plus new term, pension, and child plans.'],
+  ['naranpura', 'Naranpura', 'term cover sized to home loans, Jeevan Labh endowment for milestones, and Jeevan Tarun for education for dual-income families.'],
+  ['gota', 'Gota', 'Tech Term and Jeevan Amar sized to home loans, plus Jeevan Tarun child plans with premium-waiver protection for first-home buyers.'],
+  ['chandkheda', 'Chandkheda', 'pension annuities (Jeevan Akshay VII), endowment savings (Jeevan Labh, Bima Shree), and 80C tax-saving term cover for salaried professionals.'],
 ];
 for (const [slug, name, detail] of AREAS) {
   ROUTES.push(
@@ -140,6 +146,40 @@ const POSTS = [
 ];
 for (const [slug, seoTitle, desc, h1, intro] of POSTS) {
   ROUTES.push(page(`/blog/${slug}`, { title: seoTitle, description: desc, h1, intro, crumbs: seoTitle }));
+}
+
+const SERVICES = [
+  ['term-insurance', 'Term Insurance in Ahmedabad | LIC Tech Term, Jeevan Amar',
+    'Term insurance in Ahmedabad: Rs 1 crore+ cover at the lowest cost. LIC Tech Term & Jeevan Amar with free advice from Jigisha Kiran Shah, 2x MDRT. +91 98240 25435.',
+    'Term Insurance in Ahmedabad',
+    'Rs 1 crore cover for the price of a monthly pizza. LIC Tech Term and Jeevan Amar sized by the 10–15x income-plus-loans rule, with nominee registration that settles claims in weeks.'],
+  ['retirement', 'Retirement & Pension Plans in Ahmedabad | Jeevan Akshay',
+    'Retirement planning in Ahmedabad: convert your corpus into guaranteed monthly pension with LIC Jeevan Akshay VII & Jeevan Umang. Free gap calculation: +91 98240 25435.',
+    'Retirement & Pension Plans in Ahmedabad',
+    'A lump sum in FD is a countdown; an annuity is a promise. Jeevan Akshay VII starts pension next month at a rate locked on day one — worked out from your five numbers, free.'],
+  ['child-education', 'Child Education Plans in Ahmedabad | LIC Jeevan Tarun',
+    'Child education plans in Ahmedabad: LIC Jeevan Tarun & Children\u2019s Money Back timed to ages 18–25 with premium waiver. Free sizing consultation: +91 98240 25435.',
+    'Child Education Plans in Ahmedabad',
+    'Jeevan Tarun and Children\u2019s Money Back lock a guaranteed share of education costs to payout ages 18–25, with premium waiver so payouts continue no matter what.'],
+  ['wealth-creation', 'Endowment Plans in Ahmedabad | LIC Jeevan Labh',
+    'Endowment & wealth plans in Ahmedabad: LIC Jeevan Labh with guaranteed maturity plus bonuses. Disciplined savings for milestones. Free advice: +91 98240 25435.',
+    'Endowment & Wealth Plans in Ahmedabad',
+    'Jeevan Labh pays a guaranteed maturity plus bonuses on a fixed future date with life cover throughout — the discipline instrument for dated milestones.'],
+  ['health-insurance', 'Health Insurance in Ahmedabad | LIC Arogya Rakshak',
+    'Health insurance in Ahmedabad: LIC Arogya Rakshak hospitalisation cover & Cancer Cover with premium waiver. Protect savings from medical bills: +91 98240 25435.',
+    'Health Insurance in Ahmedabad',
+    'Arogya Rakshak pays fixed hospital benefits with no room-rent caps; Cancer Cover pays a lump sum on diagnosis at any stage — cash you control.'],
+  ['money-back', 'Money Back Plans in Ahmedabad | LIC Bima Shree',
+    'Money back plans in Ahmedabad: periodic payouts plus life cover with LIC Bima Shree & New Money Back 25 years. Milestone funding: +91 98240 25435.',
+    'Money Back Plans in Ahmedabad',
+    'New Money Back 25 years returns 15% of sum assured in years 5, 10, 15; Bima Shree adds guaranteed additions — liquidity with life cover attached.'],
+  ['corporate-insurance', 'Corporate & HUF Insurance Ahmedabad | Employer Cover',
+    'Corporate insurance in Ahmedabad: employer-employee cover, partnership, MWP Act & HUF policies for businesses. Structured advice: +91 98240 25435.',
+    'Corporate & HUF Insurance in Ahmedabad',
+    'Employer-employee cover, MWP Act policies creditors cannot attach, and HUF insurance separating family protection from business risk.'],
+];
+for (const [slug, title, desc, h1, intro] of SERVICES) {
+  ROUTES.push(page(`/services/${slug}`, { title, description: desc, h1, intro, crumbs: h1 }));
 }
 
 // --- build ---

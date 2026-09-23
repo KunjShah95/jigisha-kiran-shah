@@ -241,7 +241,7 @@ const About = () => {
 
             {/* ── RIGHT: Bio content ───────────────────────────────────────────── */}
             <div className="reveal-right">
-              <h1 className="text-4xl md:text-4xl lg:text-5xl font-display font-semibold text-midnight mb-4 leading-[1.1]">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-midnight mb-4 leading-[1.1]">
                 LIC Advisor in Ahmedabad,<br />
                 Dedicated to Your Family's <span className="text-gold italic">Security</span>
               </h1>

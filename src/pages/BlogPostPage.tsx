@@ -50,9 +50,12 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <main style={{ padding: '4rem 1.5rem', textAlign: 'center' }}>
-        <h1>Story not found</h1>
-        <p><Link to="/blog">All stories &amp; guides</Link></p>
+      <main className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream">
+        <div className="container relative z-10 max-w-xl mx-auto text-center">
+          <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">Story not found</h1>
+          <p className="text-base text-gray-600 font-light mb-8">That story does not exist or was moved.</p>
+          <Link to="/blog" className="inline-flex items-center justify-center px-6 py-3 bg-midnight text-white text-sm font-bold rounded-xl hover:bg-gold active:scale-[0.98] transition-all min-h-11">All stories &amp; guides</Link>
+        </div>
       </main>
     );
   }
@@ -106,23 +109,23 @@ export default function BlogPostPage() {
             <span className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 uppercase tracking-widest mr-1">
               <Share2 className="w-4 h-4" aria-hidden="true" /> Share
             </span>
-            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" title="Share on LinkedIn" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-[#0A66C2] text-white hover:opacity-90 transition-opacity min-h-9">
+            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" title="Share on LinkedIn" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-[#0A66C2] text-white hover:opacity-90 hover:-translate-y-0.5 active:scale-95 transition-all min-h-11">
               <Linkedin className="w-4 h-4" aria-hidden="true" /> LinkedIn
             </a>
-            <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" title="Share on WhatsApp" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-whatsapp text-white hover:bg-whatsapp-dark transition-colors min-h-9">
+            <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" title="Share on WhatsApp" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-whatsapp text-white hover:bg-whatsapp-dark hover:-translate-y-0.5 active:scale-95 transition-all min-h-11">
               <MessageCircle className="w-4 h-4" aria-hidden="true" /> WhatsApp
             </a>
-            <a href={xUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="Share on X" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-midnight text-white hover:opacity-90 transition-opacity min-h-9">
+            <a href={xUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="Share on X" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-midnight text-white hover:opacity-90 hover:-translate-y-0.5 active:scale-95 transition-all min-h-11">
               <Twitter className="w-4 h-4" aria-hidden="true" /> Post
             </a>
-            <a href={fbUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Share on Facebook" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-[#1877F2] text-white hover:opacity-90 transition-opacity min-h-9">
+            <a href={fbUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Share on Facebook" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-[#1877F2] text-white hover:opacity-90 hover:-translate-y-0.5 active:scale-95 transition-all min-h-11">
               <Facebook className="w-4 h-4" aria-hidden="true" /> Facebook
             </a>
-            <button type="button" onClick={copyLink} aria-label="Copy link" title="Copy link" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-white border border-border text-midnight hover:border-gold/50 transition-colors min-h-9">
+            <button type="button" onClick={copyLink} aria-label="Copy link" title="Copy link" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-white border border-border text-midnight hover:border-gold/50 hover:-translate-y-0.5 active:scale-95 transition-all min-h-11">
               {copied ? <Check className="w-4 h-4 text-green-600" aria-hidden="true" /> : <Link2 className="w-4 h-4" aria-hidden="true" />}
               {copied ? 'Copied!' : 'Copy link'}
             </button>
-            <a href="https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2" target="_blank" rel="noopener noreferrer" aria-label="Follow on LinkedIn" title="Follow Jigisha on LinkedIn" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-white border border-border text-[#0A66C2] hover:border-[#0A66C2]/50 transition-colors min-h-9">
+            <a href="https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2" target="_blank" rel="noopener noreferrer" aria-label="Follow on LinkedIn" title="Follow Jigisha on LinkedIn" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-white border border-border text-[#0A66C2] hover:border-[#0A66C2]/50 hover:-translate-y-0.5 active:scale-95 transition-all min-h-11">
               <Linkedin className="w-4 h-4" aria-hidden="true" /> Follow
             </a>
           </div>

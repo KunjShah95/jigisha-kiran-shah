@@ -36,6 +36,7 @@ export default function HeroCoverageWidget() {
         <span className="text-sm font-bold text-midnight tabular-nums">{formatINR(income)}</span>
       </div>
 
+      <div className="py-2 -my-1">
       <input
         id="hero-income"
         type="range"
@@ -50,6 +51,7 @@ export default function HeroCoverageWidget() {
           background: `linear-gradient(to right, var(--color-gold) ${pct}%, var(--color-border) ${pct}%)`,
         }}
       />
+      </div>
 
       <div className="mt-4 rounded-xl bg-midnight p-3.5 flex items-center justify-between gap-3">
         <div className="min-w-0">
@@ -60,7 +62,7 @@ export default function HeroCoverageWidget() {
         </div>
         <Link
           to="/contact"
-          className="inline-flex items-center gap-1.5 shrink-0 px-3.5 py-2 rounded-lg bg-gold text-midnight text-xs font-bold hover:bg-gold-light transition-colors"
+          className="inline-flex items-center gap-1.5 shrink-0 px-3.5 py-2 rounded-lg bg-gold text-midnight text-xs font-bold hover:bg-gold-light active:scale-95 transition-all min-h-11"
         >
           Get exact plan
           <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />

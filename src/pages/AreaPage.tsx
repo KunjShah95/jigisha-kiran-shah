@@ -65,9 +65,12 @@ export default function AreaPage() {
 
   if (!area) {
     return (
-      <main style={{ padding: '4rem 1.5rem', textAlign: 'center' }}>
-        <h1>Area not found</h1>
-        <p><Link to="/areas">See all areas served</Link></p>
+      <main className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream">
+        <div className="container relative z-10 max-w-xl mx-auto text-center">
+          <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">Area not found</h1>
+          <p className="text-base text-gray-600 font-light mb-8">That service area does not exist.</p>
+          <Link to="/areas" className="inline-flex items-center justify-center px-6 py-3 bg-midnight text-white text-sm font-bold rounded-xl hover:bg-gold active:scale-[0.98] transition-all min-h-11">See all areas served</Link>
+        </div>
       </main>
     );
   }

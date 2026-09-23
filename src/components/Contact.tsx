@@ -12,6 +12,8 @@ const Contact = () => {
     subject: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -22,9 +24,13 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     const message = `New Inquiry:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nAge: ${formData.age}\nIncome: ${formData.income}\nSubject: ${formData.subject}\nMessage: ${formData.message}`
     const whatsappUrl = `https://wa.me/919824025435?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
+    setSent(true);
+    setTimeout(() => setIsSubmitting(false), 1500);
   }
 
   const contactMethods = [
@@ -144,6 +150,8 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
                       autoComplete="tel"
+                      pattern="[0-9+\-() ]{10,18}"
+                      title="Enter a valid phone number"
                       className={inputClass}
                       required
                     />
@@ -201,15 +209,22 @@ const Contact = () => {
                 </Field>
                 
                 <button 
-                  type="submit" 
-                  className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gold hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden relative min-h-11"
+                  type="submit"
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
+                  className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gold hover:text-white active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden relative min-h-11"
                 >
                     <span className="relative z-10 flex items-center gap-2">
-                        Send Message
+                        {sent ? 'Opening WhatsApp…' : 'Send Message'}
                          <Send size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </span>
                    <div aria-hidden="true" className="absolute inset-0 bg-gold/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                 </button>
+                {sent && (
+                  <p role="status" className="text-sm text-gold-dark font-semibold">
+                    WhatsApp should have opened — just press send there. You can also call directly on +91 98240 25435.
+                  </p>
+                )}
               </form>
             </div>
           </div>

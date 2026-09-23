@@ -44,7 +44,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-12">
               <Link
                 to="/contact" 
-                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-midnight text-white font-bold rounded-xl hover:bg-gold transition-all duration-300 gap-2 group btn-beam shadow-lg hover:shadow-xl hover:-translate-y-1 text-sm w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-midnight text-white font-bold rounded-xl hover:bg-gold transition-all duration-300 gap-2 group btn-beam shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] text-sm w-full sm:w-auto min-h-11"
               >
                 <span>Book Free Consultation</span>
                 <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -53,14 +53,14 @@ const Hero = () => {
                 href="https://wa.me/919824025435"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-whatsapp text-white font-bold rounded-xl hover:bg-whatsapp-dark transition-all duration-300 gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1 text-sm w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-whatsapp text-white font-bold rounded-xl hover:bg-whatsapp-dark transition-all duration-300 gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] text-sm w-full sm:w-auto min-h-11"
               >
                 <MessageCircle className="w-4 h-4 lg:w-5 lg:h-5 fill-current" aria-hidden="true" />
                 <span>WhatsApp Now</span>
               </a>
               <Link
                 to="/services" 
-                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-white border border-border text-midnight font-semibold rounded-xl hover:border-gold/60 hover:text-gold-dark transition-all duration-300 shadow-sm hover:shadow-md text-sm w-full sm:w-auto"
+                className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-white border border-border text-midnight font-semibold rounded-xl hover:border-gold/60 hover:text-gold-dark transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98] text-sm w-full sm:w-auto min-h-11"
               >
                 Explore Services
               </Link>

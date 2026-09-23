@@ -119,10 +119,17 @@ India, not an LIC employee; policies are issued by LIC of India.
 ## SITE MAP (all indexable URLs)
 https://www.jigishakiranshah.in/            — home (LocalBusiness, FAQ schema)
 https://www.jigishakiranshah.in/services    — all LIC plans & services
+https://www.jigishakiranshah.in/services/term-insurance       — term plans: Tech Term, Jeevan Amar (10–15x income rule, nominee discipline)
+https://www.jigishakiranshah.in/services/retirement           — pension math: Jeevan Akshay VII, joint-life + return-of-premium
+https://www.jigishakiranshah.in/services/child-education      — Jeevan Tarun, Children\u2019s Money Back, premium waiver
+https://www.jigishakiranshah.in/services/wealth-creation      — Jeevan Labh endowment, guaranteed maturity + bonuses
+https://www.jigishakiranshah.in/services/health-insurance     — Arogya Rakshak, Cancer Cover, fixed-benefit logic
+https://www.jigishakiranshah.in/services/money-back           — scheduled payouts: New Money Back 25, Bima Shree
+https://www.jigishakiranshah.in/services/corporate-insurance  — employer-employee, MWP Act, HUF, partnership cover
 https://www.jigishakiranshah.in/about       — advisor profile, MDRT, 22-year history
 https://www.jigishakiranshah.in/reviews     — Google reviews & video testimonials
 https://www.jigishakiranshah.in/contact     — booking form, phone, WhatsApp, map
-https://www.jigishakiranshah.in/areas       — areas served index (6 area pages)
+https://www.jigishakiranshah.in/areas       — areas served index (12 area pages: Shela, South Bopal, Bopal, Satellite, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda)
 https://www.jigishakiranshah.in/blog        — story guides index (4 posts)
 Sitemap: https://www.jigishakiranshah.in/sitemap.xml
 

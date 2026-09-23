@@ -71,7 +71,7 @@ export const POSTS: Post[] = [
       },
     ],
     related: [
-      { label: 'Term insurance plans we compare', to: '/services' },
+      { label: 'Term insurance plans compared', to: '/services/term-insurance' },
       { label: 'Claims assistance in Ahmedabad', to: '/contact' },
       { label: 'LIC advisor in Shela', to: '/areas/shela' },
     ],
@@ -126,7 +126,7 @@ export const POSTS: Post[] = [
       },
     ],
     related: [
-      { label: 'Retirement & pension plans', to: '/services' },
+      { label: 'Retirement & pension plans compared', to: '/services/retirement' },
       { label: 'Book a free consultation', to: '/contact' },
     ],
   },
@@ -179,7 +179,7 @@ export const POSTS: Post[] = [
       },
     ],
     related: [
-      { label: 'LIC plan comparison', to: '/services' },
+      { label: 'Endowment plans compared', to: '/services/wealth-creation' },
       { label: 'LIC advisor in South Bopal', to: '/areas/south-bopal' },
     ],
   },
@@ -234,7 +234,7 @@ export const POSTS: Post[] = [
       },
     ],
     related: [
-      { label: 'Retirement & pension plans', to: '/services' },
+      { label: 'Retirement & pension plans compared', to: '/services/retirement' },
       { label: 'LIC advisor in Satellite', to: '/areas/satellite' },
       { label: 'Book a free consultation', to: '/contact' },
     ],

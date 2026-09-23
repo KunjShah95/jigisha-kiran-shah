@@ -12,11 +12,12 @@ const Footer = () => {
     ]
 
     const services = [
-      { label: 'Term Life Assurance', to: '/services' },
-      { label: 'Wealth Endowment', to: '/services' },
-      { label: 'Investment Linked (ULIP)', to: '/services' },
-      { label: 'Retirement Concierge', to: '/services' },
-      { label: 'Child Education Legacy', to: '/services' }
+      { label: 'Term Life Insurance', to: '/services/term-insurance' },
+      { label: 'Retirement & Pension Plans', to: '/services/retirement' },
+      { label: 'Child Education Plans', to: '/services/child-education' },
+      { label: 'Endowment & Money-Back', to: '/services/wealth-creation' },
+      { label: 'Health Cover', to: '/services/health-insurance' },
+      { label: 'Corporate & HUF Insurance', to: '/services/corporate-insurance' }
     ]
 
     const resources: Array<{ label: string; to?: string; href?: string }> = [
