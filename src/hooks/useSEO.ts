@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { SITE_URL, OG_IMAGE, breadcrumbJsonLd } from '../lib/seo';
+import { isProductionHost } from '../lib/env';
 
 interface SEOProps {
   title: string;
@@ -70,7 +71,10 @@ export function useSEO({
 
     setMetaName('description', description);
     if (keywords) setMetaName('keywords', keywords);
-    setMetaName('robots', noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1');
+    // Staging/preview deployments must never be indexed, even if a page
+    // forgets noindex — the host check overrides everything.
+    const robots = !isProductionHost() || noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1';
+    setMetaName('robots', robots);
     setMetaName('author', 'Jigisha Kiran Shah');
 
     setMetaProperty('og:type', 'website');
