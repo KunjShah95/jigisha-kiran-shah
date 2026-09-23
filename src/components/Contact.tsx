@@ -71,7 +71,7 @@ const Contact = () => {
           <div className="reveal-left">
             <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Get In Touch</div>
             <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4 lg:mb-6">
-              Let's Discuss Your <span className="text-gold italic">Legacy</span>
+              Contact Your <span className="text-gold italic">LIC Advisor</span> in Ahmedabad
             </h1>
             <p className="text-base lg:text-lg text-gray-600 mb-8 lg:mb-10 leading-relaxed font-light">
               Have questions about insurance plans? Want to know which policy is right for you? 

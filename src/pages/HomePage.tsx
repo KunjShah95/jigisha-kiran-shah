@@ -11,12 +11,12 @@ import { faqJsonLd, localBusinessJsonLd, websiteJsonLd, personJsonLd } from '../
 
 export default function HomePage() {
   useSEO({
-    title: 'LIC Advisor Near Me Ahmedabad | Life Insurance Agent Shela',
+    title: 'Jigisha Kiran Shah | LIC Advisor in Ahmedabad, Shela',
     description:
-      'Jigisha Kiran Shah — Top LIC advisor & life insurance agent near you in Ahmedabad, Shela. 22+ years experience, 2-time MDRT achiever. Retirement planning, term life, ULIP, pension plans & child education policies across Ahmedabad.',
-    ogTitle: 'Best LIC Agent Near Me in Ahmedabad | Jigisha Kiran Shah',
+      'LIC advisor in Ahmedabad (Shela) — 22+ yrs, 2x MDRT, 5.0★ rated. Term insurance, pension plans & child education for 2,700+ families. Free consultation: +91 98240 25435.',
+    ogTitle: 'Jigisha Kiran Shah — LIC Advisor in Ahmedabad, Shela',
     ogDescription:
-      'Trusted life insurance advisor in Ahmedabad. LIC policies, retirement planning & pension solutions. Serving Shela, Satellite, SG Highway, South Bopal & all Ahmedabad areas. 5.0★ rated.',
+      'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',
     path: '/',
     keywords:
       'LIC advisor Ahmedabad, LIC agent near me, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',

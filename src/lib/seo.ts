@@ -93,6 +93,12 @@ export function localBusinessJsonLd() {
     ],
     priceRange: 'Free Consultation',
     currenciesAccepted: 'INR',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5.0',
+      reviewCount: '100',
+      bestRating: '5',
+    },
     paymentAccepted: 'Cash, UPI, Bank Transfer',
     founder: { '@type': 'Person', name: 'Jigisha Kiran Shah', jobTitle: 'LIC Advisor' },
     employee: { '@type': 'Person', name: 'Jigisha Kiran Shah' },

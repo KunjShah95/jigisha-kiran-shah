@@ -52,7 +52,7 @@ const Services = () => {
           <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-12 reveal">
           <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Our Expertise</div>
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4 lg:mb-6">
-            Curated LIC <span className="text-gold italic">Portfolios</span>
+            LIC Insurance <span className="text-gold italic">Plans in Ahmedabad</span>
           </h1>
           <p className="text-base lg:text-lg text-gray-600 leading-relaxed font-light">
             We curate comprehensive insurance portfolios tailored to protect your family's future and meet your specific financial goals with the trust of LIC.

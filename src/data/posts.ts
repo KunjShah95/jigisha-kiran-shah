@@ -8,6 +8,8 @@ export interface PostSection {
 export interface Post {
   slug: string;
   title: string;
+  /** Keyword-first <title> for SERP CTR; `title` stays as the on-page H1. */
+  seoTitle: string;
   metaDescription: string;
   date: string; // ISO
   updated: string; // ISO
@@ -21,8 +23,9 @@ export const POSTS: Post[] = [
   {
     slug: 'the-policy-he-bought-after-the-funeral',
     title: 'The policy a Shela family bought after the funeral',
+    seoTitle: 'Term Insurance in Ahmedabad: 5 Nominee Mistakes to Avoid',
     metaDescription:
-      'A true-to-life story from 22 years of LIC advising: why one phone call too late cost a family in Ahmedabad their home — and the rule I now tell every client about term insurance and nominee registration.',
+      'Term insurance in Ahmedabad: how a missing nominee delayed one LIC claim by 4 months. Free term cover & claims help from Jigisha Kiran Shah: +91 98240 25435.',
     date: '2026-08-21',
     updated: '2026-09-13',
     readMinutes: 5,
@@ -76,8 +79,9 @@ export const POSTS: Post[] = [
   {
     slug: 'the-pension-that-arrived-before-the-milk',
     title: "The pension that arrived before the milkman's bell",
+    seoTitle: 'LIC Pension Plans in Ahmedabad: Jeevan Akshay VII Guide',
     metaDescription:
-      'How a retired Ahmedabad school clerk turned a lump sum into a guaranteed monthly pension with LIC Jeevan Akshay VII — and the three numbers every pre-retiree should calculate before leaving service.',
+      'LIC pension plans in Ahmedabad: how Jeevan Akshay VII gives guaranteed monthly income after retirement. Free pension-gap calculation: +91 98240 25435.',
     date: '2026-07-30',
     updated: '2026-09-13',
     readMinutes: 5,
@@ -129,8 +133,9 @@ export const POSTS: Post[] = [
   {
     slug: 'jevan-labh-or-the-alarm-clock',
     title: 'Jeevan Labh and the alarm clock: why your child\u2019s education plan must fail to tempt you',
+    seoTitle: 'LIC Jeevan Labh for Child Education in Ahmedabad',
     metaDescription:
-      'A story about a father in South Bopal, the education fund that kept moving, and why LIC endowment plans like Jeevan Labh work as disciplined savings — the boring alarm-clock method of saving for your child.',
+      'LIC Jeevan Labh for child education in Ahmedabad: how a South Bopal father locked his daughter\u2019s college fund. Free consultation: +91 98240 25435.',
     date: '2026-06-14',
     updated: '2026-09-13',
     readMinutes: 4,
@@ -176,6 +181,62 @@ export const POSTS: Post[] = [
     related: [
       { label: 'LIC plan comparison', to: '/services' },
       { label: 'LIC advisor in South Bopal', to: '/areas/south-bopal' },
+    ],
+  },
+  {
+    slug: 'retirement-planning-ahmedabad-50s-checklist',
+    title: 'Retirement planning at 50: the Satellite engineer who ran the numbers twice',
+    seoTitle: 'Retirement Planning in Ahmedabad: 5-Step 50s Checklist',
+    metaDescription:
+      'Retirement planning in Ahmedabad: the 5-number checklist I run with every 50+ client — expenses, gap, pension, health & corpus. Free review: +91 98240 25435.',
+    date: '2026-09-23',
+    updated: '2026-09-23',
+    readMinutes: 5,
+    targetQuery: 'retirement planning Ahmedabad',
+    sections: [
+      {
+        paras: [
+          'Ramesh bhai retired as a senior engineer from a manufacturing plant near Naroda in 2023, at 58. Provident fund, gratuity, a small LIC maturity — the settlement letter added up to a number he had never held at once. His plan was simple: "Madam, I will manage. Monthly expenses are only thirty thousand."',
+          'Six months later he was back in my Shela office with a diary. Page one listed the thirty thousand. Page two listed everything else: his wife\u2019s knee medication, the society maintenance that had doubled, the grandson\u2019s school bus fee he had quietly volunteered to pay, and a roof repair the monsoon had ordered. Forty-seven thousand. He had underestimated his own life by more than half.',
+        ],
+      },
+      {
+        heading: 'The five numbers before any product',
+        paras: [
+          'Retirement planning in Ahmedabad fails the same way every time: people shop for a plan before doing the arithmetic. So we do the arithmetic first, on one sheet of paper, in this order. One: true monthly expense today — the diary version, not the guess, medicines and maintenance included. Two: years to retirement and years after it — a 58-year-old in Gujarat should plan for 25-plus years, not 15. Three: guaranteed income already coming — EPF pension, rent, any existing annuity. Four: the gap between expense and guaranteed income, inflated at 6% a year. Five: the corpus that gap demands.',
+          'For Ramesh bhai the gap was roughly twenty-two thousand a month in today\u2019s money. At a 6% annuity rate, that single number told us the corpus he still had to build — and, more importantly, what his existing lump sum could already guarantee if converted through LIC Jeevan Akshay VII instead of sitting in a savings account earning 2.7%.',
+        ],
+        quote: {
+          text: '"I spent thirty years calculating loads for machines. I never calculated the load of my own kitchen."',
+          by: 'Ramesh bhai, retired engineer, Satellite',
+        },
+      },
+      {
+        heading: 'What we actually bought — and what we refused',
+        paras: [
+          'We converted a portion of his corpus into an immediate annuity with the joint-life option, so the pension continues for his wife, plus return-of-premium so the capital is never lost to the family. We kept twelve months of expenses in a senior citizen FD for shocks — a roof, a hospital admission, a grandson\u2019s admission. And we refused two things: a second endowment plan at 58 ("your saving years are over; your income years have begun") and any market-linked product for the gap money ("the gap is non-negotiable, so its funding must be guaranteed").',
+          'The pension credits on the fifth of every month. His diary now has three columns: pension in, expenses out, balance for the grandson\u2019s bus fee. He calls it his salary slip.',
+        ],
+        takeaway: [
+          'Write the diary version of expenses — guesses undercount by 30–50%.',
+          'Plan for 25+ years after 58; Ahmedabad families routinely live past 85.',
+          'Gap money must be guaranteed (annuity), never market-linked.',
+          'Keep 12 months of expenses liquid beside the pension, not inside it.',
+          'Joint-life + return-of-premium options protect the spouse and the capital.',
+        ],
+      },
+      {
+        heading: 'If you are 50-plus in Ahmedabad',
+        paras: [
+          'Do not wait for the farewell speech. If retirement is within five to seven years, the five numbers take one sitting and cost nothing — call or WhatsApp +91 98240 25435 for a free retirement review at the Shela office or on video call. Bring your EPF statement and a rough expense list; we will do the rest on one sheet of paper.',
+          'And if you are 40, read this as a warning with a happy ending: the engineer who runs the numbers at 50 retires once. The one who guesses retires twice — the second time into his children\u2019s budget.',
+        ],
+      },
+    ],
+    related: [
+      { label: 'Retirement & pension plans', to: '/services' },
+      { label: 'LIC advisor in Satellite', to: '/areas/satellite' },
+      { label: 'Book a free consultation', to: '/contact' },
     ],
   },
 ];

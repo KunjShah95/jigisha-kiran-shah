@@ -28,8 +28,8 @@ const Hero = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-midnight leading-[1.1] mb-4 lg:mb-6 tracking-tight">
-              Safeguarding Your <br />
-              <span className="text-gradient-gold italic relative inline-block">
+              LIC Advisor in Ahmedabad, <br />
+              Safeguarding Your <span className="text-gradient-gold italic relative inline-block">
                 Wealth & Legacy
                 <svg aria-hidden="true" className="absolute w-full h-2 lg:h-3 -bottom-1 lg:-bottom-2 left-0 text-gold" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />

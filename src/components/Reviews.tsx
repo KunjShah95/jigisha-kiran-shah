@@ -198,7 +198,7 @@ const Reviews = () => {
             <Star className="w-3 h-3 fill-gold" />
           </div>
           <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
-            Real Stories, <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent italic">Real Results</span>
+            Real Stories, <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent italic">Real LIC Results in Ahmedabad</span>
           </h1>
           <p className="text-base md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
             Discover how families across Gujarat transformed their financial future through personalized insurance solutions and expert guidance.

@@ -41,7 +41,7 @@ export default function BlogIndexPage() {
     <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
       <div className="container relative z-10">
         <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
-          Stories &amp; Guides
+          LIC Stories &amp; Guides for Ahmedabad Families
         </h1>
         <p className="text-base lg:text-lg text-gray-600 mb-10 leading-relaxed font-light max-w-3xl">
           Twenty-two years of advising Ahmedabad families teaches you more than any brochure.

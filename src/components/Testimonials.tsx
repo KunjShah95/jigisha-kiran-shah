@@ -59,9 +59,9 @@ const Testimonials = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 lg:mb-12 gap-8 reveal">
           <div className="max-w-2xl">
             <div className="inline-block px-3 py-1 bg-gold/10 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 max-w-fit">Client Stories</div>
-            <h1 className="text-3xl md:text-4xl font-display font-medium text-white mb-4 lg:mb-6">
+            <h2 className="text-3xl md:text-4xl font-display font-medium text-white mb-4 lg:mb-6">
               Relationships Built on <span className="text-gold italic">Trust</span>
-            </h1>
+            </h2>
             <p className="text-base lg:text-lg text-gray-300 leading-relaxed max-w-xl font-light">
               For over two decades, we have been the silent guardians of thousands of families, ensuring their promises are kept.
             </p>

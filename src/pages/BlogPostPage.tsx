@@ -13,7 +13,7 @@ export default function BlogPostPage() {
   const post = getPost(slug);
 
   useSEO({
-    title: post ? post.title : 'Story not found',
+    title: post ? post.seoTitle : 'Story not found',
     description: post ? post.metaDescription : 'The requested story does not exist.',
     path: post ? `/blog/${post.slug}` : '/blog',
     keywords: post ? `${post.targetQuery}, LIC advisor Jigisha Kiran Shah` : undefined,
