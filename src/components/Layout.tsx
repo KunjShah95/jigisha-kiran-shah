@@ -1,8 +1,9 @@
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Header from './Header'
 import Footer from './Footer'
 import WhatsAppButton from './WhatsAppButton'
+import { initAnalytics } from '../lib/analytics'
 
 function PageFallback() {
   return (
@@ -14,6 +15,9 @@ function PageFallback() {
 }
 
 export default function Layout() {
+  useEffect(() => {
+    initAnalytics();
+  }, []);
   return (
     <div className="app">
       <a

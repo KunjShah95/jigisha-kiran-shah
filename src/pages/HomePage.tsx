@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Phone, MessageCircle, ArrowRight, Star, ShieldCheck } from 'lucide-react'
+import { Phone, MessageCircle, ArrowRight, Star, ShieldCheck, Clock, BookOpen } from 'lucide-react'
 import Hero from '../components/Hero'
 import WhyUs from '../components/WhyUs'
 import Calculator from '../components/Calculator'
@@ -8,6 +8,7 @@ import FAQ from '../components/FAQ'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSEO } from '../hooks/useSEO'
 import { faqJsonLd, localBusinessJsonLd, websiteJsonLd, personJsonLd } from '../lib/seo'
+import { POSTS } from '../data/posts'
 
 export default function HomePage() {
   useSEO({
@@ -81,6 +82,58 @@ export default function HomePage() {
         </div>
       </section>
       <Calculator />
+      {/* Stories & guides preview — internal linking: lifts pages/visit and
+          distributes homepage authority to blog posts */}
+      <section aria-label="Stories and guides" className="py-10 lg:py-14 bg-white relative overflow-hidden">
+        <div className="container reveal">
+          <div className="flex items-end justify-between gap-4 mb-6">
+            <div>
+              <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-3">
+                Stories & Guides
+              </div>
+              <h2 className="text-2xl md:text-3xl font-display font-medium text-midnight">
+                22 Years of Lessons, <span className="text-gold italic">Plainly Told</span>
+              </h2>
+            </div>
+            <Link
+              to="/blog"
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-gold-dark hover:gap-3 transition-all shrink-0"
+            >
+              <BookOpen className="w-4 h-4" aria-hidden="true" />
+              All stories
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {POSTS.map((post) => (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className="group flex flex-col p-5 bg-cream rounded-2xl border border-border hover:border-gold/40 hover:shadow-lg transition-all"
+              >
+                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-dark mb-2">
+                  {post.targetQuery}
+                </span>
+                <span className="font-bold text-midnight text-[15px] leading-snug mb-2 group-hover:text-gold-dark transition-colors">
+                  {post.title}
+                </span>
+                <span className="mt-auto inline-flex items-center gap-1.5 text-xs text-gray-500">
+                  <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                  {post.readMinutes} min read
+                </span>
+              </Link>
+            ))}
+          </div>
+          <Link
+            to="/blog"
+            className="mt-4 sm:hidden inline-flex items-center gap-2 text-sm font-bold text-gold-dark"
+          >
+            <BookOpen className="w-4 h-4" aria-hidden="true" />
+            All stories
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
       <FAQ />
 
       {/* Mobile Sticky CTA Bar */}

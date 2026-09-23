@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
-import { Phone, MessageCircle, Calendar, Clock, CheckCircle2 } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, MessageCircle, Calendar, Clock, CheckCircle2, Linkedin, Facebook, Twitter, Link2, Share2, Check } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, OG_IMAGE, PHONE_DISPLAY, REVIEW_URL } from '../lib/seo';
@@ -57,6 +58,23 @@ export default function BlogPostPage() {
   }
 
   const others = POSTS.filter((p) => p.slug !== post.slug);
+  const [copied, setCopied] = useState(false);
+  const pageUrl = post ? `${SITE_URL}/blog/${post.slug}` : SITE_URL;
+  const shareText = post ? `${post.title} — by Jigisha Kiran Shah` : '';
+  const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`;
+  const whatsAppUrl = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${pageUrl}`)}`;
+  const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
+  const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+
+  const copyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(pageUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
     <article className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
@@ -83,6 +101,27 @@ export default function BlogPostPage() {
             <span className="inline-flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-gold-dark" aria-hidden="true" /> {post.readMinutes} min read
             </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2 mt-5">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 uppercase tracking-widest mr-1">
+              <Share2 className="w-4 h-4" aria-hidden="true" /> Share
+            </span>
+            <a href={linkedInUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn" title="Share on LinkedIn" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-[#0A66C2] text-white hover:opacity-90 transition-opacity min-h-9">
+              <Linkedin className="w-4 h-4" aria-hidden="true" /> LinkedIn
+            </a>
+            <a href={whatsAppUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" title="Share on WhatsApp" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-whatsapp text-white hover:bg-whatsapp-dark transition-colors min-h-9">
+              <MessageCircle className="w-4 h-4" aria-hidden="true" /> WhatsApp
+            </a>
+            <a href={xUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on X" title="Share on X" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-midnight text-white hover:opacity-90 transition-opacity min-h-9">
+              <Twitter className="w-4 h-4" aria-hidden="true" /> Post
+            </a>
+            <a href={fbUrl} target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook" title="Share on Facebook" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-[#1877F2] text-white hover:opacity-90 transition-opacity min-h-9">
+              <Facebook className="w-4 h-4" aria-hidden="true" /> Facebook
+            </a>
+            <button type="button" onClick={copyLink} aria-label="Copy link" title="Copy link" className="inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-lg bg-white border border-border text-midnight hover:border-gold/50 transition-colors min-h-9">
+              {copied ? <Check className="w-4 h-4 text-green-600" aria-hidden="true" /> : <Link2 className="w-4 h-4" aria-hidden="true" />}
+              {copied ? 'Copied!' : 'Copy link'}
+            </button>
           </div>
         </header>
 

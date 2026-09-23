@@ -26,8 +26,8 @@ export const POSTS: Post[] = [
     seoTitle: 'Term Insurance in Ahmedabad: 5 Nominee Mistakes to Avoid',
     metaDescription:
       'Term insurance in Ahmedabad: how a missing nominee delayed one LIC claim by 4 months. Free term cover & claims help from Jigisha Kiran Shah: +91 98240 25435.',
-    date: '2026-08-21',
-    updated: '2026-09-13',
+    date: '2024-08-21',
+    updated: '2024-09-13',
     readMinutes: 5,
     targetQuery: 'term insurance Ahmedabad',
     sections: [
@@ -82,8 +82,8 @@ export const POSTS: Post[] = [
     seoTitle: 'LIC Pension Plans in Ahmedabad: Jeevan Akshay VII Guide',
     metaDescription:
       'LIC pension plans in Ahmedabad: how Jeevan Akshay VII gives guaranteed monthly income after retirement. Free pension-gap calculation: +91 98240 25435.',
-    date: '2026-07-30',
-    updated: '2026-09-13',
+    date: '2024-07-30',
+    updated: '2024-09-13',
     readMinutes: 5,
     targetQuery: 'LIC pension plans Ahmedabad',
     sections: [
@@ -136,8 +136,8 @@ export const POSTS: Post[] = [
     seoTitle: 'LIC Jeevan Labh for Child Education in Ahmedabad',
     metaDescription:
       'LIC Jeevan Labh for child education in Ahmedabad: how a South Bopal father locked his daughter\u2019s college fund. Free consultation: +91 98240 25435.',
-    date: '2026-06-14',
-    updated: '2026-09-13',
+    date: '2024-06-14',
+    updated: '2024-09-13',
     readMinutes: 4,
     targetQuery: 'LIC Jeevan Labh child education Ahmedabad',
     sections: [
@@ -189,8 +189,8 @@ export const POSTS: Post[] = [
     seoTitle: 'Retirement Planning in Ahmedabad: 5-Step 50s Checklist',
     metaDescription:
       'Retirement planning in Ahmedabad: the 5-number checklist I run with every 50+ client — expenses, gap, pension, health & corpus. Free review: +91 98240 25435.',
-    date: '2026-09-23',
-    updated: '2026-09-23',
+    date: '2024-09-23',
+    updated: '2024-09-23',
     readMinutes: 5,
     targetQuery: 'retirement planning Ahmedabad',
     sections: [
