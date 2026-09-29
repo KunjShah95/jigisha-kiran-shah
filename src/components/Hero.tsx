@@ -111,7 +111,7 @@ const Hero = () => {
                   src={heroImage} 
                   alt="Jigisha Kiran Shah - Senior LIC Wealth Advisor Ahmedabad" 
                   className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
-                  fetchPriority="high"
+                  {...{ fetchpriority: 'high' }}
                   decoding="async"
                   width={768}
                   height={960}

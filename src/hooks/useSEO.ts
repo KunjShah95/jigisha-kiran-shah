@@ -15,6 +15,52 @@ interface SEOProps {
   noindex?: boolean;
 }
 
+export interface PageHead {
+  title: string;
+  description: string;
+  ogTitle: string;
+  ogDescription: string;
+  ogImage: string;
+  canonical: string;
+  keywords?: string;
+  noindex: boolean;
+  jsonLd: Record<string, unknown>[];
+}
+
+export function buildHead({
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  ogImage = OG_IMAGE,
+  path = '/',
+  keywords,
+  breadcrumbLabel,
+  jsonLd = [],
+  noindex = false,
+}: SEOProps): PageHead {
+  // Homepage title already leads with the brand; don't append it twice.
+  const fullTitle = title.startsWith('Jigisha Kiran Shah') ? title : `${title} | Jigisha Kiran Shah`;
+  const blocks: Record<string, unknown>[] = [];
+  if (breadcrumbLabel) blocks.push(breadcrumbJsonLd(path, breadcrumbLabel));
+  blocks.push(...jsonLd);
+  return {
+    title: fullTitle,
+    description,
+    ogTitle: ogTitle || fullTitle,
+    ogDescription: ogDescription || description,
+    ogImage,
+    canonical: `${SITE_URL}${path}`,
+    keywords,
+    noindex,
+    jsonLd: blocks,
+  };
+}
+
+// Server render (scripts/prerender.mjs) reads the head of the page it just
+// rendered from here, so route meta has one source of truth: the page itself.
+export const ssrHead: { current: PageHead | null } = { current: null };
+
 function setMetaAttr(selector: string, create: () => HTMLMetaElement, content: string) {
   let el = document.querySelector(selector) as HTMLMetaElement | null;
   if (!el) {
@@ -50,54 +96,42 @@ function setLink(rel: string, href: string) {
   el.setAttribute('href', href);
 }
 
-export function useSEO({
-  title,
-  description,
-  ogTitle,
-  ogDescription,
-  ogImage = OG_IMAGE,
-  path = '/',
-  keywords,
-  breadcrumbLabel,
-  jsonLd = [],
-  noindex = false,
-}: SEOProps) {
+export function useSEO(props: SEOProps) {
+  if (typeof window === 'undefined') ssrHead.current = buildHead(props);
+
+  const { title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex } = props;
+
   useEffect(() => {
-    const fullTitle = `${title} | Jigisha Kiran Shah`;
-    document.title = fullTitle;
-    document.documentElement.lang = 'en';
+    const head = buildHead(props);
+    document.title = head.title;
 
-    const canonicalUrl = `${SITE_URL}${path}`;
-
-    setMetaName('description', description);
-    if (keywords) setMetaName('keywords', keywords);
+    setMetaName('description', head.description);
+    if (head.keywords) setMetaName('keywords', head.keywords);
     // Staging/preview deployments must never be indexed, even if a page
     // forgets noindex — the host check overrides everything.
-    const robots = !isProductionHost() || noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1';
+    const robots = !isProductionHost() || head.noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1';
     setMetaName('robots', robots);
     setMetaName('author', 'Jigisha Kiran Shah');
 
     setMetaProperty('og:type', 'website');
     setMetaProperty('og:site_name', 'Jigisha Kiran Shah - LIC Advisor');
-    setMetaProperty('og:title', ogTitle || fullTitle);
-    setMetaProperty('og:description', ogDescription || description);
-    setMetaProperty('og:url', canonicalUrl);
-    setMetaProperty('og:image', ogImage);
+    setMetaProperty('og:title', head.ogTitle);
+    setMetaProperty('og:description', head.ogDescription);
+    setMetaProperty('og:url', head.canonical);
+    setMetaProperty('og:image', head.ogImage);
     setMetaProperty('og:locale', 'en_IN');
 
     setMetaName('twitter:card', 'summary_large_image');
-    setMetaName('twitter:title', ogTitle || fullTitle);
-    setMetaName('twitter:description', ogDescription || description);
-    setMetaName('twitter:image', ogImage);
+    setMetaName('twitter:title', head.ogTitle);
+    setMetaName('twitter:description', head.ogDescription);
+    setMetaName('twitter:image', head.ogImage);
 
-    setLink('canonical', canonicalUrl);
+    setLink('canonical', head.canonical);
 
-    // Per-page JSON-LD (breadcrumb + extras). Old page scripts are removed first.
+    // Per-page JSON-LD. Blocks prerendered into the HTML carry the same
+    // data-page-jsonld marker, so they are swapped rather than duplicated.
     document.querySelectorAll('script[data-page-jsonld]').forEach((n) => n.remove());
-    const blocks: Record<string, unknown>[] = [];
-    if (breadcrumbLabel) blocks.push(breadcrumbJsonLd(path, breadcrumbLabel));
-    blocks.push(...jsonLd);
-    blocks.forEach((block) => {
+    head.jsonLd.forEach((block) => {
       const s = document.createElement('script');
       s.type = 'application/ld+json';
       s.setAttribute('data-page-jsonld', 'true');
@@ -110,5 +144,6 @@ export function useSEO({
     return () => {
       document.querySelectorAll('script[data-page-jsonld]').forEach((n) => n.remove());
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex]);
 }

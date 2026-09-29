@@ -12,15 +12,15 @@ import { POSTS } from '../data/posts'
 
 export default function HomePage() {
   useSEO({
-    title: 'Jigisha Kiran Shah | LIC Advisor in Ahmedabad, Shela',
+    title: 'Jigisha Kiran Shah | LIC Agent & Life Insurance Advisor, Ahmedabad',
     description:
-      'LIC advisor in Ahmedabad (Shela) — 22+ yrs, 2x MDRT, 5.0★ rated. Term insurance, pension plans & child education for 2,700+ families. Free consultation: +91 98240 25435.',
+      'LIC agent & life insurance advisor in Shela, Ahmedabad — 22+ yrs, 2x MDRT, 5.0★ on Google. Term, pension & child plans for 2,700+ families. Free consultation: +91 98240 25435.',
     ogTitle: 'Jigisha Kiran Shah — LIC Advisor in Ahmedabad, Shela',
     ogDescription:
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',
     path: '/',
     keywords:
-      'LIC advisor Ahmedabad, LIC agent near me, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
+      'LIC advisor Ahmedabad, LIC agent Ahmedabad, LIC agent near me, life insurance agent Ahmedabad, life insurance agency Shela, LIC agent Shela, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
     jsonLd: [websiteJsonLd(), localBusinessJsonLd(), personJsonLd(), faqJsonLd()],
   })
   useScrollReveal()
@@ -74,7 +74,7 @@ export default function HomePage() {
               <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
             </span>
             <span className="flex-1 min-w-0">
-              <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 100+ Google Reviews</span>
+              <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 70+ Google Reviews</span>
               <span className="block text-xs md:text-sm text-white/60 font-light">Real stories from 2,700+ families</span>
             </span>
             <ArrowRight className="w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />

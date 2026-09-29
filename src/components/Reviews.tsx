@@ -127,7 +127,7 @@ const Reviews = () => {
 
   const stats = [
     { value: '5.0', label: 'Google Rating', icon: Star },
-    { value: '100+', label: 'Google Reviews', icon: MessageCircle },
+    { value: '70+', label: 'Google Reviews', icon: MessageCircle },
     { value: '100%', label: 'Positive Feedback', icon: ThumbsUp },
     { value: '2.7k+', label: 'Families Served', icon: MapPin }
   ];

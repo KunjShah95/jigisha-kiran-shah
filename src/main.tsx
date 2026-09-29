@@ -15,11 +15,17 @@ if (!isProductionHost()) {
   document.head.appendChild(meta)
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const root = document.getElementById('root')!
+const app = (
   <React.StrictMode>
     <BrowserRouter>
       <App />
       {isProductionHost() ? <Analytics /> : null}
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+
+// Prerendered pages (scripts/prerender.mjs) already contain the full markup:
+// hydrate it in place instead of wiping it. Dev server serves an empty root.
+if (root.hasChildNodes()) ReactDOM.hydrateRoot(root, app)
+else ReactDOM.createRoot(root).render(app)

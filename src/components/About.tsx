@@ -29,7 +29,7 @@ const gallerySlides: GallerySlide[] = [
 const highlights = [
   '2-Time MDRT Achiever (2023 & 2024)',
   '22+ Years in LIC Insurance Advisory',
-  '100+ Five-Star Google Reviews',
+  '70+ Five-Star Google Reviews',
   'Office at Orchid Legacy, Shela, Ahmedabad',
 ];
 
@@ -303,7 +303,7 @@ const About = () => {
                   <div className="flex items-center gap-1 text-xs text-gray-500 mt-0.5">
                     <span className="text-gold text-xs">★★★★★</span>
                     <span className="font-bold text-midnight">5.0</span>
-                    <span>• 100+ reviews</span>
+                    <span>• 70+ reviews</span>
                   </div>
                 </div>
               </a>

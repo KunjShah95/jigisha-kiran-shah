@@ -28,7 +28,9 @@ export default function CountUp({
   className,
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null)
-  const [value, setValue] = useState(0)
+  // Start at the final value so prerendered HTML (what crawlers and AI bots
+  // read) shows real numbers; the animation resets to 0 only on the client.
+  const [value, setValue] = useState(end)
   const done = useRef(false)
 
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function CountUp({
       setValue(end)
       return
     }
+    if (!done.current) setValue(0)
 
     const run = () => {
       if (done.current) return

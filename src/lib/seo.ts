@@ -28,6 +28,10 @@ export const FAQS: FAQItem[] = [
     a: 'Term Life Insurance (LIC Tech Term, Jeevan Amar), Endowment Plans (Jeevan Labh, New Endowment), Money-Back Plans, Whole Life (Jeevan Umang), Annuity/Pension (Jeevan Akshay VII), Child Education Plans (Jeevan Tarun), ULIP, Health Cover (Arogya Rakshak, Cancer Cover), and Corporate/HUF/MWP insurance.',
   },
   {
+    q: 'Is Jigisha Kiran Shah an LIC agent or a life insurance agency?',
+    a: 'Jigisha Kiran Shah is a licensed LIC agent and life insurance advisor working from her own office in Shela, Ahmedabad since 2004. Clients deal with her directly — plan selection, paperwork, premium reminders and claims — not with a call centre.',
+  },
+  {
     q: 'What is MDRT and why does it matter?',
     a: 'MDRT (Million Dollar Round Table) is a global recognition for the top 1% of financial advisors worldwide. Achieving it twice (2023 & 2024) places Jigisha Kiran Shah among the elite insurance advisors globally for ethics, production, and client service.',
   },
@@ -67,6 +71,7 @@ export function localBusinessJsonLd() {
     '@type': ['LocalBusiness', 'FinancialService', 'InsuranceAgency'],
     '@id': `${SITE_URL}/#business`,
     name: 'Jigisha Kiran Shah - LIC Advisor',
+    alternateName: ['Jigisha Kiran Shah LIC Agent', 'Jigisha Kiran Shah Life Insurance Agent Ahmedabad'],
     image: OG_IMAGE,
     url: `${SITE_URL}/`,
     telephone: PHONE,
@@ -96,7 +101,7 @@ export function localBusinessJsonLd() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5.0',
-      reviewCount: '100',
+      reviewCount: '73',
       bestRating: '5',
     },
     paymentAccepted: 'Cash, UPI, Bank Transfer',
@@ -124,6 +129,7 @@ export function localBusinessJsonLd() {
     ],
     knowsAbout: [
       'Life Insurance',
+      'LIC Agent Services',
       'Term Life Insurance',
       'Retirement Planning',
       'Pension Plans',
