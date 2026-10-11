@@ -100,7 +100,7 @@ export const AREAS: Area[] = [
       },
       {
         q: 'Do you help with LIC maturity and claims in Bopal?',
-        a: 'Yes. 1000+ settled claims with documentation support — intimation, paperwork, branch coordination, and follow-up until settlement — for Bopal clients and across Ahmedabad.',
+        a: 'Yes. Jigisha has supported 1,000+ claims through to settlement — intimation, paperwork, branch coordination, and follow-up until settlement — for Bopal clients and across Ahmedabad.',
       },
     ],
   },
@@ -138,7 +138,7 @@ export const AREAS: Area[] = [
       },
       {
         q: 'Can you service LIC policies bought years ago in Vastrapur?',
-        a: 'Yes. Policy reviews, nominee updates, maturity tracking, and 1000+ settled claims of experience back every existing policyholder — not just new clients.',
+        a: 'Yes. Policy reviews, nominee updates, maturity tracking, and experience supporting 1,000+ claims through to settlement are available to every existing policyholder — not just new clients.',
       },
     ],
   },

@@ -77,7 +77,9 @@ Never offer gifts or discounts in exchange for reviews, and never write reviews 
 | `contact_email`, `directions_click` | Email / map links | `cta`, `page` |
 
 Every WhatsApp message arrives with a first line naming the goal or page, so Jigisha can log
-the source. Keep a simple sheet: date · name · source line · objective · consultation booked? · became client?
+the source. Log every enquiry in `docs/lead-sheet-template.csv` (copy it to Google Sheets). Columns track the
+full funnel — enquiry → qualified → consultation booked → attended → became client — so the
+monthly scorecard measures outcomes, not WhatsApp clicks.
 
 ## 6. Monthly scorecard
 
@@ -89,7 +91,7 @@ Set targets only after 2–3 months of baseline.
 | Impressions for target queries | Search Console |
 | GBP calls, website clicks, direction requests | Business Profile → Performance |
 | WhatsApp / call / form events | Vercel Analytics → Events |
-| Qualified enquiries, consultations, new clients | Lead sheet |
+| Enquiries → qualified → booked → attended → new clients (conversion % at each step) | `docs/lead-sheet-template.csv` |
 | AI citations | §7 |
 
 ## 7. AI visibility check (monthly)

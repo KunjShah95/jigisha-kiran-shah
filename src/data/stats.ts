@@ -31,8 +31,8 @@ export const stats: Stat[] = [
     icon: Shield,
     value: 1000,
     suffix: '+',
-    label: 'Claims Settled',
-    description: 'When it matters most'
+    label: 'Claims Supported',
+    description: 'Paperwork through to settlement'
   },
   {
     id: 'crores',
