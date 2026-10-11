@@ -5,13 +5,13 @@ import { useSpotlight } from '../hooks/useSpotlight';
 const reasons = [
   {
     icon: Award,
-    title: 'Elite Certification',
-    description: '2 Times MDRT achiever in 2023 & 2024 and top-tier LIC certified advisor since 2004.',
+    title: 'Recognised Expertise',
+    description: 'MDRT qualifier in 2023 & 2024 and a licensed LIC agent since 2004.',
   },
   {
     icon: ShieldCheck,
-    title: '100% Claims Settlement',
-    description: 'A legacy of 1000+ settled claims with white-glove documentation support.'
+    title: 'Hands-On Claim Assistance',
+    description: '1,000+ claims supported to settlement — intimation, documents and branch follow-up handled with your family. Settlement decisions rest with LIC.'
   },
   {
     icon: HeartPulse,
@@ -40,7 +40,7 @@ const WhyUs = () => {
             Your Trusted Insurance <span className="text-gold italic">Partner</span>
           </h2>
           <p className="text-base lg:text-lg text-gray-300 font-light leading-relaxed">
-            MDRT-grade expertise, proactive claim readiness, and concierge-level guidance for every milestone — protecting your future and securing your dreams.
+            Two decades of LIC experience, claim-ready paperwork, and personal guidance for every milestone — protecting your future and securing your dreams.
           </p>
         </div>
         

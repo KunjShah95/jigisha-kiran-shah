@@ -1,10 +1,30 @@
 import { Link, useParams } from 'react-router-dom';
-import { Phone, MessageCircle, ArrowRight, CheckCircle2, Star } from 'lucide-react';
+import { Phone, MessageCircle, ArrowRight, CheckCircle2, Star, ExternalLink } from 'lucide-react';
+import { pageWhatsAppText, whatsappUrl } from '../lib/contact';
+import { NextSteps } from '../components/lead-fields';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, PHONE_DISPLAY, REVIEW_URL } from '../lib/seo';
 import { services } from '../data/services';
 import { SERVICE_PAGES, getServicePage } from '../data/servicePages';
+
+const OFFICIAL_SOURCES = [
+  { label: 'LIC of India — plans & brochures', href: 'https://licindia.in/' },
+  { label: 'IRDAI — insurance regulator', href: 'https://irdai.gov.in/' },
+  { label: 'Bima Bharosa — IRDAI grievance portal', href: 'https://bimabharosa.irdai.gov.in/' },
+];
+
+/** Service slug → contact-form objective, so "Book" preselects the right goal. */
+const CONTACT_OBJECTIVE: Record<string, string> = {
+  'term-insurance': 'term',
+  retirement: 'retirement',
+  'child-education': 'child',
+  'wealth-creation': 'savings',
+  'health-insurance': 'health',
+  'money-back': 'savings',
+  'corporate-insurance': 'business',
+  'policy-review-claims': 'review',
+};
 
 export default function ServicePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -35,9 +55,17 @@ export default function ServicePage() {
             '@context': 'https://schema.org',
             '@type': 'Service',
             name: `${meta.h1} — Jigisha Kiran Shah, LIC Advisor`,
+            serviceType: meta.targetQuery,
+            description: meta.description,
             url: `${SITE_URL}/services/${meta.slug}`,
             provider: { '@id': `${SITE_URL}/#business` },
-            areaServed: 'Ahmedabad, Gujarat, IN',
+            areaServed: { '@type': 'City', name: 'Ahmedabad' },
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'INR',
+              description: 'Free initial consultation',
+            },
           },
         ]
       : [],
@@ -86,12 +114,14 @@ export default function ServicePage() {
           <div className="flex flex-wrap gap-3 mt-6">
             <a
               href="tel:+919824025435"
+              data-cta="service-call"
               className="inline-flex items-center gap-2 bg-midnight text-white font-bold py-3 px-6 rounded-xl text-sm hover:bg-midnight-light transition-colors min-h-11"
             >
               <Phone className="w-5 h-5" aria-hidden="true" /> Call {PHONE_DISPLAY}
             </a>
             <a
-              href="https://wa.me/919824025435"
+              href={whatsappUrl(pageWhatsAppText(`/services/${meta.slug}`))}
+              data-cta="service-whatsapp"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-whatsapp text-white font-bold py-3 px-6 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
@@ -113,7 +143,7 @@ export default function ServicePage() {
       <section className="py-10 lg:py-14 bg-white">
         <div className="container max-w-4xl">
           <h2 className="text-2xl font-display font-bold text-midnight mb-6">
-            {service.title} plans compared
+            {service.id === 'policy-review-claims' ? 'What the review & claim help includes' : `${service.title} plans compared`}
           </h2>
           <div className="grid md:grid-cols-2 gap-4">
             {service.products.map((p) => (
@@ -166,6 +196,35 @@ export default function ServicePage() {
               <ArrowRight className="w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
           )}
+          <div className="mt-10 grid md:grid-cols-2 gap-4">
+            <div className="bg-white rounded-2xl border border-border p-5">
+              <NextSteps />
+              <Link
+                to={`/contact?objective=${CONTACT_OBJECTIVE[meta.slug] ?? ''}`}
+                data-cta="service-book"
+                className="mt-4 inline-flex items-center gap-2 bg-midnight text-white font-bold py-3 px-5 rounded-xl text-sm hover:bg-gold transition-colors min-h-11"
+              >
+                Book a free consultation <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="bg-white rounded-2xl border border-border p-5">
+              <p className="text-[11px] font-bold uppercase tracking-wider mb-2 text-gold-dark">Check the official terms</p>
+              <p className="text-xs text-gray-600 leading-relaxed mb-3">
+                Plan features on this page are simplified summaries. Benefits, bonus rates, eligibility and
+                exclusions are set by LIC and can change — always read the current sales brochure and policy
+                document before you buy.
+              </p>
+              <ul className="space-y-2 text-sm">
+                {OFFICIAL_SOURCES.map((src) => (
+                  <li key={src.href}>
+                    <a href={src.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-midnight hover:text-gold-dark">
+                      {src.label} <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <h2 className="text-xl font-display font-bold text-midnight mt-10 mb-4">Explore other LIC plans</h2>
           <div className="flex flex-wrap gap-2">
             {others.map((o) => (

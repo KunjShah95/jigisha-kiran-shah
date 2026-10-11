@@ -4,6 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, PHONE_DISPLAY, ADDRESS, REVIEW_URL } from '../lib/seo';
 import { AREAS, getArea } from '../data/areas';
+import { whatsappUrl } from '../lib/contact';
 
 const SERVICES = [
   'Term Life Insurance (Tech Term, Jeevan Amar)',
@@ -102,7 +103,8 @@ export default function AreaPage() {
               <Phone className="w-5 h-5" aria-hidden="true" /> Call {PHONE_DISPLAY}
             </a>
             <a
-              href="https://wa.me/919824025435"
+              href={whatsappUrl(`Hi Jigisha ben, I live in ${area.name} and found you on your website. I'd like to discuss LIC insurance for my family.`)}
+              data-cta="area-whatsapp"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-whatsapp text-white font-bold py-3 px-6 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"

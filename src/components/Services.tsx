@@ -1,4 +1,4 @@
-import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check, ArrowRight } from 'lucide-react';
+import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check, ArrowRight, FileSearch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSpotlight } from '../hooks/useSpotlight';
 
@@ -15,7 +15,7 @@ const services = [
     title: 'Wealth Endowment',
     href: '/services/wealth-creation',
     description: 'A sophisticated blend of life protection and guaranteed savings for future milestones.',
-    features: ['Guaranteed Returns', 'Bonuses', 'Liquidity Options']
+    features: ['Guaranteed Sum Assured', 'Bonuses (not guaranteed)', 'Loan Facility']
   },
   {
     icon: Building2,
@@ -35,15 +35,22 @@ const services = [
     icon: GraduationCap,
     title: 'Child Education Legacy',
     href: '/services/child-education',
-    description: 'Guarantee the funding for your children\'s global education and professional aspirations.',
+    description: 'Build a dedicated fund for your children\'s education, with cover that keeps the plan going if you can\'t.',
     features: ['Milestone Funding', 'Premium Waiver', 'Target Savings']
   },
   {
     icon: Cross,
     title: 'Health & Wellness Cover',
     href: '/services/health-insurance',
-    description: 'Comprehensive medical protection ensuring world-class healthcare without financial strain.',
-    features: ['Cashless Network', 'Critical Illness', 'Family Coverage']
+    description: 'Fixed-benefit health and cancer cover from LIC that pays a defined amount, alongside your mediclaim.',
+    features: ['Fixed Hospital Benefits', 'Cancer Cover', 'Family Coverage']
+  },
+  {
+    icon: FileSearch,
+    title: 'Policy Review & Claims',
+    href: '/services/policy-review-claims',
+    description: 'Already hold LIC policies? Check your cover, fix nominees, revive lapsed policies, and get hands-on help with claims.',
+    features: ['Free Cover Review', 'Nominee & KYC Updates', 'Claim Documentation']
   }
 ]
 

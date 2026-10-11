@@ -217,6 +217,43 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       },
     ],
   },
+  {
+    slug: 'policy-review-claims',
+    title: 'LIC Policy Review & Claim Help in Ahmedabad',
+    description:
+      'Already hold LIC policies? Free policy review in Ahmedabad — check cover, update nominees, revive lapsed policies, and get hands-on LIC claim assistance from Jigisha Kiran Shah.',
+    keywords:
+      'LIC policy review Ahmedabad, LIC claim assistance Ahmedabad, LIC death claim help, LIC maturity claim, revive lapsed LIC policy, change LIC nominee, LIC agent Shela',
+    targetQuery: 'LIC policy review Ahmedabad',
+    h1: 'LIC Policy Review & Claim Assistance in Ahmedabad',
+    intro: [
+      'Most families in Ahmedabad already own two or three LIC policies — bought years ago, from different agents, for different reasons. Few know their total cover, when each policy matures, or whether the nominee is still correct. A policy review answers those questions on one sheet of paper before you spend a rupee on anything new.',
+      'When a claim is due — death, maturity or survival benefit — the outcome depends heavily on paperwork. Jigisha Kiran Shah helps families intimate the claim, assemble the right documents, and follow up with the branch. LIC makes the final decision on every claim; good preparation removes avoidable delays.',
+    ],
+    faqs: [
+      {
+        q: 'What does a free LIC policy review cover?',
+        a: 'Every policy your family holds is listed with its sum assured, premium, maturity date and nominee. Total cover is compared with your income, loans and dependants, gaps and overlaps are flagged, and lapsed policies are checked for revival. There is no obligation to buy anything.',
+      },
+      {
+        q: 'Which documents are usually needed for an LIC death claim?',
+        a: 'Typically the claim form from the nominee, the death certificate, the original policy document, the nominee’s ID and address proof, and a cancelled cheque or bank details for NEFT. Early claims or unnatural deaths can need extra papers such as medical or police records — LIC’s branch confirms the exact list.',
+      },
+      {
+        q: 'Can a lapsed LIC policy be revived?',
+        a: 'Often yes. Most LIC policies can be revived within a set period from the first unpaid premium by paying arrears with interest, sometimes with a health declaration or medical tests. The period and conditions depend on the plan, so check your policy before paying.',
+      },
+      {
+        q: 'How do I change the nominee on my LIC policy?',
+        a: 'Submit a change-of-nomination request to your servicing branch with the policy details and the new nominee’s information, and get it registered. A missing or outdated nominee is one of the most common causes of claim delays, so it is worth checking every policy.',
+      },
+      {
+        q: 'Can you help if my policy was sold by a different agent?',
+        a: 'Yes. Reviews and claim help are available for LIC policies regardless of who sold them. Bring the policy documents or just the policy numbers to the consultation.',
+      },
+    ],
+    relatedPost: { label: 'Nominee mistakes that delay claims', to: '/blog/the-policy-he-bought-after-the-funeral' },
+  },
 ];
 
 export function getServicePage(slug: string | undefined): ServicePageMeta | undefined {

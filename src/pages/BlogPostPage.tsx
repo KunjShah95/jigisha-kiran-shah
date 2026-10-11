@@ -5,6 +5,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, OG_IMAGE, PHONE_DISPLAY, REVIEW_URL } from '../lib/seo';
 import { getPost, POSTS } from '../data/posts';
+import { whatsappUrl } from '../lib/contact';
 
 const fmt = (iso: string) =>
   new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -175,7 +176,7 @@ export default function BlogPostPage() {
             <a href="tel:+919824025435" className="inline-flex items-center gap-2 bg-gold text-midnight font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-gold-light transition-colors min-h-11">
               <Phone className="w-4 h-4" aria-hidden="true" /> {PHONE_DISPLAY}
             </a>
-            <a href="https://wa.me/919824025435" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-whatsapp text-white font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11">
+            <a href={whatsappUrl(`Hi Jigisha ben, I read your article "${post.title}" and have a question.`)} data-cta="article-whatsapp" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-whatsapp text-white font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11">
               <MessageCircle className="w-4 h-4" aria-hidden="true" /> WhatsApp
             </a>
             <a href={REVIEW_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-white/10 text-white font-bold py-2.5 px-5 rounded-xl text-sm hover:bg-white/20 transition-colors min-h-11">

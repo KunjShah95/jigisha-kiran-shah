@@ -33,7 +33,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: 'What is MDRT and why does it matter?',
-    a: 'MDRT (Million Dollar Round Table) is a global recognition for the top 1% of financial advisors worldwide. Achieving it twice (2023 & 2024) places Jigisha Kiran Shah among the elite insurance advisors globally for ethics, production, and client service.',
+    a: 'MDRT (Million Dollar Round Table) is an international association of life insurance and financial professionals. Members must meet demanding annual production standards and commit to its code of ethics and client service. Jigisha Kiran Shah qualified in 2023 and 2024.',
   },
   {
     q: 'How do I choose between term insurance and endowment plans?',
@@ -49,7 +49,11 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: 'Does Jigisha Kiran Shah help with LIC claims?',
-    a: 'Yes. 1000+ settled claims with white-glove documentation support — intimation, paperwork, hospital/branch coordination, and follow-up until settlement. Existing policyholders and new clients both supported.',
+    a: 'Yes. She has supported 1,000+ claims to settlement — intimation, paperwork, hospital/branch coordination and follow-up until LIC decides the claim. Help is available for existing policyholders too, even if another agent sold the policy.',
+  },
+  {
+    q: 'Can Jigisha Kiran Shah review LIC policies I already have?',
+    a: 'Yes — a free policy review lists every policy your family holds with its cover, maturity date and nominee, compares total cover with your income and loans, and flags lapsed policies that can be revived. There is no obligation to buy.',
   },
 ];
 
@@ -150,6 +154,7 @@ export function personJsonLd() {
     '@id': `${SITE_URL}/#person`,
     name: 'Jigisha Kiran Shah',
     jobTitle: 'LIC Advisor',
+    hasOccupation: { '@type': 'Occupation', name: 'Life insurance agent', occupationLocation: { '@type': 'City', name: 'Ahmedabad' } },
     description:
       'Senior LIC advisor in Ahmedabad since 2004. 2-time MDRT achiever (2023 & 2024). 2,700+ families served, 1,000+ claims supported to settlement.',
     url: `${SITE_URL}/about`,
@@ -157,7 +162,8 @@ export function personJsonLd() {
     email: EMAIL,
     image: OG_IMAGE,
     worksFor: { '@id': `${SITE_URL}/#business` },
-    alumniOf: { '@type': 'Organization', name: 'Million Dollar Round Table (MDRT)' },
+    memberOf: { '@type': 'Organization', name: 'Million Dollar Round Table (MDRT)', url: 'https://www.mdrt.org/' },
+    affiliation: { '@type': 'Organization', name: 'Life Insurance Corporation of India', url: 'https://licindia.in/' },
     knowsAbout: [
       'Life Insurance', 'Term Insurance', 'Retirement Planning', 'Pension Plans',
       'Child Education Planning', 'Endowment Plans', 'ULIP', 'Health Insurance',

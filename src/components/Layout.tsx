@@ -1,10 +1,11 @@
 import { Suspense, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { Phone, MessageCircle } from 'lucide-react'
 import Header from './Header'
 import Footer from './Footer'
 import WhatsAppButton from './WhatsAppButton'
 import { initAnalytics } from '../lib/analytics'
+import { pageWhatsAppText, whatsappUrl } from '../lib/contact'
 
 function PageFallback() {
   return (
@@ -16,6 +17,8 @@ function PageFallback() {
 }
 
 export default function Layout() {
+  const { pathname } = useLocation();
+  const waHref = whatsappUrl(pageWhatsAppText(pathname));
   useEffect(() => {
     initAnalytics();
   }, []);
@@ -34,12 +37,13 @@ export default function Layout() {
         </Suspense>
       </main>
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton href={waHref} />
       {/* Global mobile sticky CTA — every page gets thumb-reach call/WhatsApp,
           with safe-area padding and a spacer so content is never covered */}
       <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-white/95 backdrop-blur-md border-t border-border shadow-2xl px-4 pt-3 flex gap-3" style={{ paddingBottom: 'max(0.75rem, env(safe-area-inset-bottom))' }}>
         <a
-          href="https://wa.me/919824025435"
+          href={waHref}
+          data-cta="sticky-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
@@ -49,6 +53,7 @@ export default function Layout() {
         </a>
         <a
           href="tel:+919824025435"
+          data-cta="sticky-call"
           className="flex-1 flex items-center justify-center gap-2 bg-midnight text-white font-bold py-3 rounded-xl text-sm hover:bg-midnight-light transition-colors min-h-11"
         >
           <Phone className="w-5 h-5" aria-hidden="true" />

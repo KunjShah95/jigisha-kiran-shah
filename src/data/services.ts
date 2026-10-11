@@ -1,4 +1,4 @@
-import { GraduationCap, Sunset, Shield, TrendingUp, HeartPulse, Briefcase, Building2, Users, Handshake, ShieldCheck, AlertTriangle } from 'lucide-react';
+import { GraduationCap, Sunset, Shield, TrendingUp, HeartPulse, Briefcase, Building2, FileSearch } from 'lucide-react';
 import { Service } from '../types';
 
 export const services: Service[] = [
@@ -203,7 +203,7 @@ export const services: Service[] = [
     id: 'corporate-insurance',
     title: 'Corporate Insurance',
     tagline: 'Secure Your Business & Employees',
-    description: 'Comprehensive insurance solutions for businesses — from employer-employee benefits to partnership protections and liability coverage.',
+    description: 'Comprehensive insurance solutions for businesses — from employer-employee benefits to partnership, key-person and HUF protection.',
     icon: Building2,
     products: [
       {
@@ -249,17 +249,59 @@ export const services: Service[] = [
           'Smooth succession planning'
         ],
         type: 'HUF'
+      }
+    ]
+  },
+  {
+    id: 'policy-review-claims',
+    title: 'Policy Review & Claims',
+    tagline: 'For Existing LIC Policyholders',
+    description: 'Make the policies you already own work properly — right cover, correct nominees, nothing lapsed — and get hands-on help when a claim is due.',
+    icon: FileSearch,
+    products: [
+      {
+        name: 'Existing Policy Review',
+        description: 'A plain-language audit of every LIC policy your family holds.',
+        benefits: [
+          'Total cover compared with income, loans and dependants',
+          'Maturity and survival-benefit dates mapped on one sheet',
+          'Overlaps and gaps flagged before you buy anything new',
+          'Free — no obligation to buy a new policy'
+        ],
+        type: 'Free Review'
       },
       {
-        name: 'Liability Insurance',
-        description: 'Protect your business against legal liabilities and third-party claims.',
+        name: 'Nominee, KYC & Servicing',
+        description: 'The paperwork that decides how smoothly a future claim goes.',
         benefits: [
-          'Public liability coverage',
-          'Product liability protection',
-          'Professional liability cover',
-          'Legal defense costs covered'
+          'Nominee registration and change of nomination',
+          'Address, mobile, bank (NEFT) and KYC updates',
+          'Policy loan and premium-status guidance',
+          'Duplicate policy bond support if the original is lost'
         ],
-        type: 'Liability'
+        type: 'Servicing'
+      },
+      {
+        name: 'Lapsed Policy Revival',
+        description: 'Bring a lapsed policy back into force where LIC rules allow.',
+        benefits: [
+          'Check whether the policy is still within its revival period',
+          'Arrears and interest worked out before you pay',
+          'Health declaration / medical requirements explained',
+          'Special revival campaigns flagged when LIC runs them'
+        ],
+        type: 'Revival'
+      },
+      {
+        name: 'Claim Assistance',
+        description: 'Support for families through death, maturity and survival-benefit claims.',
+        benefits: [
+          'Claim intimation to the servicing branch',
+          'Document checklist prepared for your specific case',
+          'Forms filled and checked before submission',
+          'Follow-up with the branch until LIC decides the claim'
+        ],
+        type: 'Claims'
       }
     ]
   }

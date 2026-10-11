@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import heroImage from '../assets/images/hero-image.jpeg';
 import CountUp from './CountUp';
 import HeroCoverageWidget from './HeroCoverageWidget';
+import { whatsappUrl } from '../lib/contact';
 
 const Hero = () => {
   return (
@@ -23,14 +24,13 @@ const Hero = () => {
                 <span className="text-[11px] lg:text-sm font-bold text-midnight tracking-wide uppercase">2 Times MDRT Achiever 2023 & 2024</span>
               </span>
               <span className="inline-flex items-center px-3 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-[11px] lg:text-xs font-semibold text-gold-dark tracking-wide">
-                Your Wealth, Your Legacy, Our Expertise
+                LIC Advisor · Shela, Ahmedabad · Since 2004
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-midnight leading-[1.15] mb-4 lg:mb-6 tracking-tight">
-              LIC Advisor in Ahmedabad, <br />
-              Safeguarding Your <span className="text-gradient-gold italic relative inline-block">
-                Wealth & Legacy
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-midnight leading-[1.15] mb-4 lg:mb-6 tracking-tight">
+              LIC Life Insurance Advisor in Ahmedabad for Your <span className="text-gradient-gold italic relative inline-block">
+                Family's Protection
                 <svg aria-hidden="true" className="absolute w-full h-2 lg:h-3 -bottom-1 lg:-bottom-2 left-0 text-gold" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
                 </svg>
@@ -38,19 +38,21 @@ const Hero = () => {
             </h1>
 
             <p className="text-base lg:text-xl text-gray-600 mb-6 lg:mb-8 max-w-xl leading-relaxed font-light">
-              Trusted by <strong className="text-midnight font-semibold">2,700+ families</strong> for comprehensive retirement planning and life insurance strategies. Rated <strong className="text-gold-dark font-semibold">5.0 ★ on Google</strong> — Get expert guidance for your family's future.
+              Understand how much protection your family really needs, review the policies you already hold, and plan for your child's education and your retirement — with personal guidance from Jigisha Kiran Shah, trusted by <strong className="text-midnight font-semibold">2,700+ families</strong> and rated <strong className="text-gold-dark font-semibold">5.0 ★ on Google</strong>.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 mb-8 lg:mb-12">
               <Link
-                to="/contact" 
+                to="/contact"
+                data-cta="hero-book"
                 className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-midnight text-white font-bold rounded-xl hover:bg-gold transition-all duration-300 gap-2 group btn-beam shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] text-sm w-full sm:w-auto min-h-11"
               >
                 <span>Book Free Consultation</span>
                 <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
               <a
-                href="https://wa.me/919824025435"
+                href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")}
+                data-cta="hero-whatsapp"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-whatsapp text-white font-bold rounded-xl hover:bg-whatsapp-dark transition-all duration-300 gap-2 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] text-sm w-full sm:w-auto min-h-11"
@@ -59,10 +61,10 @@ const Hero = () => {
                 <span>WhatsApp Now</span>
               </a>
               <Link
-                to="/services" 
+                to="/services/policy-review-claims"
                 className="inline-flex items-center justify-center px-5 py-2.5 lg:px-6 lg:py-3 bg-white border border-border text-midnight font-semibold rounded-xl hover:border-gold/60 hover:text-gold-dark transition-all duration-300 shadow-sm hover:shadow-md active:scale-[0.98] text-sm w-full sm:w-auto min-h-11"
               >
-                Explore Services
+                Review My Policies
               </Link>
             </div>
 

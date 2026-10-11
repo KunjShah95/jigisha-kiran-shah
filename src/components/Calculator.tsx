@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Check, ArrowRight, Calculator as CalcIcon } from 'lucide-react';
-import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass } from './lead-fields';
+import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
+import { whatsappUrl } from '../lib/contact';
+import { trackEvent } from '../lib/analytics';
 
 const Calculator = () => {
   const [formData, setFormData] = useState({
@@ -24,9 +26,15 @@ const Calculator = () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     // Short lead form — full message thread continues on WhatsApp
-    const message = `Free Consultation Request:\nName: ${formData.name}\nPhone: ${formData.phone}\nAge: ${formData.age}\nAnnual Income: ${formData.income}\nPlan Type: ${formData.planType}`
-    const whatsappUrl = `https://wa.me/919824025435?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, '_blank')
+    const message = leadMessage('Free Consultation Request (website assessment form)', [
+      ['Name', formData.name],
+      ['Phone', formData.phone],
+      ['Needs help with', optionLabel(INTEREST_OPTIONS, formData.planType)],
+      ['Age', formData.age],
+      ['Annual Income', optionLabel(INCOME_OPTIONS, formData.income)],
+    ])
+    trackEvent('consultation_form_submit', { form: 'assessment', objective: formData.planType || 'none' })
+    window.open(whatsappUrl(message), '_blank')
     setTimeout(() => setIsSubmitting(false), 1500);
   }
 
@@ -58,7 +66,7 @@ const Calculator = () => {
               Calculate Your Family's <span className="text-gold italic">Security Gap</span>
             </h2>
             <p className="text-base lg:text-lg text-gray-300 mb-8 lg:mb-10 leading-relaxed font-light">
-              Understand the true coverage your family needs to maintain their lifestyle in your absence. Fill out the form for a personalized legacy assessment.
+              A real cover number accounts for your dependants, loans, existing policies, and future goals like education or retirement — not just a multiple of income. Tell us your goal and we'll work it out with you.
             </p>
             
             <div className="space-y-4">
@@ -78,7 +86,7 @@ const Calculator = () => {
               <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-gold to-gold-light" />
               
               <h3 className="text-2xl font-display font-bold text-midnight mb-2">Request Assessment</h3>
-              <p className="text-gray-500 text-sm mb-8">Get a customized report within 24 hours.</p>
+              <p className="text-gray-500 text-sm mb-8">Free, no obligation. Start with your goal — details can wait for the call.</p>
               
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid md:grid-cols-2 gap-5">
@@ -111,6 +119,18 @@ const Calculator = () => {
                     />
                   </Field>
                 </div>
+
+                <Field id="calc-plan" label="What do you need help with?" required>
+                  <SelectField
+                    id="calc-plan"
+                    name="planType"
+                    value={formData.planType}
+                    onChange={handleChange}
+                    placeholder="Choose your main goal"
+                    options={INTEREST_OPTIONS}
+                    required
+                  />
+                </Field>
                 
                 <div className="grid md:grid-cols-2 gap-5">
                   <Field id="calc-age" label="Age">
@@ -133,22 +153,12 @@ const Calculator = () => {
                       name="income"
                       value={formData.income}
                       onChange={handleChange}
-                      placeholder="Select Range"
+                      placeholder="Prefer not to say"
                       options={INCOME_OPTIONS}
                     />
                   </Field>
                 </div>
                 
-                <Field id="calc-plan" label="Interested In">
-                  <SelectField
-                    id="calc-plan"
-                    name="planType"
-                    value={formData.planType}
-                    onChange={handleChange}
-                    placeholder="Select Interest"
-                    options={INTEREST_OPTIONS}
-                  />
-                </Field>
                 
                 <button 
                   type="submit"
@@ -165,6 +175,9 @@ const Calculator = () => {
                 <p aria-live="polite" className="text-xs text-gray-500 min-h-4">
                   {isSubmitting ? 'Opening WhatsApp — press send there to complete.' : 'Submits via WhatsApp. No spam, no sharing.'}
                 </p>
+                <div className="pt-2 border-t border-border">
+                  <NextSteps />
+                </div>
               </form>
             </div>
           </div>

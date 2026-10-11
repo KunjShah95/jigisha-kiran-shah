@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import WhyUs from '../components/WhyUs'
 import Calculator from '../components/Calculator'
 import FAQ from '../components/FAQ'
+import ObjectivePicker from '../components/ObjectivePicker'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSEO } from '../hooks/useSEO'
 import { faqJsonLd, localBusinessJsonLd, websiteJsonLd, personJsonLd } from '../lib/seo'
@@ -14,7 +15,7 @@ export default function HomePage() {
   useSEO({
     title: 'Jigisha Kiran Shah | LIC Agent & Life Insurance Advisor, Ahmedabad',
     description:
-      'LIC agent & life insurance advisor in Shela, Ahmedabad — 22+ yrs, 2x MDRT, 5.0★ on Google. Term, pension & child plans for 2,700+ families. Free consultation: +91 98240 25435.',
+      'Looking for LIC guidance in Ahmedabad? Personal help with life insurance, policy reviews, child education, retirement and claims from Jigisha Kiran Shah — 22+ yrs, 2x MDRT. Free consultation.',
     ogTitle: 'Jigisha Kiran Shah — LIC Advisor in Ahmedabad, Shela',
     ogDescription:
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',
@@ -48,6 +49,7 @@ export default function HomePage() {
         aria-hidden="true"
       />
       <Hero />
+      <ObjectivePicker />
       <WhyUs />
       {/* Compact discovery band — links home visitors to Services & Reviews
           without the weight of full sections (keeps mobile scroll short) */}

@@ -5,6 +5,7 @@ import App from './App.tsx'
 import './index.css'
 import { Analytics } from '@vercel/analytics/react'
 import { isProductionHost } from './lib/env'
+import { initGA4 } from './lib/analytics'
 
 // Staging/preview guard: never pollute production analytics, and never let
 // crawlers index a non-production URL (belt-and-braces; Vercel also noindexes previews).
@@ -14,6 +15,8 @@ if (!isProductionHost()) {
   meta.setAttribute('content', 'noindex, nofollow')
   document.head.appendChild(meta)
 }
+
+if (isProductionHost()) initGA4(import.meta.env.VITE_GA4_ID)
 
 const root = document.getElementById('root')!
 const app = (

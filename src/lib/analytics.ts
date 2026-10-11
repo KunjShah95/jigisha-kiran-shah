@@ -1,9 +1,13 @@
 import { track } from '@vercel/analytics';
 
 /**
- * Conversion + engagement events for Vercel Web Analytics.
+ * Conversion + engagement events for Vercel Web Analytics (and GA4 when
+ * VITE_GA4_ID is set — see initGA4).
  * Wired via a single delegated listener (initAnalytics) so every
- * tel:/wa.me/mailto link and every form works without per-component edits.
+ * tel:/wa.me/mailto link works without per-component edits. Links can carry
+ * data-cta="hero" etc. so the dashboard shows WHICH button converted.
+ * Forms call trackEvent('consultation_form_submit') themselves, with the
+ * visitor's objective, so leads can be split by intent.
  * Events appear in Vercel Dashboard → Analytics → Events.
  */
 export type ConversionEvent =
@@ -12,13 +16,27 @@ export type ConversionEvent =
   | 'contact_email'
   | 'directions_click'
   | 'consultation_form_submit'
-  | 'calculator_whatsapp_cta';
+  | 'objective_select'
+  | 'share_whatsapp';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
+  }
+}
 
 export function trackEvent(event: ConversionEvent, props?: Record<string, string>) {
+  const payload = { page: window.location.pathname, ...props };
   try {
-    track(event, { page: window.location.pathname, ...props });
+    track(event, payload);
   } catch {
     // Analytics blocked (adblock) — never break the UX.
+  }
+  try {
+    window.gtag?.('event', event, payload);
+  } catch {
+    // ignore
   }
 }
 
@@ -29,22 +47,34 @@ export function initAnalytics() {
   initialized = true;
 
   document.addEventListener('click', (e) => {
-    const anchor = (e.target as HTMLElement).closest?.('a[href]');
+    const anchor = (e.target as HTMLElement).closest?.('a[href]') as HTMLAnchorElement | null;
     if (!anchor) return;
     const href = anchor.getAttribute('href') || '';
-    if (href.startsWith('tel:')) trackEvent('contact_call');
-    else if (href.includes('wa.me')) {
-      // Lead form and calculator CTAs carry prefilled text — tag them precisely.
-      if (href.includes('New%20Inquiry') || href.includes('New%20Inquiry:')) {
-        trackEvent('consultation_form_submit');
-      } else {
-        trackEvent('contact_whatsapp');
-      }
-    } else if (href.startsWith('mailto:')) trackEvent('contact_email');
-    else if (href.includes('share.google')) trackEvent('directions_click');
+    const props = anchor.dataset.cta ? { cta: anchor.dataset.cta } : undefined;
+    if (href.startsWith('tel:')) trackEvent('contact_call', props);
+    else if (href.includes('wa.me/?')) trackEvent('share_whatsapp', props);
+    else if (href.includes('wa.me')) trackEvent('contact_whatsapp', props);
+    else if (href.startsWith('mailto:')) trackEvent('contact_email', props);
+    else if (href.includes('share.google')) trackEvent('directions_click', props);
   });
+}
 
-  // Belt-and-braces: any form submit counts as a lead attempt even if
-  // the wa.me redirect shape changes later.
-  document.addEventListener('submit', () => trackEvent('consultation_form_submit'));
+/**
+ * Optional GA4 (needed for Search Console ↔ conversion reporting and
+ * Google Ads later). Loads only when VITE_GA4_ID is set at build time and
+ * the page runs on the production host.
+ */
+export function initGA4(measurementId: string | undefined) {
+  if (!measurementId || typeof document === 'undefined' || window.gtag) return;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments);
+  };
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId);
 }

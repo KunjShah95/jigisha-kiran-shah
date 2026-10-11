@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Star, ExternalLink, Play, Quote, MessageCircle, MapPin, ThumbsUp } from 'lucide-react';
+import { whatsappUrl } from '../lib/contact';
 
 const Reviews = () => {
 
@@ -128,7 +129,7 @@ const Reviews = () => {
   const stats = [
     { value: '5.0', label: 'Google Rating', icon: Star },
     { value: '70+', label: 'Google Reviews', icon: MessageCircle },
-    { value: '100%', label: 'Positive Feedback', icon: ThumbsUp },
+    { value: '22+', label: 'Years in Practice', icon: ThumbsUp },
     { value: '2.7k+', label: 'Families Served', icon: MapPin }
   ];
 
@@ -588,7 +589,8 @@ const Reviews = () => {
               <ExternalLink className="w-5 h-5 opacity-60 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
             </a>
             <a
-              href="https://wa.me/919824025435"
+              href={whatsappUrl("Hi Jigisha ben, I read your client reviews and would like to book a free consultation.")}
+              data-cta="reviews-whatsapp"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-2 border-green-500/20 text-white rounded-2xl hover:from-green-500/20 hover:to-emerald-500/20 hover:border-green-500/40 transition-all duration-300 font-semibold hover:scale-105"

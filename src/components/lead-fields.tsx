@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { OBJECTIVES } from '../lib/contact';
 
 export const INCOME_OPTIONS = [
   { value: 'below-10l', label: 'Below ₹10 Lakhs' },
@@ -8,13 +9,8 @@ export const INCOME_OPTIONS = [
   { value: 'above-50l', label: 'Above ₹50 Lakhs' },
 ];
 
-export const INTEREST_OPTIONS = [
-  { value: 'term', label: 'Term Life Protection' },
-  { value: 'wealth', label: 'Wealth Creation' },
-  { value: 'child', label: 'Child Education' },
-  { value: 'retirement', label: 'Retirement Planning' },
-  { value: 'nri', label: 'NRI Services' },
-];
+// Objective-first funnel: same list powers the homepage picker and WhatsApp prefill.
+export const INTEREST_OPTIONS = OBJECTIVES.map((o) => ({ value: o.value, label: o.label }));
 
 export const inputClass =
   'w-full px-4 py-3 rounded-xl border border-border focus:border-gold focus:ring-2 focus:ring-gold/40 outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium min-h-11';
@@ -81,6 +77,41 @@ export function SelectField({
         aria-hidden="true"
         className="w-4 h-4 text-gray-400 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2"
       />
+    </div>
+  );
+}
+
+/** Map a select value back to its human label for the WhatsApp message. */
+export function optionLabel(options: Array<{ value: string; label: string }>, value: string) {
+  return options.find((o) => o.value === value)?.label ?? value;
+}
+
+/** Build a WhatsApp lead message from only the fields the visitor filled. */
+export function leadMessage(heading: string, rows: Array<[string, string]>) {
+  return [heading, ...rows.filter(([, v]) => v.trim()).map(([k, v]) => `${k}: ${v}`)].join('\n');
+}
+
+/** Sets expectations before submit — what happens after the visitor reaches out. */
+export function NextSteps({ dark = false }: { dark?: boolean }) {
+  const steps = [
+    'Your message opens in WhatsApp — press send to reach Jigisha directly.',
+    'You get a reply on WhatsApp or a call back, Mon–Sat, 9 AM–6 PM.',
+    'First consultation is free — by phone, on WhatsApp, or in person at the Shela office.',
+  ];
+  return (
+    <div className={dark ? 'text-gray-300' : 'text-gray-600'}>
+      <p className={`text-[11px] font-bold uppercase tracking-wider mb-2 ${dark ? 'text-gold' : 'text-gold-dark'}`}>
+        What happens next
+      </p>
+      <ol className="space-y-1.5 text-xs leading-relaxed list-decimal pl-4">
+        {steps.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
+      </ol>
+      <p className="mt-3 text-[11px] leading-relaxed text-gray-500">
+        Please don’t share policy numbers, bank or medical details here — anything needed is collected
+        during the consultation.
+      </p>
     </div>
   );
 }

@@ -1,6 +1,11 @@
-import { useState } from 'react'
-import { Phone, MessageCircle, Mail, MapPin, Send } from 'lucide-react';
-import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass } from './lead-fields';
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { Phone, MessageCircle, Mail, MapPin, Send, ChevronDown } from 'lucide-react';
+import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
+import { whatsappUrl } from '../lib/contact';
+import { trackEvent } from '../lib/analytics';
+
+const SUBJECT_OPTIONS = [...INTEREST_OPTIONS, { value: 'other', label: 'Something else' }];
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +19,16 @@ const Contact = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [searchParams] = useSearchParams();
+
+  // Objective picker links here as /contact?objective=review — preselect it.
+  // Applied after hydration so the prerendered markup still matches.
+  useEffect(() => {
+    const objective = searchParams.get('objective');
+    if (objective && SUBJECT_OPTIONS.some((o) => o.value === objective)) {
+      setFormData((f) => ({ ...f, subject: objective }));
+    }
+  }, [searchParams]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -26,9 +41,17 @@ const Contact = () => {
     e.preventDefault()
     if (isSubmitting) return;
     setIsSubmitting(true);
-    const message = `New Inquiry:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nAge: ${formData.age}\nIncome: ${formData.income}\nSubject: ${formData.subject}\nMessage: ${formData.message}`
-    const whatsappUrl = `https://wa.me/919824025435?text=${encodeURIComponent(message)}`
-    window.open(whatsappUrl, '_blank')
+    const message = leadMessage('New Inquiry (website contact form)', [
+      ['Name', formData.name],
+      ['Phone', formData.phone],
+      ['Needs help with', optionLabel(SUBJECT_OPTIONS, formData.subject)],
+      ['Email', formData.email],
+      ['Age', formData.age],
+      ['Income', optionLabel(INCOME_OPTIONS, formData.income)],
+      ['Message', formData.message],
+    ])
+    trackEvent('consultation_form_submit', { form: 'contact', objective: formData.subject || 'none' })
+    window.open(whatsappUrl(message), '_blank')
     setSent(true);
     setTimeout(() => setIsSubmitting(false), 1500);
   }
@@ -45,7 +68,7 @@ const Contact = () => {
       icon: MessageCircle,
       title: 'WhatsApp',
       value: '+91 98240 25435',
-      link: 'https://wa.me/919824025435',
+      link: whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation."),
       cta: 'Chat Now'
     },
     {
@@ -96,7 +119,7 @@ const Contact = () => {
                   <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center text-gold-dark mb-4 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
                     <method.icon size={18} aria-hidden="true" />
                   </div>
-                  <h4 className="font-bold text-midnight mb-1 group-hover:text-gold-dark transition-colors">{method.title}</h4>
+                  <h2 className="text-base font-bold text-midnight mb-1 group-hover:text-gold-dark transition-colors">{method.title}</h2>
                   <p className="text-sm text-gray-500 mb-4 leading-relaxed break-words">{method.value}</p>
                   <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
                     {method.cta} <span aria-hidden="true" className="text-lg leading-none">→</span>
@@ -110,9 +133,10 @@ const Contact = () => {
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-6 lg:p-8 border border-white/50 relative overflow-hidden backdrop-blur-sm">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
                
-              <h3 className="text-2xl font-display font-bold text-midnight mb-8">Send a Message</h3>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <h2 className="text-2xl font-display font-bold text-midnight mb-2">Book a Free Consultation</h2>
+              <p className="text-sm text-gray-500 mb-6">Three quick fields. Everything else is optional.</p>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-5">
                   <Field id="contact-name" label="Your Name" required>
                     <input
                       type="text"
@@ -126,21 +150,6 @@ const Contact = () => {
                       required
                     />
                   </Field>
-                  <Field id="contact-email" label="Email Address">
-                    <input
-                      type="email"
-                      id="contact-email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
-                      autoComplete="email"
-                      className={inputClass}
-                    />
-                  </Field>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-6">
                   <Field id="contact-phone" label="Phone Number" required>
                     <input
                       type="tel"
@@ -150,64 +159,85 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
                       autoComplete="tel"
+                      inputMode="tel"
                       pattern="[0-9+\-() ]{10,18}"
                       title="Enter a valid phone number"
                       className={inputClass}
                       required
                     />
                   </Field>
-                  <Field id="contact-age" label="Age">
-                    <input
-                      type="number"
-                      id="contact-age"
-                      name="age"
-                      value={formData.age}
-                      onChange={handleChange}
-                      placeholder="e.g., 35"
-                      className={inputClass}
-                      min="18"
-                      max="75"
-                    />
-                  </Field>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Field id="contact-income" label="Annual Income">
-                    <SelectField
-                      id="contact-income"
-                      name="income"
-                      value={formData.income}
-                      onChange={handleChange}
-                      placeholder="Select Range"
-                      options={INCOME_OPTIONS}
-                    />
-                  </Field>
-                  <Field id="contact-subject" label="Interest" required>
-                    <SelectField
-                      id="contact-subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      placeholder="Select Interest"
-                      options={[...INTEREST_OPTIONS, { value: 'other', label: 'Other Inquiry' }]}
-                      required
-                    />
-                  </Field>
-                </div>
-                
-                <Field id="contact-message" label="Your Message" required>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    value={formData.message}
+                <Field id="contact-subject" label="What do you need help with?" required>
+                  <SelectField
+                    id="contact-subject"
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
-                    placeholder="Tell me about your insurance requirements..."
-                    rows={4}
-                    className={`${inputClass} resize-y`}
+                    placeholder="Choose your main goal"
+                    options={SUBJECT_OPTIONS}
                     required
-                  ></textarea>
+                  />
                 </Field>
-                
+
+                <details className="group rounded-xl border border-border bg-gray-50/60 open:bg-white">
+                  <summary className="flex items-center justify-between gap-2 cursor-pointer list-none px-4 py-3 text-sm font-semibold text-midnight min-h-11">
+                    Add more details (optional)
+                    <ChevronDown className="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform" aria-hidden="true" />
+                  </summary>
+                  <div className="px-4 pb-4 space-y-5">
+                    <div className="grid md:grid-cols-2 gap-5">
+                      <Field id="contact-email" label="Email Address">
+                        <input
+                          type="email"
+                          id="contact-email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="your@email.com"
+                          autoComplete="email"
+                          className={inputClass}
+                        />
+                      </Field>
+                      <Field id="contact-age" label="Age">
+                        <input
+                          type="number"
+                          inputMode="numeric"
+                          id="contact-age"
+                          name="age"
+                          value={formData.age}
+                          onChange={handleChange}
+                          placeholder="e.g., 35"
+                          className={inputClass}
+                          min="18"
+                          max="85"
+                        />
+                      </Field>
+                    </div>
+                    <Field id="contact-income" label="Annual Income">
+                      <SelectField
+                        id="contact-income"
+                        name="income"
+                        value={formData.income}
+                        onChange={handleChange}
+                        placeholder="Prefer not to say"
+                        options={INCOME_OPTIONS}
+                      />
+                    </Field>
+                    <Field id="contact-message" label="Anything else?">
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="e.g. I have 3 old LIC policies and want to know if my cover is enough"
+                        rows={3}
+                        className={`${inputClass} resize-y`}
+                      ></textarea>
+                    </Field>
+                  </div>
+                </details>
+
                 <button 
                   type="submit"
                   disabled={isSubmitting}
@@ -215,7 +245,7 @@ const Contact = () => {
                   className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:bg-gold hover:text-white active:scale-[0.98] disabled:opacity-70 disabled:pointer-events-none transition-all duration-300 flex items-center justify-center gap-2 group overflow-hidden relative min-h-11"
                 >
                     <span className="relative z-10 flex items-center gap-2">
-                        {sent ? 'Opening WhatsApp…' : 'Send Message'}
+                        {sent ? 'Opening WhatsApp…' : 'Send via WhatsApp'}
                          <Send size={18} className="group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </span>
                    <div aria-hidden="true" className="absolute inset-0 bg-gold/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
@@ -225,6 +255,9 @@ const Contact = () => {
                     WhatsApp should have opened — just press send there. You can also call directly on +91 98240 25435.
                   </p>
                 )}
+                <div className="pt-2 border-t border-border">
+                  <NextSteps />
+                </div>
               </form>
             </div>
           </div>
