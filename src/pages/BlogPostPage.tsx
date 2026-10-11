@@ -148,6 +148,21 @@ export default function BlogPostPage() {
                 <cite className="text-xs font-bold text-gray-500 not-italic">— {sec.quote.by}</cite>
               </blockquote>
             )}
+            {sec.numbers && (
+              <div className="bg-white border border-border rounded-2xl my-7 overflow-hidden">
+                <h3 className="font-bold text-midnight px-6 pt-5 pb-3 uppercase text-xs tracking-[0.18em]">
+                  The numbers
+                </h3>
+                <dl className="divide-y divide-border">
+                  {sec.numbers.map((n) => (
+                    <div key={n.label} className="flex items-baseline justify-between gap-4 px-6 py-3">
+                      <dt className="text-sm text-gray-600">{n.label}</dt>
+                      <dd className="text-sm font-bold text-midnight tabular-nums text-right shrink-0 max-w-[45%]">{n.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
             {sec.takeaway && (
               <div className="bg-white border border-gold/25 rounded-2xl p-6 my-7">
                 <h3 className="font-bold text-midnight mb-3 uppercase text-xs tracking-[0.18em]">
@@ -165,6 +180,13 @@ export default function BlogPostPage() {
             )}
           </section>
         ))}
+
+        <p className="text-xs text-gray-500 leading-relaxed border-t border-border pt-5 mb-10">
+          Names and identifying details have been changed. Figures are rounded and reflect the rates,
+          premiums and limits that applied at the time; LIC bonuses are not guaranteed and annuity rates
+          change. This is general information, not a recommendation for your situation. Get a current
+          quote and read the policy brochure before buying.
+        </p>
 
         <div className="rounded-2xl bg-midnight text-white p-7 md:p-8 my-10">
           <h2 className="text-xl font-display font-bold mb-2">Talk to an advisor, free of charge</h2>
