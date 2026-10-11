@@ -216,6 +216,76 @@ export const GUIDES: Guide[] = [
     ],
   },
   {
+    slug: 'jeevan-utsav-vs-jeevan-umang',
+    title: 'LIC Jeevan Utsav vs Jeevan Umang: which lifelong income plan fits you?',
+    seoTitle: 'LIC Jeevan Utsav vs Jeevan Umang: Which to Choose',
+    metaDescription:
+      'LIC Jeevan Utsav explained: 10% of basic sum assured every year for life, fully guaranteed. How it differs from Jeevan Umang, and who should pick which. Free advice in Ahmedabad.',
+    date: '2026-10-11',
+    updated: '2026-10-11',
+    readMinutes: 6,
+    targetQuery: 'LIC Jeevan Utsav',
+    kind: 'comparison',
+    intro: [
+      'Since LIC launched Jeevan Utsav, one question keeps coming up in my Shela office: is it the same as Jeevan Umang? Both are whole-life plans that pay you a yearly income for the rest of your life. The difference is in what is guaranteed, how the income is calculated, and how long you pay.',
+      'This guide explains Jeevan Utsav in plain language, puts it next to Jeevan Umang, and gives the rule I use to choose between them. Plan terms change over time, so check the current LIC sales brochure, or ask me for it, before you decide.',
+    ],
+    sections: [
+      {
+        heading: 'What LIC Jeevan Utsav is',
+        paras: [
+          'Jeevan Utsav (Plan 871) is a non-linked, non-participating whole-life savings plan. "Non-participating" means it does not share in LIC’s profits through bonuses. Instead, the benefits are fixed in the contract on day one.',
+          'You pay premiums for a limited term, roughly 5 to 16 years depending on your entry age. While you pay, guaranteed additions build up on the policy. After a short waiting period once premiums finish, LIC pays an income of 10% of the basic sum assured every year for as long as you live. Life cover continues for life as well, so on death your nominee receives the death benefit.',
+          'You choose how to take the income. Regular Income pays it out every year. Flexi Income leaves it with LIC to earn interest, and lets you withdraw part of it when you need it. Both options are set out in the brochure.',
+        ],
+      },
+      {
+        heading: 'How it differs from Jeevan Umang',
+        paras: [
+          'Jeevan Umang is a participating plan. It pays 8% of the basic sum assured every year after the premium-paying term, and on maturity or death adds bonuses that depend on LIC’s declared rates. Those bonuses can make the final value larger, but they are not guaranteed.',
+          'Jeevan Utsav pays a higher fixed yearly income (10% versus 8% of the basic sum assured) and the core benefits are guaranteed, but there are no bonuses on top. In short, Utsav gives you certainty, while Umang gives you a lower guaranteed income with a chance of extra bonus value.',
+          'Premium terms also differ. Utsav suits people who want to finish paying within a shorter window, while Umang offers longer premium-paying terms that suit a salaried budget over 15 to 30 years.',
+        ],
+      },
+      {
+        heading: 'The rule I use with clients',
+        paras: [
+          'Choose Jeevan Utsav if a known, fixed yearly income matters more to you than possible upside. This suits a parent planning predictable support for a child, a business owner who wants a guaranteed income stream outside the business, or someone in their 40s or 50s building a pension top-up.',
+          'Choose Jeevan Umang if you are younger, can pay premiums for longer, and are comfortable with part of the final value depending on bonuses. Neither plan replaces term insurance. Size your term cover first, then add a lifelong income plan for a defined goal.',
+          'For a side-by-side illustration of both plans at your age and budget, call or WhatsApp +91 98240 25435. The illustration is generated from LIC’s own figures, so the numbers you see are the numbers in the policy.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is LIC Jeevan Utsav?',
+        a: 'Jeevan Utsav (Plan 871) is a non-linked, non-participating whole-life savings plan from LIC. You pay premiums for a limited term, guaranteed additions accrue, and then LIC pays 10% of the basic sum assured every year for life, with life cover throughout.',
+      },
+      {
+        q: 'Is Jeevan Utsav better than Jeevan Umang?',
+        a: 'Neither is better for everyone. Jeevan Utsav pays a higher fixed income (10% of basic sum assured) that is guaranteed, with no bonuses. Jeevan Umang pays 8% a year plus bonuses that depend on LIC’s declared rates. Pick Utsav for certainty and Umang for possible extra value.',
+      },
+      {
+        q: 'Is the Jeevan Utsav income guaranteed?',
+        a: 'Yes. Because Jeevan Utsav is non-participating, the yearly income and guaranteed additions are fixed in the policy contract and do not depend on bonus declarations. Confirm the exact terms in the current LIC brochure for your entry age and premium term.',
+      },
+      {
+        q: 'What is the difference between Regular Income and Flexi Income in Jeevan Utsav?',
+        a: 'Regular Income pays the 10% income to you every year. Flexi Income leaves it with LIC to earn interest, and lets you withdraw part of the accumulated amount when needed. The interest rate and withdrawal rules are stated in the policy brochure.',
+      },
+      {
+        q: 'Does Jeevan Utsav replace term insurance?',
+        a: 'No. Its life cover is modest compared with a term plan for the same premium. Families with loans or young dependants should size term cover first, then use Jeevan Utsav for a defined income goal.',
+      },
+    ],
+    related: [
+      { label: 'Jeevan Akshay VII vs Jeevan Umang', to: '/guides/jeevan-akshay-vs-jeevan-umang' },
+      { label: 'Retirement & pension plans in Ahmedabad', to: '/services/retirement' },
+      { label: 'Term insurance vs endowment', to: '/guides/term-vs-endowment' },
+      { label: 'Book a free consultation', to: '/contact' },
+    ],
+  },
+  {
     slug: 'lic-plans-salaried-employees',
     title: 'LIC plans for salaried employees in Ahmedabad: the salary-first portfolio',
     seoTitle: 'LIC Plans for Salaried Employees in Ahmedabad | 80C + Cover',

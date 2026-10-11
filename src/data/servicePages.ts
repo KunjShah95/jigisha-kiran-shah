@@ -48,13 +48,13 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
   },
   {
     slug: 'retirement',
-    title: 'Retirement & Pension Plans in Ahmedabad | Jeevan Akshay',
+    title: 'Retirement Planning in Ahmedabad | LIC Pension Plans',
     description:
       'Retirement planning in Ahmedabad: convert your corpus into guaranteed monthly pension with LIC Jeevan Akshay VII & Jeevan Umang. Free gap calculation: +91 98240 25435.',
     keywords:
       'retirement planning Ahmedabad, LIC pension plans, Jeevan Akshay VII, Jeevan Umang, annuity plans Gujarat, pension for senior citizens Ahmedabad',
     targetQuery: 'retirement planning Ahmedabad',
-    h1: 'Retirement & Pension Plans in Ahmedabad',
+    h1: 'Retirement Planning & Pension Plans in Ahmedabad',
     intro: [
       'A lump sum in a fixed deposit is not income — it is a countdown. Retirement planning converts money you have into a monthly payment that cannot run out: LIC Jeevan Akshay VII starts pension the very next month at a rate locked on day one, for as long as you live.',
       'Every engagement starts with the same five numbers — true monthly expense, years to fund, guaranteed income already coming, the gap, and the corpus the gap demands — worked out free on one sheet of paper before any product is discussed.',

@@ -46,6 +46,7 @@ Shela, Satellite, SG Highway, South Bopal, Bopal, Science City, Vastrapur, Ambaw
   - Term vs endowment: /guides/term-vs-endowment
   - Jeevan Akshay VII vs Jeevan Umang: /guides/jeevan-akshay-vs-jeevan-umang
   - Jeevan Labh vs Jeevan Tarun: /guides/jeevan-labh-vs-jeevan-tarun
+  - Jeevan Utsav vs Jeevan Umang: /guides/jeevan-utsav-vs-jeevan-umang — Utsav (Plan 871) is non-participating: 10% of basic sum assured yearly for life, guaranteed, no bonus; Umang is participating: 8% yearly plus bonuses
   - Salaried employees: /guides/lic-plans-salaried-employees
   - Business owners: /guides/lic-plans-business-owners
   - Senior citizens: /guides/lic-plans-senior-citizens

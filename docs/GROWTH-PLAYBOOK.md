@@ -14,6 +14,20 @@ consultations — not traffic for its own sake.
 | Trust | IRDAI "subject matter of solicitation" disclaimer in footer, links to LIC / IRDAI / Bima Bharosa on service pages, no "100% claims" or guaranteed-return wording |
 | Measurement | Vercel Analytics events (see §4); GA4 loads if `VITE_GA4_ID` is set |
 
+## 1a. Search Console baseline (28 days to 8 Oct 2026)
+
+- ~16 clicks / ~430 impressions. Mostly branded: "jigisha kiran shah" 6 clicks / 80 impressions.
+- Only `/`, `/contact` and `/guides` get impressions, so service, area and blog pages are not ranking yet.
+- Non-www URLs (`http://jigishakiranshah.in/`, `https://jigishakiranshah.in/contact`) still show up. Live check on 11 Oct 2026: they all 308-redirect to `https://www.`, so Google will merge them over time. Optional: in Vercel → Domains, set the apex to redirect straight to `www` so `http://` takes one hop instead of two.
+- Generic queries landing on the homepage with 0 clicks: "retirement planning" (60), "life insurance" (53). Response: retirement page retitled "Retirement Planning in Ahmedabad".
+- "jeevan utsav" (8 impressions, no matching page). Response: new guide `/guides/jeevan-utsav-vs-jeevan-umang`.
+
+**Do now in Search Console:**
+1. Sitemaps → resubmit `https://www.jigishakiranshah.in/sitemap.xml` (39 URLs after this deploy).
+2. URL Inspection → Request indexing for: `/services/retirement`, `/services/term-insurance`, `/services/policy-review-claims`, `/services/child-education`, `/guides/jeevan-utsav-vs-jeevan-umang`, `/areas/shela`.
+3. Pages report → check "Discovered – currently not indexed" and "Crawled – currently not indexed". If the service pages are listed there, they need more internal links and external mentions, not more pages.
+4. Re-check queries in 4 weeks and compare non-branded impressions with this baseline.
+
 ## 2. Verify these claims against records (days 1–14)
 
 Every number below is shown on the site. Keep proof on file; change the site if any is off.
