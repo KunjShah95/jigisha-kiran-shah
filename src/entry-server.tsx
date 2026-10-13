@@ -27,6 +27,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/', priority: 1.0 },
   { path: '/services', priority: 0.9 },
   { path: '/contact', priority: 0.9 },
+  { path: '/book', priority: 0.9 },
+  { path: '/protection-check', priority: 0.9 },
   { path: '/about', priority: 0.8 },
   { path: '/reviews', priority: 0.7 },
   { path: '/areas', priority: 0.8 },

@@ -6,6 +6,7 @@ import Footer from './Footer'
 import WhatsAppButton from './WhatsAppButton'
 import { initAnalytics } from '../lib/analytics'
 import { pageWhatsAppText, whatsappUrl } from '../lib/contact'
+import { captureSource } from '../lib/leads'
 
 function PageFallback() {
   return (
@@ -21,6 +22,7 @@ export default function Layout() {
   const waHref = whatsappUrl(pageWhatsAppText(pathname));
   useEffect(() => {
     initAnalytics();
+    captureSource();
   }, []);
   return (
     <div className="app">

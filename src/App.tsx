@@ -16,6 +16,8 @@ const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage'))
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'))
 const GuidesIndexPage = lazy(() => import('./pages/GuidesIndexPage'))
 const GuidePage = lazy(() => import('./pages/GuidePage'))
+const BookPage = lazy(() => import('./pages/BookPage'))
+const ProtectionCheckPage = lazy(() => import('./pages/ProtectionCheckPage'))
 
 function NotFound() {
   useSEO({
@@ -49,6 +51,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/book" element={<BookPage />} />
+        <Route path="/protection-check" element={<ProtectionCheckPage />} />
         <Route path="/areas" element={<AreasIndexPage />} />
         <Route path="/areas/:slug" element={<AreaPage />} />
         <Route path="/blog" element={<BlogIndexPage />} />

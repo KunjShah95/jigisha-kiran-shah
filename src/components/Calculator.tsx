@@ -1,12 +1,15 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Check, ArrowRight, Calculator as CalcIcon } from 'lucide-react';
 import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
+import { submitLead, honeypotProps } from '../lib/leads';
 import { trackEvent } from '../lib/analytics';
 
 const Calculator = () => {
   const [formData, setFormData] = useState({
     name: '',
+    website: '',
     phone: '',
     age: '',
     income: '',
@@ -34,6 +37,14 @@ const Calculator = () => {
       ['Annual Income', optionLabel(INCOME_OPTIONS, formData.income)],
     ])
     trackEvent('consultation_form_submit', { form: 'assessment', objective: formData.planType || 'none' })
+    submitLead({
+      kind: 'assessment',
+      name: formData.name,
+      phone: formData.phone,
+      objective: formData.planType,
+      details: { Age: formData.age, Income: optionLabel(INCOME_OPTIONS, formData.income) },
+      website: formData.website,
+    }).then((ok) => ok && trackEvent('lead_saved', { form: 'assessment' }))
     window.open(whatsappUrl(message), '_blank')
     setTimeout(() => setIsSubmitting(false), 1500);
   }
@@ -69,6 +80,15 @@ const Calculator = () => {
               A real cover number accounts for your dependants, loans, existing policies, and future goals like education or retirement — not just a multiple of income. Tell us your goal and we'll work it out with you.
             </p>
             
+            <Link
+              to="/protection-check"
+              data-cta="assessment-protection-check"
+              className="inline-flex items-center gap-2 mb-8 lg:mb-10 px-5 py-3 rounded-xl border border-gold/40 text-gold font-bold text-sm hover:bg-gold hover:text-midnight transition-colors min-h-11"
+            >
+              Want a number first? Run the free Protection Check
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+
             <div className="space-y-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center gap-3 group">
@@ -88,7 +108,8 @@ const Calculator = () => {
               <h3 className="text-2xl font-display font-bold text-midnight mb-2">Request Assessment</h3>
               <p className="text-gray-500 text-sm mb-8">Free, no obligation. Start with your goal — details can wait for the call.</p>
               
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 relative">
+                <input {...honeypotProps} value={formData.website} onChange={handleChange} />
                 <div className="grid md:grid-cols-2 gap-5">
                   <Field id="calc-name" label="Full Name" required>
                     <input
@@ -112,7 +133,7 @@ const Calculator = () => {
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
                       autoComplete="tel"
-                      pattern="[0-9+\-() ]{10,18}"
+                      pattern="[0-9+\(\)\- ]{10,18}"
                       title="Enter a valid phone number"
                       className={inputClass}
                       required
@@ -173,7 +194,7 @@ const Calculator = () => {
                     <div aria-hidden="true" className="absolute inset-0 bg-gold/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
                 </button>
                 <p aria-live="polite" className="text-xs text-gray-500 min-h-4">
-                  {isSubmitting ? 'Opening WhatsApp — press send there to complete.' : 'Submits via WhatsApp. No spam, no sharing.'}
+                  {isSubmitting ? 'Opening WhatsApp — press send there to complete.' : 'Saved for a call back, then opens WhatsApp. No spam, no sharing.'}
                 </p>
                 <div className="pt-2 border-t border-border">
                   <NextSteps />

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { Phone, MessageCircle, Mail, MapPin, Send, ChevronDown } from 'lucide-react';
 import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
+import { submitLead, honeypotProps } from '../lib/leads';
 import { trackEvent } from '../lib/analytics';
 
 const SUBJECT_OPTIONS = [...INTEREST_OPTIONS, { value: 'other', label: 'Something else' }];
@@ -10,6 +11,7 @@ const SUBJECT_OPTIONS = [...INTEREST_OPTIONS, { value: 'other', label: 'Somethin
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
+    website: '',
     email: '',
     phone: '',
     age: '',
@@ -51,6 +53,14 @@ const Contact = () => {
       ['Message', formData.message],
     ])
     trackEvent('consultation_form_submit', { form: 'contact', objective: formData.subject || 'none' })
+    submitLead({
+      kind: 'contact',
+      name: formData.name,
+      phone: formData.phone,
+      objective: formData.subject,
+      details: { Email: formData.email, Age: formData.age, Income: optionLabel(INCOME_OPTIONS, formData.income), Message: formData.message },
+      website: formData.website,
+    }).then((ok) => ok && trackEvent('lead_saved', { form: 'contact' }))
     window.open(whatsappUrl(message), '_blank')
     setSent(true);
     setTimeout(() => setIsSubmitting(false), 1500);
@@ -134,8 +144,14 @@ const Contact = () => {
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
                
               <h2 className="text-2xl font-display font-bold text-midnight mb-2">Book a Free Consultation</h2>
-              <p className="text-sm text-gray-500 mb-6">Three quick fields. Everything else is optional.</p>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <p className="text-sm text-gray-500 mb-6">
+                Three quick fields. Everything else is optional.{' '}
+                <Link to="/book" data-cta="contact-book" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-gold">
+                  Prefer to pick a time? Book a call
+                </Link>
+              </p>
+              <form onSubmit={handleSubmit} className="space-y-5 relative">
+                <input {...honeypotProps} value={formData.website} onChange={handleChange} />
                 <div className="grid md:grid-cols-2 gap-5">
                   <Field id="contact-name" label="Your Name" required>
                     <input
@@ -160,7 +176,7 @@ const Contact = () => {
                       placeholder="+91 98765 43210"
                       autoComplete="tel"
                       inputMode="tel"
-                      pattern="[0-9+\-() ]{10,18}"
+                      pattern="[0-9+\(\)\- ]{10,18}"
                       title="Enter a valid phone number"
                       className={inputClass}
                       required
@@ -252,7 +268,7 @@ const Contact = () => {
                 </button>
                 {sent && (
                   <p role="status" className="text-sm text-gold-dark font-semibold">
-                    WhatsApp should have opened — just press send there. You can also call directly on +91 98240 25435.
+                    Got it — your details are saved and Jigisha will call back. For a faster reply, press send in WhatsApp, or call +91 98240 25435.
                   </p>
                 )}
                 <div className="pt-2 border-t border-border">

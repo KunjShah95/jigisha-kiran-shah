@@ -75,11 +75,35 @@ Never offer gifts or discounts in exchange for reviews, and never write reviews 
 | `objective_select` | Homepage goal card opened | `objective` |
 | `share_whatsapp` | Article shared on WhatsApp (not a lead) | `page` |
 | `contact_email`, `directions_click` | Email / map links | `cta`, `page` |
+| `lead_saved` | Form saved by `/api/lead` (real lead, even if WhatsApp send is skipped) | `form` (contact / assessment / booking / check) |
+| `booking_cta_click` | Any link to `/book` | `cta` |
+| `booking_started` | Cal.com calendar loaded, or first field touched on the request form | `via` (cal / request), `objective` |
+| `booking_completed` | Cal.com confirms a booking (only when `VITE_CAL_LINK` is set) | `via`, `objective` |
+| `booking_request_submit` | Booking request form sent (no Cal.com) | `objective`, `mode` |
+| `protection_check_started` / `_completed` | Goal picked / report reached on `/protection-check` | `goal`, `lang` |
+| `protection_check_handoff` | Report → book, WhatsApp or call back | `goal`, `via` |
+
+**Funnel to read monthly:** visitors → `booking_cta_click` → `booking_started` → `booking_completed` or `booking_request_submit` → attended (lead sheet).
+Check funnel separately: `protection_check_started` → `_completed` → `_handoff`. `consultation_form_submit` counts clicks; `lead_saved` counts stored leads. Trust the second.
 
 Every WhatsApp message arrives with a first line naming the goal or page, so Jigisha can log
 the source. Log every enquiry in `docs/lead-sheet-template.csv` (copy it to Google Sheets). Columns track the
 full funnel — enquiry → qualified → consultation booked → attended → became client — so the
 monthly scorecard measures outcomes, not WhatsApp clicks.
+
+## 5a. Lead capture and booking setup (needs owner logins)
+
+The forms (contact, homepage assessment, `/book`, Protection Check call-back) POST to `/api/lead` first, then open WhatsApp.
+Until a destination is configured, leads go only to the Vercel function log (Vercel → Logs, search `LEAD`). Logs expire, so do step 1 first.
+
+1. **Google Sheet (recommended):** follow `docs/lead-capture-apps-script.gs`, then set `LEAD_WEBHOOK_URL` in Vercel (Production).
+2. **Email alert (optional):** Resend account → API key → `RESEND_API_KEY`, `LEAD_EMAIL_TO=jkshahlic@gmail.com`, and `LEAD_EMAIL_FROM` once a domain is verified (until then the default sender can only email the Resend account owner).
+3. **Live booking slots (set up 13 Oct 2026):** Cal.com account `jigisha-kiran-shah-emz0xs`, event "Free LIC Consultation" (`/free-consultation`, 20 min, phone / Shela office / Cal Video, 2 h notice, 10 min buffer), hours Mon–Sat 9–6 IST. `/book` embeds it by default and fires `booking_completed`. Cal.com emails Jigisha each booking. Connect her Google Calendar in Cal.com → Settings → Calendars so personal events block slots. `VITE_CAL_LINK=off` falls back to the request form.
+4. Test after each deploy: submit `/book` once from your phone, and check the row, email or booking arrives.
+
+**Privacy:** only name, phone, goal and what the visitor typed are stored. The Protection Check runs in the browser. Its figures are sent only if the visitor asks for a call back or opens WhatsApp. Delete rows that never became clients after 12 months.
+
+**Before promoting the Gujarati toggle:** Jigisha to read `src/data/protectionCopy.ts` (`gu` block) and confirm the Gujarati spelling of her name (currently જીગીશાબેન) and the wording.
 
 ## 6. Monthly scorecard
 

@@ -99,18 +99,18 @@ export default function HeroCoverageWidget() {
           </div>
         </div>
         <Link
-          to="/contact?objective=term"
+          to="/protection-check"
           data-cta="hero-cover-check"
           className="inline-flex items-center gap-1.5 shrink-0 px-3.5 py-2 rounded-lg bg-gold text-midnight text-xs font-bold hover:bg-gold-light active:scale-95 transition-all min-h-11"
         >
-          Get a proper review
+          Full Protection Check
           <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
         </Link>
       </div>
 
       <p className="mt-2 text-[10px] text-gray-500 leading-relaxed">
         Rough illustration only (12× income + loans − existing cover). It does not consider your
-        dependants, future goals, savings or health — a free review gives an exact, personal number.
+        dependants, future goals, savings or health — the full Protection Check covers those, and a free review gives a personal number.
       </p>
     </div>
   )

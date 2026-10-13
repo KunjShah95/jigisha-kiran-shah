@@ -17,7 +17,15 @@ export type ConversionEvent =
   | 'directions_click'
   | 'consultation_form_submit'
   | 'objective_select'
-  | 'share_whatsapp';
+  | 'share_whatsapp'
+  | 'lead_saved'
+  | 'booking_cta_click'
+  | 'booking_started'
+  | 'booking_completed'
+  | 'booking_request_submit'
+  | 'protection_check_started'
+  | 'protection_check_completed'
+  | 'protection_check_handoff';
 
 declare global {
   interface Window {
@@ -56,6 +64,7 @@ export function initAnalytics() {
     else if (href.includes('wa.me')) trackEvent('contact_whatsapp', props);
     else if (href.startsWith('mailto:')) trackEvent('contact_email', props);
     else if (href.includes('share.google')) trackEvent('directions_click', props);
+    else if (href === '/book' || href.startsWith('/book?')) trackEvent('booking_cta_click', props);
   });
 }
 

@@ -129,7 +129,8 @@ const Header = () => {
             </a>
 
             <Link
-              to="/contact"
+              to="/book"
+              data-cta="header-book"
               className="hidden sm:inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 bg-midnight text-white hover:bg-gold hover:text-white hover:shadow-lg"
             >
               Book Free Consultation
@@ -184,7 +185,8 @@ const Header = () => {
           ))}
           <div className="h-px bg-gray-100 my-4" />
           <Link
-            to="/contact"
+            to="/book"
+            data-cta="menu-book"
             onClick={() => setIsMobileMenuOpen(false)}
             tabIndex={isMobileMenuOpen ? 0 : -1}
             className="text-lg font-sans font-bold text-white bg-midnight py-4 px-6 rounded-xl text-center shadow-lg active:scale-95 transition-transform hover:bg-gold"

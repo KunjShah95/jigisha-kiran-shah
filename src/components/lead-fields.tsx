@@ -94,7 +94,7 @@ export function leadMessage(heading: string, rows: Array<[string, string]>) {
 /** Sets expectations before submit — what happens after the visitor reaches out. */
 export function NextSteps({ dark = false }: { dark?: boolean }) {
   const steps = [
-    'Your message opens in WhatsApp — press send to reach Jigisha directly.',
+    'Your name, phone and goal are saved, then WhatsApp opens — press send there, or wait for a call back.',
     'You get a reply on WhatsApp or a call back, Mon–Sat, 9 AM–6 PM.',
     'First consultation is free — by phone, on WhatsApp, or in person at the Shela office.',
   ];
