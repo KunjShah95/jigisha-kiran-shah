@@ -73,29 +73,50 @@ function loadCal(): CalApi {
   return cal;
 }
 
-function CalEmbed({ calLink, objective, from }: { calLink: string; objective: string; from: string }) {
+/** How long to wait for Cal.com to report the calendar ready before falling back. */
+const CAL_TIMEOUT_MS = 12_000;
+
+function CalEmbed({ calLink, objective, from, onFail }: { calLink: string; objective: string; from: string; onFail: (reason: string) => void }) {
   const started = useRef(false);
   useEffect(() => {
     if (started.current) return;
     started.current = true;
+    let ready = false;
+    let failed = false;
+    const fail = (reason: string) => {
+      if (ready || failed) return;
+      failed = true;
+      trackEvent('booking_started', { via: 'cal-failed', reason });
+      onFail(reason);
+    };
+    // Script blocked (adblock, network) or Cal.com down: never leave a blank box.
+    const timer = window.setTimeout(() => fail('timeout'), CAL_TIMEOUT_MS);
+
     const Cal = loadCal();
     Cal('init', CAL_NS, { origin: 'https://app.cal.com' });
     const ns = Cal.ns![CAL_NS];
-    ns('inline', {
-      elementOrSelector: '#cal-inline',
-      calLink,
-      config: {
-        layout: 'month_view',
-        notes: objective ? `Goal: ${optionLabel(INTEREST_OPTIONS, objective)}${from ? ` (via ${from})` : ''}` : '',
-        'metadata[objective]': objective || 'none',
+    const config: Record<string, string> = { layout: 'month_view' };
+    if (objective) {
+      config.notes = `Goal: ${optionLabel(INTEREST_OPTIONS, objective)}${from ? ` (via ${from})` : ''}`;
+      config['metadata[objective]'] = objective;
+    }
+    ns('inline', { elementOrSelector: '#cal-inline', calLink, config });
+    ns('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+    ns('on', {
+      action: 'linkReady',
+      callback: () => {
+        ready = true;
+        window.clearTimeout(timer);
+        trackEvent('booking_started', { via: 'cal', objective: objective || 'none' });
       },
     });
-    ns('ui', { hideEventTypeDetails: false, layout: 'month_view' });
-    trackEvent('booking_started', { via: 'cal', objective: objective || 'none' });
+    ns('on', { action: 'linkFailed', callback: () => fail('link-failed') });
     ns('on', {
       action: 'bookingSuccessful',
       callback: () => trackEvent('booking_completed', { via: 'cal', objective: objective || 'none' }),
     });
+    return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [calLink, objective, from]);
   return <div id="cal-inline" className="w-full min-h-[640px] overflow-auto rounded-2xl" />;
 }
@@ -224,6 +245,7 @@ export default function BookPage() {
   const from = params.get('from') === 'check' ? 'Protection Check' : '';
   // Cal embed is client-only; render the shell on the server and mount after hydration.
   const [mounted, setMounted] = useState(false);
+  const [calFailed, setCalFailed] = useState(false);
   useEffect(() => setMounted(true), []);
 
   return (
@@ -265,10 +287,25 @@ export default function BookPage() {
 
           <div className="lg:col-span-3 reveal-right">
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 border border-border p-4 sm:p-6 lg:p-8">
-              {CAL_LINK ? (
+              {CAL_LINK && !calFailed ? (
                 <>
                   <h2 className="text-xl font-display font-bold text-midnight mb-4 px-2">Pick a time</h2>
-                  {mounted ? <CalEmbed calLink={CAL_LINK} objective={objective} from={from} /> : <div className="min-h-[640px]" aria-busy="true" />}
+                  {mounted ? (
+                    <CalEmbed calLink={CAL_LINK} objective={objective} from={from} onFail={() => setCalFailed(true)} />
+                  ) : (
+                    <div className="min-h-[640px]" aria-busy="true" />
+                  )}
+                  <p className="mt-3 px-2 text-xs text-gray-500">
+                    Calendar not loading?{' '}
+                    <a href={`https://cal.com/${CAL_LINK}`} target="_blank" rel="noopener noreferrer" data-cta="book-cal-newtab" className="font-semibold text-gold-dark underline underline-offset-2">
+                      Open it in a new tab
+                    </a>{' '}
+                    or{' '}
+                    <button type="button" onClick={() => setCalFailed(true)} className="font-semibold text-gold-dark underline underline-offset-2">
+                      request a time instead
+                    </button>
+                    .
+                  </p>
                 </>
               ) : (
                 <>
