@@ -16,8 +16,8 @@ export const OBJECTIVES = [
   { value: 'review', label: 'Review my existing LIC policies', short: 'Policy review', to: '/services/policy-review-claims' },
   { value: 'child', label: 'Plan my child’s education', short: 'Child education', to: '/services/child-education' },
   { value: 'retirement', label: 'Plan retirement / pension income', short: 'Retirement income', to: '/services/retirement' },
-  { value: 'claim', label: 'Get help with an LIC claim', short: 'Claim assistance', to: '/services/policy-review-claims' },
-  { value: 'business', label: 'Business, employee or HUF cover', short: 'Business cover', to: '/services/corporate-insurance' },
+  { value: 'claim', label: 'Customer services: nomination change, minor to major, survival / maturity / death claim', short: 'Customer services', to: '/services/policy-review-claims' },
+  { value: 'business', label: 'Business insurance: employer-employee, partnership, HUF, MWP', short: 'Business insurance', to: '/services/corporate-insurance' },
   { value: 'savings', label: 'Savings with life cover (endowment / money back)', short: 'Savings plans', to: '/services/wealth-creation' },
   { value: 'health', label: 'Health or cancer cover', short: 'Health cover', to: '/services/health-insurance' },
   { value: 'nri', label: 'NRI policy servicing', short: 'NRI services', to: '/contact' },
@@ -37,6 +37,7 @@ export function objectiveWhatsAppText(value: string) {
 export function pageWhatsAppText(pathname: string) {
   const service = OBJECTIVES.find((o) => o.to !== '/contact' && pathname.startsWith(o.to));
   if (service) return objectiveWhatsAppText(service.value);
+  if (pathname.startsWith('/services/business-insurance')) return objectiveWhatsAppText('business');
   if (pathname.startsWith('/areas/')) {
     const area = pathname.split('/')[2]?.replace(/-/g, ' ');
     return `Hi Jigisha ben, I found you on your website (${area} page). I'd like to discuss LIC insurance for my family.`;

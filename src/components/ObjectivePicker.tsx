@@ -9,8 +9,8 @@ const PICKS: Array<{ value: ObjectiveValue; icon: LucideIcon; title: string; hin
   { value: 'review', icon: FileSearch, title: 'Review my existing policies', hint: 'Gaps, nominees, lapsed policies' },
   { value: 'child', icon: GraduationCap, title: 'Plan my child’s education', hint: 'Fund school, college, abroad' },
   { value: 'retirement', icon: Sunset, title: 'Plan retirement income', hint: 'Turn savings into a monthly pension' },
-  { value: 'claim', icon: LifeBuoy, title: 'Get help with a claim', hint: 'Death, maturity or survival claims' },
-  { value: 'business', icon: Building2, title: 'Cover my business & team', hint: 'Key-person, employee, HUF, MWP' },
+  { value: 'claim', icon: LifeBuoy, title: 'Customer Services', hint: 'Change of nomination, minor to major, survival, maturity & death claims' },
+  { value: 'business', icon: Building2, title: 'Business Insurance', hint: 'Employer-employee, partnership, HUF, MWP' },
 ];
 
 /**

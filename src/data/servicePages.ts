@@ -14,6 +14,8 @@ export interface ServicePageMeta {
   intro: string[];
   faqs: Array<{ q: string; a: string }>;
   relatedPost?: { label: string; to: string };
+  /** Reuse another service's plan cards (services.ts id) for keyword/area pages. */
+  productsFrom?: string;
 }
 
 export const SERVICE_PAGES: ServicePageMeta[] = [
@@ -214,6 +216,41 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       {
         q: 'Can an HUF buy LIC insurance?',
         a: 'Yes. The HUF can be proposer with the karta or a member as life assured, earning Section 80C benefits while ring-fencing family protection from the family business\u2019s risks. Structures are set up with proper resolutions and documentation.',
+      },
+    ],
+    relatedPost: { label: 'Example: staff cover for an engineering unit in GIDC Vatva', to: '/services/business-insurance-gidc-vatva' },
+  },
+  {
+    slug: 'business-insurance-gidc-vatva',
+    productsFrom: 'corporate-insurance',
+    title: 'Business Insurance in GIDC Vatva | Employer-Employee Cover',
+    description:
+      'Business insurance for units in GIDC Vatva, Ahmedabad: employer-employee LIC cover for staff, partnership and key-person insurance, MWP and HUF policies for owners. Free consultation: +91 98240 25435.',
+    keywords:
+      'business insurance GIDC Vatva, employer employee insurance Vatva, LIC group insurance GIDC, staff insurance engineering unit Ahmedabad, key person insurance Vatva, partnership insurance GIDC Ahmedabad, LIC agent Vatva',
+    targetQuery: 'business insurance GIDC Vatva',
+    h1: 'Business Insurance for GIDC Vatva Units',
+    intro: [
+      'GIDC Vatva is home to hundreds of engineering, chemical and fabrication units, most of them owner-run, with a skilled team the business depends on. Jigisha Kiran Shah helps these owners put LIC structures in place for their staff, their partners and their own families.',
+      'One recent example: an engineering unit in GIDC Vatva set up an employer-employee benefit for its staff. The unit pays the premium as the employer, and each covered employee’s family receives life cover. It gives the owner a concrete benefit to retain skilled workers, and it was set up with the documentation the unit’s accountant needed. Details stay private; the structure is available to any unit, from a handful of employees upward.',
+      'Owners usually look at three things together: cover for the team (employer-employee), continuity if a partner or key person dies (partnership / key-person cover), and family protection that business creditors cannot reach (MWP Act policy). The first meeting can be at your unit in Vatva, at the Shela office, or by phone.',
+    ],
+    faqs: [
+      {
+        q: 'Can a small unit in GIDC Vatva give LIC insurance to its staff?',
+        a: 'Yes. Under an employer-employee arrangement the business is the proposer and pays the premium on the lives of chosen employees, with sum assured set per grade or role. It suits small and mid-sized units, not only large companies. Call +91 98240 25435 to discuss your team size.',
+      },
+      {
+        q: 'Is the premium for employee insurance a business expense?',
+        a: 'Premium paid by the employer for an employer-employee policy is generally treated as a business expense, and the benefit may be taxable for the employee as a perquisite. Tax treatment depends on how the scheme is structured, so it is set up together with your CA.',
+      },
+      {
+        q: 'What happens to a partnership firm if one partner dies?',
+        a: 'Partnership insurance pays the firm or the surviving partners on a partner’s death, so the deceased partner’s share can be paid out to the family without pulling money from working capital. It works best alongside a written buy-sell clause in the partnership deed.',
+      },
+      {
+        q: 'Do you visit units in GIDC Vatva?',
+        a: 'Yes. Meetings can be held at your unit in Vatva by appointment (Mon–Sat, 9 AM–6 PM), at the Shela office, or over phone and WhatsApp. Book a time at jigishakiranshah.in/book.',
       },
     ],
   },

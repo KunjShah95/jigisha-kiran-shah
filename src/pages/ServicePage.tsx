@@ -23,13 +23,14 @@ const CONTACT_OBJECTIVE: Record<string, string> = {
   'health-insurance': 'health',
   'money-back': 'savings',
   'corporate-insurance': 'business',
+  'business-insurance-gidc-vatva': 'business',
   'policy-review-claims': 'review',
 };
 
 export default function ServicePage() {
   const { slug } = useParams<{ slug: string }>();
   const meta = getServicePage(slug);
-  const service = services.find((s) => s.id === slug);
+  const service = services.find((s) => s.id === (meta?.productsFrom ?? slug));
 
   useSEO({
     title: meta ? meta.title : 'Service not found',
