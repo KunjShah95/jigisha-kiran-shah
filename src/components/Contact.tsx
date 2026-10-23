@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
-import { Phone, MessageCircle, Mail, MapPin, Send, ChevronDown } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Send, ChevronDown, Download } from 'lucide-react';
 import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { submitLead, honeypotProps } from '../lib/leads';
@@ -94,6 +94,13 @@ const Contact = () => {
       value:'Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058',
       link: 'https://share.google/VQAFgVhdk114U2ozd',
       cta: 'Get Directions'
+    },
+    {
+      icon: Download,
+      title: 'Save Contact',
+      value: 'Add Jigisha to your phone contacts',
+      link: '/jigisha-kiran-shah.vcf',
+      cta: 'Download vCard'
     }
   ]
 
@@ -122,6 +129,7 @@ const Contact = () => {
                 <a 
                     key={index} 
                     href={method.link}
+                    download={method.link.endsWith('.vcf') ? 'jigisha-kiran-shah.vcf' : undefined}
                     target={method.link.startsWith('http') ? '_blank' : undefined}
                     rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-border hover:shadow-xl hover:shadow-gold/5 hover:border-gold/30 transition-all duration-300 group"

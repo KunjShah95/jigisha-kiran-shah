@@ -28,6 +28,41 @@ consultations — not traffic for its own sake.
 3. Pages report → check "Discovered – currently not indexed" and "Crawled – currently not indexed". If the service pages are listed there, they need more internal links and external mentions, not more pages.
 4. Re-check queries in 4 weeks and compare non-branded impressions with this baseline.
 
+## 1b. "Alternate page with proper canonical tag" (Search Console)
+
+**What it is.** Google found a URL whose `<link rel="canonical">` points to a
+different URL, so it treats the first as an *alternate* and indexes the canonical
+instead. On this site the canonical is always `https://www.jigishakiranshah.in<path>`
+(no trailing slash, no query string). The variants that show up as alternates are
+therefore: the apex host (`jigishakiranshah.in`), `http://` (either host), trailing
+slashes (`/contact/`), and query strings (`/contact?objective=review`).
+
+This is usually **informational, not an error** — it means canonicalisation is working.
+It only blocks indexing if the *canonical* URL itself is not indexed (check the
+"Discovered – currently not indexed" / "Crawled – currently not indexed" reports).
+Code-level canonicals are correct per page (verified in `src/hooks/useSEO.ts` and the
+prerendered HTML), and there are no internal links to non-canonical variants.
+
+**Fixes (owner actions):**
+1. **Vercel → Project → Settings → Domains:** set the apex domain
+   `jigishakiranshah.in` to redirect straight to `www.jigishakiranshah.in`. This
+   collapses `http://apex` → `https://www` into **one hop** instead of two
+   (`http://apex` → `https://apex` → `https://www`), which is the main reason Google
+   keeps the apex around as an alternate.
+2. **Search Console → URL Inspection:** paste each canonical URL of the affected
+   pages (service, area, blog) and click "Request indexing". Do this for the new
+   pages too: `/resources`, `/calculators`.
+3. **Search Console → Pages report:** filter by "Alternate page with proper canonical
+   tag" and confirm every listed URL is a variant (apex / http / trailing slash /
+   query string). If a *canonical-looking* URL (www, https, no slash) appears there,
+   its canonical tag is wrong — fix in the page's `useSEO({ path })` call.
+4. Optional: in Search Console → Settings → Crawl stats, no further action needed.
+   Do **not** add `Disallow: /*?` to robots.txt — it would also block UTM-tagged
+   links and is unnecessary given the canonical tags.
+
+**Code changes made for this:** `vercel.json` trailing-slash normalisation redirect
+added as belt-and-braces on top of `trailingSlash: false`. No page-level changes.
+
 ## 2. Verify these claims against records (days 1–14)
 
 Every number below is shown on the site. Keep proof on file; change the site if any is off.
@@ -78,7 +113,7 @@ Never offer gifts or discounts in exchange for reviews, and never write reviews 
 | `lead_saved` | Form saved by `/api/lead` (real lead, even if WhatsApp send is skipped) | `form` (contact / assessment / booking / check) |
 | `booking_cta_click` | Any link to `/book` | `cta` |
 | `booking_started` | Cal.com calendar loaded, or first field touched on the request form | `via` (cal / request), `objective` |
-| `booking_completed` | Cal.com confirms a booking (only when `VITE_CAL_LINK` is set) | `via`, `objective` |
+| `booking_completed` | Cal.com confirms a booking | `via`, `objective` |
 | `booking_request_submit` | Booking request form sent (no Cal.com) | `objective`, `mode` |
 | `protection_check_started` / `_completed` | Goal picked / report reached on `/protection-check` | `goal`, `lang` |
 | `protection_check_handoff` | Report → book, WhatsApp or call back | `goal`, `via` |
@@ -98,7 +133,7 @@ Until a destination is configured, leads go only to the Vercel function log (Ver
 
 1. **Google Sheet (recommended):** follow `docs/lead-capture-apps-script.gs`, then set `LEAD_WEBHOOK_URL` in Vercel (Production).
 2. **Email alert (optional):** Resend account → API key → `RESEND_API_KEY`, `LEAD_EMAIL_TO=jkshahlic@gmail.com`, and `LEAD_EMAIL_FROM` once a domain is verified (until then the default sender can only email the Resend account owner).
-3. **Live booking slots (set up 13 Oct 2026):** Cal.com account `jigisha-kiran-shah-emz0xs`, event "Free LIC Consultation" (`/free-consultation`, 20 min, phone / Shela office / Cal Video, 2 h notice, 10 min buffer), hours Mon–Sat 9–6 IST. `/book` embeds it by default and fires `booking_completed`. Cal.com emails Jigisha each booking. Connect her Google Calendar in Cal.com → Settings → Calendars so personal events block slots. `VITE_CAL_LINK=off` falls back to the request form.
+3. **Live booking slots (set up 13 Oct 2026):** Cal.com account `jigisha-kiran-shah-emz0xs`, event "Free LIC Consultation" (`/free-consultation`, 20 min, phone / Shela office / Cal Video, 2 h notice, 10 min buffer), hours Mon–Sat 9–6 IST. `/book` embeds it by default and fires `booking_completed`. Cal.com emails Jigisha each booking. Connect her Google Calendar in Cal.com → Settings → Calendars so personal events block slots. The link is set in `src/pages/BookPage.tsx` (`CAL_LINK`), not an env var. Never put the Cal.com API key in Vercel env vars: `VITE_*` values are published in the site's JavaScript.
 4. Test after each deploy: submit `/book` once from your phone, and check the row, email or booking arrives.
 
 **Privacy:** only name, phone, goal and what the visitor typed are stored. The Protection Check runs in the browser. Its figures are sent only if the visitor asks for a call back or opens WhatsApp. Delete rows that never became clients after 12 months.

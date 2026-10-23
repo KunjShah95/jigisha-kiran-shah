@@ -26,6 +26,8 @@ const Footer = () => {
     const resources: Array<{ label: string; to?: string; href?: string }> = [
       { label: 'LIC Official Website', href: 'https://licindia.in/' },
       { label: 'Claim Assistance', to: '/services/policy-review-claims' },
+      { label: 'Resources & Forms', to: '/resources' },
+      { label: 'Calculators', to: '/calculators' },
       { label: 'IRDAI (Regulator)', href: 'https://irdai.gov.in/' },
       { label: 'Bima Bharosa Grievances', href: 'https://bimabharosa.irdai.gov.in/' }
     ]

@@ -11,7 +11,9 @@
     "module": "ESNext",
     "types": [
       "vite/client",
-      "node"
+      "node",
+      "react",
+      "react-dom"
     ],
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -24,11 +26,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
-    "paths": {
-      "*": [
-        "./*"
-      ]
-    }
   },
   "include": [
     "src"

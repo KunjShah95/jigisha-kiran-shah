@@ -282,6 +282,19 @@ const About = () => {
                 ))}
               </div>
 
+              {/* Recognition & credentials strip */}
+              <div className="mb-10 p-5 bg-white rounded-2xl border border-border shadow-sm">
+                <p className="text-[11px] font-bold text-gold-dark uppercase tracking-[0.2em] mb-3">Recognition &amp; credentials</p>
+                <ul className="space-y-2 text-sm text-gray-700">
+                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-gold shrink-0 mt-0.5" /> MDRT (Million Dollar Round Table) qualifier — 2023 &amp; 2024</li>
+                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-gold shrink-0 mt-0.5" /> LIC Club member (Life Insurance Corporation of India)</li>
+                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-gold shrink-0 mt-0.5" /> Licensed LIC agent since 2004 (22+ years of continuous practice)</li>
+                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-gold shrink-0 mt-0.5" /> 5.0★ Google rating · 70+ reviews · 2,700+ families served</li>
+                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-gold shrink-0 mt-0.5" /> 1,000+ LIC claims supported to settlement</li>
+                </ul>
+                <p className="text-[11px] text-gray-400 mt-3 font-light">Certificate copies available on request. Claims are decided by LIC; figures are from Jigisha's practice records.</p>
+              </div>
+
               {/* Google trust badge */}
               <a
                 href="https://share.google/VQAFgVhdk114U2ozd"

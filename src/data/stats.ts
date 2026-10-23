@@ -1,5 +1,5 @@
-import { Calendar, Users, Award, Shield, TrendingUp, Heart } from 'lucide-react';
-import { Stat } from '../types';
+import { Calendar, Users, Award, Shield } from 'lucide-react';
+import type { Stat } from '../types';
 
 export const stats: Stat[] = [
   {
@@ -33,21 +33,5 @@ export const stats: Stat[] = [
     suffix: '+',
     label: 'Claims Supported',
     description: 'Paperwork through to settlement'
-  },
-  {
-    id: 'crores',
-    icon: TrendingUp,
-    value: 100,
-    suffix: 'Cr+',
-    label: 'Sum Assured',
-    description: 'Total coverage provided'
-  },
-  {
-    id: 'satisfaction',
-    icon: Heart,
-    value: 99,
-    suffix: '%',
-    label: 'Client Satisfaction',
-    description: 'Happy clients, secured futures'
   }
 ];

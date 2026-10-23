@@ -50,6 +50,8 @@ Shela, Satellite, SG Highway, South Bopal, Bopal, Science City, Vastrapur, Ambaw
   - Salaried employees: /guides/lic-plans-salaried-employees
   - Business owners: /guides/lic-plans-business-owners
   - Senior citizens: /guides/lic-plans-senior-citizens
+- Resources & forms: https://www.jigishakiranshah.in/resources (important links, LIC forms, vCard download)
+- Calculators: https://www.jigishakiranshah.in/calculators (retirement corpus, child-education corpus)
 - Sitemap: https://www.jigishakiranshah.in/sitemap.xml
 - Full site reference (all facts, services, FAQs, guides): https://www.jigishakiranshah.in/llms-full.txt
 

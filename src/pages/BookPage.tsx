@@ -9,12 +9,12 @@ import { trackEvent } from '../lib/analytics';
 import { submitLead, honeypotProps } from '../lib/leads';
 
 /**
- * Cal.com event path (public booking link, not a secret). The page shows live
- * availability and a real booking confirmation. Set VITE_CAL_LINK to override,
- * or to "off" to fall back to the booking-request form (saved + WhatsApp).
+ * Cal.com event path: a public booking link, not a secret. Deliberately not
+ * read from an env var: Vite inlines env values into the public bundle, so a
+ * mis-pasted API key would ship to every visitor. Change it here.
+ * Set to undefined to fall back to the booking-request form (saved + WhatsApp).
  */
-const CAL_ENV = import.meta.env.VITE_CAL_LINK as string | undefined;
-const CAL_LINK = CAL_ENV === 'off' ? undefined : CAL_ENV || 'jigisha-kiran-shah-emz0xs/free-consultation';
+const CAL_LINK: string | undefined = 'jigisha-kiran-shah-emz0xs/free-consultation';
 const CAL_NS = 'consult';
 
 const DAY_OPTIONS = [

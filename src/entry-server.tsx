@@ -33,6 +33,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/reviews', priority: 0.7 },
   { path: '/areas', priority: 0.8 },
   { path: '/guides', priority: 0.8 },
+  { path: '/resources', priority: 0.7 },
+  { path: '/calculators', priority: 0.7 },
   { path: '/blog', priority: 0.7 },
   ...SERVICE_PAGES.map((s) => ({ path: `/services/${s.slug}`, priority: 0.9 })),
   ...AREAS.map((a) => ({ path: `/areas/${a.slug}`, priority: 0.8 })),

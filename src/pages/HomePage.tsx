@@ -76,8 +76,8 @@ export default function HomePage() {
               <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
             </span>
             <span className="flex-1 min-w-0">
-              <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 70+ Google Reviews</span>
-              <span className="block text-xs md:text-sm text-white/60 font-light">Real stories from 2,700+ families</span>
+              <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 70+ Google Reviews · 2,700+ families</span>
+              <span className="block text-xs md:text-sm text-white/60 font-light">Real stories from families Jigisha has served</span>
             </span>
             <ArrowRight className="w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
@@ -136,7 +136,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-      <FAQ />
+      <FAQ searchable />
     </>
   )
 }

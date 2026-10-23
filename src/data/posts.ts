@@ -285,8 +285,116 @@ export const POSTS: Post[] = [
       { label: 'Book a free consultation', to: '/contact' },
     ],
   },
+  {
+    slug: 'the-lapsed-policy-a-satellite-family-revived',
+    title: 'The lapsed policy a Satellite family revived — and what it cost',
+    seoTitle: 'Lapsed LIC Policy Revival in Ahmedabad: Arrears, Interest & How-To',
+    metaDescription:
+      'Lapsed LIC policy revival in Ahmedabad: a Satellite family revived a 2016 Jeevan Anand policy after 4 years. Worked arrears, interest and GST. Revival steps, windows and limits. Free help: +91 98240 25435.',
+    date: '2024-09-12',
+    updated: '2026-10-23',
+    readMinutes: 7,
+    targetQuery: 'revive lapsed LIC policy Ahmedabad',
+    sections: [
+      {
+        paras: [
+          'In 2022, a couple from Satellite sat in my office with a yellowed premium receipt book and a question they were almost embarrassed to ask: "Jigisha ben, can a policy that stopped four years ago still be brought back?"',
+          'Let us call them the Mehtas. In 2016 they had taken a Jeevan Anand policy with ₹5 lakh sum assured, paying roughly ₹18,000 a year, for their daughter\'s future. In 2018 a job loss and a family medical emergency squeezed the budget, and the premium due in March 2018 was never paid. Then 2019, then 2020. By the time they came to me, the policy had been lapsed for just over four years.',
+          'The honest answer is yes — sometimes. And the cost of finding out is usually a phone call, not a catastrophe. Here is how we worked it out.',
+        ],
+      },
+      {
+        heading: 'First, what "lapsed" actually means',
+        paras: [
+          'A traditional LIC policy does not die the day you miss a premium. After the first unpaid premium, the policy enters a grace period of about 30 days (15 for monthly modes). If the premium is not paid within the grace period, the policy lapses. For roughly the first two years after lapsing, the policy keeps a small "paid-up" value — a reduced sum assured that LIC will still pay on death or maturity. After about two years of non-payment, even that paid-up value is at risk and the policy can be forfeited.',
+          'Revival is the process of bringing a lapsed policy back into full force by paying the missed premiums with interest, plus any GST, and re-confirming your health. LIC allows revival within five years of the first unpaid premium for most traditional plans, provided the policy is still within its revival window and the life assured is insurable.',
+          'The five-year window is the single most important number in this entire article. If your first unpaid premium was more than five years ago, revival is usually not available and the policy is treated as forfeited. If it was less than five years ago, there is almost always something we can do.',
+        ],
+        takeaway: [
+          'Grace period: ~30 days (15 for monthly).',
+          'Paid-up value protects you for roughly the first 2 years of non-payment.',
+          'Revival window: 5 years from the first unpaid premium.',
+          'Beyond 5 years: usually forfeited — no revival.',
+        ],
+      },
+      {
+        heading: 'What revival costs — the Mehta worked example',
+        paras: [
+          'The Mehtas\' first unpaid premium was due in March 2018. By the time they came to me in mid-2022, four annual premiums had been missed: March 2018, March 2019, March 2020 and March 2021. The premium due in March 2022 was about to fall due as well.',
+          'LIC revival interest is charged on the overdue premiums, typically at a rate announced by LIC (it has been around 9–10% per annum in recent years, compounded). Interest is charged from each premium due date to the date of revival, not from the first missed premium. GST at the applicable rate is added on the premium and interest.',
+          'We worked it out together on one sheet before paying a rupee, so there were no surprises at the counter.',
+        ],
+        numbers: [
+          { label: 'Annual premium (Jeevan Anand, ₹5 L SA)', value: '₹18,000' },
+          { label: 'Missed premiums (Mar 2018 – Mar 2021)', value: '4 × ₹18,000 = ₹72,000' },
+          { label: 'Interest on overdue premiums (~9.5% p.a., compounded)', value: '≈ ₹14,500' },
+          { label: 'GST on premium + interest (~4.5%)', value: '≈ ₹3,900' },
+          { label: 'Total to revive (Mar 2022)', value: '≈ ₹90,400' },
+          { label: 'Sum assured restored', value: '₹5,00,000' },
+        ],
+        quote: {
+          text: '"We were ready to write off the whole thing. Ninety thousand rupees to get five lakh back, with the bonus track still running — that is a decision we could live with."',
+          by: 'Mrs. Mehta (name changed), Satellite, Ahmedabad',
+        },
+      },
+      {
+        heading: 'The steps we actually followed',
+        paras: [
+          'Revival is not a single payment at a counter. It is a small sequence, and doing it in order saves weeks.',
+          'Step one: confirm the policy is still revivable. We wrote to the servicing branch with the policy number and the life assured\'s date of birth and PAN, and asked for a revival quotation showing the exact arrears, interest and GST. LIC will not guess this over the phone — you need the written quotation, because the interest runs to the date of payment.',
+          'Step two: a health declaration. For a revival within two years, a simple health declaration by the life assured is usually enough. For a revival between two and five years, LIC typically requires a medical examination or a health declaration plus reports, depending on age and sum assured. The Mehtas\' daughter was the life assured and was 22 at the time; she needed a basic health declaration and a short medical at the branch\'s panel doctor, which LIC arranged and charged for.',
+          'Step three: pay the quotation amount in full, in one payment, before the quotation expires (usually 30 days). Partial payment is not accepted for revival. We paid by cheque at the branch and took a stamped acknowledgement.',
+          'Step four: collect the revival endorsement. The branch issues a revival receipt and updates the policy status to "in force" with the original policy number. Keep that receipt with the policy bond — it is your proof that the policy is live again.',
+          'Step five: restart the discipline. The Mehtas set up auto-debit for the annual premium and a calendar reminder two weeks before each due date. A lapsed policy is almost always a cash-flow problem, not a knowledge problem; the fix is a system, not a decision.',
+        ],
+        takeaway: [
+          '1. Get a written revival quotation from the servicing branch (arrears + interest + GST).',
+          '2. Complete the health declaration / medical as required for the revival window.',
+          '3. Pay the full quotation amount in one payment before it expires.',
+          '4. Collect the revival receipt and keep it with the policy bond.',
+          '5. Put the premium on auto-debit and a calendar reminder.',
+        ],
+      },
+      {
+        heading: 'When revival is not possible — and what to do instead',
+        paras: [
+          'Revival fails in three situations I see often. First, the five-year window has closed: the policy is forfeited and the money paid in is gone, except any surrender or paid-up value that survived. Second, the life assured is no longer insurable — a serious illness diagnosed during the lapse means LIC will decline revival or revive at a higher premium or with exclusions. Third, the policy was a unit-linked or term plan with no paid-up value; these sometimes lapse with nothing to revive.',
+          'If revival is closed, the next best step is to start a new plan sized to the original goal, not to chase the old one. The Mehtas were lucky — four years, still inside the window. A family that comes to me at year six has to begin again, and beginning again at 45 is not the same as beginning at 35.',
+          'There is also a middle path worth knowing: LIC periodically runs special revival campaigns where late fees or interest are waived or reduced for a limited window. These are announced on licindia.in and through branches. If you are reading this during one of those windows, the cost of reviving can drop sharply. Ask me or your branch which campaigns are currently open.',
+        ],
+      },
+      {
+        heading: 'The quieter lesson',
+        paras: [
+          'The Mehtas\' policy is alive again today. The daughter\'s education fund is back on track, the bonuses that accrued during the lapse years are still credited, and the family has a system that has not missed a premium since.',
+          'But the real cost of those four missed years was not the ₹90,400. It was the four years in which a ₹5 lakh cover was effectively a paid-up shadow of itself, and a family with a home loan and a teenage daughter was walking around uninsured without knowing it.',
+          'In 22 years since 2004, the single most common sentence I hear from lapsed-policy families is: "We did not know it had stopped." Premiums on auto-debit get reversed when accounts change; job losses quietly eat the margin; reminders go to an old mobile number. The policy does not call you. It just waits, and then one day it is gone.',
+          'If you have an old LIC policy you are not sure about, you do not need to be my client for me to check it. Bring the policy number, or even just a name and a date of birth, and I will trace the status with the branch. A lapsed policy found in time is a revival. A lapsed policy found too late is a story.',
+        ],
+        takeaway: [
+          'Check every family policy once a year: policy number, branch, due date, nominee, paid-up status.',
+          'If a premium is missed, act within 30 days — the grace period is free.',
+          'Between 1 and 5 years lapsed: revival is usually possible; get a written quotation first.',
+          'Beyond 5 years: plan fresh, and size it to the original goal.',
+          'Ask your branch about current LIC revival campaigns — they can cut the cost sharply.',
+        ],
+      },
+      {
+        heading: 'If this is you today',
+        paras: [
+          'If you have an LIC policy that stopped paying, or you are not sure whether it is still in force, call or WhatsApp +91 98240 25435. I will trace it with the branch and tell you honestly whether revival is possible, what it will cost, and whether it is worth it. The first conversation is free, and there is no obligation to revive through me.',
+          'If you are the earner in the family and your cover has lapsed or was never sized properly, that is the more urgent problem. We will work out your number on one sheet of paper and show you the term premium for it.',
+        ],
+      },
+    ],
+    related: [
+      { label: 'Policy review & claims assistance', to: '/services/policy-review-claims' },
+      { label: 'LIC advisor in Satellite', to: '/areas/satellite' },
+      { label: 'Term insurance plans compared', to: '/services/term-insurance' },
+      { label: 'Book a free consultation', to: '/contact' },
+    ],
+  },
 ];
-
 export function getPost(slug: string | undefined): Post | undefined {
   return POSTS.find((p) => p.slug === slug);
 }
