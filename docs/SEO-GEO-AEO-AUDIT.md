@@ -18,9 +18,9 @@ format and distribution, and that is what §4 and §5 cover.
 
 | Area | State | Notes |
 |---|---|---|
-| Prerendered HTML for every route | ✅ | 46 routes rendered at build; crawlers that ignore JS still see full content |
-| Per-page title / description / canonical | ✅ | One source of truth: each page's `useSEO` call |
-| Sitemap | ✅ | Generated from the route list, so it cannot drift. 46 URLs |
+| Prerendered HTML for every route | ✅ | 53 routes rendered at build; crawlers that ignore JS still see full content |
+| Per-page title / description / canonical | ✅ | One source of truth: each page's `useSEO` call. Audited: 53/53 self-referencing, no duplicates, no trailing slashes |
+| Sitemap | ✅ | Generated from the route list, so it cannot drift. 53 URLs |
 | robots.txt | ✅ | AI crawlers explicitly allowed |
 | Structured data | ✅ | WebSite, LocalBusiness+FinancialService+InsuranceAgency, Person, Service, FAQPage, Article, BlogPosting, BreadcrumbList |
 | Entity consistency | ✅ (fixed today) | Area pages no longer invent 12 duplicate agencies |
@@ -29,7 +29,7 @@ format and distribution, and that is what §4 and §5 cover.
 | Lead capture | ⚠️ **broken in production** | No destination configured. See `docs/LEADS-ROOT-CAUSE.md` |
 | Traffic | ❌ | ~16 clicks / 28 days. Nothing ranks except brand, home and contact |
 | Citations / GBP | ❌ unknown | No evidence of claimed listings. See `docs/CITATIONS.md` |
-| Weekly content | ⚠️ | 5 stories, 7 guides — good depth, published in bursts |
+| Weekly content | ⚠️ | 5 stories, 8 guides — good depth, published in bursts |
 | Internal linking | ⚠️ (improved today) | Footer was missing 2 services and 6 areas |
 | Core Web Vitals | ⚠️ not measured | Render-blocking Google Fonts, 274 KB hero JPEG, 317 KB JS bundle |
 
@@ -37,16 +37,17 @@ format and distribution, and that is what §4 and §5 cover.
 
 ## 2. Sitemap inventory
 
-`https://www.jigishakiranshah.in/sitemap.xml` — 46 URLs, regenerated on every build by `scripts/prerender.mjs`.
+`https://www.jigishakiranshah.in/sitemap.xml` — 53 URLs, regenerated on every build by `scripts/prerender.mjs`.
 
 | Group | Count | URLs |
 |---|---|---|
 | Home | 1 | `/` |
 | Services hub | 1 | `/services` |
-| Service pages | 9 | term-insurance, retirement, child-education, wealth-creation, money-back, health-insurance, corporate-insurance, business-insurance-gidc-vatva, policy-review-claims |
+| Product pages | 9 | term-insurance, retirement, child-education, wealth-creation, money-back, health-insurance, corporate-insurance, business-insurance-gidc-vatva, policy-review-claims |
+| Servicing pages | 6 | lic-policy-revival, nominee-change, lic-policy-tracing, nri-lic-services, lic-policy-loan, lic-address-name-change |
 | Areas hub | 1 | `/areas` |
 | Area pages | 12 | shela, south-bopal, bopal, satellite, sg-highway, science-city, vastrapur, ambawadi, maninagar, naranpura, gota, chandkheda |
-| Guides hub + guides | 8 | 7 comparisons/persona guides |
+| Guides hub + guides | 9 | 7 comparisons/persona guides + 1 document checklist |
 | Blog hub + posts | 6 | 5 client stories |
 | Tools & trust | 8 | about, reviews, contact, book, protection-check, calculators, resources, gallery |
 
@@ -59,6 +60,26 @@ the clean path.
 ---
 
 ## 3. Technical findings
+
+### Canonical audit — 26 Oct 2026 (all 53 pages)
+
+| Check | Result |
+|---|---|
+| Missing canonical | 0 |
+| Canonical not on `https://www.` | 0 |
+| Canonical with a trailing slash | 0 |
+| Canonical that does not match the page's own URL | 0 |
+| Two pages sharing a canonical | 0 |
+| Two pages sharing a `<title>` | 0 |
+| Two pages sharing a meta description | 0 |
+| `og:url` disagreeing with canonical | 0 |
+| Title length | 46–64 chars (median 60) |
+| Description length | 112–160 chars (median 149) |
+
+Canonicals were already correct, so nothing needed changing. They are now **enforced**: `scripts/check-seo.mjs`
+fails the build on a missing/mismatched/duplicated canonical or a duplicated title, so a future page cannot
+silently break them. The one genuine risk was structural, not visible: with 53 pages generated from data files, a
+copy-pasted page is far more likely to inherit the previous page's canonical than to have none at all.
 
 ### Shipped today
 

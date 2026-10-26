@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import Services from '../components/Services'
 import FAQ from '../components/FAQ'
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -36,6 +38,42 @@ export default function ServicesPage() {
   return (
     <>
       <Services />
+
+      {/* Servicing work for policies already owned. Kept separate from the plan
+          cards above because the visitor is not shopping for a product —
+          they are trying to fix, find or claim something. */}
+      <section className="py-12 lg:py-16 bg-cream">
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-display font-medium text-midnight mb-3">
+            Servicing an existing LIC policy
+          </h2>
+          <p className="text-base text-gray-600 font-light leading-relaxed max-w-3xl mb-8">
+            Already hold a LIC policy — yours, a parent’s, or one whose agent has disappeared? These
+            are the jobs that decide whether a claim is paid in weeks or in months, and they are
+            handled for any LIC policy regardless of who sold it.
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {SERVICE_PAGES.filter((p) => p.sections?.length).map((p) => (
+              <Link
+                key={p.slug}
+                to={`/services/${p.slug}`}
+                className="group flex flex-col justify-between bg-white rounded-2xl border border-border p-6 hover:border-gold/40 hover:shadow-lg transition-all"
+              >
+                <div>
+                  <h3 className="font-display font-bold text-lg text-midnight mb-2 group-hover:text-gold-dark transition-colors">
+                    {p.h1}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed font-light">{p.description}</p>
+                </div>
+                <span className="inline-flex items-center gap-2 mt-4 text-sm font-bold text-gold-dark group-hover:gap-3 transition-all">
+                  What it involves <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <FAQ compact />
     </>
   )

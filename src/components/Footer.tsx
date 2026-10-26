@@ -27,9 +27,19 @@ const Footer = () => {
       { label: 'Policy Review & Claims', to: '/services/policy-review-claims' }
     ]
 
+    const servicing = [
+      { label: 'Lapsed Policy Revival', to: '/services/lic-policy-revival' },
+      { label: 'Nominee Change', to: '/services/nominee-change' },
+      { label: 'Find a Lost Policy', to: '/services/lic-policy-tracing' },
+      { label: 'Loan Against Policy', to: '/services/lic-policy-loan' },
+      { label: 'NRI Policy Servicing', to: '/services/nri-lic-services' },
+      { label: 'Address, Name & Minor-to-Major', to: '/services/lic-address-name-change' }
+    ]
+
     const resources: Array<{ label: string; to?: string; href?: string }> = [
       { label: 'LIC Official Website', href: 'https://licindia.in/' },
       { label: 'Claim Assistance', to: '/services/policy-review-claims' },
+      { label: 'Claim Documents Checklist', to: '/guides/lic-claim-documents-checklist' },
       { label: 'Resources & Forms', to: '/resources' },
       { label: 'Calculators', to: '/calculators' },
       { label: 'IRDAI (Regulator)', href: 'https://irdai.gov.in/' },
@@ -110,6 +120,15 @@ const Footer = () => {
               <h4 className="font-display font-bold text-lg mb-6 text-gold">Our Expertise</h4>
               <nav aria-label="Services" className="flex flex-col gap-3">
                 {services.map((link, index) => (
+                  <Link key={index} to={link.to} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+
+              <h4 className="font-display font-bold text-sm mb-4 mt-8 text-white/70 uppercase tracking-wider">Policy servicing</h4>
+              <nav aria-label="Policy servicing" className="flex flex-col gap-3">
+                {servicing.map((link, index) => (
                   <Link key={index} to={link.to} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                     {link.label}
                   </Link>

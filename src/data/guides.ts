@@ -1,6 +1,8 @@
 export interface GuideSection {
   heading: string;
   paras: string[];
+  /** Bulleted list rendered after the paragraphs — use for document checklists. */
+  items?: string[];
 }
 
 export interface GuideFaq {
@@ -18,7 +20,7 @@ export interface Guide {
   updated: string; // ISO
   readMinutes: number;
   targetQuery: string;
-  kind: 'comparison' | 'persona';
+  kind: 'comparison' | 'persona' | 'checklist';
   intro: string[];
   sections: GuideSection[];
   faqs: GuideFaq[];
@@ -471,6 +473,122 @@ export const GUIDES: Guide[] = [
       { label: 'Akshay vs Umang comparison', to: '/guides/jeevan-akshay-vs-jeevan-umang' },
       { label: 'Pension story: the retired teacher', to: '/blog/the-pension-that-arrived-before-the-milk' },
       { label: 'LIC advisor in Shela', to: '/areas/shela' },
+      { label: 'Book a free consultation', to: '/contact' },
+    ],
+  },
+  {
+    slug: 'lic-claim-documents-checklist',
+    title: 'LIC claim documents: the complete checklist',
+    seoTitle: 'LIC Death Claim Documents Checklist | Ahmedabad Help',
+    metaDescription:
+      'The exact documents LIC asks for on a death, maturity or survival claim, who signs each one, and what causes the delays. Free claim help: +91 98240 25435.',
+    date: '2026-10-26',
+    updated: '2026-10-26',
+    readMinutes: 7,
+    targetQuery: 'LIC death claim documents',
+    kind: 'checklist',
+    intro: [
+      'Most LIC claims are paid, and most of the delay is paperwork rather than dispute. A family that arrives at the branch with the right set of documents the first time is usually paid within weeks; a family that arrives missing two of them restarts the clock.',
+      'This is the checklist I use with families in Ahmedabad before we go to the branch — for a death claim, a maturity claim, or a survival benefit under a money-back plan. It is written for the person who has to actually assemble the file, not for a brochure.',
+    ],
+    sections: [
+      {
+        heading: 'Death claim: the core set',
+        paras: [
+          'These are the documents LIC asks for in an ordinary death claim. "Ordinary" means death from illness, at home or in hospital, with a nomination registered and the policy in force.',
+        ],
+        items: [
+          'The claim form LIC prescribes, signed by the nominee in front of the branch or a designated officer',
+          'The original death certificate issued by the municipal corporation or gram panchayat',
+          'The original policy document. If it is lost, a duplicate application first — this alone can add weeks, so search for it before anything else',
+          'The nominee’s identity proof, address proof and a recent photograph',
+          'Bank account details with a cancelled cheque, for NEFT payment',
+          'The medical attendant’s certificate and hospital records where the death followed an illness',
+          'The employer’s certificate if the policy was part of a salary-savings or employer-employee scheme',
+        ],
+      },
+      {
+        heading: 'What changes when the death was accidental',
+        paras: [
+          'An accidental, unnatural or suicidal death requires the state’s record of the event, not just the medical record. Expect the branch to ask for all of the following in addition to the core set.',
+        ],
+        items: [
+          'First information report (FIR) or the police complaint',
+          'Post-mortem report and the panchnama',
+          'The final police investigation report, where one was filed',
+          'The magistrate’s report or inquest findings, in cases where one was conducted',
+          'Newspaper reports of the incident, if the branch asks for corroboration',
+        ],
+      },
+      {
+        heading: 'What changes when there is no nominee',
+        paras: [
+          'Nomination is what lets LIC pay quickly and close the file. Without it, or where the nominee died before the policyholder, LIC has to establish who is legally entitled, and that is a court or revenue process rather than an insurance one.',
+        ],
+        items: [
+          'A succession certificate from a civil court, where the policy is not covered by a will',
+          'A probate of the will, where one exists',
+          'A legal heir certificate from the revenue authority, where the branch accepts it',
+          'A guardianship certificate plus the minor’s proof of age, where the nominee is a minor',
+          'A family arrangement deed or no-objection certificates from other heirs, where the branch agrees to that route',
+        ],
+      },
+      {
+        heading: 'Maturity claim and survival benefit',
+        paras: [
+          'A maturity or money-back payout is simpler, but families still lose weeks by turning up without the discharge form or with a bank account whose name does not match the policy.',
+        ],
+        items: [
+          'The original policy document',
+          'The discharge form or maturity claim form, signed by the policyholder',
+          'Identity proof and PAN',
+          'Bank details with a cancelled cheque, in the policyholder’s own name',
+          'NACH or ECS mandate details where the payout is by electronic credit',
+          'Form 15G or 15H, where the policyholder is eligible and wants to avoid deduction at source',
+        ],
+      },
+      {
+        heading: 'Timelines, and what to do when it stalls',
+        paras: [
+          'IRDAI’s protection of policyholders’ interests regulations require an insurer to settle a claim within 30 days of receiving the last document it needs, and to give written reasons if it needs more time. Where settlement is delayed beyond the stipulated period, interest can become payable.',
+          'In practice, a complete file on a policy older than three years is usually decided quickly. A claim within three years of issue or revival is treated as an early claim and is investigated more carefully — that is normal, not an accusation, and the branch will list any extra documents it wants.',
+          'If the claim is rejected or sits unanswered, the escalation route is: the branch manager in writing, then LIC’s grievance redressal officer, then IRDAI’s Bima Bharosa portal. Keep every acknowledgement slip — a dated receipt for your documents is the single most useful piece of paper in a delayed claim.',
+        ],
+      },
+      {
+        heading: 'Fees, and the people who will offer to "handle" it',
+        paras: [
+          'Claim forms are free. There is no legitimate charge for submitting a claim, for a nomination change, or for a policy status letter. LIC may charge a small receipted fee for a duplicate policy document, and nothing else.',
+          'Be careful with anyone who asks for a percentage of the claim, offers to "arrange" a death certificate, or wants the original policy document without a receipt. A genuine advisor helps you assemble the file and goes with you to the branch; they do not take custody of the originals or a cut of the payout.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What documents are required for an LIC death claim?',
+        a: 'Normally the LIC claim form signed by the nominee, the original death certificate, the original policy document, the nominee’s identity and address proof, bank details with a cancelled cheque, and the medical attendant’s certificate or hospital records. Accidental deaths additionally need the FIR and post-mortem report.',
+      },
+      {
+        q: 'How long does LIC take to settle a death claim?',
+        a: 'IRDAI regulations require settlement within 30 days of receiving the last necessary document, with written reasons if more time is needed. Claims on policies older than three years are usually decided quickly once the file is complete; a missing nominee or a lost policy document is what typically causes the delay.',
+      },
+      {
+        q: 'Can an LIC claim be filed without the original policy document?',
+        a: 'Yes, but a duplicate policy document has to be obtained first, and that adds time. The nominee applies for a duplicate with an indemnity bond and an advertisement in a newspaper where the branch requires it, and the claim then proceeds with the duplicate.',
+      },
+      {
+        q: 'What if the nominee has also died?',
+        a: 'The nomination lapses and the money is payable to the legal heirs, who must establish entitlement through a succession certificate, probate, or a legal heir certificate accepted by the branch. This is why reviewing the nominee on every policy after a death in the family matters.',
+      },
+      {
+        q: 'Does an agent charge for helping with a claim?',
+        a: 'They should not. Claim forms are free and there is no legitimate percentage or success fee. Jigisha Kiran Shah helps families assemble the file and follow up with the branch at no charge, including for policies sold by another agent.',
+      },
+    ],
+    related: [
+      { label: 'Policy review & claim assistance', to: '/services/policy-review-claims' },
+      { label: 'Change or update a nominee', to: '/services/nominee-change' },
+      { label: 'Revive a lapsed policy', to: '/services/lic-policy-revival' },
       { label: 'Book a free consultation', to: '/contact' },
     ],
   },

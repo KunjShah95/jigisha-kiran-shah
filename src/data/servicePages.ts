@@ -4,6 +4,19 @@
  * keyword targeting: title, description, intro copy, and quotable FAQs
  * (visible on-page AND in FAQPage JSON-LD — what AI engines cite).
  */
+/**
+ * A content block for pages that are about a *process* rather than a product
+ * (revival, nominee change, claim documents). Product pages get plan cards
+ * from services.ts; servicing pages get these instead.
+ */
+export interface ServiceSection {
+  heading: string;
+  intro?: string;
+  items?: string[];
+  /** Render items as an ordered list — use for step-by-step processes. */
+  numbered?: boolean;
+}
+
 export interface ServicePageMeta {
   slug: string;
   title: string;
@@ -16,6 +29,10 @@ export interface ServicePageMeta {
   relatedPost?: { label: string; to: string };
   /** Reuse another service's plan cards (services.ts id) for keyword/area pages. */
   productsFrom?: string;
+  /** Process blocks. Rendered instead of plan cards when there are no products. */
+  sections?: ServiceSection[];
+  /** ISO date the page content was last verified against current LIC rules. */
+  updated?: string;
 }
 
 export const SERVICE_PAGES: ServicePageMeta[] = [
@@ -290,6 +307,466 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       },
     ],
     relatedPost: { label: 'Nominee mistakes that delay claims', to: '/blog/the-policy-he-bought-after-the-funeral' },
+  },
+
+  // ---- Servicing pages: high-intent queries from people who already own a policy ----
+
+  {
+    slug: 'lic-policy-revival',
+    title: 'LIC Policy Revival in Ahmedabad | Revive a Lapsed Policy',
+    description:
+      'Lapsed LIC policy in Ahmedabad? Revival usually means paying arrears with interest, plus a health declaration. Check what yours needs before you pay: +91 98240 25435.',
+    keywords:
+      'LIC policy revival Ahmedabad, revive lapsed LIC policy, lapsed policy revival, LIC policy arrears interest, LIC revival period, lapsed policy paid up value, LIC agent revival help',
+    targetQuery: 'LIC policy revival Ahmedabad',
+    h1: 'LIC Policy Revival in Ahmedabad',
+    updated: '2026-10-26',
+    intro: [
+      'A lapsed LIC policy is not a dead policy. It is a policy that stopped receiving premiums, and in most cases it can be brought back to full force by paying the arrears with interest and confirming that the life assured is still insurable.',
+      'Jigisha Kiran Shah checks the policy schedule first — how long it has been lapsed, how many premiums were paid, and whether the plan still allows revival — because the answer sometimes is that revival costs more than the policy is worth, and that is worth knowing before you pay anything.',
+    ],
+    sections: [
+      {
+        heading: 'What happens when a policy lapses',
+        intro: 'Nothing is lost immediately, but three things change the day a premium goes unpaid beyond the grace period:',
+        items: [
+          'The life cover stops. If the life assured dies while lapsed, the nominee receives nothing beyond the paid-up value, if any.',
+          'The policy stops earning bonuses from that point, which reduces the final maturity amount.',
+          'If at least two full years of premiums were paid, the policy usually acquires a paid-up value — a reduced sum assured payable at maturity, with no further premiums due.',
+        ],
+      },
+      {
+        heading: 'How revival works, step by step',
+        numbered: true,
+        items: [
+          'Read the policy schedule. It gives the plan number, premium paying term, due date of the first unpaid premium and the sum assured.',
+          'Confirm the revival window. Most LIC plans allow revival within five years of the first unpaid premium, and always before maturity. Some plans are shorter — the schedule and the branch decide.',
+          'Get the exact arrears. LIC quotes the unpaid premiums plus interest at its prescribed rate for the period. Nobody can give you this figure accurately without the policy number.',
+          'Complete the health declaration. A lapse of more than six months usually needs a declaration of good health; a longer lapse or an older age can need a medical examination at LIC’s panel doctor.',
+          'Submit at the servicing branch and pay. The policy is reinstated with its original date, bonuses preserved for the revival period, and the nominee intact.',
+        ],
+      },
+      {
+        heading: 'Documents usually needed',
+        items: [
+          'The original policy document, or a duplicate application if it is lost',
+          'Revival application form, signed by the policyholder',
+          'Declaration of health, and medical reports if the branch asks for them',
+          'Age proof, if it was never submitted or is incomplete',
+          'PAN and Aadhaar for KYC, and bank details for NACH mandate if premiums are to be auto-debited',
+        ],
+      },
+      {
+        heading: 'When revival is not the right answer',
+        intro:
+          'An honest advisor will tell you when to stop. These are the cases worth examining before paying arrears:',
+        items: [
+          'The arrears plus interest approach the surrender value — surrendering or taking a paid-up value may leave you in a similar position with more flexibility.',
+          'The life assured is now uninsurable and the branch requires medicals that will not be accepted — a fresh proposal is unlikely to help either, so the paid-up value becomes the realistic outcome.',
+          'The policy is a pure term plan with no surrender value. Reviving it restores cover, but a new term policy at a younger-equivalent price may be impossible at the current age, so revival is usually still worth it.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How long can a lapsed LIC policy be revived?',
+        a: 'Most LIC plans allow revival within five years from the due date of the first unpaid premium, provided the policy has not matured. Some plans carry a shorter window. The exact limit is printed on your policy schedule and confirmed by the servicing branch.',
+      },
+      {
+        q: 'How much does LIC charge to revive a policy?',
+        a: 'You pay the unpaid premiums plus interest at the rate LIC prescribes for the lapse period. The figure depends on the plan, the number of missed premiums and how long ago they fell due, so it can only be quoted from the policy number — not estimated.',
+      },
+      {
+        q: 'Do I need a medical test to revive a lapsed policy?',
+        a: 'A lapse of more than six months normally needs a declaration of good health. Longer lapses, higher sum assured, or a life assured above a certain age can require a medical examination at LIC’s panel doctor. The branch confirms which applies to your policy.',
+      },
+      {
+        q: 'Can a lapsed policy be revived after the policyholder has died?',
+        a: 'No. Revival is a contract with the life assured and cannot be completed after death. In that situation the family should claim the paid-up value or surrender value that had accrued, and this is handled as a death claim with the branch.',
+      },
+    ],
+    relatedPost: { label: 'A Satellite family revived a 2016 policy after four years', to: '/blog/the-lapsed-policy-a-satellite-family-revived' },
+  },
+
+  {
+    slug: 'nominee-change',
+    title: 'LIC Nominee Change in Ahmedabad | Update Nomination',
+    description:
+      'Change or update the nominee on your LIC policy: the form, the documents, and the mistakes that delay claims. Free help in Ahmedabad: +91 98240 25435.',
+    keywords:
+      'LIC nominee change, change nominee in LIC policy, LIC nomination form, update nominee LIC, nominee not legal heir, LIC claim nominee missing, nomination section 39',
+    targetQuery: 'LIC nominee change',
+    h1: 'LIC Nominee Change & Update in Ahmedabad',
+    updated: '2026-10-26',
+    intro: [
+      'Nomination is the single cheapest thing you can do for your family and the single most common reason a claim gets stuck. It costs nothing, takes one form, and decides whether the money reaches your nominee in weeks or your legal heirs after a succession certificate.',
+      'It is also the detail that quietly goes stale: a nominee who has since died, a parent nominated on a policy that now belongs to a married son, a name misspelled at proposal. All three are fixable in a single branch visit.',
+    ],
+    sections: [
+      {
+        heading: 'Who can be a nominee',
+        items: [
+          'Any person can be nominated — spouse, child, parent, sibling. More than one nominee is allowed, with a share specified for each.',
+          'A minor can be nominated, but a guardian must be named to receive the money on the minor’s behalf.',
+          'A nominee can be changed at any time during the policy term by the policyholder. It is free and does not affect the policy.',
+          'Under a policy endorsed to the Married Women’s Property Act, the beneficiaries are the wife and children and cannot be changed by the policyholder afterwards.',
+        ],
+      },
+      {
+        heading: 'How to change the nominee',
+        numbered: true,
+        items: [
+          'Fill the nomination form LIC prescribes, available at the servicing branch and on licindia.in, quoting the policy number and the new nominee’s full name, date of birth, relationship and address.',
+          'Attach the new nominee’s identity proof if the branch asks for it, and the policyholder’s own ID and PAN.',
+          'Submit at the branch that services the policy — not necessarily the branch that sold it. If you have moved cities, the policy can be transferred to a local branch first.',
+          'Collect written acknowledgement, and check after a few weeks that the nomination has actually been registered. An unregistered form is the same as no form.',
+        ],
+      },
+      {
+        heading: 'The mistake most families make',
+        intro:
+          'A nominee is not automatically the legal heir. Nomination tells LIC who may receive the money; it does not override succession law.',
+        items: [
+          'Where a valid nomination exists, LIC can pay the nominee and discharge itself — this is what makes settlement fast.',
+          'Where there is no nominee, or the nominee died before the policyholder, LIC needs legal proof of who is entitled: a succession certificate, probate, or a legal heir certificate depending on the case. That process runs in months, not weeks.',
+          'Where the nominee is a minor, the guardian named in the nomination receives the money. If no guardian was named, a guardianship certificate is needed.',
+          'If family circumstances have changed — marriage, divorce, a death — review the nomination on every policy, not just the newest one.',
+        ],
+      },
+      {
+        heading: 'Other details worth updating at the same time',
+        items: [
+          'Address and mobile number, so LIC’s premium and maturity notices reach you',
+          'Bank account and NACH mandate, to avoid a lapse caused by a failed auto-debit',
+          'PAN, which is required for policies above the threshold and for maturity payouts',
+          'Name correction after marriage, supported by a marriage certificate, gazette notification or affidavit',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is there any charge to change the nominee in a LIC policy?',
+        a: 'No. Changing a nomination is free. You only need the completed nomination form and, in some branches, identity proof for the new nominee. Anyone charging a fee for the form itself is not acting on LIC’s behalf.',
+      },
+      {
+        q: 'Can I change the nominee after the policy matures?',
+        a: 'No. Nomination can only be changed while the policy is in force. Once the maturity date is reached and the claim is due, the person already registered as nominee, or the legal heirs if none is registered, receive the money.',
+      },
+      {
+        q: 'Is the nominee the owner of the money?',
+        a: 'The nominee receives and holds the money. Where the nominee is the spouse, child or parent, LIC can pay and close the claim. In other cases the nominee may hold it as a trustee for the legal heirs, which is why the relationship matters. Nomination does not replace a will.',
+      },
+      {
+        q: 'Can the nominee be changed on a policy sold by another agent?',
+        a: 'Yes. Nomination and servicing belong to the policyholder, not the agent. Jigisha Kiran Shah handles nominee updates for LIC policies regardless of who sold them, and there is no charge for the help.',
+      },
+    ],
+    relatedPost: { label: 'The policy he bought after the funeral', to: '/blog/the-policy-he-bought-after-the-funeral' },
+  },
+
+  {
+    slug: 'lic-policy-tracing',
+    title: 'Find a Lost LIC Policy | Policy Tracing Help in Ahmedabad',
+    description:
+      'Lost an LIC policy or a policy number? How to trace it using premium receipts, bank debits, the LIC unclaimed-amount search and the branch record. Help: +91 98240 25435.',
+    keywords:
+      'find lost LIC policy, LIC policy tracing, lost LIC policy number, how to find old LIC policy, LIC unclaimed amount search, trace LIC policy of deceased parent',
+    targetQuery: 'find old LIC policy',
+    h1: 'Find a Lost LIC Policy',
+    updated: '2026-10-26',
+    intro: [
+      'Policies go missing for ordinary reasons: a parent dies without telling anyone, a file is lost in a move, the agent left, the premium was paid by salary deduction decades ago. The policy itself does not disappear — the record exists at a branch, and it can usually be found.',
+      'What you need is not luck but the right starting points: a name, a date of birth, a rough year of purchase, and any trace of a payment. From there, tracing is a documentation exercise, and it is one of the most valuable things a family can do.',
+    ],
+    sections: [
+      {
+        heading: 'Where to look before contacting anyone',
+        numbered: true,
+        items: [
+          'Old income-tax records. Section 80C deductions in a decade-old ITR list the policy number — and so does the Form 16 from an employer.',
+          'Bank statements. Premiums paid by standing instruction, ECS or NACH appear as LIC debits every year on roughly the same date.',
+          'Salary slips and employer letters. Employer-arranged policies show a deduction line, and the HR or accounts department can retrieve the master policy details.',
+          'The house file. Premium receipts, renewal notices, a policy schedule, an SMS from LIC, or a cheque book counterfoil are all enough to start a search.',
+          'The LIC unclaimed-amount facility. LIC publishes a search on licindia.in where you can look up unclaimed amounts by name and date of birth, and the same facility is mandated for all insurers by IRDAI.',
+        ],
+      },
+      {
+        heading: 'Tracing a policy for a parent who has died',
+        items: [
+          'Approach the LIC branch closest to the last known address, with the death certificate and proof of relationship. Branches can search by name and date of birth even without a policy number.',
+          'If the branch has changed jurisdiction, ask for a search through LIC’s central records — policies are indexed by name and date of birth, not only by number.',
+          'Ask the employer if the parent worked in a company that arranged cover. Group and employer-employee policies sit with the employer, not the individual branch.',
+          'Check the unclaimed-amount search under both the spouse’s and the parent’s name, in case the policy was proposed by one and held by the other.',
+          'Once the policy is traced, the claim is a death claim. The nominee or legal heir route applies exactly as it would for a policy you already had in hand.',
+        ],
+      },
+      {
+        heading: 'What makes a search succeed or fail',
+        items: [
+          'A date of birth is worth more than an address. Names repeat; dates of birth rarely do.',
+          'A year of purchase narrows the branch and the plan series, which is where manual searches actually begin.',
+          'A policy number makes it a lookup rather than a search — even a partial number helps.',
+          'If the family has none of these, an affidavit plus the death certificate and the last known address is the usual starting point, and the branch will advise what it will accept.',
+        ],
+      },
+      {
+        heading: 'Once it is found',
+        items: [
+          'Get the policy status in writing — in force, lapsed, paid up, surrendered or already claimed.',
+          'If it is lapsed, check whether revival is still within the window before deciding anything else.',
+          'If it has matured and nobody claimed it, the money sits in LIC’s unclaimed-amount register and can still be claimed, with interest where applicable.',
+          'Update the nominee immediately on any policy that is still in force. A traced policy with no nominee simply repeats the original problem.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can an LIC policy be traced without the policy number?',
+        a: 'Yes, in most cases. A branch can search by the life assured’s full name and date of birth, particularly if you also know the approximate year of purchase or the address at the time. A policy number makes it far faster, but its absence is not the end of the search.',
+      },
+      {
+        q: 'What happens to an LIC policy nobody claims?',
+        a: 'Matured and unclaimed amounts are transferred to LIC’s unclaimed-amount register, and IRDAI requires every insurer to publish a search facility for them. The money remains claimable by the nominee or legal heirs, with the process and any applicable interest explained by the branch.',
+      },
+      {
+        q: 'How long does tracing a lost LIC policy take?',
+        a: 'A policy that can be found by name and date of birth is often located within a few weeks. Cases that need manual searches across branches, or a claim where no nominee was registered, take longer because legal-heir documents are involved.',
+      },
+      {
+        q: 'Is there a charge for helping trace a policy?',
+        a: 'No. Jigisha Kiran Shah does not charge for policy tracing or for the branch follow-up. LIC may charge its own nominal fee for a duplicate policy document, which is separate and receipted by the branch.',
+      },
+    ],
+    relatedPost: { label: 'The claim that took four months because nobody knew the policy existed', to: '/blog/the-policy-he-bought-after-the-funeral' },
+  },
+
+  {
+    slug: 'nri-lic-services',
+    title: 'NRI LIC Policy Services | Premium, Nominee & Claims Help',
+    description:
+      'Holding an LIC policy while living abroad? Premiums from NRE/NRO, nominee changes, revival and maturity claims handled remotely. Talk to Jigisha Kiran Shah: +91 98240 25435.',
+    keywords:
+      'NRI LIC policy, NRI LIC premium payment, NRI LIC claim, LIC policy for NRI, NRE NRO LIC premium, NRI nominee change LIC, LIC maturity claim NRI',
+    targetQuery: 'NRI LIC policy',
+    h1: 'NRI LIC Policy Servicing',
+    updated: '2026-10-26',
+    intro: [
+      'An LIC policy bought in Ahmedabad does not stop working when the policyholder moves to Dubai, Toronto or Melbourne. Everything — premiums, nominee updates, revival, maturity and death claims — can be handled from abroad, but the paperwork has an extra layer that trips people up.',
+      'Jigisha Kiran Shah services LIC policies for Gujarati families settled abroad, most of them originally sold to a parent or bought before the move, and coordinates with the branch in India so nobody has to fly back for a form.',
+    ],
+    sections: [
+      {
+        heading: 'Paying premiums from abroad',
+        items: [
+          'Premiums can be paid from an NRE or NRO account, by international transfer, or by an NACH mandate on an Indian account that a relative maintains.',
+          'An NRO account is the usual route: it holds rupee balances and is designed for exactly this kind of payment in India.',
+          'Paying from a foreign account directly is possible but slower, and a delayed credit is one of the most common causes of an accidental lapse for NRIs.',
+          'If the policy has already lapsed, revival is available on the same terms as for a resident, including the health declaration.',
+        ],
+      },
+      {
+        heading: 'Documents that differ for an NRI',
+        items: [
+          'Passport, and the visa or residence permit for the country of residence',
+          'Overseas address proof, and an Indian address if one is maintained',
+          'PAN, which remains mandatory for most policies and for maturity payouts',
+          'KYC documents attested or apostilled as the branch requires — the requirement varies by country and by branch',
+          'NRE or NRO bank details for payouts, with the account held in India',
+        ],
+      },
+      {
+        heading: 'Claims and maturity payouts',
+        items: [
+          'Maturity and survival-benefit payouts are made in India, in rupees, to the policyholder’s NRO account. Repatriation abroad is a separate step governed by FEMA and RBI limits, handled by your bank.',
+          'A death claim is paid in India to the nominee’s account, and the nominee does not need to be an NRI for this.',
+          'Tax deducted at source can apply to NRI maturity proceeds, and relief under a double-taxation agreement may be available. This is a question for your chartered accountant, with the LIC certificate in hand.',
+          'Documents signed abroad usually need notarisation or apostilling before the branch accepts them, so it is worth confirming the exact requirement before couriering anything.',
+        ],
+      },
+      {
+        heading: 'What can be done without travelling',
+        items: [
+          'Nominee change and address change, with the form signed and attested abroad',
+          'Revival of a lapsed policy, including the health declaration',
+          'Duplicate policy document, if the original was lost in the move',
+          'Premium mode change and NACH mandate setup',
+          'Maturity and death claim initiation, with document follow-up handled at the branch',
+          'A full policy review by video call, across all policies the family holds',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can an NRI hold an LIC policy?',
+        a: 'Yes. NRIs can hold LIC policies, and existing policies continue after emigration. Premiums are usually paid from an NRE or NRO account, and the policy remains governed by Indian insurance and foreign-exchange rules.',
+      },
+      {
+        q: 'How does an NRI pay LIC premiums?',
+        a: 'Through an NRE or NRO account, by NACH mandate on an Indian account, or by international transfer. Most families use an NRO account because it is built for rupee payments in India and avoids the delays that cause accidental lapses.',
+      },
+      {
+        q: 'Can an NRI claim LIC maturity proceeds abroad?',
+        a: 'LIC pays maturity proceeds in India, in rupees, to the policyholder’s account. Moving the money abroad afterwards is a separate remittance step under FEMA and RBI rules, handled by your bank, and tax deducted at source may apply in India.',
+      },
+      {
+        q: 'Do NRI documents need to be notarised or apostilled?',
+        a: 'Usually yes for signatures executed abroad. The exact requirement depends on the document and the branch, and can differ by country. Confirm before couriering originals — replacing a lost policy document is slower and more expensive than checking first.',
+      },
+    ],
+    relatedPost: { label: 'Retirement checklist for families with income abroad', to: '/blog/retirement-planning-ahmedabad-50s-checklist' },
+  },
+
+  {
+    slug: 'lic-policy-loan',
+    title: 'Loan Against LIC Policy in Ahmedabad | Eligibility & Process',
+    description:
+      'Borrow against your LIC policy instead of breaking it. Eligibility, how much you can get, interest, and what happens if the loan is not repaid: +91 98240 25435.',
+    keywords:
+      'loan against LIC policy, LIC policy loan, LIC loan eligibility, LIC policy loan interest rate, surrender vs loan LIC, LIC loan documents',
+    targetQuery: 'loan against LIC policy',
+    h1: 'Loan Against Your LIC Policy',
+    updated: '2026-10-26',
+    intro: [
+      'A loan against an LIC policy lets you reach your own money without ending the policy. The cover continues, bonuses continue to accrue, and the loan plus interest is simply deducted when the policy matures or a claim is paid.',
+      'It is the better option whenever the need is temporary. Surrendering a policy to meet a short-term cash requirement permanently gives up cover, bonuses and the maturity date — usually for a fraction of what the policy would have paid.',
+    ],
+    sections: [
+      {
+        heading: 'Which policies qualify',
+        items: [
+          'Participating endowment, money-back and whole-life plans qualify once the policy has acquired a surrender value — typically after two full years of premiums.',
+          'Pure term plans do not qualify. They carry no surrender value, so there is nothing to borrow against.',
+          'ULIP policies are generally not eligible for a policy loan; partial withdrawal rules apply instead.',
+          'The policy must be in force. A lapsed policy has to be revived before a loan can be considered.',
+        ],
+      },
+      {
+        heading: 'How much you can borrow',
+        items: [
+          'LIC sanctions a percentage of the surrender value, not of the sum assured — usually most of it, with the exact proportion set by the plan.',
+          'The amount therefore grows every year as the policy accumulates surrender value and bonuses.',
+          'Interest is charged at the rate LIC declares and revises from time to time. It is not fixed for the life of the loan.',
+          'If unpaid interest and the loan together approach the surrender value, LIC can foreclose the policy or treat it as lapsed, so servicing the interest matters.',
+        ],
+      },
+      {
+        heading: 'The process',
+        numbered: true,
+        items: [
+          'Check the surrender value on the policy. This is the number the loan is calculated against.',
+          'Submit the loan application at the servicing branch with the original policy document.',
+          'Sign the loan agreement and, where the policy is assigned or held under MWP, complete the additional documentation.',
+          'Receive the amount by NEFT to your bank account, usually within a few working days of sanction.',
+          'Repay principal and interest, or allow LIC to adjust them against the maturity or claim payout.',
+        ],
+      },
+      {
+        heading: 'Loan versus surrender versus breaking an FD',
+        items: [
+          'Take the loan when the need is short and the policy is worth keeping. You keep the cover and the maturity date.',
+          'Surrender only when the policy no longer fits at all — the wrong term, the wrong goal, or a premium you cannot sustain.',
+          'Compare against a personal loan honestly: a policy loan is usually cheaper, but it reduces what your family eventually receives.',
+          'Never let a policy lapse in order to avoid repaying a loan. That converts a manageable liability into a permanent loss of cover.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much loan can I get against my LIC policy?',
+        a: 'It is a percentage of the surrender value, not the sum assured, and the exact proportion depends on the plan. Because surrender value grows with each premium and with bonuses, the eligible amount increases the longer the policy has run.',
+      },
+      {
+        q: 'Does the life cover continue during a policy loan?',
+        a: 'Yes. The policy remains in force and the sum assured stays payable on death, with the outstanding loan and interest deducted from the payout. Bonuses continue to be declared on the policy as normal.',
+      },
+      {
+        q: 'What happens if I do not repay an LIC policy loan?',
+        a: 'The loan and accrued interest are adjusted against the maturity or claim amount. If they approach the surrender value, LIC can foreclose the policy or treat it as lapsed, which ends the cover — so paying the interest periodically is what keeps the policy healthy.',
+      },
+      {
+        q: 'Is a loan against an LIC policy taxable?',
+        a: 'A policy loan is borrowing against your own asset, not income, so it is not treated as taxable income when received. The tax position on any eventual surrender or maturity payout is a separate question, best confirmed with your chartered accountant.',
+      },
+    ],
+  },
+
+  {
+    slug: 'lic-address-name-change',
+    title: 'LIC Address, Name & Minor-to-Major Updates | Ahmedabad',
+    description:
+      'Change your address, correct your name, or convert a minor’s LIC policy when they turn 18. What the branch needs, and why skipping it delays claims: +91 98240 25435.',
+    keywords:
+      'LIC address change, LIC name change after marriage, LIC minor to major conversion, update LIC mobile number, LIC KYC update, LIC policy servicing Ahmedabad',
+    targetQuery: 'LIC address change',
+    h1: 'LIC Address, Name & Minor-to-Major Changes',
+    updated: '2026-10-26',
+    intro: [
+      'These are the smallest chores in insurance and the ones most often left undone for a decade. A wrong address means a renewal notice never arrives; an uncorrected name means a bank rejects the payout; a policy still held in a parent’s name after the child turns 18 means the money cannot be released without extra paperwork.',
+      'All three are one-visit jobs, and all three are worth doing in the same visit as a nominee update.',
+    ],
+    sections: [
+      {
+        heading: 'Address change',
+        items: [
+          'Submit the address-change request at the servicing branch with the policy number and proof of the new address — Aadhaar, electricity bill, rent agreement or passport.',
+          'If you have moved to another city, ask for the policy to be transferred to the LIC branch serving the new address. Servicing then happens locally instead of by post.',
+          'Update the mobile number and email at the same time. LIC’s premium-due and maturity notices increasingly arrive by SMS and email, and a stale number is how policies lapse unnoticed.',
+          'Update the bank account and NACH mandate too if the old account is closed, otherwise the auto-debit fails and the policy lapses without anyone noticing.',
+        ],
+      },
+      {
+        heading: 'Name correction or change',
+        items: [
+          'A spelling correction needs the policy document and an identity proof showing the correct spelling.',
+          'A change after marriage needs the marriage certificate, or a gazette notification where the certificate is not available.',
+          'A formal name change needs the gazette notification, plus an affidavit in the format the branch specifies.',
+          'The name on the policy should match the name on the bank account that will receive the money. A mismatch is a routine cause of a returned maturity payout.',
+        ],
+      },
+      {
+        heading: 'Minor to major conversion',
+        intro:
+          'When a policy was taken on a child’s life, the child becomes the policyholder on turning 18 — but only if the conversion is actually completed.',
+        items: [
+          'Submit proof of age — Class 10 marksheet, passport, or birth certificate — at the servicing branch once the life assured turns 18.',
+          'The policy then stands in the life assured’s own name, and they sign future requests, nominations and claims themselves.',
+          'Until conversion, the parent or proposer continues to hold the policy, and a maturity or claim at that point needs guardianship paperwork.',
+          'Convert before the maturity date, not after. Conversion after maturity turns into a legal-heir process rather than a form.',
+        ],
+      },
+      {
+        heading: 'The full servicing checklist',
+        intro: 'These are the updates worth doing together, in one branch visit, on every policy a family holds:',
+        items: [
+          'Nominee registered, correct, and alive',
+          'Address, mobile and email current',
+          'Bank account and NACH mandate active',
+          'PAN recorded where required',
+          'Name matching the bank account exactly',
+          'Minor policies converted once the child turns 18',
+          'Premium mode and due dates known, not guessed',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How do I change my address in an LIC policy?',
+        a: 'Submit an address-change request at the servicing branch with the policy number and proof of the new address such as Aadhaar, an electricity bill or a rent agreement. If you have moved cities, ask for the policy to be transferred to the local branch at the same time.',
+      },
+      {
+        q: 'Can I change my name on an LIC policy after marriage?',
+        a: 'Yes. Submit the request with the marriage certificate, or a gazette notification if a certificate is not available, along with identity proof. Make sure the name then matches your bank account, because a mismatch is a common reason a maturity payout is returned.',
+      },
+      {
+        q: 'What happens if a minor’s LIC policy is not converted at 18?',
+        a: 'The policy stays in the proposer’s name and the life assured cannot sign requests, change the nominee, or claim in their own right. At maturity it becomes a guardianship and legal-heir process instead of a simple form, which adds weeks or months.',
+      },
+      {
+        q: 'Do I have to visit the branch in person for these changes?',
+        a: 'Many updates can be initiated with a signed form and supporting documents, and some are available through LIC’s online customer portal once the policy is registered there. Anything involving a signature change or a minor-to-major conversion is usually completed at the branch.',
+      },
+    ],
+    relatedPost: { label: 'The five-number retirement checklist', to: '/blog/retirement-planning-ahmedabad-50s-checklist' },
   },
 ];
 

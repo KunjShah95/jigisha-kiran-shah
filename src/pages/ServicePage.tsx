@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { Phone, MessageCircle, ArrowRight, CheckCircle2, Star, ExternalLink } from 'lucide-react';
+import { Phone, MessageCircle, ArrowRight, CheckCircle2, Star, ExternalLink, FileText } from 'lucide-react';
 import { pageWhatsAppText, whatsappUrl } from '../lib/contact';
 import { NextSteps } from '../components/lead-fields';
 import CallbackCard from '../components/CallbackCard';
@@ -26,6 +26,13 @@ const CONTACT_OBJECTIVE: Record<string, string> = {
   'corporate-insurance': 'business',
   'business-insurance-gidc-vatva': 'business',
   'policy-review-claims': 'review',
+  // Servicing pages: the visitor already owns a policy and wants a review.
+  'lic-policy-revival': 'review',
+  'nominee-change': 'review',
+  'lic-policy-tracing': 'claim',
+  'nri-lic-services': 'review',
+  'lic-policy-loan': 'review',
+  'lic-address-name-change': 'review',
 };
 
 export default function ServicePage() {
@@ -56,10 +63,12 @@ export default function ServicePage() {
           {
             '@context': 'https://schema.org',
             '@type': 'Service',
+            '@id': `${SITE_URL}/services/${meta.slug}#service`,
             name: `${meta.h1} — Jigisha Kiran Shah, LIC Advisor`,
             serviceType: meta.targetQuery,
             description: meta.description,
             url: `${SITE_URL}/services/${meta.slug}`,
+            ...(meta.updated ? { dateModified: meta.updated } : {}),
             provider: { '@id': `${SITE_URL}/#business` },
             areaServed: { '@type': 'City', name: 'Ahmedabad' },
             offers: {
@@ -74,7 +83,7 @@ export default function ServicePage() {
   });
   useScrollReveal();
 
-  if (!meta || !service) {
+  if (!meta) {
     return (
       <main style={{ padding: '4rem 1.5rem', textAlign: 'center' }}>
         <h1>Service not found</h1>
@@ -84,7 +93,7 @@ export default function ServicePage() {
   }
 
   const others = SERVICE_PAGES.filter((s) => s.slug !== meta.slug);
-  const Icon = service.icon;
+  const Icon = service?.icon ?? FileText;
 
   return (
     <>
@@ -95,14 +104,14 @@ export default function ServicePage() {
             {' · '}
             <Link to="/services" className="hover:text-gold-dark">Services</Link>
             {' · '}
-            <span aria-current="page">{service.title}</span>
+            <span aria-current="page">{meta.h1}</span>
           </nav>
           <div className="flex items-center gap-3 mb-4">
             <span className="w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center shrink-0">
               <Icon className="w-6 h-6 text-gold-dark" aria-hidden="true" />
             </span>
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-dark">
-              {service.tagline}
+              {service?.tagline ?? 'Policy servicing'}
             </span>
           </div>
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
@@ -151,37 +160,68 @@ export default function ServicePage() {
         </div>
       </section>
 
-      <section className="py-10 lg:py-14 bg-white">
-        <div className="container max-w-4xl">
-          <h2 className="text-2xl font-display font-bold text-midnight mb-6">
-            {service.id === 'policy-review-claims' ? 'What the review & claim help includes' : `${service.title} plans compared`}
-          </h2>
-          <div className="grid md:grid-cols-2 gap-4">
-            {service.products.map((p) => (
-              <div key={p.name} className="p-6 bg-cream rounded-2xl border border-border">
-                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-dark mb-1">
-                  {p.type}
+      {service && (
+        <section className="py-10 lg:py-14 bg-white">
+          <div className="container max-w-4xl">
+            <h2 className="text-2xl font-display font-bold text-midnight mb-6">
+              {service.id === 'policy-review-claims' ? 'What the review & claim help includes' : `${service.title} plans compared`}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {service.products.map((p) => (
+                <div key={p.name} className="p-6 bg-cream rounded-2xl border border-border">
+                  <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-dark mb-1">
+                    {p.type}
+                  </div>
+                  <h3 className="font-bold text-midnight text-lg mb-2">{p.name}</h3>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">{p.description}</p>
+                  <ul className="space-y-2">
+                    {p.benefits.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
+                        <CheckCircle2 className="w-4 h-4 text-gold-dark shrink-0 mt-0.5" aria-hidden="true" />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="font-bold text-midnight text-lg mb-2">{p.name}</h3>
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{p.description}</p>
-                <ul className="space-y-2">
-                  {p.benefits.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
-                      <CheckCircle2 className="w-4 h-4 text-gold-dark shrink-0 mt-0.5" aria-hidden="true" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Process pages (revival, nominee, claims) explain how something is done;
+          they have no plan cards to show, so they use these blocks instead. */}
+      {meta.sections?.length ? (
+        <section className="py-10 lg:py-14 bg-white">
+          <div className="container max-w-3xl space-y-10">
+            {meta.sections.map((sec) => (
+              <div key={sec.heading}>
+                <h2 className="text-2xl font-display font-bold text-midnight mb-3">{sec.heading}</h2>
+                {sec.intro && (
+                  <p className="text-base text-gray-600 leading-relaxed mb-4">{sec.intro}</p>
+                )}
+                {sec.items && (
+                  <ul className="space-y-3">
+                    {sec.items.map((item, i) => (
+                      <li key={item} className="flex items-start gap-3 text-sm text-gray-700 leading-relaxed">
+                        <span className="shrink-0 w-6 h-6 rounded-full bg-gold/10 text-gold-dark text-xs font-bold flex items-center justify-center mt-0.5">
+                          {sec.numbered ? i + 1 : '·'}
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="py-10 lg:py-14 bg-cream">
         <div className="container max-w-3xl">
           <h2 className="text-2xl font-display font-bold text-midnight mb-6">
-            {service.title} — common questions
+            {meta.h1} — common questions
           </h2>
           <div className="space-y-4">
             {meta.faqs.map((f) => (
@@ -236,7 +276,7 @@ export default function ServicePage() {
               </ul>
             </div>
           </div>
-          <h2 className="text-xl font-display font-bold text-midnight mt-10 mb-4">Explore other LIC plans</h2>
+          <h2 className="text-xl font-display font-bold text-midnight mt-10 mb-4">Other LIC plans & services</h2>
           <div className="flex flex-wrap gap-2">
             {others.map((o) => (
               <Link

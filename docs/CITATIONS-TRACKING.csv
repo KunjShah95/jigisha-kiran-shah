@@ -1,0 +1,17 @@
+priority,platform,category,url,what_it_feeds,status,submitted_on,listing_url,notes
+1,Google Business Profile,map pack + AI answers,https://business.google.com/,Google local pack; AI Overviews; Siri; ChatGPT local results,not started,,,Primary category must be "Insurance agency". Website link must carry the GBP UTM.
+1,Bing Places,map pack + AI answers,https://www.bingplaces.com/,Bing; Copilot; ChatGPT search via Bing index,not started,,,Import from Google. Recheck every 6 months.
+1,Apple Business Connect,map pack + voice,https://businessconnect.apple.com/,Apple Maps; Siri,not started,,,Claim the pin before a competitor claims it.
+1,LinkedIn person profile,entity,https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2,Google knowledge panel; ChatGPT/Perplexity profile lookups,not started,,,Add current role with full NAP and the 750-char description.
+1,YouTube channel About,entity,https://www.youtube.com/@jigishakiranshah4636,Google entity; AI citations of video,not started,,,Address + phone + website in the About tab. Pin a 60-second intro.
+1,WhatsApp Business profile,entity,https://business.whatsapp.com/,Customer trust; local signals,not started,,,Name, category "Insurance agent", address, hours, catalogue of 9 services.
+2,LinkedIn company page,entity,https://www.linkedin.com/company/setup/new/,Google entity reconciliation,not started,,,Same NAP as the person profile. Link the two.
+2,Facebook page,entity,https://www.facebook.com/pages/create,Google entity reconciliation,not started,,,Create even if it is never posted to. It is a citation, not a channel.
+2,Justdial,directory,https://www.justdial.com/,Justdial rankings; some AI scrapers,not started,,,Category "Insurance Agents". Decline every paid plan.
+2,Sulekha,directory,https://www.sulekha.com/,Sulekha local search,not started,,,Category "Insurance agents / LIC agents".
+2,IndiaMART,B2B directory,https://www.indiamart.com/,B2B queries; corporate/HUF cover,not started,,,Use the business description, not the consumer one.
+2,TradeIndia,B2B directory,https://www.tradeindia.com/,B2B queries,not started,,,Same B2B description as IndiaMART.
+3,MDRT member directory,authority,https://www.mdrt.org/,High-trust corroboration of the 2x MDRT claim,not started,,,Only if a public member profile exists. Do not invent one.
+3,Shela / Applewoods society directory,hyper-local,society office,The most credible local citation available,not started,,,Residents, not algorithms. Ask the society office.
+3,Google Business Profile Q&A,answers,https://business.google.com/,AI answers quoting the profile,not started,,,Seed 5 real questions and answer them from the owner account.
+3,Local press or community mention,authority,Ahmedabad Mirror / Divya Bhaskar community pages,AI citations; trust,not started,,,One talk at a society AGM or school PTA is worth more than ten directories.

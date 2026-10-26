@@ -29,6 +29,8 @@ const fileFor = (pathname) =>
   pathname === '/' ? join(DIST, 'index.html') : join(DIST, pathname.slice(1), 'index.html');
 
 const seenPaths = new Set();
+const seenTitles = new Map();
+const seenCanonicals = new Map();
 
 for (const loc of locs) {
   const { pathname } = new URL(loc);
@@ -46,6 +48,8 @@ for (const loc of locs) {
   const title = html.match(/<title>([\s\S]*?)<\/title>/)?.[1]?.trim();
   if (!title) fail(`${clean}: missing <title>`);
   else {
+    if (seenTitles.has(title)) fail(`${clean}: title duplicates ${seenTitles.get(title)}`);
+    seenTitles.set(title, clean);
     if (title.length > 70) warn(`${clean}: title is ${title.length} chars (will truncate): ${title}`);
     if (title.length < 15) warn(`${clean}: title is very short: ${title}`);
   }
@@ -59,6 +63,10 @@ for (const loc of locs) {
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/)?.[1];
   if (canonical !== `${SITE}${clean === '/' ? '/' : clean}`) {
     fail(`${clean}: canonical is ${canonical || 'missing'}, expected ${SITE}${clean}`);
+  }
+  if (canonical) {
+    if (seenCanonicals.has(canonical)) fail(`${clean}: canonical duplicates ${seenCanonicals.get(canonical)}`);
+    seenCanonicals.set(canonical, clean);
   }
 
   const h1s = html.match(/<h1[\s>]/g)?.length ?? 0;
@@ -93,8 +101,15 @@ else {
   if (!existsSync(join(DIST, 'llms-full.txt'))) fail('llms-full.txt was not generated');
 }
 
-// A link to a route that does not exist is a 404 for a user and a dead end for a crawler.
+// Every service page must be discoverable from the one business entity:
+// the homepage OfferCatalog is what search engines and LLMs read as the menu.
 const home = readFileSync(join(DIST, 'index.html'), 'utf8');
+for (const p of seenPaths) {
+  if (!p.startsWith('/services/')) continue;
+  if (!home.includes(`${SITE}${p}"`)) fail(`OfferCatalog on the homepage does not list ${p}`);
+}
+
+// A link to a route that does not exist is a 404 for a user and a dead end for a crawler.
 const internal = new Set(
   [...home.matchAll(/href="(\/[^"#?]*)/g)].map((m) => (m[1] === '/' ? '/' : m[1].replace(/\/$/, ''))),
 );

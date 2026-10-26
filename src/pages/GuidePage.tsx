@@ -103,7 +103,7 @@ export default function GuidePage() {
 
         <header className="mb-10">
           <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4">
-            {guide.kind === 'comparison' ? 'Plan comparison' : 'Guide'}
+            {guide.kind === 'comparison' ? 'Plan comparison' : guide.kind === 'checklist' ? 'Checklist' : 'Guide'}
           </div>
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-5 leading-tight">
             {guide.title}
@@ -150,6 +150,16 @@ export default function GuidePage() {
                 {p}
               </p>
             ))}
+            {sec.items && (
+              <ul className="space-y-2.5 mb-5">
+                {sec.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[15px] lg:text-base text-gray-700 leading-relaxed font-light">
+                    <span aria-hidden="true" className="shrink-0 w-1.5 h-1.5 rounded-full bg-gold mt-2.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
         ))}
 

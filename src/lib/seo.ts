@@ -31,6 +31,12 @@ export const OFFER_CATALOG = [
   { name: 'Corporate, HUF and MWP cover', slug: 'corporate-insurance', summary: 'Employer-employee cover, partnership insurance, HUF and MWP Act policies.' },
   { name: 'Business insurance — GIDC Vatva', slug: 'business-insurance-gidc-vatva', summary: 'Keyman and employer-employee cover for Vatva industrial units.' },
   { name: 'Policy review and claims help', slug: 'policy-review-claims', summary: 'Review of existing LIC policies (any agent), nominee and KYC updates, lapsed-policy revival, claim assistance.' },
+  { name: 'Lapsed policy revival', slug: 'lic-policy-revival', summary: 'Restore a lapsed LIC policy: arrears and interest, health declaration, medicals where required, and a straight answer on whether revival is worth it.' },
+  { name: 'Nominee change and updates', slug: 'nominee-change', summary: 'Register or change the nominee on any LIC policy, correct a misspelled name, and avoid the legal-heir route at claim time.' },
+  { name: 'Lost policy tracing', slug: 'lic-policy-tracing', summary: 'Find an LIC policy or policy number using premium receipts, bank debits, employer records, branch search and the LIC unclaimed-amount register.' },
+  { name: 'Loan against policy', slug: 'lic-policy-loan', summary: 'Borrow against the surrender value of an endowment or money-back policy without breaking it; the cover and bonuses continue.' },
+  { name: 'NRI policy servicing', slug: 'nri-lic-services', summary: 'Premiums from NRE/NRO, nominee updates, revival, maturity and death claims for policyholders living abroad, handled without travelling to India.' },
+  { name: 'Address, name and minor-to-major updates', slug: 'lic-address-name-change', summary: 'Keep the address, mobile, bank mandate, PAN and name current, and convert a minor’s policy when the life assured turns 18.' },
 ];
 
 export interface FAQItem {

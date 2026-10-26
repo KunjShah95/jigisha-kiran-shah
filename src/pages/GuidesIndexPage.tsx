@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Calendar, GitCompareArrows, Users } from 'lucide-react';
+import { ArrowRight, Clock, Calendar, GitCompareArrows, Users, ClipboardList } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL } from '../lib/seo';
@@ -39,6 +39,7 @@ export default function GuidesIndexPage() {
 
   const comparisons = GUIDES.filter((g) => g.kind === 'comparison');
   const personas = GUIDES.filter((g) => g.kind === 'persona');
+  const checklists = GUIDES.filter((g) => g.kind === 'checklist');
 
   const card = (guide: (typeof GUIDES)[number]) => (
     <Link
@@ -94,6 +95,17 @@ export default function GuidesIndexPage() {
         <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
           {personas.map(card)}
         </div>
+
+        {checklists.length > 0 && (
+          <>
+            <h2 className="flex items-center gap-2 text-xl font-display font-bold text-midnight mb-4 mt-10">
+              <ClipboardList className="w-5 h-5 text-gold-dark" aria-hidden="true" /> Claim &amp; servicing checklists
+            </h2>
+            <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
+              {checklists.map(card)}
+            </div>
+          </>
+        )}
 
         <p className="mt-10 text-sm text-gray-500">
           Prefer stories?{' '}

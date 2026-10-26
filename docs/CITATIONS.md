@@ -8,6 +8,34 @@ The goal is not "as many listings as possible". It is **the same eleven facts, e
 
 ---
 
+## 0. The shortlist — do these 12, in this order
+
+Everything else in this document is detail. If only twelve listings ever get built, these are the twelve, because
+they are the ones that feed Google's local index and the answer engines rather than just existing.
+
+| Order | Do this | Time | Why it is on the shortlist |
+|---|---|---|---|
+| 1 | **Google Business Profile** — complete every field | 60 min | The map pack is the answer for "LIC agent near me". The website only backs it up. |
+| 2 | **Google Business Profile** — 10 real photos | 30 min | Profiles with photos get materially more calls. Cheapest conversion gain available. |
+| 3 | **Google Business Profile** — 5 Q&A entries | 20 min | These are quoted verbatim by AI Overviews and by ChatGPT. |
+| 4 | **Bing Places** | 20 min | Feeds Bing, Copilot and ChatGPT search. One import from Google. |
+| 5 | **Apple Business Connect** | 25 min | Apple Maps and Siri. Unclaimed pins get filled by aggregators. |
+| 6 | **LinkedIn person profile** | 20 min | The profile AI engines read to confirm she is a real, current practitioner. |
+| 7 | **YouTube channel About** | 15 min | Entity confirmation plus a second surface for the same NAP. |
+| 8 | **WhatsApp Business profile** | 20 min | Where most enquiries actually land; the catalogue is free real estate. |
+| 9 | **Facebook page** | 20 min | Pure citation. No posting required. |
+| 10 | **LinkedIn company page** | 20 min | Reconciles the person entity with the practice entity. |
+| 11 | **Justdial** | 30 min | The one Indian directory that still ranks and gets crawled. |
+| 12 | **Sulekha** | 30 min | Second Indian directory worth the time; skip the rest. |
+
+Running total: **about 5 hours**, spread over a week, and it moves more than any on-page change left on this site.
+
+Track it in `docs/CITATIONS-TRACKING.csv` — one row per listing, with the date submitted and the login email. The
+only failure mode that matters is a listing with an **old phone number or old address** sitting on page one of
+Google for her name. Recheck that monthly (§7).
+
+---
+
 ## 1. The NAP block — copy this exactly, never retype it
 
 ```

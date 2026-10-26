@@ -100,27 +100,28 @@ this is the format AI engines quote most.
 ## 4. Problem and servicing queries — the most under-used opportunity
 
 These come from people who **already own a policy**, are already in-market, and usually cannot find anyone to
-help. They convert at the highest rate on the site and need almost no new content — the knowledge already exists
-in the policy-review page and the revival story.
+help. They convert at the highest rate on the site. **Built 26 Oct 2026** — the six servicing pages and the
+document checklist below are live, linked from `/services`, the footer and each other.
 
 | Keyword | Intent | Target URL | Status | Priority |
 |---|---|---|---|---|
 | LIC claim status / how to claim LIC policy | Transactional | `/services/policy-review-claims` | THIN | 1 |
-| LIC death claim documents required | Informational | `/guides/lic-claim-documents-checklist` | GAP | 1 |
-| LIC policy revival / lapsed policy revive | Transactional | `/services/lic-policy-revival` | GAP | 1 |
-| LIC nominee change form | Transactional | `/services/nominee-change` | GAP | 1 |
-| lost LIC policy / how to find old LIC policy | Transactional | `/services/lic-policy-tracing` | GAP | 2 |
-| LIC policy loan against policy | Transactional | `/services/lic-policy-loan` | GAP | 2 |
+| LIC death claim documents required | Informational | `/guides/lic-claim-documents-checklist` | LIVE | 1 |
+| LIC policy revival / lapsed policy revive | Transactional | `/services/lic-policy-revival` | LIVE | 1 |
+| LIC nominee change form | Transactional | `/services/nominee-change` | LIVE | 1 |
+| lost LIC policy / how to find old LIC policy | Transactional | `/services/lic-policy-tracing` | LIVE | 2 |
+| LIC policy loan against policy | Transactional | `/services/lic-policy-loan` | LIVE | 2 |
 | LIC surrender value / surrender policy | Transactional | `/services/lic-surrender` | GAP | 3 |
-| LIC address change / name change | Transactional | `/services/lic-address-name-change` | GAP | 3 |
-| LIC minor to major policy conversion | Transactional | `/services/lic-address-name-change` | GAP | 3 |
-| NRI LIC policy servicing | Transactional | `/services/nri-lic-services` | GAP | 2 |
+| LIC address change / name change | Transactional | `/services/lic-address-name-change` | LIVE | 3 |
+| LIC minor to major policy conversion | Transactional | `/services/lic-address-name-change` | LIVE | 3 |
+| NRI LIC policy servicing | Transactional | `/services/nri-lic-services` | LIVE | 2 |
 | LIC premium payment online | Transactional | `/resources` | LIVE | 3 |
 | LIC policy maturity claim | Transactional | `/services/policy-review-claims` | THIN | 2 |
 
-**Rule:** do not let `/services/policy-review-claims` try to rank for all of these. It is currently one page
-covering review + revival + claims, which is why it will struggle for any single one. Split it into the pages
-above, keep the hub page, and link each from it.
+**Rule:** do not let `/services/policy-review-claims` try to rank for all of these. Revival, nomination, tracing,
+loans and NRI servicing now have their own pages; the review page is the hub that links to them. Its remaining thin
+area is claim *status* — the "where is my claim" query — which is best handled by adding a short status section to
+that page rather than another URL.
 
 ---
 
@@ -132,13 +133,13 @@ above, keep the hub page, and link each from it.
 | LIC plans for business owners | Persona | `/guides/lic-plans-business-owners` | LIVE |
 | LIC plans for senior citizens | Persona | `/guides/lic-plans-senior-citizens` | LIVE |
 | LIC policy for women / MWP Act | Persona | `/services/corporate-insurance` | THIN |
-| LIC agent for NRI | Persona | `/services/nri-lic-services` | GAP |
+| LIC agent for NRI | Persona | `/services/nri-lic-services` | LIVE |
 | LIC એજન્ટ અમદાવાદ | Language | `/gu` | GAP |
 | बीमा एजेंट अहमदाबाद | Language | `/gu` | GAP |
 | Who is Jigisha Kiran Shah? | AI answer | `/about` + `llms.txt` | LIVE |
 | Best LIC agent in Shela Ahmedabad | AI answer | `/areas/shela` | LIVE |
 | How much term insurance do I need in India? | AI answer | `/protection-check` | LIVE |
-| How to revive a lapsed LIC policy in Ahmedabad? | AI answer | `/services/lic-policy-revival` | GAP |
+| How to revive a lapsed LIC policy in Ahmedabad? | AI answer | `/services/lic-policy-revival` | LIVE |
 | Who can help with a LIC death claim in Ahmedabad? | AI answer | `/services/policy-review-claims` | THIN |
 | Jeevan Akshay VII vs Jeevan Umang for retirement | AI answer | `/guides/jeevan-akshay-vs-jeevan-umang` | LIVE |
 | Is a LIC agent an LIC employee? | AI answer | `/about` + FAQ | LIVE |
@@ -151,21 +152,30 @@ in a sentence an engine can lift without context. See `docs/SEO-GEO-AEO-AUDIT.md
 
 ## 6. Build order for the gaps
 
-Eight pages, in this order. Each is a real service she already performs — this is discovery, not new business.
+**Status 26 Oct 2026: 7 of 8 shipped.** Routes are generated from `SERVICE_PAGES` / `GUIDES` in
+`src/entry-server.tsx`, so each one prerendered, entered the sitemap and appeared in `llms.txt` automatically.
 
-| # | Page | Slug | Primary keyword | Why now |
+| # | Page | Slug | Primary keyword | Status |
 |---|---|---|---|---|
-| 1 | Lapsed LIC policy revival | `/services/lic-policy-revival` | LIC policy revival Ahmedabad | Highest-intent servicing query, already has a story to link |
-| 2 | Nominee change & updates | `/services/nominee-change` | LIC nominee change | Free, fast, builds trust; rankable in weeks |
-| 3 | LIC claim documents checklist | `/guides/lic-claim-documents-checklist` | LIC death claim documents | Evergreen, heavily searched, strong AI citation target |
-| 4 | Policy tracing | `/services/lic-policy-tracing` | find old LIC policy | Emotional, urgent, almost no competition |
-| 5 | NRI LIC servicing | `/services/nri-lic-services` | NRI LIC policy | High value, phone/WhatsApp delivery is already in place |
-| 6 | Policy loan | `/services/lic-policy-loan` | loan against LIC policy | Transactional, low competition |
-| 7 | Address / name / minor-to-major | `/services/lic-address-name-change` | LIC address change | Bundled admin tasks, one page |
-| 8 | Gujarati landing page | `/gu` | LIC એજન્ટ અમદાવાદ | Entirely unserved local demand |
+| 1 | Lapsed LIC policy revival | `/services/lic-policy-revival` | LIC policy revival Ahmedabad | ✅ live |
+| 2 | Nominee change & updates | `/services/nominee-change` | LIC nominee change | ✅ live |
+| 3 | LIC claim documents checklist | `/guides/lic-claim-documents-checklist` | LIC death claim documents | ✅ live |
+| 4 | Policy tracing | `/services/lic-policy-tracing` | find old LIC policy | ✅ live |
+| 5 | NRI LIC servicing | `/services/nri-lic-services` | NRI LIC policy | ✅ live |
+| 6 | Policy loan | `/services/lic-policy-loan` | loan against LIC policy | ✅ live |
+| 7 | Address / name / minor-to-major | `/services/lic-address-name-change` | LIC address change | ✅ live |
+| 8 | Gujarati landing page | `/gu` | LIC એજન્ટ અમદાવાદ | ⬜ not built — needs a native Gujarati writer |
 
-Add each to `src/entry-server.tsx` ROUTES (sitemap + prerender are generated from it), give it an FAQ block, and
-link it from `/services` and the footer.
+**Why `/gu` is still open:** it is the single highest-upside page left, and the only one that cannot be produced by
+an English writer with a translation tool. Insurance compliance wording translated badly is a regulatory risk, not
+just a bad read. Budget one paid native Gujarati writer, publish the page, and add `hreflang` pairs
+(`en-IN` ↔ `gu-IN`) on `/` and `/gu` at the same time.
+
+**Next three after that**, in order: `/services/lic-surrender`, a "claim status" section on
+`/services/policy-review-claims`, and `Jeevan Labh vs New Endowment` as the next comparison guide.
+
+Add any new page by appending to `SERVICE_PAGES` or `GUIDES` — the route list, sitemap and `llms.txt` all derive
+from those two arrays. Nothing else needs editing.
 
 ---
 
