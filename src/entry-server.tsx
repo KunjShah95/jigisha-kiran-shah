@@ -15,6 +15,9 @@ import { AREAS } from './data/areas'
 import { POSTS } from './data/posts'
 import { GUIDES } from './data/guides'
 import { SERVICE_PAGES } from './data/servicePages'
+import { buildLlmsTxt, buildLlmsFullTxt } from './lib/llms'
+
+export { buildLlmsTxt, buildLlmsFullTxt }
 
 export interface RouteInfo {
   path: string
@@ -36,6 +39,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/resources', priority: 0.7 },
   { path: '/calculators', priority: 0.7 },
   { path: '/blog', priority: 0.7 },
+  { path: '/gallery', priority: 0.5 },
   ...SERVICE_PAGES.map((s) => ({ path: `/services/${s.slug}`, priority: 0.9 })),
   ...AREAS.map((a) => ({ path: `/areas/${a.slug}`, priority: 0.8 })),
   ...GUIDES.map((g) => ({ path: `/guides/${g.slug}`, updated: g.updated, priority: 0.8 })),

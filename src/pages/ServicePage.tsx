@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { Phone, MessageCircle, ArrowRight, CheckCircle2, Star, ExternalLink } from 'lucide-react';
 import { pageWhatsAppText, whatsappUrl } from '../lib/contact';
 import { NextSteps } from '../components/lead-fields';
+import CallbackCard from '../components/CallbackCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, PHONE_DISPLAY, REVIEW_URL } from '../lib/seo';
@@ -138,6 +139,15 @@ export default function ServicePage() {
               <Star className="w-5 h-5 text-gold-dark" aria-hidden="true" /> 5.0★ Google Reviews
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 lg:py-10 bg-white">
+        <div className="container max-w-4xl">
+          <CallbackCard
+            objective={CONTACT_OBJECTIVE[meta.slug]}
+            context={`${meta.h1} — /services/${meta.slug}`}
+          />
         </div>
       </section>
 

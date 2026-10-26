@@ -29,6 +29,11 @@ export function objectiveLabel(value: string) {
   return OBJECTIVES.find((o) => o.value === value)?.label ?? value;
 }
 
+/** Compact label for inline copy ("call you about term protection"). */
+export function objectiveShortLabel(value: string) {
+  return OBJECTIVES.find((o) => o.value === value)?.short ?? value;
+}
+
 export function objectiveWhatsAppText(value: string) {
   return `Hi Jigisha ben, I found you on your website. I'd like help with: ${objectiveLabel(value)}.`;
 }

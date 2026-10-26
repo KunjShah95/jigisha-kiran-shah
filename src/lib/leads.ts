@@ -17,6 +17,13 @@ export interface LeadPayload {
   website?: string;
 }
 
+export interface LeadResult {
+  /** The enquiry was stored in at least one destination. */
+  ok: boolean;
+  /** How many destinations accepted it (0 = nowhere configured or all failed). */
+  saved: number;
+}
+
 const SOURCE_KEY = 'jks_source';
 
 /**
@@ -52,7 +59,7 @@ function source() {
   }
 }
 
-export function submitLead(lead: LeadPayload): Promise<boolean> {
+export function submitLeadResult(lead: LeadPayload): Promise<LeadResult> {
   const body = JSON.stringify({ ...lead, page: window.location.pathname, source: source() });
   return fetch('/api/lead', {
     method: 'POST',
@@ -60,8 +67,21 @@ export function submitLead(lead: LeadPayload): Promise<boolean> {
     body,
     keepalive: true,
   })
-    .then((r) => r.ok)
-    .catch(() => false);
+    .then(async (r) => {
+      // `saved` is the number of destinations that actually stored the lead.
+      // A 200 with saved: 0 means nothing was captured (no Sheet / email
+      // configured) — callers must treat that as a failure, not a success.
+      const data = (await r.json().catch(() => null)) as { saved?: number } | null;
+      const saved = Number(data?.saved) || 0;
+      return { ok: r.ok && saved > 0, saved };
+    })
+    .catch(() => ({ ok: false, saved: 0 }));
+}
+
+/** True only when the enquiry was actually stored somewhere. */
+export async function submitLead(lead: LeadPayload): Promise<boolean> {
+  const result = await submitLeadResult(lead);
+  return result.ok;
 }
 
 /** Hidden honeypot input props — spread onto an <input>. */

@@ -6,6 +6,32 @@ export const PHONE_DISPLAY = '+91 98240 25435';
 export const REVIEW_URL = 'https://share.google/VQAFgVhdk114U2ozd';
 export const EMAIL = 'jkshahlic@gmail.com';
 export const ADDRESS = 'Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058';
+export const HOURS = 'Monday–Saturday, 9:00 AM–6:00 PM IST';
+
+/**
+ * Every profile that points at the same real-world person/business. These are
+ * the entity anchors AI answer engines use to decide "this is one real
+ * advisor, not twelve directory listings". Keep in sync with
+ * docs/CITATIONS.md — a profile added there belongs here too.
+ */
+export const SAME_AS = [
+  REVIEW_URL, // Google Business Profile (reviews + directions)
+  'https://www.youtube.com/@jigishakiranshah4636',
+  'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
+];
+
+/** The LIC product families offered — reused in schema, llms.txt and the footer. */
+export const OFFER_CATALOG = [
+  { name: 'Term life insurance', slug: 'term-insurance', summary: 'LIC Tech Term and Jeevan Amar — pure protection at the lowest premium per rupee of cover.' },
+  { name: 'Retirement and pension plans', slug: 'retirement', summary: 'Jeevan Akshay VII immediate annuity and Jeevan Umang lifelong income.' },
+  { name: 'Child education plans', slug: 'child-education', summary: 'Jeevan Tarun and New Children\u2019s Money Back with premium waiver on the parent.' },
+  { name: 'Endowment and savings plans', slug: 'wealth-creation', summary: 'Jeevan Labh and New Endowment — guaranteed maturity plus bonuses.' },
+  { name: 'Money-back plans', slug: 'money-back', summary: 'New Money Back and Bima Shree — periodic payouts plus life cover.' },
+  { name: 'Health and cancer cover', slug: 'health-insurance', summary: 'Arogya Rakshak hospitalisation cover and LIC Cancer Cover.' },
+  { name: 'Corporate, HUF and MWP cover', slug: 'corporate-insurance', summary: 'Employer-employee cover, partnership insurance, HUF and MWP Act policies.' },
+  { name: 'Business insurance — GIDC Vatva', slug: 'business-insurance-gidc-vatva', summary: 'Keyman and employer-employee cover for Vatva industrial units.' },
+  { name: 'Policy review and claims help', slug: 'policy-review-claims', summary: 'Review of existing LIC policies (any agent), nominee and KYC updates, lapsed-policy revival, claim assistance.' },
+];
 
 export interface FAQItem {
   q: string;
@@ -57,11 +83,11 @@ export const FAQS: FAQItem[] = [
   },
 ];
 
-export function faqJsonLd() {
+export function faqJsonLd(items: FAQItem[] = FAQS) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQS.map((f) => ({
+    mainEntity: items.map((f) => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -111,10 +137,21 @@ export function localBusinessJsonLd() {
     paymentAccepted: 'Cash, UPI, Bank Transfer',
     founder: { '@type': 'Person', name: 'Jigisha Kiran Shah', jobTitle: 'LIC Advisor' },
     employee: { '@type': 'Person', name: 'Jigisha Kiran Shah' },
-    sameAs: [
-      'https://www.youtube.com/@jigishakiranshah4636',
-      'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
-    ],
+    sameAs: SAME_AS,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'LIC plans and advisory services',
+      itemListElement: OFFER_CATALOG.map((s) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: s.name,
+          description: s.summary,
+          url: `${SITE_URL}/services/${s.slug}`,
+          provider: { '@id': `${SITE_URL}/#business` },
+        },
+      })),
+    },
     areaServed: [
       { '@type': 'City', name: 'Ahmedabad' },
       { '@type': 'AdministrativeArea', name: 'Gujarat' },
@@ -170,10 +207,7 @@ export function personJsonLd() {
       'LIC Claims', 'HUF Insurance', 'NRI Insurance',
     ],
     knowsLanguage: ['en', 'hi', 'gu'],
-    sameAs: [
-      'https://www.youtube.com/@jigishakiranshah4636',
-      'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
-    ],
+    sameAs: SAME_AS,
     award: ['MDRT 2023', 'MDRT 2024', 'LIC Club'],
   };
 }

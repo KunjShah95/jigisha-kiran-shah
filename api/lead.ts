@@ -97,11 +97,32 @@ async function toEmail(key: string, to: string, from: string, lead: Lead, env: s
   if (!res.ok) throw new Error(`email ${res.status}`);
 }
 
-const json = (status: number, data: unknown) =>
+const json = (status: number, data: unknown, headers: Record<string, string> = {}) =>
   new Response(JSON.stringify(data), {
     status,
-    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...headers },
   });
+
+/**
+ * GET /api/lead — is this deployment actually storing leads?
+ *
+ * Added after a live audit found the endpoint answering
+ * `{"ok":true,"saved":0}` on every enquiry: the forms looked successful while
+ * every lead was being dropped into a log that expires. Open
+ * https://www.jigishakiranshah.in/api/lead in a browser to check.
+ */
+export async function GET() {
+  const webhook = Boolean(process.env.LEAD_WEBHOOK_URL);
+  const email = Boolean(process.env.RESEND_API_KEY && process.env.LEAD_EMAIL_TO);
+  const configured = webhook || email;
+  return json(configured ? 200 : 503, {
+    ok: configured,
+    destinations: { webhook, email },
+    message: configured
+      ? 'Leads are being stored.'
+      : 'NO LEAD DESTINATION CONFIGURED. Form submissions are only written to the function log and will be lost. Set LEAD_WEBHOOK_URL (Google Sheet) or RESEND_API_KEY + LEAD_EMAIL_TO in Vercel, then redeploy. See docs/LEADS-ROOT-CAUSE.md.',
+  });
+}
 
 export async function POST(request: Request) {
   let body: unknown;
@@ -134,8 +155,15 @@ export async function POST(request: Request) {
   }
 
   if (jobs.length === 0) {
-    console.log('LEAD (no destination configured)', JSON.stringify(record));
-    return json(200, { ok: true, saved: 0 });
+    console.warn(
+      'LEAD DROPPED — no destination configured (LEAD_WEBHOOK_URL / RESEND_API_KEY). Lead follows:',
+      JSON.stringify(record),
+    );
+    return json(200, {
+      ok: true,
+      saved: 0,
+      warning: 'no destination configured — lead not stored',
+    });
   }
 
   const results = await Promise.allSettled(jobs);

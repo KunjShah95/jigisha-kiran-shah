@@ -1,14 +1,16 @@
 import { Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { whatsappUrl } from '../lib/contact';
+import { AREAS } from '../data/areas';
 
 const Footer = () => {
     const quickLinks = [
       { label: 'Home', to: '/' },
-      { label: 'Services', to: '/services' },
       { label: 'About', to: '/about' },
+      { label: 'Services', to: '/services' },
       { label: 'Testimonials', to: '/reviews' },
       { label: 'Stories & Guides', to: '/blog' },
+      { label: 'Gallery', to: '/gallery' },
       { label: 'Compare LIC Plans', to: '/guides' },
       { label: 'Contact', to: '/contact' }
     ]
@@ -17,9 +19,11 @@ const Footer = () => {
       { label: 'Term Life Insurance', to: '/services/term-insurance' },
       { label: 'Retirement & Pension Plans', to: '/services/retirement' },
       { label: 'Child Education Plans', to: '/services/child-education' },
-      { label: 'Endowment & Money-Back', to: '/services/wealth-creation' },
+      { label: 'Endowment & Savings', to: '/services/wealth-creation' },
+      { label: 'Money-Back Plans', to: '/services/money-back' },
       { label: 'Health Cover', to: '/services/health-insurance' },
       { label: 'Corporate & HUF Insurance', to: '/services/corporate-insurance' },
+      { label: 'Business Cover — GIDC Vatva', to: '/services/business-insurance-gidc-vatva' },
       { label: 'Policy Review & Claims', to: '/services/policy-review-claims' }
     ]
 
@@ -142,12 +146,15 @@ const Footer = () => {
           <div className="border-t border-white/10 pt-8 flex flex-col gap-4">
             <nav aria-label="Areas served" className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
               <span className="text-gray-400">Areas served:</span>
-              <Link to="/areas/shela" className="text-gray-300 hover:text-white transition-colors">Shela</Link>
-              <Link to="/areas/south-bopal" className="text-gray-300 hover:text-white transition-colors">South Bopal</Link>
-              <Link to="/areas/bopal" className="text-gray-300 hover:text-white transition-colors">Bopal</Link>
-              <Link to="/areas/satellite" className="text-gray-300 hover:text-white transition-colors">Satellite</Link>
-              <Link to="/areas/sg-highway" className="text-gray-300 hover:text-white transition-colors">SG Highway</Link>
-              <Link to="/areas/science-city" className="text-gray-300 hover:text-white transition-colors">Science City</Link>
+              {AREAS.map((area) => (
+                <Link
+                  key={area.slug}
+                  to={`/areas/${area.slug}`}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  {area.name}
+                </Link>
+              ))}
               <Link to="/areas" className="text-gold hover:text-white transition-colors">All areas →</Link>
             </nav>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">

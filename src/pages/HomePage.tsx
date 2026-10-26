@@ -13,9 +13,9 @@ import { POSTS } from '../data/posts'
 
 export default function HomePage() {
   useSEO({
-    title: 'Jigisha Kiran Shah | LIC Agent & Life Insurance Advisor, Ahmedabad',
+    title: 'LIC Agent in Ahmedabad | Jigisha Kiran Shah, 2x MDRT',
     description:
-      'Looking for LIC guidance in Ahmedabad? Personal help with life insurance, policy reviews, child education, retirement and claims from Jigisha Kiran Shah — 22+ yrs, 2x MDRT. Free consultation.',
+      'LIC agent in Ahmedabad with 22+ years, 2x MDRT and a 5.0★ Google rating. Term, pension, child education and claim help from the Shela office. Free call back: +91 98240 25435.',
     ogTitle: 'Jigisha Kiran Shah — LIC Advisor in Ahmedabad, Shela',
     ogDescription:
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',

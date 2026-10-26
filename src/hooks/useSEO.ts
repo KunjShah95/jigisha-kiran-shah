@@ -27,6 +27,21 @@ export interface PageHead {
   jsonLd: Record<string, unknown>[];
 }
 
+/** Trim a meta description at a sentence (or word) boundary, ~160 characters. */
+function clampDescription(text: string, max = 160) {
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  // Prefer a complete sentence so a call-to-action is never cut in half.
+  const sentence = Math.max(
+    cut.lastIndexOf('. '),
+    cut.lastIndexOf('? '),
+    cut.lastIndexOf('! '),
+  );
+  if (sentence > max * 0.5) return cut.slice(0, sentence + 1);
+  const space = cut.lastIndexOf(' ');
+  return `${cut.slice(0, space > max * 0.6 ? space : cut.length - 1).trim()}…`;
+}
+
 export function buildHead({
   title,
   description,
@@ -39,14 +54,23 @@ export function buildHead({
   jsonLd = [],
   noindex = false,
 }: SEOProps): PageHead {
-  // Homepage title already leads with the brand; don't append it twice.
-  const fullTitle = title.startsWith('Jigisha Kiran Shah') ? title : `${title} | Jigisha Kiran Shah`;
+  // Append the brand only when it fits. A 90-character title gets truncated by
+  // Google, and the truncated part is always the brand — so on long
+  // keyword-first titles we drop the suffix instead.
+  const BRAND = 'Jigisha Kiran Shah';
+  let fullTitle = title;
+  if (!title.includes(BRAND)) {
+    const withBrand = `${title} | ${BRAND}`;
+    fullTitle = withBrand.length <= 65 ? withBrand : title;
+  }
   const blocks: Record<string, unknown>[] = [];
   if (breadcrumbLabel) blocks.push(breadcrumbJsonLd(path, breadcrumbLabel));
   blocks.push(...jsonLd);
   return {
     title: fullTitle,
-    description,
+    // Google shows roughly 155–160 characters. Trim at a word boundary rather
+    // than letting the SERP cut mid-word; og:description stays untouched.
+    description: clampDescription(description),
     ogTitle: ogTitle || fullTitle,
     ogDescription: ogDescription || description,
     ogImage,

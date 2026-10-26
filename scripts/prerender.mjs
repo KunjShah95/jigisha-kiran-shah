@@ -25,7 +25,9 @@ const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://www.jigishakiranshah.in';
 
-const { render, ROUTES } = await import(pathToFileURL(join(ROOT, 'dist-ssr', 'entry-server.js')).href);
+const { render, ROUTES, buildLlmsTxt, buildLlmsFullTxt } = await import(
+  pathToFileURL(join(ROOT, 'dist-ssr', 'entry-server.js')).href
+);
 
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -97,4 +99,12 @@ writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
 );
 
-console.log(`prerender: ${count} routes + 404.html + sitemap.xml (${ROUTES.length} URLs)`);
+// llms.txt / llms-full.txt are generated from the same content the pages use,
+// so the AI-facing map cannot drift from the site. app/api/lead health check
+// and the citation list in docs/CITATIONS.md assume these URLs exist.
+writeFileSync(join(DIST, 'llms.txt'), buildLlmsTxt(today));
+writeFileSync(join(DIST, 'llms-full.txt'), buildLlmsFullTxt(today));
+
+console.log(
+  `prerender: ${count} routes + 404.html + sitemap.xml (${ROUTES.length} URLs) + llms.txt + llms-full.txt`,
+);

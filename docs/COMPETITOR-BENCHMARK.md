@@ -1,5 +1,9 @@
 # Competitor benchmark — jigishakiranshah.in
 
+> **26 Oct 2026:** re-checked live. See `docs/SEO-GEO-AEO-AUDIT.md` §6 for the current
+> technical snapshot, and `docs/LEADS-ROOT-CAUSE.md` for why the site was not producing
+> leads (the lead endpoint had no destination configured — not a design problem).
+
 Comparison of our live site (`https://www.jigishakiranshah.in/`) against well-known
 Indian LIC advisor / insurance agent personal websites. Produced from web fetches
 of competitor homepages and our own `llms.txt` / `llms-full.txt` + repo state.

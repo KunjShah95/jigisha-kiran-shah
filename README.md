@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# jigishakiranshah.in
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website for **Jigisha Kiran Shah**, LIC advisor in Shela, Ahmedabad. React + TypeScript + Vite, prerendered to
+static HTML, deployed on Vercel.
 
-Currently, two official plugins are available:
+The site is a lead-generation asset, not a brochure. Its job is a qualified phone call, WhatsApp message or booked
+consultation — not traffic for its own sake.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Commands
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev          # local dev server
+npm run build        # tsc + client build + SSR build + prerender + SEO check
+npm run preview      # serve dist/
+npm run check:seo    # validate the built HTML (runs automatically in build)
+npm run check:leads  # is production actually storing form submissions?
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+`npm run build` fails if any page is missing a title, canonical or single `<h1>`, if JSON-LD is malformed, if a
+rendered page contains a literal `\uXXXX` escape, or if `llms.txt` does not list every area/guide/story. Those
+checks exist because each of those bugs was live at some point.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## How the SEO layer works
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **One source of truth per page.** Each page calls `useSEO()` with its title, description, canonical path and
+  JSON-LD. `scripts/prerender.mjs` renders every route with the SSR bundle and writes the real HTML, so crawlers
+  that ignore JavaScript (most AI bots) see the full page.
+- **Routes are the sitemap.** `ROUTES` in `src/entry-server.tsx` drives both prerendering and `sitemap.xml`. Add a
+  route there and it appears in both.
+- **`llms.txt` / `llms-full.txt` are generated** from the same data files at build time (`src/lib/llms.ts`). Never
+  edit them by hand; they live in `dist/`, not `public/`.
+- **One business entity.** The homepage defines `#business` and `#person` with `@id`s. Every other page references
+  those instead of redefining them.
+
+## Lead capture
+
+Forms POST to `/api/lead` before opening WhatsApp. The endpoint stores the lead in a Google Sheet
+(`LEAD_WEBHOOK_URL`) and/or emails it (Resend). **With neither configured it stores nothing** — check with
+`npm run check:leads` after any deploy that touches forms or environment variables.
+
+Setup: `docs/LEADS-ROOT-CAUSE.md` §2.
+
+## Docs
+
+| Document | What it covers |
+|---|---|
+| `docs/LEADS-ROOT-CAUSE.md` | Why no leads were arriving, how to fix it, the 90-day demand plan |
+| `docs/SEO-GEO-AEO-AUDIT.md` | Technical audit, sitemap inventory, AEO/GEO standard, competitor snapshot |
+| `docs/KEYWORD-MAP.md` | Keyword → URL mapping, gap list, build order |
+| `docs/CITATIONS.md` | NAP block, GBP checklist, directory submissions |
+| `docs/COMPETITOR-BENCHMARK.md` | Feature-by-feature comparison with six peer sites |
+| `docs/GROWTH-PLAYBOOK.md` | Off-site work, measurement events, content calendar |
+| `docs/lead-capture-apps-script.gs` | Apps Script for the Google Sheet destination |
+| `docs/lead-sheet-template.csv` | Full-funnel lead tracking template |
+
+## Stack
+
+React 18 · TypeScript · Vite 5 · Tailwind CSS 4 · React Router 7 · Vercel (static + one serverless function) ·
+Cal.com booking · optional GA4 via `VITE_GA4_ID`.

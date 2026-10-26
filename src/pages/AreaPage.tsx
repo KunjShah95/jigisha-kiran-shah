@@ -5,6 +5,7 @@ import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, PHONE_DISPLAY, ADDRESS, REVIEW_URL } from '../lib/seo';
 import { AREAS, getArea } from '../data/areas';
 import { whatsappUrl } from '../lib/contact';
+import CallbackCard from '../components/CallbackCard';
 
 const SERVICES = [
   'Term Life Insurance (Tech Term, Jeevan Amar)',
@@ -24,7 +25,7 @@ export default function AreaPage() {
       ? `LIC Advisor in ${area.name}, Ahmedabad | Term, Pension, Child Plans`
       : 'Area not found',
     description: area
-      ? `LIC advisor serving ${area.name}, Ahmedabad — term insurance, retirement & pension plans, child education and claims support from Jigisha Kiran Shah (22+ yrs, 2x MDRT). Call ${PHONE_DISPLAY}.`
+      ? `LIC advisor in ${area.name}, Ahmedabad for term, pension, child plans and claim help — Jigisha Kiran Shah, 22+ yrs, 2x MDRT. Free call: ${PHONE_DISPLAY}.`
       : 'The requested area page does not exist.',
     path: area ? `/areas/${area.slug}` : '/areas',
     keywords: area
@@ -43,21 +44,26 @@ export default function AreaPage() {
               acceptedAnswer: { '@type': 'Answer', text: f.a },
             })),
           },
+          // One canonical business entity lives on the homepage
+          // (`#business`). Area pages describe the *service* and point back to
+          // it, so 12 pages don't invent 12 competing agencies for Google and
+          // AI answer engines to reconcile.
           {
             '@context': 'https://schema.org',
-            '@type': 'InsuranceAgency',
-            name: `Jigisha Kiran Shah - LIC Advisor (${area.name})`,
+            '@type': 'Service',
+            '@id': `${SITE_URL}/areas/${area.slug}#service`,
+            name: `LIC advisory in ${area.name}, Ahmedabad`,
+            serviceType: `LIC agent and life insurance advisory in ${area.name}`,
             url: `${SITE_URL}/areas/${area.slug}`,
-            telephone: '+919824025435',
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: 'Orchid Legacy, D3-1303, Applewoods Township, Shela',
-              addressLocality: 'Ahmedabad',
-              addressRegion: 'Gujarat',
-              postalCode: '380058',
-              addressCountry: 'IN',
-            },
+            description: area.intro,
+            provider: { '@id': `${SITE_URL}/#business` },
             areaServed: { '@type': 'Place', name: `${area.name}, Ahmedabad` },
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'INR',
+              description: 'Free first consultation',
+            },
           },
         ]
       : [],
@@ -117,9 +123,15 @@ export default function AreaPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white border border-border text-midnight font-bold py-3 px-6 rounded-xl text-sm hover:border-gold/40 transition-colors min-h-11"
             >
-              <Star className="w-5 h-5 text-gold-dark" aria-hidden="true" /> 5.0\u2605 Google Reviews
+              <Star className="w-5 h-5 text-gold-dark" aria-hidden="true" /> 5.0★ Google Reviews
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 lg:py-10 bg-white">
+        <div className="container max-w-4xl">
+          <CallbackCard context={`LIC advisor ${area.name} — /areas/${area.slug}`} />
         </div>
       </section>
 
@@ -176,14 +188,14 @@ export default function AreaPage() {
                 <MapPin className="w-4 h-4 text-gold-dark shrink-0 mt-0.5" aria-hidden="true" />
                 {ADDRESS}
               </p>
-              <p className="text-sm text-gray-600 mb-4">Open Monday\u2013Saturday, 9:00 AM\u20136:00 PM IST</p>
+              <p className="text-sm text-gray-600 mb-4">Open Monday–Saturday, 9:00 AM–6:00 PM IST</p>
               <a
                 href={REVIEW_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-bold text-gold-dark hover:underline"
               >
-                Get directions & read Google reviews \u2192
+                Get directions & read Google reviews →
               </a>
             </div>
           </div>

@@ -1,5 +1,10 @@
 # Growth playbook — jigishakiranshah.in
 
+> **26 Oct 2026:** lead capture was found broken in production (no destination configured,
+> so every form submission was discarded). Start with `docs/LEADS-ROOT-CAUSE.md`, then
+> `docs/CITATIONS.md`, then `docs/KEYWORD-MAP.md`. The code-level state is in
+> `docs/SEO-GEO-AEO-AUDIT.md`.
+
 What the website code now handles, and the off-site work that needs Jigisha's
 accounts or records. Goal: qualified WhatsApp enquiries, calls and booked
 consultations — not traffic for its own sake.
