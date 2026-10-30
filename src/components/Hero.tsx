@@ -31,25 +31,25 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 lg:mb-8 text-sm text-gray-600">
-              <span className="inline-flex items-center gap-1.5 font-semibold text-midnight">
+              <span className="inline-flex items-center gap-1.5 font-semibold text-midnight whitespace-nowrap">
                 <Award className="w-4 h-4 text-gold" aria-hidden="true" />
                 2× MDRT 2023 & 2024
               </span>
-              <span className="inline-flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                 <CountUp end={22} suffix="+ yrs" className="font-bold text-midnight tabular-nums" />
                 experience
               </span>
-              <span className="inline-flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                 <CountUp end={2.7} decimals={1} suffix="k+" className="font-bold text-midnight tabular-nums" />
                 families served
               </span>
-              <span className="inline-flex items-center gap-1.5 font-semibold text-midnight">
+              <span className="inline-flex items-center gap-1.5 font-semibold text-midnight whitespace-nowrap">
                 <Star className="w-4 h-4 text-gold fill-gold" aria-hidden="true" />
                 5.0 on Google
               </span>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 lg:gap-5 mb-8 lg:mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 lg:gap-5 mb-8 lg:mb-10" role="group" aria-label="Primary actions">
               <Link
                 to="/contact"
                 data-cta="hero-book"
