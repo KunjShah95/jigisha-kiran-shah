@@ -14,9 +14,9 @@ const Hero = () => {
       </div>
 
       <div className="container relative z-10 w-full pt-28 lg:pt-32 pb-12 lg:pb-16">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
           {/* Content Column */}
-          <div className="lg:col-span-7 hero__content reveal">
+          <div className="lg:col-span-7 min-w-0 hero__content reveal">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-midnight leading-[1.15] mb-4 lg:mb-6 tracking-tight">
               LIC Life Insurance Advisor in Ahmedabad for Your <span className="text-gradient-gold italic relative inline-block">
                 Family's Protection
