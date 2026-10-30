@@ -5,6 +5,7 @@ import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optio
 import { whatsappUrl } from '../lib/contact';
 import { submitLead, honeypotProps } from '../lib/leads';
 import { trackEvent } from '../lib/analytics';
+import { useSpotlight } from '../hooks/useSpotlight';
 
 const SUBJECT_OPTIONS = [...INTEREST_OPTIONS, { value: 'other', label: 'Something else' }];
 
@@ -22,6 +23,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [searchParams] = useSearchParams();
+  const onMove = useSpotlight();
 
   // Objective picker links here as /contact?objective=review — preselect it.
   // Applied after hydration so the prerendered markup still matches.
@@ -126,22 +128,25 @@ const Contact = () => {
             
             <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
               {contactMethods.map((method, index) => (
-                <a 
-                    key={index} 
+                <a
+                    key={index}
                     href={method.link}
                     download={method.link.endsWith('.vcf') ? 'jigisha-kiran-shah.vcf' : undefined}
                     target={method.link.startsWith('http') ? '_blank' : undefined}
                     rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-border hover:shadow-xl hover:shadow-gold/5 hover:border-gold/30 transition-all duration-300 group"
+                    onMouseMove={onMove}
+                    className="spotlight-card relative overflow-hidden flex flex-col p-6 bg-white rounded-2xl shadow-sm border border-border hover:shadow-xl hover:shadow-gold/5 hover:border-gold/30 transition-all duration-300 group"
                 >
-                  <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center text-gold-dark mb-4 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
-                    <method.icon size={18} aria-hidden="true" />
+                  <div className="relative z-10 flex flex-col grow">
+                    <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center text-gold-dark mb-4 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
+                      <method.icon size={18} aria-hidden="true" />
+                    </div>
+                    <h2 className="text-base font-bold text-midnight mb-1 group-hover:text-gold-dark transition-colors">{method.title}</h2>
+                    <p className="text-sm text-gray-500 mb-4 leading-relaxed break-words">{method.value}</p>
+                    <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
+                      {method.cta} <span aria-hidden="true" className="text-lg leading-none">→</span>
+                    </span>
                   </div>
-                  <h2 className="text-base font-bold text-midnight mb-1 group-hover:text-gold-dark transition-colors">{method.title}</h2>
-                  <p className="text-sm text-gray-500 mb-4 leading-relaxed break-words">{method.value}</p>
-                  <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider flex items-center gap-2 group-hover:gap-3 transition-all mt-auto">
-                    {method.cta} <span aria-hidden="true" className="text-lg leading-none">→</span>
-                  </span>
                 </a>
               ))}
             </div>

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Star, ExternalLink, Play, Quote, MessageCircle, MapPin, ThumbsUp } from 'lucide-react';
 import { whatsappUrl } from '../lib/contact';
+import { useSpotlight } from '../hooks/useSpotlight';
 
 const Reviews = () => {
+  const onMove = useSpotlight();
 
   // Actual customer reviews from Google Business
   // structured to highlight real-world use cases
@@ -201,6 +203,10 @@ const Reviews = () => {
           <h1 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
             Real Stories, <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent italic">Real LIC Results in Ahmedabad</span>
           </h1>
+          <p className="text-base md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto mb-4">
+            <strong className="text-white font-semibold">Jigisha Kiran Shah, LIC advisor in Ahmedabad, holds a 5.0-star Google rating from 70+ verified reviews.</strong>{' '}
+            That trust has been built over 22+ years in practice since 2004, serving 2,700+ families across Gujarat.
+          </p>
           <p className="text-base md:text-xl text-gray-300 leading-relaxed font-light max-w-3xl mx-auto">
             Discover how families across Gujarat transformed their financial future through personalized insurance solutions and expert guidance.
           </p>
@@ -211,7 +217,8 @@ const Reviews = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="group relative bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-4 sm:p-6 md:p-8 text-center hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
+              onMouseMove={onMove}
+              className="spotlight-card spotlight-dark group relative bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-4 sm:p-6 md:p-8 text-center hover:border-gold/30 transition-all duration-500 cursor-pointer overflow-hidden"
             >
               {/* Animated background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-gold/20 to-gold-dark/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -243,7 +250,8 @@ const Reviews = () => {
             {customerReviews.map((review, index) => (
               <div
                 key={index}
-                className="group bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col hover:scale-[1.02] hover:-translate-y-1"
+                onMouseMove={onMove}
+                className="spotlight-card spotlight-dark group bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-xl hover:shadow-2xl hover:shadow-gold/10 transition-all duration-500 relative overflow-hidden flex flex-col hover:scale-[1.02] hover:-translate-y-1"
               >
                 {/* Animated gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-gold/10 via-transparent to-gold-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
