@@ -4,9 +4,11 @@ import { ArrowRight, Star, ShieldCheck, Clock, BookOpen } from 'lucide-react'
 import Hero from '../components/Hero'
 import WhyUs from '../components/WhyUs'
 import Calculator from '../components/Calculator'
+import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
 import ObjectivePicker from '../components/ObjectivePicker'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useSpotlight } from '../hooks/useSpotlight'
 import { useSEO } from '../hooks/useSEO'
 import { faqJsonLd, localBusinessJsonLd, websiteJsonLd, personJsonLd } from '../lib/seo'
 import { POSTS } from '../data/posts'
@@ -27,6 +29,7 @@ export default function HomePage() {
   useScrollReveal()
 
   const [scrollProgress, setScrollProgress] = useState(0)
+  const onMove = useSpotlight()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,7 +60,8 @@ export default function HomePage() {
         <div className="container grid sm:grid-cols-2 gap-3 md:gap-4 reveal">
           <Link
             to="/services"
-            className="group flex items-center gap-4 p-5 md:p-6 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 transition-all min-h-11"
+            onMouseMove={onMove}
+            className="spotlight-card group flex items-center gap-4 p-5 md:p-6 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 transition-all min-h-11 relative overflow-hidden"
           >
             <span className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors">
               <ShieldCheck className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
@@ -70,7 +74,8 @@ export default function HomePage() {
           </Link>
           <Link
             to="/reviews"
-            className="group flex items-center gap-4 p-5 md:p-6 bg-midnight rounded-2xl border border-white/10 shadow-sm hover:shadow-lg transition-all min-h-11"
+            onMouseMove={onMove}
+            className="spotlight-card spotlight-dark group flex items-center gap-4 p-5 md:p-6 bg-midnight rounded-2xl border border-white/10 shadow-sm hover:shadow-lg transition-all min-h-11 relative overflow-hidden"
           >
             <span className="w-11 h-11 rounded-xl bg-gold flex items-center justify-center shrink-0">
               <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
@@ -84,6 +89,7 @@ export default function HomePage() {
         </div>
       </section>
       <Calculator />
+      <Testimonials />
       {/* Stories & guides preview — internal linking: lifts pages/visit and
           distributes homepage authority to blog posts */}
       <section aria-label="Stories and guides" className="py-10 lg:py-14 bg-white relative overflow-hidden">
