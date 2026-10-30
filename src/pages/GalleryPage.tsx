@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { Image as ImageIcon, Upload, X, Calendar } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useSpotlight } from '../hooks/useSpotlight';
 import { GALLERY, type GalleryItem } from '../data/gallery';
 import { cldUrl, cldSrcSet, hasCloudinary, cloudName } from '../lib/cloudinary';
 
@@ -29,6 +30,7 @@ export default function GalleryPage() {
     breadcrumbLabel: 'Gallery',
   });
   useScrollReveal();
+  const onMove = useSpotlight();
 
   const [items, setItems] = useState<GalleryItem[]>(GALLERY);
   const [preview, setPreview] = useState<string | null>(null);
@@ -190,16 +192,18 @@ export default function GalleryPage() {
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {items.map((item) => (
-              <article key={item.id} className="group bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
-                <div className="aspect-[4/3] overflow-hidden bg-gray-100">
-                  <img src={resolveSrc(item)} srcSet={item.publicId && hasCloudinary() ? cldSrcSet(item.publicId) : undefined} sizes={item.publicId && hasCloudinary() ? '(max-width: 768px) 100vw, 33vw' : undefined} alt={item.alt} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h2 className="text-lg font-display font-bold text-midnight mb-2 leading-snug">{item.title}</h2>
-                  <p className="text-sm text-gray-600 leading-relaxed font-light flex-1">{item.story}</p>
-                  <span className="inline-flex items-center gap-1.5 mt-4 text-xs text-gray-500">
-                    <Calendar className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" /> {fmt(item.date)}
-                  </span>
+              <article key={item.id} onMouseMove={onMove} className="spotlight-card group relative bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
+                <div className="relative z-10 flex flex-col flex-1">
+                  <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+                    <img src={resolveSrc(item)} srcSet={item.publicId && hasCloudinary() ? cldSrcSet(item.publicId) : undefined} sizes={item.publicId && hasCloudinary() ? '(max-width: 768px) 100vw, 33vw' : undefined} alt={item.alt} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h2 className="text-lg font-display font-bold text-midnight mb-2 leading-snug">{item.title}</h2>
+                    <p className="text-sm text-gray-600 leading-relaxed font-light flex-1">{item.story}</p>
+                    <span className="inline-flex items-center gap-1.5 mt-4 text-xs text-gray-500">
+                      <Calendar className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" /> {fmt(item.date)}
+                    </span>
+                  </div>
                 </div>
               </article>
             ))}

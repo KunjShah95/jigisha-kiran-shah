@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Calendar, GitCompareArrows, Users, ClipboardList } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
+import { useSpotlight } from '../hooks/useSpotlight';
 import { SITE_URL } from '../lib/seo';
 import { GUIDES } from '../data/guides';
 
@@ -36,6 +37,7 @@ export default function GuidesIndexPage() {
     ],
   });
   useScrollReveal();
+  const onMove = useSpotlight();
 
   const comparisons = GUIDES.filter((g) => g.kind === 'comparison');
   const personas = GUIDES.filter((g) => g.kind === 'persona');
@@ -45,25 +47,28 @@ export default function GuidesIndexPage() {
     <Link
       key={guide.slug}
       to={`/guides/${guide.slug}`}
-      className="group flex flex-col bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 hover:-translate-y-0.5 active:scale-[0.99] transition-all p-6 lg:p-7"
+      onMouseMove={onMove}
+      className="spotlight-card group relative overflow-hidden flex flex-col bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 hover:-translate-y-0.5 active:scale-[0.99] transition-all p-6 lg:p-7"
     >
-      <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
-        <span className="inline-flex items-center gap-1.5">
-          <Calendar className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" /> {fmt(guide.date)}
-        </span>
-        <span className="inline-flex items-center gap-1.5">
-          <Clock className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" /> {guide.readMinutes} min read
+      <div className="relative z-10 flex flex-col flex-1">
+        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+          <span className="inline-flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" /> {fmt(guide.date)}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-gold-dark" aria-hidden="true" /> {guide.readMinutes} min read
+          </span>
+        </div>
+        <h3 className="text-xl font-display font-bold text-midnight mb-3 group-hover:text-gold-dark transition-colors leading-snug">
+          {guide.title}
+        </h3>
+        <p className="text-sm text-gray-600 leading-relaxed font-light flex-1">
+          {guide.metaDescription}
+        </p>
+        <span className="inline-flex items-center gap-2 mt-5 text-sm font-bold text-gold-dark group-hover:gap-3 transition-all">
+          Read the guide <ArrowRight className="w-4 h-4" aria-hidden="true" />
         </span>
       </div>
-      <h3 className="text-xl font-display font-bold text-midnight mb-3 group-hover:text-gold-dark transition-colors leading-snug">
-        {guide.title}
-      </h3>
-      <p className="text-sm text-gray-600 leading-relaxed font-light flex-1">
-        {guide.metaDescription}
-      </p>
-      <span className="inline-flex items-center gap-2 mt-5 text-sm font-bold text-gold-dark group-hover:gap-3 transition-all">
-        Read the guide <ArrowRight className="w-4 h-4" aria-hidden="true" />
-      </span>
     </Link>
   );
 
