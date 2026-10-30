@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Phone, MessageCircle, Calendar, Clock, Linkedin, Link2, Share2, Check, Plus } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useSpotlight } from '../hooks/useSpotlight';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, OG_IMAGE, PHONE_DISPLAY, REVIEW_URL } from '../lib/seo';
 import { getGuide, GUIDES } from '../data/guides';
@@ -10,11 +11,17 @@ import { whatsappUrl } from '../lib/contact';
 const fmt = (iso: string) =>
   new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 
+// Freshness signal (AEO): LLMs and readers weight "Month Year" recency over
+// an exact day when judging whether advice on a comparison/checklist is current.
+const fmtMonthYear = (iso: string) =>
+  new Date(iso).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+
 export default function GuidePage() {
   const { slug } = useParams<{ slug: string }>();
   const guide = getGuide(slug);
   const [copied, setCopied] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const onMove = useSpotlight();
 
   const pageUrl = guide ? `${SITE_URL}/guides/${guide.slug}` : SITE_URL;
   const shareText = guide ? `${guide.title} — by Jigisha Kiran Shah` : '';
@@ -113,7 +120,7 @@ export default function GuidePage() {
             <span className="text-gray-400">LIC Advisor, Ahmedabad — since 2004</span>
             <span className="inline-flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-gold-dark" aria-hidden="true" />
-              Published {fmt(guide.date)} · Updated {fmt(guide.updated)}
+              Published {fmt(guide.date)} · <span className="text-gray-400">Updated {fmtMonthYear(guide.updated)}</span>
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-gold-dark" aria-hidden="true" /> {guide.readMinutes} min read
@@ -234,10 +241,11 @@ export default function GuidePage() {
                 <Link
                   key={r.to}
                   to={r.to}
-                  className="group flex items-center justify-between gap-4 p-4 bg-white rounded-xl border border-border hover:border-gold/40 hover:-translate-y-0.5 active:scale-[0.99] transition-all"
+                  onMouseMove={onMove}
+                  className="spotlight-card group flex items-center justify-between gap-4 p-4 bg-white rounded-xl border border-border hover:border-gold/40 hover:-translate-y-0.5 active:scale-[0.99] transition-all relative overflow-hidden"
                 >
-                  <span className="font-bold text-midnight text-sm group-hover:text-gold-dark transition-colors">{r.label}</span>
-                  <span className="text-gold-dark font-bold" aria-hidden="true">→</span>
+                  <span className="relative z-10 font-bold text-midnight text-sm group-hover:text-gold-dark transition-colors">{r.label}</span>
+                  <span className="relative z-10 text-gold-dark font-bold" aria-hidden="true">→</span>
                 </Link>
               ))}
             </div>
@@ -252,10 +260,11 @@ export default function GuidePage() {
                 <Link
                   key={p.slug}
                   to={`/guides/${p.slug}`}
-                  className="group flex items-center justify-between gap-4 p-4 bg-white rounded-xl border border-border hover:border-gold/40 transition-colors"
+                  onMouseMove={onMove}
+                  className="spotlight-card group flex items-center justify-between gap-4 p-4 bg-white rounded-xl border border-border hover:border-gold/40 transition-colors relative overflow-hidden"
                 >
-                  <span className="font-bold text-midnight text-sm group-hover:text-gold-dark transition-colors">{p.title}</span>
-                  <span className="text-xs text-gray-400 shrink-0">{p.readMinutes} min</span>
+                  <span className="relative z-10 font-bold text-midnight text-sm group-hover:text-gold-dark transition-colors">{p.title}</span>
+                  <span className="relative z-10 text-xs text-gray-400 shrink-0">{p.readMinutes} min</span>
                 </Link>
               ))}
             </div>

@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { Phone, MessageCircle, MapPin, Star, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useSpotlight } from '../hooks/useSpotlight';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, PHONE_DISPLAY, ADDRESS, REVIEW_URL } from '../lib/seo';
 import { AREAS, getArea } from '../data/areas';
@@ -19,6 +20,7 @@ const SERVICES = [
 export default function AreaPage() {
   const { slug } = useParams<{ slug: string }>();
   const area = getArea(slug);
+  const onMove = useSpotlight();
 
   useSEO({
     title: area
@@ -221,9 +223,10 @@ export default function AreaPage() {
               <Link
                 key={o.slug}
                 to={`/areas/${o.slug}`}
-                className="px-4 py-2 bg-white border border-border rounded-full text-sm font-bold text-midnight hover:border-gold/40 transition-colors"
+                onMouseMove={onMove}
+                className="spotlight-card px-4 py-2 bg-white border border-border rounded-full text-sm font-bold text-midnight hover:border-gold/40 transition-colors relative overflow-hidden"
               >
-                LIC Advisor {o.name}
+                <span className="relative z-10">LIC Advisor {o.name}</span>
               </Link>
             ))}
           </div>
