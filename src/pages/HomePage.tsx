@@ -61,30 +61,34 @@ export default function HomePage() {
           <Link
             to="/services"
             onMouseMove={onMove}
-            className="spotlight-card group flex items-center gap-4 p-5 md:p-6 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 transition-all min-h-11 relative overflow-hidden"
+            className="spotlight-card group p-5 md:p-6 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 transition-all min-h-11 relative overflow-hidden"
           >
-            <span className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors">
-              <ShieldCheck className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
+            <span className="relative z-10 flex items-center gap-4">
+              <span className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors">
+                <ShieldCheck className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block font-bold text-midnight text-[15px] md:text-base">Explore LIC Plans</span>
+                <span className="block text-xs md:text-sm text-gray-500 font-light">Term, pension, child & wealth plans</span>
+              </span>
+              <ArrowRight className="w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </span>
-            <span className="flex-1 min-w-0">
-              <span className="block font-bold text-midnight text-[15px] md:text-base">Explore LIC Plans</span>
-              <span className="block text-xs md:text-sm text-gray-500 font-light">Term, pension, child & wealth plans</span>
-            </span>
-            <ArrowRight className="w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
           <Link
             to="/reviews"
             onMouseMove={onMove}
-            className="spotlight-card spotlight-dark group flex items-center gap-4 p-5 md:p-6 bg-midnight rounded-2xl border border-white/10 shadow-sm hover:shadow-lg transition-all min-h-11 relative overflow-hidden"
+            className="spotlight-card spotlight-dark group p-5 md:p-6 bg-midnight rounded-2xl border border-white/10 shadow-sm hover:shadow-lg transition-all min-h-11 relative overflow-hidden"
           >
-            <span className="w-11 h-11 rounded-xl bg-gold flex items-center justify-center shrink-0">
-              <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
+            <span className="relative z-10 flex items-center gap-4">
+              <span className="w-11 h-11 rounded-xl bg-gold flex items-center justify-center shrink-0">
+                <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 70+ Google Reviews · 2,700+ families</span>
+                <span className="block text-xs md:text-sm text-white/60 font-light">Real stories from families Jigisha has served</span>
+              </span>
+              <ArrowRight className="w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </span>
-            <span className="flex-1 min-w-0">
-              <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 70+ Google Reviews · 2,700+ families</span>
-              <span className="block text-xs md:text-sm text-white/60 font-light">Real stories from families Jigisha has served</span>
-            </span>
-            <ArrowRight className="w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
         </div>
       </section>
