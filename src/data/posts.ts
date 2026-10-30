@@ -1,3 +1,5 @@
+import type { FAQItem } from '../lib/seo';
+
 export interface PostSection {
   heading?: string;
   paras: string[];
@@ -19,6 +21,7 @@ export interface Post {
   targetQuery: string;
   sections: PostSection[];
   related?: { label: string; to: string }[];
+  faqs: FAQItem[];
 }
 
 export const POSTS: Post[] = [
@@ -92,6 +95,20 @@ export const POSTS: Post[] = [
       { label: 'Policy review & claims assistance', to: '/services/policy-review-claims' },
       { label: 'LIC advisor in Shela', to: '/areas/shela' },
     ],
+    faqs: [
+      {
+        q: 'How much LIC cover did the family in this story actually receive?',
+        a: 'Three existing policies — a Jeevan Anand, a money-back plan and an endowment — paid out about ₹13.7 lakh total. The family needed roughly ₹1.36 crore (12 times his ₹9 lakh income plus the ₹28 lakh home loan), so the payout was not even enough to close the home loan.',
+      },
+      {
+        q: 'Why did the claim with no nominee take four months to settle?',
+        a: 'With the nominee column left blank, LIC required proof of legal heirs before paying: an indemnity bond, two sureties, and a no-objection affidavit from every heir, including a 71-year-old relative in Mehsana. By contrast, the policy with a registered nominee was paid in nineteen days.',
+      },
+      {
+        q: 'How much term cover should a family buy, according to this story?',
+        a: 'The story recommends sizing term cover at 10 to 15 times annual income plus any outstanding loans. For most salaried and business families in Ahmedabad, that works out to ₹1 crore or more of pure term cover, separate from any savings or endowment policies.',
+      },
+    ],
   },
   {
     slug: 'the-pension-that-arrived-before-the-milk',
@@ -156,6 +173,20 @@ export const POSTS: Post[] = [
       { label: 'Retirement & pension plans compared', to: '/services/retirement' },
       { label: 'Book a free consultation', to: '/contact' },
     ],
+    faqs: [
+      {
+        q: 'How did Madhu ben turn her retirement corpus into a monthly pension?',
+        a: 'She put ₹45 lakh of her ₹1.10 crore corpus into LIC Jeevan Akshay VII, an immediate annuity, choosing joint life and return of purchase price. At the rate then, about 5.9%, this generated roughly ₹22,000 a month, starting the next month after purchase.',
+      },
+      {
+        q: 'Why is a fixed deposit not the same as a pension?',
+        a: 'A fixed deposit pays interest from a pile of money that shrinks every time you withdraw from it for expenses, eventually running out. A guaranteed annuity like Jeevan Akshay VII instead pays the same fixed amount every month for life, regardless of interest rate changes.',
+      },
+      {
+        q: 'How much corpus is needed to generate a target monthly pension?',
+        a: 'As a quick estimate, at an annuity rate of about 6%, every ₹1,000 of monthly pension needs roughly ₹2 lakh of corpus. So a ₹20,000 monthly gap needs about ₹40 lakh, and a ₹50,000 gap needs about ₹1 crore, before getting an exact LIC quote.',
+      },
+    ],
   },
   {
     slug: 'jevan-labh-or-the-alarm-clock',
@@ -218,6 +249,20 @@ export const POSTS: Post[] = [
       { label: 'Child education plans', to: '/services/child-education' },
       { label: 'Endowment plans compared', to: '/services/wealth-creation' },
       { label: 'LIC advisor in South Bopal', to: '/areas/south-bopal' },
+    ],
+    faqs: [
+      {
+        q: 'What LIC plan did Hitesh bhai use for his daughter\'s education fund?',
+        a: 'He took LIC Jeevan Labh with a ₹20 lakh sum assured, a 16-year term and premiums payable for only 10 years, about ₹1.38 lakh a year. It matures in 2032, projected at ₹33–36 lakh, when his daughter turns 20.',
+      },
+      {
+        q: 'Why did he also add term insurance alongside the endowment plan?',
+        a: 'A ₹20 lakh endowment alone could not protect a family depending on his ₹12 lakh annual shop income. He added ₹1 crore of LIC term cover to age 60 at about ₹14,000 a year, so the family receives ₹1.2 crore-plus if he dies, with the education fund still intact.',
+      },
+      {
+        q: 'What return does an endowment plan like Jeevan Labh typically offer?',
+        a: 'Over the full term it typically works out to around 5–6% a year, not the highest-returning option available. Its real value is as a discipline tool: once the auto-debit premium is set, the money cannot be easily borrowed back for other needs.',
+      },
     ],
   },
   {
@@ -283,6 +328,20 @@ export const POSTS: Post[] = [
       { label: 'Retirement & pension plans compared', to: '/services/retirement' },
       { label: 'LIC advisor in Satellite', to: '/areas/satellite' },
       { label: 'Book a free consultation', to: '/contact' },
+    ],
+    faqs: [
+      {
+        q: 'What five numbers should you calculate before retirement?',
+        a: 'True monthly expenses today (the diary version, including medicines), years expected after retirement (25-plus for a 58-year-old in Gujarat), guaranteed income already coming in, the resulting gap growing at 6% a year, and the corpus that gap demands.',
+      },
+      {
+        q: 'How did Ramesh bhai split his ₹1.23 crore retirement corpus?',
+        a: '₹50 lakh went into Jeevan Akshay VII (joint life, return of purchase price) for about ₹26,000 a month, ₹30 lakh into the Senior Citizens\' Savings Scheme at 8.2%, ₹6 lakh as a 12-month emergency fund, and ₹37 lakh reserved for a second annuity at 65.',
+      },
+      {
+        q: 'What did leaving the retirement payout in a savings account cost him?',
+        a: 'He left his ₹1.23 crore settlement in a savings account for six months "while deciding," earning only 2.7% instead of the roughly 7% a fixed deposit was paying at the time. That delay cost the family about ₹2.6 lakh.',
+      },
     ],
   },
   {
@@ -392,6 +451,20 @@ export const POSTS: Post[] = [
       { label: 'LIC advisor in Satellite', to: '/areas/satellite' },
       { label: 'Term insurance plans compared', to: '/services/term-insurance' },
       { label: 'Book a free consultation', to: '/contact' },
+    ],
+    faqs: [
+      {
+        q: 'How long is LIC\'s revival window for a lapsed policy?',
+        a: 'LIC allows revival within five years of the first unpaid premium for most traditional plans, provided the life assured is still insurable. Beyond five years, the policy is usually treated as forfeited, with the money paid in lost except for any surviving surrender or paid-up value.',
+      },
+      {
+        q: 'How much did the Mehta family pay to revive their four-year-lapsed policy?',
+        a: 'For a Jeevan Anand policy with ₹5 lakh sum assured, four missed ₹18,000 premiums (₹72,000) plus about ₹14,500 interest and ₹3,900 GST brought the total revival cost to roughly ₹90,400, restoring the full ₹5 lakh sum assured and the bonuses accrued during the lapse.',
+      },
+      {
+        q: 'What are the steps to revive a lapsed LIC policy?',
+        a: 'Get a written revival quotation from the servicing branch showing arrears, interest and GST; complete the health declaration or medical exam required for the revival window; pay the full quotation amount in one payment before it expires; collect the revival receipt; and set up auto-debit going forward.',
+      },
     ],
   },
 ];

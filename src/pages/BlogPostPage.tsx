@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Phone, MessageCircle, Calendar, Clock, CheckCircle2, Linkedin, Facebook, Twitter, Link2, Share2, Check } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
-import { SITE_URL, OG_IMAGE, PHONE_DISPLAY, REVIEW_URL } from '../lib/seo';
+import { SITE_URL, OG_IMAGE, PHONE_DISPLAY, REVIEW_URL, faqJsonLd } from '../lib/seo';
 import { getPost, POSTS } from '../data/posts';
 import { whatsappUrl } from '../lib/contact';
 
@@ -44,6 +44,7 @@ export default function BlogPostPage() {
             about: post.targetQuery,
             mentions: ['LIC of India', 'Ahmedabad'],
           },
+          faqJsonLd(post.faqs),
         ]
       : [],
   });
@@ -180,6 +181,20 @@ export default function BlogPostPage() {
             )}
           </section>
         ))}
+
+        {post.faqs && post.faqs.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-2xl font-display font-bold text-midnight mb-4 mt-2">Questions about this story</h2>
+            <div className="space-y-4">
+              {post.faqs.map((f) => (
+                <div key={f.q} className="bg-white border border-border rounded-2xl p-6">
+                  <h3 className="font-bold text-midnight text-base mb-2">{f.q}</h3>
+                  <p className="text-[15px] text-gray-700 leading-relaxed font-light">{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <p className="text-xs text-gray-500 leading-relaxed border-t border-border pt-5 mb-10">
           Names and identifying details have been changed. Figures are rounded and reflect the rates,
