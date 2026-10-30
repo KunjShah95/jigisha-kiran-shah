@@ -4,10 +4,12 @@ import Services from '../components/Services'
 import FAQ from '../components/FAQ'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSEO } from '../hooks/useSEO'
+import { useSpotlight } from '../hooks/useSpotlight'
 import { SITE_URL } from '../lib/seo'
 import { SERVICE_PAGES } from '../data/servicePages'
 
 export default function ServicesPage() {
+  const onMove = useSpotlight()
   useSEO({
     title: 'LIC Insurance Plans Ahmedabad | Term, Endowment, ULIP, Pension',
     description:
@@ -57,15 +59,16 @@ export default function ServicesPage() {
               <Link
                 key={p.slug}
                 to={`/services/${p.slug}`}
-                className="group flex flex-col justify-between bg-white rounded-2xl border border-border p-6 hover:border-gold/40 hover:shadow-lg transition-all"
+                onMouseMove={onMove}
+                className="spotlight-card group flex flex-col justify-between bg-white rounded-2xl border border-border p-6 hover:border-gold/40 hover:shadow-lg transition-all relative overflow-hidden"
               >
-                <div>
+                <div className="relative z-10">
                   <h3 className="font-display font-bold text-lg text-midnight mb-2 group-hover:text-gold-dark transition-colors">
                     {p.h1}
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed font-light">{p.description}</p>
                 </div>
-                <span className="inline-flex items-center gap-2 mt-4 text-sm font-bold text-gold-dark group-hover:gap-3 transition-all">
+                <span className="relative z-10 inline-flex items-center gap-2 mt-4 text-sm font-bold text-gold-dark group-hover:gap-3 transition-all">
                   What it involves <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </span>
               </Link>

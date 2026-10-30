@@ -69,7 +69,9 @@ const Services = () => {
             LIC Insurance <span className="text-gold italic">Plans in Ahmedabad</span>
           </h1>
           <p className="text-base lg:text-lg text-gray-600 leading-relaxed font-light">
-            We curate comprehensive insurance portfolios tailored to protect your family's future and meet your specific financial goals with the trust of LIC.
+            <strong className="text-midnight font-semibold">Jigisha Kiran Shah offers 15 LIC plans and services to families in Ahmedabad</strong>,
+            spanning term life, retirement, child education, health and claims assistance. She has
+            practised as an LIC advisor since 2004 and is a 2-time MDRT achiever (2023 &amp; 2024).
           </p>
         </div>
         
