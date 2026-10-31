@@ -7,6 +7,7 @@ import Calculator from '../components/Calculator'
 import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
 import ObjectivePicker from '../components/ObjectivePicker'
+import { TracingBeam } from '../components/aceternity/TracingBeam'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSpotlight } from '../hooks/useSpotlight'
 import { useSEO } from '../hooks/useSEO'
@@ -56,39 +57,35 @@ export default function HomePage() {
       <WhyUs />
       {/* Compact discovery band — links home visitors to Services & Reviews
           without the weight of full sections (keeps mobile scroll short) */}
-      <section aria-label="Explore services and reviews" className="py-10 lg:py-14 bg-cream relative overflow-hidden">
-        <div className="container grid sm:grid-cols-2 gap-3 md:gap-4 reveal">
+      <section aria-label="Explore services and reviews" className="py-12 lg:py-16 bg-cream relative overflow-hidden">
+        <div className="container grid sm:grid-cols-2 gap-4">
           <Link
             to="/services"
             onMouseMove={onMove}
-            className="spotlight-card group p-5 md:p-6 bg-white rounded-2xl border border-border shadow-sm hover:shadow-lg hover:border-gold/40 transition-all min-h-11 relative overflow-hidden"
+            className="spotlight-card group relative overflow-hidden flex items-center gap-4 p-6 bg-white rounded-3xl border border-border hover:border-gold/40 hover:-translate-y-0.5 transition-all min-h-11 shadow-[0_1px_0_0_rgba(0,0,0,0.03)]"
           >
-            <span className="relative z-10 flex items-center gap-4">
-              <span className="w-11 h-11 rounded-xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors">
-                <ShieldCheck className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
-              </span>
-              <span className="flex-1 min-w-0">
-                <span className="block font-bold text-midnight text-[15px] md:text-base">Explore LIC Plans</span>
-                <span className="block text-xs md:text-sm text-gray-500 font-light">Term, pension, child & wealth plans</span>
-              </span>
-              <ArrowRight className="w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            <span className="relative z-10 w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300">
+              <ShieldCheck className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
             </span>
+            <span className="relative z-10 flex-1 min-w-0">
+              <span className="block font-bold text-midnight text-base">Explore LIC Plans</span>
+              <span className="block text-sm text-gray-500 font-light">Term, pension, child & wealth plans</span>
+            </span>
+            <ArrowRight className="relative z-10 w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
           <Link
             to="/reviews"
             onMouseMove={onMove}
-            className="spotlight-card spotlight-dark group p-5 md:p-6 bg-midnight rounded-2xl border border-white/10 shadow-sm hover:shadow-lg transition-all min-h-11 relative overflow-hidden"
+            className="spotlight-card spotlight-dark group relative overflow-hidden flex items-center gap-4 p-6 bg-midnight rounded-3xl border border-white/10 hover:-translate-y-0.5 transition-all min-h-11"
           >
-            <span className="relative z-10 flex items-center gap-4">
-              <span className="w-11 h-11 rounded-xl bg-gold flex items-center justify-center shrink-0">
-                <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
-              </span>
-              <span className="flex-1 min-w-0">
-                <span className="block font-bold text-white text-[15px] md:text-base">5.0★ · 70+ Google Reviews · 2,700+ families</span>
-                <span className="block text-xs md:text-sm text-white/60 font-light">Real stories from families Jigisha has served</span>
-              </span>
-              <ArrowRight className="w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            <span className="relative z-10 w-12 h-12 rounded-2xl bg-gold flex items-center justify-center shrink-0">
+              <Star className="w-5 h-5 text-midnight fill-midnight" aria-hidden="true" />
             </span>
+            <span className="relative z-10 flex-1 min-w-0">
+              <span className="block font-bold text-white text-base">5.0★ · 70+ Google Reviews</span>
+              <span className="block text-sm text-white/50 font-light">Real stories from 2,700+ families</span>
+            </span>
+            <ArrowRight className="relative z-10 w-5 h-5 text-gold shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
         </div>
       </section>
@@ -96,15 +93,12 @@ export default function HomePage() {
       <Testimonials />
       {/* Stories & guides preview — internal linking: lifts pages/visit and
           distributes homepage authority to blog posts */}
-      <section aria-label="Stories and guides" className="py-10 lg:py-14 bg-white relative overflow-hidden">
-        <div className="container reveal">
-          <div className="flex items-end justify-between gap-4 mb-6">
+      <section aria-label="Stories and guides" className="py-16 lg:py-20 bg-white relative overflow-hidden">
+        <div className="container">
+          <div className="flex items-end justify-between gap-4 mb-8">
             <div>
-              <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-3">
-                Stories & Guides
-              </div>
               <h2 className="text-2xl md:text-3xl font-display font-medium text-midnight">
-                22 Years of Lessons, <span className="text-gold italic">Plainly Told</span>
+                22 years of lessons, <span className="text-gold italic">plainly told</span>
               </h2>
             </div>
             <Link
@@ -116,29 +110,32 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
-            {POSTS.map((post) => (
-              <Link
-                key={post.slug}
-                to={`/blog/${post.slug}`}
-                className="group flex flex-col p-5 bg-cream rounded-2xl border border-border hover:border-gold/40 hover:shadow-lg transition-all"
-              >
-                <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-dark mb-2">
-                  {post.targetQuery}
-                </span>
-                <span className="font-bold text-midnight text-[15px] leading-snug mb-2 group-hover:text-gold-dark transition-colors">
-                  {post.title}
-                </span>
-                <span className="mt-auto inline-flex items-center gap-1.5 text-xs text-gray-500">
-                  <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-                  {post.readMinutes} min read
-                </span>
-              </Link>
-            ))}
-          </div>
+          <TracingBeam>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {POSTS.map((post) => (
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  onMouseMove={onMove}
+                  className="spotlight-card group relative overflow-hidden flex flex-col p-5 bg-cream/70 rounded-2xl border border-border hover:border-gold/40 hover:-translate-y-0.5 transition-all"
+                >
+                  <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.14em] text-gold-dark mb-2">
+                    {post.targetQuery}
+                  </span>
+                  <span className="relative z-10 font-bold text-midnight text-[15px] leading-snug mb-2 group-hover:text-gold-dark transition-colors">
+                    {post.title}
+                  </span>
+                  <span className="relative z-10 mt-auto inline-flex items-center gap-1.5 text-xs text-gray-500">
+                    <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                    {post.readMinutes} min read
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </TracingBeam>
           <Link
             to="/blog"
-            className="mt-4 sm:hidden inline-flex items-center gap-2 text-sm font-bold text-gold-dark"
+            className="mt-6 sm:hidden inline-flex items-center gap-2 text-sm font-bold text-gold-dark"
           >
             <BookOpen className="w-4 h-4" aria-hidden="true" />
             All stories

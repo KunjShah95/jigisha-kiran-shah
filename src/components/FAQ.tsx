@@ -20,9 +20,6 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
     <section aria-labelledby="faq-heading" className="py-16 lg:py-24 bg-white relative overflow-hidden">
       <div className="container relative z-10 max-w-4xl">
         <div className="text-center mb-8 lg:mb-12">
-          <div className="inline-block px-3 py-1 bg-gold/10 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4">
-            FAQ — Answered by Jigisha Kiran Shah
-          </div>
           <h2 id="faq-heading" className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
             Frequently Asked <span className="text-gold italic">Questions</span>
           </h2>

@@ -285,4 +285,41 @@
   .btn-beam:hover::after {
     @apply animate-[shimmer_1s_infinite];
   }
+
+  /* ── Signature: dot-grid canvas, radial-masked toward the edges ── */
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(23, 23, 23, 0.14) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 65% 60% at 50% 40%, black 40%, transparent 85%);
+    mask-image: radial-gradient(ellipse 65% 60% at 50% 40%, black 40%, transparent 85%);
+  }
+
+  /* ── Signature: meteors ───────────────────────────────────────── */
+  .meteor {
+    animation: meteor-fall linear infinite;
+  }
+  .meteor::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, #c4772a, transparent);
+  }
+  @keyframes meteor-fall {
+    0% {
+      transform: rotate(215deg) translateX(0);
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: rotate(215deg) translateX(-500px);
+      opacity: 0;
+    }
+  }
 }

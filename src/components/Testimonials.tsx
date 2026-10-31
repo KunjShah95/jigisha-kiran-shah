@@ -58,7 +58,6 @@ const Testimonials = () => {
       <div className="container relative z-10 w-full">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 lg:mb-12 gap-8 reveal">
           <div className="max-w-2xl">
-            <div className="inline-block px-3 py-1 bg-gold/10 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 max-w-fit">Client Stories</div>
             <h2 className="text-3xl md:text-4xl font-display font-medium text-white mb-4 lg:mb-6">
               Relationships Built on <span className="text-gold italic">Trust</span>
             </h2>

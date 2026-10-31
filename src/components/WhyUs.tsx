@@ -1,107 +1,96 @@
 import { Award, ShieldCheck, HeartPulse, Headphones, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSpotlight } from '../hooks/useSpotlight';
+import { MovingBorderButton } from './aceternity/MovingBorderButton';
 
-const reasons = [
-  {
-    id: 'expertise',
-    icon: Award,
-    title: 'Recognised Expertise',
-    description: 'MDRT qualifier in 2023 & 2024 and a licensed LIC agent since 2004.',
-  },
+const PILLARS = [
   {
     id: 'claim-assistance',
     icon: ShieldCheck,
-    title: 'Hands-On Claim Assistance',
-    description: '1,000+ claims supported to settlement — intimation, documents and branch follow-up handled with your family. Settlement decisions rest with LIC.'
+    title: 'Hands-on claim assistance',
+    description:
+      '1,000+ claims supported to settlement — intimation, documents and branch follow-up handled with your family. Settlement decisions rest with LIC.',
+    span: 'lg:col-span-7 lg:row-span-2',
+  },
+  {
+    id: 'expertise',
+    icon: Award,
+    title: 'Recognised expertise',
+    description: 'MDRT qualifier in 2023 & 2024, licensed LIC agent since 2004.',
+    span: 'lg:col-span-5',
   },
   {
     id: 'wealth',
     icon: HeartPulse,
-    title: 'Wealth Architecture',
-    description: 'Strategic planning tailored to your unique financial goals and family legacy.'
+    title: 'Wealth architecture',
+    description: 'Planning tailored to your goals and family legacy.',
+    span: 'lg:col-span-5',
   },
   {
     id: 'concierge',
     icon: Headphones,
-    title: 'Concierge Support',
-    description: 'Direct, prioritized access for policy management and emergency assistance.'
-  }
-]
+    title: 'Concierge support',
+    description: 'Direct, prioritized access for policy management and emergency assistance.',
+    span: 'lg:col-span-12',
+  },
+] as const;
 
 const WhyUs = () => {
-  const onMove = useSpotlight()
-  const leadReason = reasons.find((r) => r.id === 'claim-assistance')!
+  const onMove = useSpotlight();
+
   return (
-    <section className="py-16 lg:py-24 bg-midnight text-white relative overflow-hidden">
-      {/* Background Elements */}
-      <div aria-hidden="true" className="absolute top-0 left-0 w-[600px] h-[600px] bg-gold-dark/20 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div aria-hidden="true" className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.06] mix-blend-soft-light" />
-      
-      <div className="container relative z-10 w-full">
-        <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-12 reveal">
-          <div className="inline-block px-3 py-1 bg-white/5 text-gold text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6 border border-white/10">Why Choose Us</div>
-          <h2 className="text-3xl md:text-4xl font-display font-medium text-white mb-4 lg:mb-6">
-            Your Trusted Insurance <span className="text-gold italic">Partner</span>
-          </h2>
-          <p className="text-base lg:text-lg text-gray-300 font-light leading-relaxed">
-            Two decades of LIC experience, claim-ready paperwork, and personal guidance for every milestone — protecting your future and securing your dreams.
+    <section className="py-20 lg:py-28 bg-midnight text-white relative overflow-hidden">
+      <div aria-hidden="true" className="absolute inset-0">
+        <div className="dot-grid opacity-[0.25] invert" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[140px]" />
+      </div>
+
+      <div className="container relative z-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-14">
+          <div className="max-w-xl">
+            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-display font-medium leading-tight">
+              Two decades of LIC experience, <span className="text-gold italic">one point of contact</span>
+            </h2>
+          </div>
+          <p className="text-gray-400 font-light leading-relaxed max-w-sm">
+            Claim-ready paperwork and personal guidance for every milestone — protecting your future and securing your dreams.
           </p>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-4 md:gap-6 reveal">
-          {/* Large tile: lead differentiator */}
-          <div
-            onMouseMove={onMove}
-            className="spotlight-card spotlight-dark group lg:col-span-6 lg:row-span-3 bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-all duration-300 relative overflow-hidden flex flex-col justify-center"
-          >
-            <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-              <div className="w-16 h-16 bg-linear-to-br from-gold to-gold-dark rounded-2xl rotate-3 group-hover:rotate-6 flex items-center justify-center mb-5 shadow-lg shadow-gold/20 transition-transform duration-300">
-                <ShieldCheck size={28} aria-hidden="true" className="text-midnight -rotate-3 group-hover:-rotate-6 transition-transform duration-300" />
-              </div>
-              <h3 className="text-2xl font-bold font-display mb-3 text-white group-hover:text-gold transition-colors">
-                {leadReason.title}
-              </h3>
-              <p className="text-base text-gray-400 leading-relaxed font-light group-hover:text-gray-200 transition-colors max-w-md">
-                {leadReason.description}
-              </p>
-            </div>
-          </div>
 
-          {/* Three smaller supporting tiles */}
-          {reasons.filter((r) => r.id !== 'claim-assistance').map((reason) => (
+        <div className="grid lg:grid-cols-12 gap-4">
+          {PILLARS.map((p) => (
             <div
-              key={reason.id}
+              key={p.id}
               onMouseMove={onMove}
-              className="spotlight-card spotlight-dark group lg:col-span-6 bg-white/5 border border-white/10 p-6 rounded-3xl hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+              className={`spotlight-card spotlight-dark group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 lg:p-8 flex flex-col justify-center transition-colors duration-300 hover:border-gold/30 hover:bg-white/[0.06] ${p.span}`}
             >
-              <div className="absolute inset-0 bg-linear-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative z-10 flex items-start gap-4">
-                <div className="w-12 h-12 shrink-0 bg-linear-to-br from-gold to-gold-dark rounded-xl rotate-3 group-hover:rotate-6 flex items-center justify-center shadow-lg shadow-gold/20 transition-transform duration-300">
-                  <reason.icon size={20} aria-hidden="true" className="text-midnight -rotate-3 group-hover:-rotate-6 transition-transform duration-300" />
+                <div className="shrink-0 w-11 h-11 rounded-xl bg-gold/15 border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
+                  <p.icon size={20} aria-hidden="true" className="text-gold group-hover:text-midnight transition-colors duration-300" />
                 </div>
-                <div>
-                  <h3 className="text-base font-bold font-display mb-1.5 text-white group-hover:text-gold transition-colors">{reason.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed font-light group-hover:text-gray-200 transition-colors">{reason.description}</p>
+                <div className="min-w-0">
+                  <h3 className="text-lg lg:text-xl font-bold font-display mb-2 text-white">{p.title}</h3>
+                  <p className="text-sm lg:text-[15px] text-gray-400 leading-relaxed font-light max-w-md">{p.description}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12 lg:mt-16 reveal">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gold text-white font-bold rounded-xl hover:bg-gold-dark transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 text-base min-h-11"
-          >
-            Book Free Consultation
-            <ArrowRight className="w-5 h-5" aria-hidden="true" />
-          </Link>
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <MovingBorderButton containerClassName="inline-block" borderColor="#f3d6b4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 px-8 py-4 text-white font-bold text-base min-h-11"
+            >
+              Book Free Consultation
+              <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            </Link>
+          </MovingBorderButton>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default WhyUs
+export default WhyUs;

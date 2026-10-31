@@ -3,61 +3,74 @@ import { Link } from 'react-router-dom'
 import heroImage from '../assets/images/hero-image.jpeg';
 import CountUp from './CountUp';
 import HeroCoverageWidget from './HeroCoverageWidget';
+import { MovingBorderButton } from './aceternity/MovingBorderButton';
+import { Meteors } from './aceternity/Meteors';
+import { TextGenerate } from './aceternity/TextGenerate';
+import { TiltCard } from './aceternity/TiltCard';
+
+const STATS = [
+  { icon: Award, value: '2×', label: 'MDRT 2023 & 2024' },
+  { icon: null, value: 22, suffix: '+', label: 'years experience' },
+  { icon: null, value: 2.7, decimals: 1, suffix: 'k+', label: 'families served' },
+  { icon: Star, value: '5.0', label: 'rating on Google' },
+] as const;
 
 const Hero = () => {
   return (
-    <section className="hero relative overflow-hidden flex items-center bg-transparent py-8 lg:py-0 lg:min-h-[95vh]">
-      {/* Signature: drifting aurora mesh */}
-      <div aria-hidden="true" className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="aurora" />
-        <div className="absolute inset-0 bg-[url('/noise.svg')] opacity-[0.06]" />
+    <section className="relative overflow-hidden bg-cream py-20 lg:py-0 lg:min-h-[96vh] flex items-center">
+      {/* Signature canvas: dot-grid fading to edges, meteors drifting across */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="dot-grid" />
+        <Meteors count={8} className="opacity-70" />
+        <div className="absolute top-[-10%] right-[-10%] w-[560px] h-[560px] rounded-full bg-gold/15 blur-[120px]" />
+        <div className="absolute bottom-[-15%] left-[-5%] w-[420px] h-[420px] rounded-full bg-midnight/10 blur-[110px]" />
       </div>
 
-      <div className="container relative z-10 w-full pt-28 lg:pt-32 pb-12 lg:pb-16">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          {/* Content Column */}
-          <div className="lg:col-span-7 min-w-0 hero__content reveal">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-midnight leading-[1.15] mb-4 lg:mb-6 tracking-tight">
-              LIC Life Insurance Advisor in Ahmedabad for Your <span className="text-gradient-gold italic relative inline-block">
-                Family's Protection
-                <svg aria-hidden="true" className="absolute w-full h-2 lg:h-3 -bottom-1 lg:-bottom-2 left-0 text-gold" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="3" fill="none" />
-                </svg>
-              </span>
+      <div className="container relative z-10 w-full pt-28 lg:pt-32">
+        <div className="grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-10 items-start">
+          {/* Content column */}
+          <div className="min-w-0">
+            <h1 className="font-display font-bold text-midnight leading-[1.08] tracking-tight text-[2.5rem] sm:text-5xl lg:text-[3.4rem] mb-6">
+              <TextGenerate
+                words="Insurance advice built around your family's protection"
+                gradientWord="protection"
+              />
             </h1>
 
-            <p className="text-base lg:text-xl text-gray-600 mb-6 lg:mb-8 max-w-xl leading-relaxed font-light">
-              Understand how much protection your family really needs, review the policies you already hold, and plan for your child's education and your retirement — with personal guidance from Jigisha Kiran Shah, trusted by <strong className="text-midnight font-semibold">2,700+ families</strong> and rated <strong className="text-gold-dark font-semibold">5.0 ★ on Google</strong>.
+            <p className="text-base lg:text-lg text-gray-600 font-light leading-relaxed max-w-xl mb-8">
+              See how much cover your family actually needs, review the policies you already hold, and plan for your child's education and your retirement — with Jigisha Kiran Shah, trusted by{' '}
+              <strong className="text-midnight font-semibold">2,700+ families</strong>.
             </p>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6 lg:mb-8 text-sm text-gray-600">
-              <span className="inline-flex items-center gap-1.5 font-semibold text-midnight whitespace-nowrap">
-                <Award className="w-4 h-4 text-gold" aria-hidden="true" />
-                2× MDRT 2023 & 2024
-              </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                <CountUp end={22} suffix="+ yrs" className="font-bold text-midnight tabular-nums" />
-                experience
-              </span>
-              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                <CountUp end={2.7} decimals={1} suffix="k+" className="font-bold text-midnight tabular-nums" />
-                families served
-              </span>
-              <span className="inline-flex items-center gap-1.5 font-semibold text-midnight whitespace-nowrap">
-                <Star className="w-4 h-4 text-gold fill-gold" aria-hidden="true" />
-                5.0 on Google
-              </span>
-            </div>
+            {/* Stat strip: four quiet chips, not a loud card */}
+            <dl className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border mb-9 max-w-xl">
+              {STATS.map((s, i) => (
+                <div key={i} className="bg-white/80 px-3.5 py-3">
+                  <dt className="sr-only">{s.label}</dt>
+                  <dd className="flex items-center gap-1 font-display font-bold text-midnight text-lg tabular-nums">
+                    {s.icon ? <s.icon className="w-4 h-4 text-gold" aria-hidden="true" /> : null}
+                    {typeof s.value === 'number' ? (
+                      <CountUp end={s.value} decimals={'decimals' in s ? s.decimals : 0} suffix={'suffix' in s ? s.suffix : ''} />
+                    ) : (
+                      s.value
+                    )}
+                  </dd>
+                  <dd className="text-[11px] text-gray-500 font-light leading-snug mt-0.5">{s.label}</dd>
+                </div>
+              ))}
+            </dl>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 lg:gap-5 mb-8 lg:mb-10" role="group" aria-label="Primary actions">
-              <Link
-                to="/contact"
-                data-cta="hero-book"
-                className="inline-flex items-center justify-center px-6 py-3 lg:px-8 lg:py-4 bg-midnight text-white font-bold rounded-xl hover:bg-gold transition-all duration-300 gap-2 group btn-beam shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98] text-sm lg:text-base w-full sm:w-auto min-h-11"
-              >
-                <span>Book Free Consultation</span>
-                <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-              </Link>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4" role="group" aria-label="Primary actions">
+              <MovingBorderButton containerClassName="w-full sm:w-auto" borderColor="#f3d6b4">
+                <Link
+                  to="/contact"
+                  data-cta="hero-book"
+                  className="inline-flex items-center justify-center px-7 py-3.5 lg:px-9 lg:py-4 text-white font-bold gap-2 group text-sm lg:text-base w-full sm:w-auto min-h-11"
+                >
+                  <span>Book Free Consultation</span>
+                  <ArrowRight className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                </Link>
+              </MovingBorderButton>
               <Link
                 to="/services/policy-review-claims"
                 className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold text-midnight hover:text-gold-dark transition-colors min-h-11"
@@ -68,43 +81,41 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Visual Column */}
-          <div className="lg:col-span-5 relative mt-4 lg:mt-8 reveal-right block">
-            <div className="relative w-full aspect-4/5 max-w-sm lg:max-w-md mx-auto">
-              <div className="relative h-full w-full rounded-3xl lg:rounded-4xl overflow-hidden shadow-2xl z-10 group">
-                 <img 
-                  src={heroImage} 
-                  alt="Jigisha Kiran Shah - Senior LIC Wealth Advisor Ahmedabad" 
-                  className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700"
+          {/* Visual column: layered console — portrait card + live widget */}
+          <div className="relative min-w-0">
+            <TiltCard className="relative rounded-[1.75rem] overflow-hidden border border-border shadow-2xl group bg-midnight">
+              <div className="relative aspect-[5/4]">
+                <img
+                  src={heroImage}
+                  alt="Jigisha Kiran Shah - Senior LIC Wealth Advisor Ahmedabad"
+                  className="w-full h-full object-cover object-top opacity-90"
                   {...{ fetchpriority: 'high' }}
                   decoding="async"
                   width={768}
-                  height={960}
+                  height={614}
                 />
-                
-                <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-midnight/90 via-midnight/20 to-transparent opacity-80" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-8 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="bg-gold px-3 py-0.5 lg:px-4 lg:py-1 self-start inline-block rounded-md text-[11px] lg:text-xs font-bold text-white uppercase tracking-wider mb-2 lg:mb-3">
-                    Senior Advisor
-                  </div>
-                  <div className="font-display text-xl lg:text-3xl font-bold mb-0.5 lg:mb-1">Jigisha Kiran Shah</div>
-                  <p className="text-white/80 text-xs lg:text-sm font-medium">Expert Financial guidance for 2 decades</p>
-                </div>
-              </div>
+                <div aria-hidden="true" className="absolute inset-0 bg-linear-to-t from-midnight via-midnight/10 to-transparent" />
 
-              {/* Floating Trust Badge */}
-              <div className="absolute -top-4 lg:-top-6 right-2 lg:-right-2 bg-white/95 backdrop-blur-md p-4 lg:p-5 rounded-xl shadow-xl border border-white/40 max-w-[180px] lg:max-w-[200px] animate-float z-20 hidden md:block">
-                <div className="flex gap-1 text-gold mb-1 lg:mb-2" aria-hidden="true">
-                  {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 fill-current" />)}
+                {/* Corner frame marks — signature detail replacing the old caption-on-hover */}
+                <span aria-hidden="true" className="absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-gold/70 rounded-tl-md" />
+                <span aria-hidden="true" className="absolute top-4 right-4 w-5 h-5 border-t-2 border-r-2 border-gold/70 rounded-tr-md" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between gap-3">
+                  <div>
+                    <div className="font-display text-lg font-bold text-white mb-0.5">Jigisha Kiran Shah</div>
+                    <p className="text-white/60 text-xs font-medium">Senior Advisor · 22 yrs</p>
+                  </div>
                 </div>
-                <p className="text-[11px] lg:text-xs text-gray-700 font-medium leading-relaxed italic">
-                  "She transformed how we think about our family's financial future."
-                </p>
               </div>
+            </TiltCard>
+
+            {/* Floating review note */}
+            <div className="hidden md:block absolute -top-4 -right-4 bg-white rounded-xl shadow-xl border border-border p-4 max-w-[190px] animate-float z-20">
+              <p className="text-[11px] text-gray-700 font-medium leading-relaxed italic">
+                "She transformed how we think about our family's financial future."
+              </p>
             </div>
 
-            {/* Interactive artifact: live coverage estimate */}
             <HeroCoverageWidget />
           </div>
         </div>

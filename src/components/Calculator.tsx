@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Check, ArrowRight, Calculator as CalcIcon } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { submitLead, honeypotProps } from '../lib/leads';
@@ -68,11 +68,6 @@ const Calculator = () => {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           
           <div className="reveal-left text-white">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-gold/20 mb-4 lg:mb-6">
-                <CalcIcon className="w-4 h-4 text-gold" aria-hidden="true" />
-                <span className="text-gold font-bold tracking-[0.2em] uppercase text-[11px]">Free Consultation</span>
-            </div>
-            
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-4 lg:mb-6">
               Calculate Your Family's <span className="text-gold italic">Security Gap</span>
             </h2>

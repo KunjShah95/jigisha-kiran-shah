@@ -21,6 +21,8 @@ export type ConversionEvent =
   | 'lead_saved'
   | 'booking_cta_click'
   | 'booking_started'
+  | 'booking_calendar_loaded'
+  | 'booking_calendar_failed'
   | 'booking_completed'
   | 'booking_request_submit'
   | 'protection_check_started'

@@ -86,7 +86,7 @@ function CalEmbed({ calLink, objective, from, onFail }: { calLink: string; objec
     const fail = (reason: string) => {
       if (ready || failed) return;
       failed = true;
-      trackEvent('booking_started', { via: 'cal-failed', reason });
+      trackEvent('booking_calendar_failed', { reason });
       onFail(reason);
     };
     // Script blocked (adblock, network) or Cal.com down: never leave a blank box.
@@ -107,7 +107,7 @@ function CalEmbed({ calLink, objective, from, onFail }: { calLink: string; objec
       callback: () => {
         ready = true;
         window.clearTimeout(timer);
-        trackEvent('booking_started', { via: 'cal', objective: objective || 'none' });
+        trackEvent('booking_calendar_loaded', { objective: objective || 'none' });
       },
     });
     ns('on', { action: 'linkFailed', callback: () => fail('link-failed') });
@@ -143,6 +143,7 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
     const day = optionLabel(DAY_OPTIONS, d.day);
     const time = optionLabel(TIME_OPTIONS, d.time);
     trackEvent('booking_request_submit', { objective: d.topic || 'none', mode: d.mode });
+    trackEvent('booking_completed', { via: 'request', objective: d.topic || 'none' });
     submitLead({
       kind: 'booking',
       name: d.name,
