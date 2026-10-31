@@ -11,6 +11,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path+/",
+      "has": [
+        {
+          "type": "host",
+          "value": "jigishakiranshah.in"
+        }
+      ],
+      "destination": "https://www.jigishakiranshah.in/:path",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
