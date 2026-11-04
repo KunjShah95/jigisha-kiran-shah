@@ -33,14 +33,16 @@ export interface ServicePageMeta {
   sections?: ServiceSection[];
   /** ISO date the page content was last verified against current LIC rules. */
   updated?: string;
+  /** Official product sources used for plan pages. */
+  officialSources?: { label: string; url: string }[];
 }
 
 export const SERVICE_PAGES: ServicePageMeta[] = [
   {
     slug: 'term-insurance',
-    title: 'Term Insurance in Ahmedabad | LIC Tech Term, Jeevan Amar',
+    title: 'LIC Term Insurance Ahmedabad | Cover & Plan Review',
     description:
-      'Term insurance in Ahmedabad: Rs 1 crore+ cover at the lowest cost. LIC Tech Term & Jeevan Amar with free advice from Jigisha Kiran Shah, 2x MDRT. +91 98240 25435.',
+      'Compare LIC Tech Term and Jeevan Amar with an Ahmedabad advisor. Estimate cover using income, loans and existing policies, then review nominee details. Free consultation.',
     keywords:
       'term insurance Ahmedabad, LIC Tech Term, Jeevan Amar, best term plan Gujarat, 1 crore term insurance Ahmedabad',
     targetQuery: 'term insurance Ahmedabad',
@@ -154,29 +156,35 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
   },
   {
     slug: 'health-insurance',
-    title: 'Health Insurance in Ahmedabad | LIC Arogya Rakshak',
+    title: 'LIC Health Insurance Ahmedabad | Health Shield & Cancer Cover',
     description:
-      'Health insurance in Ahmedabad: LIC Arogya Rakshak hospitalisation cover & Cancer Cover with premium waiver. Protect savings from medical bills: +91 98240 25435.',
+      'Compare LIC Health Shield (Plan 907) and New Cancer Cover (Plan 908) in Ahmedabad. Review eligibility, covered events and policy terms using LIC’s current brochures.',
     keywords:
-      'health insurance Ahmedabad, LIC Arogya Rakshak, cancer cover LIC, medical insurance Gujarat, hospitalisation cover',
-    targetQuery: 'health insurance Ahmedabad LIC',
+      'health insurance Ahmedabad, LIC Health Shield 907, LIC New Cancer Cover 908, health insurance Gujarat, hospitalisation cover',
+    targetQuery: 'LIC health insurance Ahmedabad',
     h1: 'Health Insurance in Ahmedabad',
     intro: [
-      'One private-hospital admission in Ahmedabad can erase five years of savings. LIC Arogya Rakshak is a fixed-benefit health plan — hospitalisation pays a defined daily benefit plus surgical benefits with no room-rent restrictions — while Cancer Cover pays a lump sum on diagnosis at any stage.',
-      'Fixed-benefit plans complement reimbursement mediclaim rather than replacing it: the lump sum covers the income loss, travel, and attendant costs that bills never show.',
+      'LIC currently lists Health Shield (Plan 907, UIN 512N369V01) and New Cancer Cover (Plan 908, UIN 512N370V01). Both became available on 19 October 2026. They cover different health-related risks, so compare their policy wording, eligibility, covered events, limits and exclusions before applying.',
+      'A plan name or brochure summary cannot tell you whether a policy fits your existing cover. Review the current benefit schedule alongside your mediclaim and ask for the official policy wording before making a decision.',
+    ],
+    updated: '2026-11-04',
+    officialSources: [
+      { label: 'LIC Health Shield — Plan 907, UIN 512N369V01', url: 'https://www.licindia.in/web/guest/lic-s-health-shield' },
+      { label: 'LIC New Cancer Cover — Plan 908, UIN 512N370V01', url: 'https://www.licindia.in/web/guest/lic-s-new-cancer-cover' },
+      { label: 'LIC health insurance plans', url: 'https://web.licindia.in/web/guest/health-insurance-plans' },
     ],
     faqs: [
       {
-        q: 'What does LIC Arogya Rakshak cover?',
-        a: 'Fixed daily hospital cash benefit, surgical benefits, day-care procedures, and ambulance benefit, renewable for lifetime with no room-rent caps. Payouts are fixed sums per event — claimed alongside, not instead of, any mediclaim policy.',
+        q: 'Which LIC health plans are currently listed?',
+        a: 'LIC lists Health Shield (Plan 907, UIN 512N369V01) and New Cancer Cover (Plan 908, UIN 512N370V01). LIC states both were available from 19 October 2026. Check each current brochure and policy document for benefits and eligibility.',
       },
       {
-        q: 'How does LIC Cancer Cover work?',
-        a: 'A lump sum is paid on early-stage diagnosis and the full sum assured on major-stage diagnosis, with future premiums waived after diagnosis and an optional income benefit. Cover is available at modest premiums when bought young and healthy.',
+        q: 'Can LIC Health Shield replace my existing health insurance?',
+        a: 'Check the Health Shield policy wording against your current policy before deciding. Compare covered events, payout limits, exclusions, waiting periods and claim conditions; do not assume one plan replaces another based on its name.',
       },
       {
-        q: 'I already have company mediclaim. Do I still need this?',
-        a: 'Usually yes. Company cover ends with the job, rarely covers parents adequately, and never pays for income loss during treatment. A fixed-benefit plan travels with you across employers and pays cash you control.',
+        q: 'Where can I read the official policy details?',
+        a: 'Use LIC’s official Health Shield and New Cancer Cover product pages linked below. Read the current sales brochure, policy document and customer information sheet, including eligibility, definitions, exclusions and claims conditions.',
       },
     ],
   },
@@ -284,6 +292,42 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'Most families in Ahmedabad already own two or three LIC policies — bought years ago, from different agents, for different reasons. Few know their total cover, when each policy matures, or whether the nominee is still correct. A policy review answers those questions on one sheet of paper before you spend a rupee on anything new.',
       'When a claim is due — death, maturity or survival benefit — the outcome depends heavily on paperwork. Jigisha Kiran Shah helps families intimate the claim, assemble the right documents, and follow up with the branch. LIC makes the final decision on every claim; good preparation removes avoidable delays.',
     ],
+    updated: '2026-11-04',
+    sections: [
+      {
+        heading: 'Where is my LIC claim? — tracking it in four places',
+        intro:
+          '“Claim status” is the single most common question from a family mid-process, and the answer is almost always one of these four lookups. Have the policy number and the claimant’s details ready before you start.',
+        numbered: true,
+        items: [
+          'LIC’s online customer portal — register with the policy number and check the claim or maturity status against the policy itself. This is the fastest self-service route once the claim is registered.',
+          'The servicing branch that holds the policy file — quote the claim reference number you were given at intimation. This is the only desk that can move a stuck file, and it is where a physical document request is cleared.',
+          'Your agent or advisor — an LIC advisor can query the branch and the development officer on your behalf. This is the reason a family with an advisor rarely has to visit a branch twice.',
+          'Bima Bharosa (IRDAI’s grievance portal) — the escalation route if a claim has exceeded the turnaround time LIC is expected to meet. Use it after the branch, not instead of it.',
+        ],
+      },
+      {
+        heading: 'Why a claim stalls — the five delays we see most',
+        items: [
+          'No nominee registered, or a nominee who has since died. The claim becomes a succession matter and needs legal-heir documentation.',
+          'The death certificate details do not match the policy record — spelling of the name, date of birth, or place of death.',
+          'Early-claim or non-natural-death investigation. LIC is entitled to verify, and this is where months disappear if records are incomplete.',
+          'Premiums unpaid and the policy lapsed without revival. A lapsed policy may pay nothing beyond the surrender value.',
+          'Bank details that fail NEFT — a closed account, a name mismatch, or a joint account the nominee is not part of.',
+        ],
+      },
+      {
+        heading: 'What to do in the first 48 hours of a death claim',
+        numbered: true,
+        items: [
+          'Notify LIC and the branch as soon as the death certificate is available. Intimation is free and starts the clock.',
+          'Locate the original policy document. If it is lost, tell the branch immediately — a lost-policy indemnity is a separate, slower step.',
+          'Collect the nominee’s identity, address proof and a cancelled cheque or bank passbook in the nominee’s own name.',
+          'Do not surrender or transfer anything in the policy until the claim is registered. A wrong instruction at this point is hard to reverse.',
+          'Ask for the claim reference number in writing, and note the date of every submission. Follow-up without a reference number is guesswork.',
+        ],
+      },
+    ],
     faqs: [
       {
         q: 'What does a free LIC policy review cover?',
@@ -300,6 +344,10 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       {
         q: 'How do I change the nominee on my LIC policy?',
         a: 'Submit a change-of-nomination request to your servicing branch with the policy details and the new nominee’s information, and get it registered. A missing or outdated nominee is one of the most common causes of claim delays, so it is worth checking every policy.',
+      },
+      {
+        q: 'How do I check my LIC claim status?',
+        a: 'Check the policy on LIC’s online customer portal, or quote your claim reference number at the servicing branch that holds the file. An advisor can also query the branch directly. If a claim has run past the expected turnaround, escalate through Bima Bharosa, IRDAI’s grievance portal.',
       },
       {
         q: 'Can you help if my policy was sold by a different agent?',
@@ -767,6 +815,100 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       },
     ],
     relatedPost: { label: 'The five-number retirement checklist', to: '/blog/retirement-planning-ahmedabad-50s-checklist' },
+  },
+
+  {
+    slug: 'lic-surrender',
+    title: 'LIC Policy Surrender in Ahmedabad | Value, Rules & Alternatives',
+    description:
+      'Thinking of surrendering an LIC policy? What LIC actually pays, when you are allowed to surrender, and the paid-up option that usually beats it. Free review: +91 98240 25435.',
+    keywords:
+      'LIC policy surrender, LIC surrender value, surrender value calculator LIC, LIC policy surrender rules, paid up policy LIC, surrender vs paid up LIC, LIC surrender value taxable, LIC policy surrender Ahmedabad',
+    targetQuery: 'LIC policy surrender',
+    h1: 'Surrendering an LIC Policy',
+    updated: '2026-11-04',
+    intro: [
+      'Surrendering a policy means ending it and taking back what it is worth today. That number is almost always smaller than the premiums paid so far, because the early years of a life policy fund the commission, the mortality charge and the reserve — not the surrender value. For most families who ask about surrender in Ahmedabad, the honest answer is that a different option does the job better.',
+      'This page is the decision, not the pitch: when you are actually allowed to surrender, what LIC will pay, what you give up, and the three alternatives that usually keep the cover alive. If after reading it you still want to surrender, that is a legitimate choice — a free policy review will at least put the exact figures in front of you first.',
+    ],
+    sections: [
+      {
+        heading: 'When you are allowed to surrender',
+        items: [
+          'A non-linked policy acquires a surrender value only after enough premiums have been paid. Under IRDAI rules, that is after two full years of premiums for a policy with a premium-paying term of ten years or more, and after one year where the premium-paying term is shorter.',
+          'Before that point there is no surrender value at all. Stopping premiums simply lapses the policy — and a lapsed policy pays nothing unless it is revived or converted to paid-up.',
+          'ULIP policies follow separate rules and refund the fund value rather than a traditional surrender value, subject to a lock-in period.',
+          'If the policy is assigned, or held under the MWP Act, the surrender needs the assignee’s or trustee’s consent. This is the step that most often stops a surrender midway.',
+          'Any outstanding policy loan, plus interest, is deducted from the surrender value before anything is paid out.',
+        ],
+      },
+      {
+        heading: 'What LIC will actually pay you',
+        intro:
+          'There is no single percentage that applies to every policy, and any page quoting one number for all LIC plans is guessing. What LIC pays is the higher of two calculated figures:',
+        items: [
+          'Guaranteed Surrender Value (GSV) — a percentage of the total premiums paid, excluding the first year’s premium and any extra or rider premiums. The percentage is fixed by the policy’s vintage and is printed in the policy document.',
+          'Special Surrender Value (SSV) — an actuarial figure LIC computes for the specific policy. For older policies, especially those bought before 2019, the SSV is frequently the higher of the two, which is why an early surrender can be worth more than the GSV table suggests.',
+          'Bonuses already declared on a with-profits policy are surrendered at their own reduced factor, not at full value.',
+          'The exact rupee figure is quoted by LIC, not estimated by an agent. Anyone who tells you a precise amount without the policy in hand is guessing.',
+        ],
+      },
+      {
+        heading: 'Three options that usually beat surrender',
+        intro:
+          'Work through these in order before you sign a surrender form. For most people, one of them fits — and each one preserves something the surrender destroys.',
+        items: [
+          'Make it paid-up. If at least two years’ premiums are paid, you can stop paying and leave the policy in force at a reduced sum assured, payable at the original maturity date. You keep life cover and you keep every bonus already declared. This is the single most under-used option in LIC servicing.',
+          'Take a loan against the policy instead. If the need is temporary — school fees, a medical bill, a business gap — a policy loan keeps the cover and the maturity date intact, and costs less than a personal loan. See the policy loan page for the mechanics.',
+          'Revive it, if it has already lapsed. A lapsed policy can usually be revived within the revival period by paying arrears with interest, sometimes with a health declaration. Reviving is almost always cheaper than buying equivalent cover today at an older age.',
+          'Keep it and re-plan around it. Sometimes the policy is fine and the premium is simply mis-sized against the current income. A review can rebalance the family’s cover rather than destroy one leg of it.',
+        ],
+      },
+      {
+        heading: 'What you give up when you surrender',
+        items: [
+          'The life cover ends the day the surrender is processed. If something happens to the life assured afterwards, nothing is payable — and re-buying cover at a later age costs more, or may not be available at all after a health event.',
+          'Every future bonus is forfeited. A with-profits policy is designed so that later years are the valuable ones; surrendering in year four or five captures the worst part of that curve.',
+          'The maturity date disappears. Money that was going to arrive at a planned point is now arriving early and at a discount — which only helps if you have a better use for it than the original goal.',
+          'Tax treatment can change. Under Section 10(10D), the exemption on maturity and surrender proceeds can fail where the annual premium exceeds the threshold in force for the policy’s issue year. A surrender can therefore be taxable where the maturity would not have been. Confirm the position for your policy year with your chartered accountant.',
+        ],
+      },
+      {
+        heading: 'How a surrender is processed, if you decide to go ahead',
+        numbered: true,
+        items: [
+          'Get the surrender value quoted first, in writing, from the servicing branch. Never surrender on a verbal estimate.',
+          'Check whether paid-up, a loan or revival produces a better outcome for your actual need. This is a ten-minute comparison once the numbers are known.',
+          'Submit the surrender form with the original policy document, the policyholder’s ID and address proof, and bank details in the policyholder’s own name.',
+          'Clear any outstanding loan, assignment or MWP consent before submission, otherwise the request is returned.',
+          'Receive the amount by NEFT, usually within a few working days of the request being processed.',
+          'Keep the surrender voucher. It is the record of what was paid and the only document that settles a later dispute.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much will I get if I surrender my LIC policy?',
+        a: 'It is the higher of the Guaranteed Surrender Value and the Special Surrender Value for your specific policy, less any outstanding loan and interest. The GSV is a percentage of premiums paid excluding the first year, and the percentage depends on when the policy was bought. Only LIC can quote the exact figure, so ask the branch in writing before deciding.',
+      },
+      {
+        q: 'Is it better to surrender or make the policy paid-up?',
+        a: 'For most people, paid-up is better. It preserves the life cover at a reduced sum assured and keeps every bonus already declared, and it costs nothing further. Surrender ends the cover permanently and pays a discounted value today. Surrender only makes sense when the policy genuinely does not fit your goals any more.',
+      },
+      {
+        q: 'Can I surrender a lapsed LIC policy?',
+        a: 'A lapsed policy has already stopped earning surrender value in the normal sense. If it had acquired surrender value before lapsing, a surrender may still be possible, but revival is usually the better route because it restores the original cover and maturity date. Check the revival window for your plan before giving up on it.',
+      },
+      {
+        q: 'Is the surrender value of an LIC policy taxable?',
+        a: 'It depends on the policy year and the annual premium. Section 10(10D) exemptions can fail where annual premium exceeds the threshold in force when the policy was issued, which can make surrender proceeds taxable where a maturity payout would not have been. Confirm your specific case with your chartered accountant before surrendering.',
+      },
+      {
+        q: 'Does surrendering affect my ability to buy insurance later?',
+        a: 'No — a surrender is not a claim, and it does not by itself make future cover harder to obtain. The practical problem is different: re-buying equivalent cover at an older age costs more, and a health event in between can make it unavailable at any price. That is the real cost of surrendering, not the paperwork.',
+      },
+    ],
+    relatedPost: { label: 'The lapsed policy a Satellite family revived', to: '/blog/the-lapsed-policy-a-satellite-family-revived' },
   },
 ];
 

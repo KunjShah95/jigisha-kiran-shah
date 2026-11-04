@@ -33,6 +33,7 @@ const CONTACT_OBJECTIVE: Record<string, string> = {
   'nri-lic-services': 'review',
   'lic-policy-loan': 'review',
   'lic-address-name-change': 'review',
+  'lic-surrender': 'review',
 };
 
 export default function ServicePage() {
@@ -185,6 +186,24 @@ export default function ServicePage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      {meta.officialSources && meta.officialSources.length > 0 && (
+        <section className="py-8 bg-white" aria-labelledby="official-product-sources">
+          <div className="container max-w-4xl rounded-2xl border border-border bg-cream/60 p-5 sm:p-6">
+            <h2 id="official-product-sources" className="text-lg font-display font-bold text-midnight mb-2">Check LIC’s current product documents</h2>
+            <p className="text-sm text-gray-600 leading-relaxed mb-3">Plan availability and conditions can change. Confirm the latest brochure and policy wording before applying.</p>
+            <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-x-5 gap-y-2">
+              {meta.officialSources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-gold-dark underline underline-offset-4 hover:text-midnight">
+                    {source.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

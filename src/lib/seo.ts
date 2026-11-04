@@ -27,7 +27,7 @@ export const OFFER_CATALOG = [
   { name: 'Child education plans', slug: 'child-education', summary: 'Jeevan Tarun and New Children\u2019s Money Back with premium waiver on the parent.' },
   { name: 'Endowment and savings plans', slug: 'wealth-creation', summary: 'Jeevan Labh and New Endowment — guaranteed maturity plus bonuses.' },
   { name: 'Money-back plans', slug: 'money-back', summary: 'New Money Back and Bima Shree — periodic payouts plus life cover.' },
-  { name: 'Health and cancer cover', slug: 'health-insurance', summary: 'Arogya Rakshak hospitalisation cover and LIC Cancer Cover.' },
+  { name: 'Health and cancer cover', slug: 'health-insurance', summary: 'LIC Health Shield (Plan 907) and New Cancer Cover (Plan 908), with official documents and policy terms.' },
   { name: 'Corporate, HUF and MWP cover', slug: 'corporate-insurance', summary: 'Employer-employee cover, partnership insurance, HUF and MWP Act policies.' },
   { name: 'Business insurance — GIDC Vatva', slug: 'business-insurance-gidc-vatva', summary: 'Keyman and employer-employee cover for Vatva industrial units.' },
   { name: 'Policy review and claims help', slug: 'policy-review-claims', summary: 'Review of existing LIC policies (any agent), nominee and KYC updates, lapsed-policy revival, claim assistance.' },
@@ -37,6 +37,7 @@ export const OFFER_CATALOG = [
   { name: 'Loan against policy', slug: 'lic-policy-loan', summary: 'Borrow against the surrender value of an endowment or money-back policy without breaking it; the cover and bonuses continue.' },
   { name: 'NRI policy servicing', slug: 'nri-lic-services', summary: 'Premiums from NRE/NRO, nominee updates, revival, maturity and death claims for policyholders living abroad, handled without travelling to India.' },
   { name: 'Address, name and minor-to-major updates', slug: 'lic-address-name-change', summary: 'Keep the address, mobile, bank mandate, PAN and name current, and convert a minor’s policy when the life assured turns 18.' },
+  { name: 'Surrendering a policy', slug: 'lic-surrender', summary: 'What LIC actually pays on surrender, when surrender is allowed, and the paid-up or loan route that usually preserves cover and bonuses instead.' },
 ];
 
 export interface FAQItem {
@@ -57,7 +58,7 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: 'What LIC plans does Jigisha Kiran Shah offer?',
-    a: 'Term Life Insurance (LIC Tech Term, Jeevan Amar), Endowment Plans (Jeevan Labh, New Endowment), Money-Back Plans, Whole Life (Jeevan Umang), Annuity/Pension (Jeevan Akshay VII), Child Education Plans (Jeevan Tarun), ULIP, Health Cover (Arogya Rakshak, Cancer Cover), and Corporate/HUF/MWP insurance.',
+    a: 'Term Life Insurance (LIC Tech Term, Jeevan Amar), Endowment Plans (Jeevan Labh, New Endowment), Money-Back Plans, Whole Life (Jeevan Umang), Annuity/Pension (Jeevan Akshay VII), Child Education Plans (Jeevan Tarun), ULIP, Health and Cancer Cover (Health Shield Plan 907, New Cancer Cover Plan 908), and Corporate/HUF/MWP insurance.',
   },
   {
     q: 'Is Jigisha Kiran Shah an LIC agent or a life insurance agency?',
