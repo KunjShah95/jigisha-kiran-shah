@@ -32,6 +32,7 @@ const Footer = () => {
       { label: 'Nominee Change', to: '/services/nominee-change' },
       { label: 'Find a Lost Policy', to: '/services/lic-policy-tracing' },
       { label: 'Loan Against Policy', to: '/services/lic-policy-loan' },
+      { label: 'Surrendering a Policy', to: '/services/lic-surrender' },
       { label: 'NRI Policy Servicing', to: '/services/nri-lic-services' },
       { label: 'Address, Name & Minor-to-Major', to: '/services/lic-address-name-change' }
     ]

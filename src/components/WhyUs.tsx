@@ -2,6 +2,8 @@ import { Award, ShieldCheck, HeartPulse, Headphones, ArrowRight } from 'lucide-r
 import { Link } from 'react-router-dom';
 import { useSpotlight } from '../hooks/useSpotlight';
 import { MovingBorderButton } from './aceternity/MovingBorderButton';
+import { GlowCard } from './aceternity/GlowCard';
+import { GridPattern } from './aceternity/GridPattern';
 
 const PILLARS = [
   {
@@ -41,7 +43,10 @@ const WhyUs = () => {
   return (
     <section className="py-20 lg:py-28 bg-midnight text-white relative overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0">
-        <div className="dot-grid opacity-[0.25] invert" />
+        <GridPattern
+          size={64}
+          className="text-white/[0.07] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black_30%,transparent_80%)]"
+        />
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[140px]" />
       </div>
 
@@ -59,21 +64,26 @@ const WhyUs = () => {
 
         <div className="grid lg:grid-cols-12 gap-4">
           {PILLARS.map((p) => (
-            <div
+            <GlowCard
               key={p.id}
-              onMouseMove={onMove}
-              className={`spotlight-card spotlight-dark group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 lg:p-8 flex flex-col justify-center transition-colors duration-300 hover:border-gold/30 hover:bg-white/[0.06] ${p.span}`}
+              className={`${p.span} rounded-3xl`}
+              glowColor="rgba(243, 214, 180, 0.95)"
             >
-              <div className="relative z-10 flex items-start gap-4">
-                <div className="shrink-0 w-11 h-11 rounded-xl bg-gold/15 border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
-                  <p.icon size={20} aria-hidden="true" className="text-gold group-hover:text-midnight transition-colors duration-300" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="text-lg lg:text-xl font-bold font-display mb-2 text-white">{p.title}</h3>
-                  <p className="text-sm lg:text-[15px] text-gray-400 leading-relaxed font-light max-w-md">{p.description}</p>
+              <div
+                onMouseMove={onMove}
+                className="spotlight-card spotlight-dark relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 lg:p-8 flex flex-col justify-center transition-colors duration-300 group-hover:border-gold/30 group-hover:bg-white/[0.06] h-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+              >
+                <div className="relative z-10 flex items-start gap-4">
+                  <div className="shrink-0 w-11 h-11 rounded-xl bg-gold/15 border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
+                    <p.icon size={20} aria-hidden="true" className="text-gold group-hover:text-midnight transition-colors duration-300" />
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="text-lg lg:text-xl font-bold font-display mb-2 text-white">{p.title}</h3>
+                    <p className="text-sm lg:text-[15px] text-gray-400 leading-relaxed font-light max-w-md">{p.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </GlowCard>
           ))}
         </div>
 

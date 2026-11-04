@@ -19,6 +19,8 @@ export interface Post {
   updated: string; // ISO
   readMinutes: number;
   targetQuery: string;
+  /** A concise, answer-first summary for readers who want the practical takeaway before the story. */
+  answerSummary?: string;
   sections: PostSection[];
   related?: { label: string; to: string }[];
   faqs: FAQItem[];
@@ -32,9 +34,11 @@ export const POSTS: Post[] = [
     metaDescription:
       'Term insurance in Ahmedabad: a family needed ₹1.36 Cr of cover and received ₹13.7 lakh. 5 nominee and cover mistakes to avoid. Free review: +91 98240 25435.',
     date: '2024-08-21',
-    updated: '2026-10-11',
+    updated: '2026-11-04',
     readMinutes: 6,
     targetQuery: 'term insurance Ahmedabad',
+    answerSummary:
+      'This Ahmedabad case shows why a policy review should check both the amount of cover and the nominee details. Three policies paid about ₹13.7 lakh against an estimated ₹1.36 crore family need. The names and identifying details are changed; figures describe this case.',
     sections: [
       {
         paras: [
@@ -117,9 +121,11 @@ export const POSTS: Post[] = [
     metaDescription:
       'LIC pension plans in Ahmedabad: how a retired teacher turned a ₹1.10 Cr corpus into a ₹22,000 monthly pension with Jeevan Akshay VII. Free review: +91 98240 25435.',
     date: '2024-07-30',
-    updated: '2026-10-11',
+    updated: '2026-11-04',
     readMinutes: 6,
     targetQuery: 'LIC pension plans Ahmedabad',
+    answerSummary:
+      'This retirement example starts with a ₹20,000 monthly gap between expenses and existing income. The family used part of its ₹1.10 crore corpus for an LIC annuity, while keeping separate money for emergencies. The figures are from the case and are not a current quote.',
     sections: [
       {
         paras: [
@@ -195,9 +201,11 @@ export const POSTS: Post[] = [
     metaDescription:
       'LIC Jeevan Labh for child education in Ahmedabad: how a South Bopal father built a ₹35 lakh college fund and ₹1.2 Cr of family cover. Free consultation: +91 98240 25435.',
     date: '2024-06-14',
-    updated: '2026-10-11',
+    updated: '2026-11-04',
     readMinutes: 5,
     targetQuery: 'LIC Jeevan Labh child education Ahmedabad',
+    answerSummary:
+      'This case pairs a dated education savings goal with separate term cover for the earning parent. The Jeevan Labh maturity figure is a projection, while future bonuses and education costs can differ. Use a current LIC illustration and your own expense estimate.',
     sections: [
       {
         paras: [
@@ -272,9 +280,11 @@ export const POSTS: Post[] = [
     metaDescription:
       'Retirement planning in Ahmedabad: how a retired engineer split a ₹1.23 Cr corpus into pension, SCSS and reserves. The 5-number checklist. Free review: +91 98240 25435.',
     date: '2024-09-23',
-    updated: '2026-10-11',
+    updated: '2026-11-04',
     readMinutes: 6,
     targetQuery: 'retirement planning Ahmedabad',
+    answerSummary:
+      'Before choosing a retirement product, list real monthly expenses, guaranteed income and the gap between them. This Ahmedabad case found that the household’s costs were higher than first estimated, then divided the corpus between income and liquid reserves.',
     sections: [
       {
         paras: [
@@ -351,9 +361,11 @@ export const POSTS: Post[] = [
     metaDescription:
       'Lapsed LIC policy revival in Ahmedabad: a Satellite family revived a 2016 Jeevan Anand policy after 4 years. Worked arrears, interest and GST. Revival steps, windows and limits. Free help: +91 98240 25435.',
     date: '2024-09-12',
-    updated: '2026-10-23',
+    updated: '2026-11-04',
     readMinutes: 7,
     targetQuery: 'revive lapsed LIC policy Ahmedabad',
+    answerSummary:
+      'A lapsed LIC policy may be eligible for revival, depending on the plan, the first unpaid premium date and LIC’s current rules. This case reviews the arrears and documents for one policy; request a written revival quote from LIC before paying.',
     sections: [
       {
         paras: [

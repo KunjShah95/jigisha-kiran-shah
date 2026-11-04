@@ -140,29 +140,27 @@ export const services: Service[] = [
   {
     id: 'health-insurance',
     title: 'Health Insurance',
-    tagline: 'Healthcare Without Worries',
-    description: 'Medical emergencies shouldn\'t drain your savings. Get comprehensive health coverage for you and your family.',
+    tagline: 'Health & Cancer Cover',
+    description: 'Review LIC’s current health and cancer plans against your needs, existing cover and the official policy terms.',
     icon: HeartPulse,
     products: [
       {
-        name: 'Arogya Rakshak',
-        description: 'Non-linked health insurance plan with fixed benefits.',
+        name: 'LIC Health Shield (Plan 907)',
+        description: 'LIC health plan available from 19 October 2026. Check the current brochure and policy wording for the benefit schedule and eligibility.',
         benefits: [
-          'Hospitalization cover up to ₹10 Lakhs',
-          'No room rent restrictions',
-          'Day care procedures covered',
-          'Renewal for lifetime'
+          'Review covered events and payout limits',
+          'Check eligibility, exclusions and waiting periods',
+          'Compare with your existing health policy'
         ],
         type: 'Health Plan'
       },
       {
-        name: 'Cancer Cover',
-        description: 'Comprehensive coverage for cancer at any stage.',
+        name: 'LIC New Cancer Cover (Plan 908)',
+        description: 'LIC cancer plan available from 19 October 2026. Read the current brochure for covered diagnoses, benefit conditions and exclusions.',
         benefits: [
-          'Lump sum on early stage cancer',
-          'Full sum assured on major stage',
-          'Premium waiver post diagnosis',
-          'Income benefit option available'
+          'Review covered diagnoses and definitions',
+          'Check sum assured, claim conditions and exclusions',
+          'Compare with your existing health and life cover'
         ],
         type: 'Critical Illness'
       }

@@ -13,6 +13,8 @@ interface SEOProps {
   breadcrumbLabel?: string;
   jsonLd?: Record<string, unknown>[];
   noindex?: boolean;
+  htmlLang?: string;
+  alternateLanguages?: Record<string, string>;
 }
 
 export interface PageHead {
@@ -25,6 +27,8 @@ export interface PageHead {
   keywords?: string;
   noindex: boolean;
   jsonLd: Record<string, unknown>[];
+  htmlLang: string;
+  alternateLanguages: Array<{ hreflang: string; href: string }>;
 }
 
 /** Trim a meta description at a sentence (or word) boundary, ~160 characters. */
@@ -53,6 +57,8 @@ export function buildHead({
   breadcrumbLabel,
   jsonLd = [],
   noindex = false,
+  htmlLang = 'en-IN',
+  alternateLanguages = {},
 }: SEOProps): PageHead {
   // Append the brand only when it fits. A 90-character title gets truncated by
   // Google, and the truncated part is always the brand — so on long
@@ -78,6 +84,11 @@ export function buildHead({
     keywords,
     noindex,
     jsonLd: blocks,
+    htmlLang,
+    alternateLanguages: Object.entries(alternateLanguages).map(([hreflang, alternatePath]) => ({
+      hreflang,
+      href: `${SITE_URL}${alternatePath}`,
+    })),
   };
 }
 
@@ -143,7 +154,8 @@ export function useSEO(props: SEOProps) {
     setMetaProperty('og:description', head.ogDescription);
     setMetaProperty('og:url', head.canonical);
     setMetaProperty('og:image', head.ogImage);
-    setMetaProperty('og:locale', 'en_IN');
+    setMetaProperty('og:locale', head.htmlLang.replace('-', '_'));
+    document.documentElement.lang = head.htmlLang;
 
     setMetaName('twitter:card', 'summary_large_image');
     setMetaName('twitter:title', head.ogTitle);
@@ -151,6 +163,14 @@ export function useSEO(props: SEOProps) {
     setMetaName('twitter:image', head.ogImage);
 
     setLink('canonical', head.canonical);
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((n) => n.remove());
+    head.alternateLanguages.forEach(({ hreflang, href }) => {
+      const link = document.createElement('link');
+      link.rel = 'alternate';
+      link.hreflang = hreflang;
+      link.href = href;
+      document.head.appendChild(link);
+    });
 
     // Per-page JSON-LD. Blocks prerendered into the HTML carry the same
     // data-page-jsonld marker, so they are swapped rather than duplicated.
@@ -169,5 +189,5 @@ export function useSEO(props: SEOProps) {
       document.querySelectorAll('script[data-page-jsonld]').forEach((n) => n.remove());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex]);
+  }, [title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex, props.htmlLang, props.alternateLanguages]);
 }

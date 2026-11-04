@@ -5,6 +5,11 @@ export interface GuideSection {
   items?: string[];
 }
 
+export interface GuideComparison {
+  columns: [string, string, string];
+  rows: { label: string; first: string; second: string }[];
+}
+
 export interface GuideFaq {
   q: string;
   a: string;
@@ -23,6 +28,8 @@ export interface Guide {
   kind: 'comparison' | 'persona' | 'checklist';
   intro: string[];
   sections: GuideSection[];
+  comparison?: GuideComparison;
+  sources?: { label: string; url: string }[];
   faqs: GuideFaq[];
   related: { label: string; to: string }[];
 }
@@ -219,61 +226,75 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: 'jeevan-utsav-vs-jeevan-umang',
-    title: 'LIC Jeevan Utsav vs Jeevan Umang: which lifelong income plan fits you?',
-    seoTitle: 'LIC Jeevan Utsav vs Jeevan Umang: Which to Choose',
+    title: 'LIC Jeevan Utsav vs Jeevan Umang: compare income, bonuses and premium terms',
+    seoTitle: 'Jeevan Utsav vs Jeevan Umang: Income & Bonus Comparison',
     metaDescription:
-      'LIC Jeevan Utsav explained: 10% of basic sum assured every year for life, fully guaranteed. How it differs from Jeevan Umang, and who should pick which. Free advice in Ahmedabad.',
+      'Compare LIC Jeevan Utsav (Plan 771) and Jeevan Umang (Plan 745): income start, bonuses, premium terms and who each may suit. Check current LIC brochures.',
     date: '2026-10-11',
-    updated: '2026-10-11',
-    readMinutes: 6,
-    targetQuery: 'LIC Jeevan Utsav',
+    updated: '2026-11-04',
+    readMinutes: 5,
+    targetQuery: 'Jeevan Utsav vs Jeevan Umang',
     kind: 'comparison',
     intro: [
-      'Since LIC launched Jeevan Utsav, one question keeps coming up in my Shela office: is it the same as Jeevan Umang? Both are whole-life plans that pay you a yearly income for the rest of your life. The difference is in what is guaranteed, how the income is calculated, and how long you pay.',
-      'This guide explains Jeevan Utsav in plain language, puts it next to Jeevan Umang, and gives the rule I use to choose between them. Plan terms change over time, so check the current LIC sales brochure, or ask me for it, before you decide.',
+      'LIC Jeevan Utsav (Plan 771) and Jeevan Umang (Plan 745) both combine life cover with a future income, but their income and bonus rules differ. Utsav has a guaranteed income benefit of 10% of Basic Sum Assured under its terms and no bonus; Umang has an 8% survival benefit and may receive bonuses declared by LIC. Neither is a substitute for term cover sized to your family’s needs.',
+      'The comparison below uses LIC’s current brochures for Utsav UIN 512N363V02 and Umang UIN 512N312V03, checked on 4 November 2026. Premiums, eligibility and benefits depend on age, chosen term and policy conditions. Read the latest brochure and personalized benefit illustration before applying.',
     ],
+    comparison: {
+      columns: ['Feature', 'Jeevan Utsav · Plan 771', 'Jeevan Umang · Plan 745'],
+      rows: [
+        { label: 'Plan type', first: 'Non-participating; no bonus or share in surplus', second: 'Participating; bonuses may be declared and are not guaranteed' },
+        { label: 'Income benefit', first: 'Regular or Flexi Income Benefit equal to 10% of Basic Sum Assured, subject to policy terms', second: 'Annual survival benefit equal to 8% of Basic Sum Assured after the premium-paying term' },
+        { label: 'When income starts', first: 'Start year depends on premium term: policy year 11 for 5–8 years paid, up to year 19 for a 16-year term', second: 'After the selected 15, 20, 25 or 30-year premium-paying term' },
+        { label: 'How long benefits continue', first: 'Whole-life plan; no maturity benefit', second: 'Survival benefits up to the policy anniversary before age 100; maturity benefit at age 100' },
+        { label: 'Premium-paying terms', first: '5 to 16 years', second: '15, 20, 25 or 30 years' },
+      ],
+    },
     sections: [
       {
-        heading: 'What LIC Jeevan Utsav is',
+        heading: 'What the current Jeevan Utsav plan offers',
         paras: [
-          'Jeevan Utsav (Plan 871) is a non-linked, non-participating whole-life savings plan. "Non-participating" means it does not share in LIC’s profits through bonuses. Instead, the benefits are fixed in the contract on day one.',
-          'You pay premiums for a limited term, roughly 5 to 16 years depending on your entry age. While you pay, guaranteed additions build up on the policy. After a short waiting period once premiums finish, LIC pays an income of 10% of the basic sum assured every year for as long as you live. Life cover continues for life as well, so on death your nominee receives the death benefit.',
-          'You choose how to take the income. Regular Income pays it out every year. Flexi Income leaves it with LIC to earn interest, and lets you withdraw part of it when you need it. Both options are set out in the brochure.',
+          'The current Jeevan Utsav is Plan 771 (UIN 512N363V02), a non-participating whole-life savings plan. LIC’s brochure says its benefits are fixed by the contract and it does not receive discretionary bonuses. The earlier Plan 871 was withdrawn on 1 October 2024; use the current Plan 771 brochure when comparing a new purchase.',
+          'The premium-paying term is 5 to 16 years. For an in-force policy, the 10% Regular Income or Flexi Income Benefit begins in a policy year tied to the chosen premium term: for example, year 11 after a 5–8 year term, or year 19 after a 16-year term. Guaranteed additions accrue during the premium-paying term. There is no maturity benefit.',
+          'Regular Income is paid as it becomes due. Flexi Income can be deferred and accumulated under the interest and withdrawal rules in the policy. Check the brochure for the current rate and detailed conditions; these are contract features, not an investment-return comparison.',
         ],
       },
       {
         heading: 'How it differs from Jeevan Umang',
         paras: [
-          'Jeevan Umang is a participating plan. It pays 8% of the basic sum assured every year after the premium-paying term, and on maturity or death adds bonuses that depend on LIC’s declared rates. Those bonuses can make the final value larger, but they are not guaranteed.',
-          'Jeevan Utsav pays a higher fixed yearly income (10% versus 8% of the basic sum assured) and the core benefits are guaranteed, but there are no bonuses on top. In short, Utsav gives you certainty, while Umang gives you a lower guaranteed income with a chance of extra bonus value.',
-          'Premium terms also differ. Utsav suits people who want to finish paying within a shorter window, while Umang offers longer premium-paying terms that suit a salaried budget over 15 to 30 years.',
+          'Jeevan Umang is a participating whole-life plan. Its current brochure lists 15, 20, 25 and 30-year premium terms, with an annual survival benefit of 8% of Basic Sum Assured after the premium-paying term. The policy can also receive bonuses declared by LIC; future bonus amounts are not guaranteed.',
+          'Compare the cash-flow dates as well as the percentages. Utsav’s 10% benefit does not start immediately when premiums end; the start year follows LIC’s table. Umang’s 8% survival benefit runs up to the policy anniversary before age 100, with a maturity benefit at age 100. The two percentages alone do not tell you which policy provides better value.',
         ],
       },
       {
-        heading: 'The rule I use with clients',
+        heading: 'How to decide which plan to examine',
         paras: [
-          'Choose Jeevan Utsav if a known, fixed yearly income matters more to you than possible upside. This suits a parent planning predictable support for a child, a business owner who wants a guaranteed income stream outside the business, or someone in their 40s or 50s building a pension top-up.',
-          'Choose Jeevan Umang if you are younger, can pay premiums for longer, and are comfortable with part of the final value depending on bonuses. Neither plan replaces term insurance. Size your term cover first, then add a lifelong income plan for a defined goal.',
-          'For a side-by-side illustration of both plans at your age and budget, call or WhatsApp +91 98240 25435. The illustration is generated from LIC’s own figures, so the numbers you see are the numbers in the policy.',
+          'Start with the date you need income, the premium you can sustain, how long you can pay, and whether you want a non-participating plan or are comfortable with bonuses that may vary. Ask for both official benefit illustrations using the same age, Basic Sum Assured and payment frequency, then compare total premiums, benefit start dates, surrender terms and the death benefit.',
+          'Do not compare only “10% versus 8%”: each percentage is applied to Basic Sum Assured under its own timing and policy rules. First make sure your family has adequate life cover for loans and dependants. These savings plans are designed for a different job.',
+          'For an illustration, call or WhatsApp +91 98240 25435. Review the assumptions and current LIC policy documents before making a decision; an illustration is not a promise of a future bonus or a personalized recommendation.',
         ],
       },
     ],
+    sources: [
+      { label: 'LIC Jeevan Utsav Plan 771 brochure (UIN 512N363V02)', url: 'https://licindia.in/documents/20121/1319704/Jeevan%2BUtsav%2BSales%2BBrochure.pdf/7d6a89ca-68cc-a86e-6ccb-f1910506da35' },
+      { label: 'LIC Jeevan Umang Plan 745 brochure (UIN 512N312V03)', url: 'https://www.licindia.in/documents/20121/1319704/745%2BLIC_Jeevan%2BUmang_Eng%2B_141025.pdf/d67dc9dc-ca37-7e1e-d662-132423c49d15' },
+      { label: 'LIC current whole-life plan list', url: 'https://www.licindia.in/en/web/guest/whole-life-plans' },
+    ],
     faqs: [
       {
-        q: 'What is LIC Jeevan Utsav?',
-        a: 'Jeevan Utsav (Plan 871) is a non-linked, non-participating whole-life savings plan from LIC. You pay premiums for a limited term, guaranteed additions accrue, and then LIC pays 10% of the basic sum assured every year for life, with life cover throughout.',
+        q: 'What is the current LIC Jeevan Utsav plan number?',
+        a: 'LIC currently lists Jeevan Utsav as Plan 771 (UIN 512N363V02). Plan 871 (UIN 512N363V01) was withdrawn on 1 October 2024. Check the current LIC brochure before comparing a new purchase.',
       },
       {
         q: 'Is Jeevan Utsav better than Jeevan Umang?',
-        a: 'Neither is better for everyone. Jeevan Utsav pays a higher fixed income (10% of basic sum assured) that is guaranteed, with no bonuses. Jeevan Umang pays 8% a year plus bonuses that depend on LIC’s declared rates. Pick Utsav for certainty and Umang for possible extra value.',
+        a: 'Neither is best for everyone. Compare when income starts, premium-paying term, total premiums, death benefit and surrender terms. Utsav is non-participating and Umang is participating, so Umang may receive bonuses declared by LIC while future bonuses are not guaranteed.',
       },
       {
         q: 'Is the Jeevan Utsav income guaranteed?',
-        a: 'Yes. Because Jeevan Utsav is non-participating, the yearly income and guaranteed additions are fixed in the policy contract and do not depend on bonus declarations. Confirm the exact terms in the current LIC brochure for your entry age and premium term.',
+        a: 'The current Plan 771 brochure describes Regular or Flexi Income Benefits and guaranteed additions under the policy terms. The first income year depends on the premium-paying term. Read the brochure and personalized illustration for the conditions that apply to your case.',
       },
       {
         q: 'What is the difference between Regular Income and Flexi Income in Jeevan Utsav?',
-        a: 'Regular Income pays the 10% income to you every year. Flexi Income leaves it with LIC to earn interest, and lets you withdraw part of the accumulated amount when needed. The interest rate and withdrawal rules are stated in the policy brochure.',
+        a: 'Regular Income is paid when due. Flexi Income can be deferred and accumulated under the interest and withdrawal rules in the policy. Check the current Plan 771 brochure for the applicable rate and conditions.',
       },
       {
         q: 'Does Jeevan Utsav replace term insurance?',
@@ -420,7 +441,7 @@ export const GUIDES: Guide[] = [
     metaDescription:
       'Senior citizen in Ahmedabad? Immediate pension via Jeevan Akshay VII, health cover, and claim support for old policies. Free review: +91 98240 25435.',
     date: '2024-09-13',
-    updated: '2024-09-13',
+    updated: '2026-11-04',
     readMinutes: 4,
     targetQuery: 'LIC plans for senior citizens Ahmedabad',
     kind: 'persona',
@@ -439,7 +460,7 @@ export const GUIDES: Guide[] = [
       {
         heading: 'Keep health shocks out of the pension',
         paras: [
-          'One hospitalisation should never eat the pension corpus. Arogya Rakshak-style hospitalisation cover and Cancer Cover-style lump-sum protection sit beside the pension, while 12 months of expenses stay liquid in a senior-citizen FD for roofs, admissions and emergencies.',
+          'Keep health-related cover separate from the monthly pension gap and emergency reserve. LIC currently lists Health Shield (Plan 907) and New Cancer Cover (Plan 908); check each current policy document for eligibility, covered events and limits, then compare it with any mediclaim you already have.',
           'Insure the shocks separately and the pension survives them — that separation is the whole architecture.',
         ],
       },

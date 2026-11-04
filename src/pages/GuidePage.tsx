@@ -149,6 +149,30 @@ export default function GuidePage() {
           </p>
         ))}
 
+        {guide.comparison && (
+          <div className="overflow-x-auto rounded-2xl border border-border bg-white mb-10">
+            <table className="w-full min-w-[660px] border-collapse text-left text-sm">
+              <caption className="sr-only">Side-by-side comparison of {guide.comparison.columns[1]} and {guide.comparison.columns[2]}</caption>
+              <thead className="bg-[#f7f1e8] text-midnight">
+                <tr>
+                  {guide.comparison.columns.map((column) => (
+                    <th key={column} scope="col" className="px-4 py-3 font-bold">{column}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border">
+                {guide.comparison.rows.map((row) => (
+                  <tr key={row.label}>
+                    <th scope="row" className="px-4 py-3 align-top font-semibold text-midnight">{row.label}</th>
+                    <td className="px-4 py-3 align-top leading-relaxed text-gray-700">{row.first}</td>
+                    <td className="px-4 py-3 align-top leading-relaxed text-gray-700">{row.second}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
         {guide.sections.map((sec, i) => (
           <section key={i} className="mb-10">
             <h2 className="text-2xl font-display font-bold text-midnight mb-4 mt-2">{sec.heading}</h2>
@@ -232,6 +256,20 @@ export default function GuidePage() {
           and plan terms. Plans referenced are LIC of India products; this page is an independent advisor&rsquo;s
           commentary and not an official LIC communication.
         </p>
+
+        {guide.sources && guide.sources.length > 0 && (
+          <section aria-labelledby="guide-sources-heading" className="border-t border-border pt-7 mt-8">
+            <h2 id="guide-sources-heading" className="text-lg font-display font-bold text-midnight mb-3">Official plan documents</h2>
+            <p className="text-sm text-gray-600 leading-relaxed mb-3">Product details checked on {fmt(guide.updated)}. LIC may revise brochures and plan terms; use the latest document for a purchase decision.</p>
+            <ul className="space-y-2">
+              {guide.sources.map((source) => (
+                <li key={source.url}>
+                  <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-gold-dark underline underline-offset-4 hover:text-midnight">{source.label}</a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         {guide.related.length > 0 && (
           <div className="border-t border-border pt-8">

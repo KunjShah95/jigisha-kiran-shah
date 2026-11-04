@@ -42,8 +42,8 @@ const services = [
     icon: Cross,
     title: 'Health & Wellness Cover',
     href: '/services/health-insurance',
-    description: 'Fixed-benefit health and cancer cover from LIC that pays a defined amount, alongside your mediclaim.',
-    features: ['Fixed Hospital Benefits', 'Cancer Cover', 'Family Coverage']
+    description: 'Compare LIC Health Shield (Plan 907) and New Cancer Cover (Plan 908) using current policy documents.',
+    features: ['Health Shield · Plan 907', 'New Cancer Cover · Plan 908', 'Benefits & exclusions explained']
   },
   {
     icon: FileSearch,

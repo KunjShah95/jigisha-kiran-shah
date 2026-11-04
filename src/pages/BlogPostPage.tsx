@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useState } from 'react';
-import { Phone, MessageCircle, Calendar, Clock, CheckCircle2, Linkedin, Facebook, Twitter, Link2, Share2, Check } from 'lucide-react';
+import { Phone, MessageCircle, Calendar, Clock, CheckCircle2, Linkedin, Facebook, Twitter, Link2, Share2, Check, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useSEO } from '../hooks/useSEO';
 import { SITE_URL, OG_IMAGE, PHONE_DISPLAY, REVIEW_URL, faqJsonLd } from '../lib/seo';
@@ -133,6 +133,13 @@ export default function BlogPostPage() {
           </div>
         </header>
 
+        {post.answerSummary && (
+          <aside aria-label="Story takeaway" className="rounded-2xl border border-gold/25 bg-white px-5 py-4 mb-8">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-gold-dark mb-2">At a glance</p>
+            <p className="text-sm lg:text-base leading-relaxed text-gray-700">{post.answerSummary}</p>
+          </aside>
+        )}
+
         {post.sections.map((sec, i) => (
           <section key={i} className="mb-10">
             {sec.heading && (
@@ -181,6 +188,25 @@ export default function BlogPostPage() {
             )}
           </section>
         ))}
+
+        {post.related && post.related.length > 0 && (
+          <nav aria-label="Related services and resources" className="mb-10 rounded-2xl border border-border bg-white p-5 sm:p-6">
+            <h2 className="text-lg font-display font-bold text-midnight mb-3">Useful next steps</h2>
+            <ul className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-3">
+              {post.related.map((item, index) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    data-cta={`article-related-${post.slug}-${index + 1}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-gold-dark hover:text-midnight underline underline-offset-4 min-h-11"
+                  >
+                    {item.label}<ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         {post.faqs && post.faqs.length > 0 && (
           <section className="mb-10">

@@ -1,5 +1,65 @@
 @import "tailwindcss";
 
+/* ── Self-hosted brand fonts ────────────────────────────────────────
+   Fraunces + Plus Jakarta Sans, latin and latin-ext, variable files.
+
+   Previously these came from a render-blocking <link> to
+   fonts.googleapis.com, which meant the browser could not paint until it
+   had resolved DNS + TLS for that origin, fetched and parsed 17 KB of
+   CSS, and only THEN discovered the fonts.gstatic.com files. That is the
+   chained round trip behind the ~480 ms First Contentful Paint gap
+   measured in docs/DESIGN-BENCHMARK-2026.md §2.
+
+   The weight ranges mean one file per family serves every weight the site
+   uses (300–800), instead of the 24 @font-face blocks Google emits for the
+   same four files. Same bytes, no third-party origin, no chained request.
+
+   Regenerate with: node scripts/fetch-fonts.mjs */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/fraunces-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url('/fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @theme {
   --color-gold: #c4772a;
   --color-gold-light: #f3d6b4;
@@ -55,6 +115,9 @@
     }
   }
 
+  /* Hover beam that sweeps across a button (`.btn-beam:after`). It is a
+     decorative overlay, so translating it is correct here — do NOT reuse this
+     keyframe on an element that carries text, or the text itself slides. */
   @keyframes shimmer {
     100% {
       transform: translateX(100%);
@@ -122,6 +185,19 @@
   }
 }
 
+/* Gujarati has a different script; use a system Gujarati family rather than
+   the site's Latin display fonts, which do not contain Gujarati glyphs. */
+:lang(gu) {
+  font-family: "Nirmala UI", "Noto Sans Gujarati", sans-serif;
+  letter-spacing: normal;
+}
+
+.font-display:lang(gu),
+:lang(gu) .font-display {
+  font-family: "Nirmala UI", "Noto Sans Gujarati", sans-serif;
+  letter-spacing: normal;
+}
+
 /* ── Mobile hardening ─────────────────────────────────────────── */
 @layer base {
   html, body {
@@ -153,13 +229,44 @@
 }
 
 @layer utilities {
+  /* Range slider inside the hero cover widget. The input uses
+     `appearance-none` to draw its own two-tone track, which also removes the
+     native thumb in WebKit — without an explicit thumb rule Chrome and Safari
+     render the slider with nothing to drag. */
+  .range-gold::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    background: var(--color-gold);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgb(23 23 23 / 0.22);
+    cursor: pointer;
+  }
+
+  .range-gold::-moz-range-thumb {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 9999px;
+    background: var(--color-gold);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgb(23 23 23 / 0.22);
+    cursor: pointer;
+  }
+
+  /* Gold accent on a display word (the hero's "protection").
+     A static gradient, deliberately: the previous version animated
+     `transform: translateX(100%)` on this element, which slid the whole
+     word sideways and snapped it back every 3 seconds. If a shimmer is
+     ever reintroduced here it must animate `background-position`, never
+     `transform` — the element IS the text. */
   .text-gradient-gold {
-    background: linear-gradient(to right, #8b4d1d, #c4772a, #8b4d1d);
+    color: #8b4d1d; /* fallback where background-clip: text is unsupported */
+    background-image: linear-gradient(100deg, #8b4d1d 0%, #c4772a 48%, #a85e1f 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: shimmer 3s linear infinite;
   }
 
   .glass-card {
@@ -321,5 +428,122 @@
       transform: rotate(215deg) translateX(-500px);
       opacity: 0;
     }
+  }
+
+  /* ── Signature: Aceternity spotlight cone ─────────────────────
+     A blurred ellipse fades in behind the hero copy and holds. Pure
+     opacity/transform, so it composites on the GPU and is free under
+     prefers-reduced-motion (see the block at the end of this file). */
+  .spotlight-cone {
+    opacity: 0;
+    animation: spotlight-in 2s ease 0.15s 1 forwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes spotlight-in {
+    0% {
+      opacity: 0;
+      transform: translate(-72%, -62%) scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -40%) scale(1);
+    }
+  }
+
+  /* ── Signature: Aceternity infinite moving cards ───────────────
+     The track holds two identical groups. Translating by exactly -50%
+     lands the second group where the first started, so the loop has no
+     seam. Duration comes from --marquee-duration per instance. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-slide var(--marquee-duration, 48s) linear infinite;
+  }
+
+  .marquee-track[data-direction='reverse'] {
+    animation-direction: reverse;
+  }
+
+  .marquee-pause:hover .marquee-track,
+  .marquee-pause:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-slide {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  /* ── Signature: hover border gradient ─────────────────────────
+     A conic ring masked to a 1px outline, revealed on card hover.
+     --glow-angle is registered below so the sweep animates smoothly. */
+  .glow-ring {
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: conic-gradient(
+      from var(--glow-angle, 0deg),
+      transparent 0%,
+      var(--glow-color, rgba(196, 119, 42, 0.9)) 10%,
+      var(--glow-color, rgba(196, 119, 42, 0.9)) 17%,
+      transparent 30%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    animation: glow-spin 4.5s linear infinite;
+    z-index: 20;
+  }
+
+  .group:hover > .glow-ring,
+  .group:focus-within > .glow-ring {
+    opacity: 1;
+  }
+
+  @keyframes glow-spin {
+    to {
+      --glow-angle: 360deg;
+    }
+  }
+}
+
+/* Registered so the conic gradient angle can interpolate. Browsers that
+   don't support @property simply show a static ring — still correct. */
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Motion-off fallbacks. Declared last so they beat the global
+   `animation-duration: 0.01ms` rule earlier in the file. */
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-cone {
+    animation: none !important;
+    opacity: 1;
+    transform: translate(-50%, -40%);
+  }
+  .marquee-track {
+    animation: none !important;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .glow-ring {
+    animation: none !important;
   }
 }

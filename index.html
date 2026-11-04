@@ -47,14 +47,15 @@
   <meta name="twitter:image" content="https://www.jigishakiranshah.in/og-image.jpg" />
   <meta name="twitter:image:alt" content="Jigisha Kiran Shah - LIC Advisor Ahmedabad" />
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Performance: fonts are self-hosted at /fonts/*.woff2 (@font-face in
+       src/index.css). No third-party origin and no render-blocking stylesheet
+       round trip — measured: 2 external origins -> 0.
+
+       Deliberately NOT preloaded. Preloading these raced the 268 KB hero image
+       for bandwidth and made LCP worse in testing; fonts are low-priority by
+       default and font-display: swap means text paints before they arrive. -->
   <link rel="dns-prefetch" href="https://www.youtube.com">
   <link rel="dns-prefetch" href="https://share.google">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet" fetchpriority="high">
 
   <!-- AI / LLM discovery -->
   <link rel="alternate" type="text/plain" title="LLM site summary" href="/llms.txt" />

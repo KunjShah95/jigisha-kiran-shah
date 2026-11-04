@@ -1,0 +1,26 @@
+[
+  {
+    "name": "fraunces-latin-ext.woff2",
+    "family": "Fraunces",
+    "subset": "latin-ext",
+    "kb": 33
+  },
+  {
+    "name": "fraunces-latin.woff2",
+    "family": "Fraunces",
+    "subset": "latin",
+    "kb": 36
+  },
+  {
+    "name": "plus-jakarta-sans-latin-ext.woff2",
+    "family": "Plus Jakarta Sans",
+    "subset": "latin-ext",
+    "kb": 21
+  },
+  {
+    "name": "plus-jakarta-sans-latin.woff2",
+    "family": "Plus Jakarta Sans",
+    "subset": "latin",
+    "kb": 27
+  }
+]

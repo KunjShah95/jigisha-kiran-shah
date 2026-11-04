@@ -13,7 +13,7 @@ const SERVICES = [
   'Retirement & Pension (Jeevan Akshay VII, Jeevan Umang)',
   'Child Education (Jeevan Tarun, Children\u2019s Money Back)',
   'Endowment & Money-Back (Jeevan Labh, Bima Shree)',
-  'Health Cover (Arogya Rakshak, Cancer Cover)',
+  'Health & Cancer Cover (Health Shield 907, New Cancer Cover 908)',
   'Claims assistance & policy servicing',
 ];
 
@@ -24,10 +24,10 @@ export default function AreaPage() {
 
   useSEO({
     title: area
-      ? `LIC Advisor in ${area.name}, Ahmedabad | Term, Pension, Child Plans`
+      ? area.seoTitle ?? `LIC Advisor in ${area.name}, Ahmedabad | Term, Pension, Child Plans`
       : 'Area not found',
     description: area
-      ? `LIC advisor in ${area.name}, Ahmedabad for term, pension, child plans and claim help — Jigisha Kiran Shah, 22+ yrs, 2x MDRT. Free call: ${PHONE_DISPLAY}.`
+      ? area.seoDescription ?? `LIC advisor in ${area.name}, Ahmedabad for term, pension, child plans and claim help — Jigisha Kiran Shah, 22+ yrs, 2x MDRT. Free call: ${PHONE_DISPLAY}.`
       : 'The requested area page does not exist.',
     path: area ? `/areas/${area.slug}` : '/areas',
     keywords: area

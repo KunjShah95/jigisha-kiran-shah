@@ -47,9 +47,11 @@ const Header = () => {
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
     { to: '/services', label: 'Services' },
+    { to: '/guides', label: 'Guides' },
     { to: '/reviews', label: 'Testimonials' },
     { to: '/blog', label: 'Stories' },
     { to: '/contact', label: 'Contact' },
+    { to: '/gu', label: 'ગુજરાતી' },
   ]
 
   const isActive = (path: string) => location.pathname === path
@@ -93,6 +95,7 @@ const Header = () => {
               <Link
                 key={link.to}
                 to={link.to}
+                data-cta={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
                 className={`text-sm font-medium transition-colors relative group py-2 ${
                   isActive(link.to)
                     ? 'text-gold'
@@ -172,6 +175,7 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
+              data-cta={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
               onClick={() => setIsMobileMenuOpen(false)}
               tabIndex={isMobileMenuOpen ? 0 : -1}
               className={`hover:text-gold transition-colors transform translate-x-0 hover:translate-x-2 duration-300 flex items-center gap-4 ${

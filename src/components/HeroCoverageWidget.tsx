@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { ArrowRight, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-/** Rupees → compact INR (₹1.80 Cr / ₹15 L). */
+/** Rupees → compact INR (₹1.8 Cr / ₹15 L). Trailing zeros dropped so a round
+ *  number reads "₹1 Cr", not "₹1.00 Cr". */
 function formatINR(n: number) {
-  if (n >= 1e7) return `₹${(n / 1e7).toFixed(2)} Cr`
+  if (n >= 1e7) return `₹${(n / 1e7).toFixed(2).replace(/\.?0+$/, '')} Cr`
   return `₹${Math.round(n / 1e5)} L`
 }
 
@@ -54,19 +55,19 @@ export default function HeroCoverageWidget() {
   const pct = ((income - min) / (max - min)) * 100
 
   return (
-    <div className="mt-6 max-w-sm lg:max-w-md mx-auto rounded-2xl border border-gold/20 bg-white/85 backdrop-blur-lg shadow-xl p-4 lg:p-5">
+    <div className="mt-2 w-full rounded-xl bg-[#faf8f4] p-3 sm:p-4">
       <div className="flex items-center gap-2 mb-3">
         <ShieldCheck className="w-4 h-4 text-gold-dark" aria-hidden="true" />
         <span className="text-[11px] font-bold uppercase tracking-widest text-gold-dark">
-          Quick Cover Check
+          Estimate
         </span>
       </div>
 
       <div className="flex items-baseline justify-between mb-2">
         <label htmlFor="hero-income" className="text-xs text-gray-500">
-          Your annual income
+          Annual income
         </label>
-        <span className="text-sm font-bold text-midnight tabular-nums">{formatINR(income)}</span>
+        <span className="text-sm font-bold text-midnight tabular-nums">{formatINR(income)} / year</span>
       </div>
 
       <div className="py-2 -my-1">
@@ -79,7 +80,7 @@ export default function HeroCoverageWidget() {
         value={income}
         onChange={(e) => setIncome(+e.target.value)}
         aria-label="Annual income"
-        className="w-full h-2 appearance-none rounded-full cursor-pointer accent-gold"
+        className="range-gold w-full h-2 appearance-none rounded-full cursor-pointer accent-gold"
         style={{
           background: `linear-gradient(to right, var(--color-gold) ${pct}%, var(--color-border) ${pct}%)`,
         }}
@@ -91,26 +92,31 @@ export default function HeroCoverageWidget() {
         <LakhInput id="hero-existing" label="Existing life cover" value={existing} onChange={setExisting} />
       </div>
 
-      <div className="mt-4 rounded-xl bg-midnight p-3.5 flex items-center justify-between gap-3">
-        <div className="min-w-0">
-          <div className="text-[10px] uppercase tracking-widest text-white/60">Indicative cover gap</div>
-          <div className="text-2xl font-display font-bold text-gold tabular-nums leading-tight" aria-live="polite">
-            {formatINR(cover)}
-          </div>
-        </div>
-        <Link
-          to="/protection-check"
-          data-cta="hero-cover-check"
-          className="inline-flex items-center gap-1.5 shrink-0 px-3.5 py-2 rounded-lg bg-gold text-midnight text-xs font-bold hover:bg-gold-light active:scale-95 transition-all min-h-11"
+      {/* Result and action are stacked, not side by side. Sharing one row at
+          ~430 px squeezed the ₹ figure against its label and left the CTA
+          fighting the panel edge; the number now gets the full width and the
+          button gets a proper 44 px target. */}
+      <div className="mt-4 rounded-xl bg-midnight px-4 py-3.5">
+        <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/65">Rough cover estimate</div>
+        <div
+          className="font-display font-bold text-gold tabular-nums leading-none text-[1.75rem] lg:text-3xl mt-1.5"
+          aria-live="polite"
         >
-          Full Protection Check
-          <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-        </Link>
+                  {formatINR(cover)}
+        </div>
       </div>
 
-      <p className="mt-2 text-[10px] text-gray-500 leading-relaxed">
-        Rough illustration only (12× income + loans − existing cover). It does not consider your
-        dependants, future goals, savings or health — the full Protection Check covers those, and a free review gives a personal number.
+      <Link
+        to="/protection-check"
+        data-cta="hero-cover-check"
+        className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl bg-gold px-4 py-3 text-sm font-bold text-midnight hover:bg-gold-light active:scale-[0.99] transition-all min-h-11"
+      >
+        Continue to full protection check
+        <ArrowRight className="w-4 h-4" aria-hidden="true" />
+      </Link>
+
+      <p className="mt-2.5 text-[10px] leading-relaxed text-gray-600">
+        Illustration only: 12× income + loans − existing cover. It does not include dependants, goals, savings or health.
       </p>
     </div>
   )

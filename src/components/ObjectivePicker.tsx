@@ -32,6 +32,7 @@ export default function ObjectivePicker() {
           </div>
           <p className="text-sm md:text-base text-gray-500 font-light max-w-sm">
             Pick your goal — read the plain-language guide, or send it straight to Jigisha on WhatsApp.
+            {' '}<Link to="/guides" data-cta="home-compare-guides" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-midnight">Prefer a plan comparison?</Link>
           </p>
         </div>
 

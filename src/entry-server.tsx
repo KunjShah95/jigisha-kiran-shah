@@ -28,6 +28,7 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   { path: '/', priority: 1.0 },
+  { path: '/gu', updated: '2026-11-04', priority: 0.9 },
   { path: '/services', priority: 0.9 },
   { path: '/contact', priority: 0.9 },
   { path: '/book', priority: 0.9 },

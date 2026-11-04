@@ -4,9 +4,9 @@ import { useSEO } from '../hooks/useSEO'
 
 export default function ContactPage() {
   useSEO({
-    title: 'Contact LIC Advisor Ahmedabad | Book Free Consultation',
+    title: 'Contact LIC Advisor Ahmedabad | Jigisha Kiran Shah',
     description:
-      'Contact Jigisha Kiran Shah — LIC advisor in Shela, Ahmedabad. Free consultation for retirement, pension, term insurance & child plans. Call +91 98240 25435, WhatsApp, or visit Orchid Legacy, Applewoods Township. Mon–Sat 9–6.',
+      'Call or WhatsApp LIC advisor Jigisha Kiran Shah at +91 98240 25435. Free first consultation by phone or at the Shela office, Monday to Saturday, 9 am–6 pm.',
     ogTitle: 'Free Consultation — LIC Agent Near Me in Ahmedabad',
     ogDescription:
       'Book free consultation with top-rated LIC advisor in Ahmedabad. Call +91 98240 25435. Shela, Satellite, SG Highway & all areas served.',

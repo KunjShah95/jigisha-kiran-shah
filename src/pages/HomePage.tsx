@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Star, ShieldCheck, Clock, BookOpen } from 'lucide-react'
+import { ArrowRight, Star, ShieldCheck, Clock, BookOpen, Calculator as CalcIcon, GitCompareArrows } from 'lucide-react'
 import Hero from '../components/Hero'
+import AdvisorProcess from '../components/AdvisorProcess'
 import WhyUs from '../components/WhyUs'
 import Calculator from '../components/Calculator'
 import Testimonials from '../components/Testimonials'
@@ -23,6 +24,8 @@ export default function HomePage() {
     ogDescription:
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',
     path: '/',
+    htmlLang: 'en-IN',
+    alternateLanguages: { 'en-IN': '/', 'gu-IN': '/gu', 'x-default': '/' },
     keywords:
       'LIC advisor Ahmedabad, LIC agent Ahmedabad, LIC agent near me, life insurance agent Ahmedabad, life insurance agency Shela, LIC agent Shela, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
     jsonLd: [websiteJsonLd(), localBusinessJsonLd(), personJsonLd(), faqJsonLd()],
@@ -54,11 +57,12 @@ export default function HomePage() {
       />
       <Hero />
       <ObjectivePicker />
+      <AdvisorProcess />
       <WhyUs />
       {/* Compact discovery band — links home visitors to Services & Reviews
           without the weight of full sections (keeps mobile scroll short) */}
       <section aria-label="Explore services and reviews" className="py-12 lg:py-16 bg-cream relative overflow-hidden">
-        <div className="container grid sm:grid-cols-2 gap-4">
+        <div className="container grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link
             to="/services"
             onMouseMove={onMove}
@@ -70,6 +74,35 @@ export default function HomePage() {
             <span className="relative z-10 flex-1 min-w-0">
               <span className="block font-bold text-midnight text-base">Explore LIC Plans</span>
               <span className="block text-sm text-gray-500 font-light">Term, pension, child & wealth plans</span>
+            </span>
+            <ArrowRight className="relative z-10 w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+          </Link>
+          <Link
+            to="/calculators"
+            onMouseMove={onMove}
+            className="spotlight-card group relative overflow-hidden flex items-center gap-4 p-6 bg-white rounded-3xl border border-border hover:border-gold/40 hover:-translate-y-0.5 transition-all min-h-11 shadow-[0_1px_0_0_rgba(0,0,0,0.03)]"
+          >
+            <span className="relative z-10 w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300">
+              <CalcIcon className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
+            </span>
+            <span className="relative z-10 flex-1 min-w-0">
+              <span className="block font-bold text-midnight text-base">Free Calculators</span>
+              <span className="block text-sm text-gray-500 font-light">Retirement & education corpus</span>
+            </span>
+            <ArrowRight className="relative z-10 w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+          </Link>
+          <Link
+            to="/guides/jeevan-utsav-vs-jeevan-umang"
+            onMouseMove={onMove}
+            data-cta="home-featured-guide"
+            className="spotlight-card group relative overflow-hidden flex items-center gap-4 p-6 bg-white rounded-3xl border border-border hover:border-gold/40 hover:-translate-y-0.5 transition-all min-h-11 shadow-[0_1px_0_0_rgba(0,0,0,0.03)]"
+          >
+            <span className="relative z-10 w-12 h-12 rounded-2xl bg-gold/10 flex items-center justify-center shrink-0 group-hover:bg-gold transition-colors duration-300">
+              <GitCompareArrows className="w-5 h-5 text-gold-dark group-hover:text-white transition-colors" aria-hidden="true" />
+            </span>
+            <span className="relative z-10 flex-1 min-w-0">
+              <span className="block font-bold text-midnight text-base">Jeevan Utsav vs Umang</span>
+              <span className="block text-sm text-gray-500 font-light">Income, bonuses &amp; premium terms</span>
             </span>
             <ArrowRight className="relative z-10 w-5 h-5 text-gold-dark shrink-0 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
@@ -112,10 +145,11 @@ export default function HomePage() {
           </div>
           <TracingBeam>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {POSTS.map((post) => (
+              {POSTS.slice(0, 4).map((post) => (
                 <Link
                   key={post.slug}
                   to={`/blog/${post.slug}`}
+                  data-cta={`home-story-${post.slug}`}
                   onMouseMove={onMove}
                   className="spotlight-card group relative overflow-hidden flex flex-col p-5 bg-cream/70 rounded-2xl border border-border hover:border-gold/40 hover:-translate-y-0.5 transition-all"
                 >

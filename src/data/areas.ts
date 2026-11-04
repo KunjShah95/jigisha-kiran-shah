@@ -1,6 +1,8 @@
 export interface Area {
   slug: string;
   name: string;
+  seoTitle?: string;
+  seoDescription?: string;
   mapQuery: string;
   intro: string;
   landmarks: string[];
@@ -90,7 +92,7 @@ export const AREAS: Area[] = [
     name: 'Bopal',
     mapQuery: 'Bopal, Ahmedabad, Gujarat',
     intro:
-      'Bopal\u2019s mix of long-settled families and new township residents makes it a core service area. Jigisha Kiran Shah helps Bopal families with money-back plans for milestones, Jeevan Labh endowment for wealth creation, health cover (Arogya Rakshak, Cancer Cover), and complete claims assistance.',
+      'Bopal’s mix of long-settled families and new township residents makes it a core service area. Jigisha Kiran Shah helps Bopal families with money-back plans for milestones, Jeevan Labh endowment for wealth creation, current LIC health plans (Health Shield and New Cancer Cover), and policy servicing.',
     landmarks: ['Bopal crossroads', 'Bopal–Ghuma corridor', 'Sterling City area', 'Ambli–Bopal Road'],
     commute: 'Bopal is adjacent to Shela — most areas are 10–20 minutes from the Orchid Legacy office. Home visits in Bopal can be arranged.',
     faqs: [
@@ -202,9 +204,12 @@ export const AREAS: Area[] = [
   {
     slug: 'gota',
     name: 'Gota',
+    seoTitle: 'LIC Advisor in Gota, Ahmedabad | Term & Home Loan Cover',
+    seoDescription:
+      'LIC advisor in Gota for term and home-loan cover, child plans and policy reviews. Call or WhatsApp Jigisha Kiran Shah for a free phone consultation: +91 98240 25435.',
     mapQuery: 'Gota, Ahmedabad, Gujarat',
     intro:
-      'Gota and Ognaj\u2019s newer societies are full of first-home buyers — the exact families who need term cover most and buy it least. Jigisha Kiran Shah helps Gota families with Tech Term and Jeevan Amar sized to home loans, plus Jeevan Tarun child plans with premium-waiver protection.',
+      'Families in Gota and Ognaj can review term cover against a home loan and income, plan child-education savings, or get help with an existing LIC policy. Jigisha Kiran Shah offers phone and WhatsApp consultations from her Shela office, with in-person meetings by arrangement.',
     landmarks: ['Gota Crossroads', 'Narmada Canal Road', 'Bhagwat Vidyapith', 'Ognaj corridor'],
     commute: 'Gota is roughly 30–40 minutes from Shela via Sola and the SP Ring Road. Consultations start on phone/WhatsApp with in-person meetings as needed.',
     faqs: [
