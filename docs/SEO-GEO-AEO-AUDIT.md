@@ -26,7 +26,7 @@ format and distribution, and that is what §4 and §5 cover.
 | Entity consistency | ✅ (fixed today) | Area pages no longer invent 12 duplicate agencies |
 | `llms.txt` / `llms-full.txt` | ✅ (fixed today) | Now generated from content at build |
 | Local landing pages | ✅ | 12 real area pages with maps and local FAQs |
-| Lead capture | ⚠️ **broken in production** | No destination configured. See `docs/LEADS-ROOT-CAUSE.md` |
+| Lead capture | ⚪ none by design | Forms open WhatsApp; nothing stored. See `docs/LEAD-CAPTURE.md` |
 | Traffic | ❌ | ~16 clicks / 28 days. Nothing ranks except brand, home and contact |
 | Citations / GBP | ❌ unknown | No evidence of claimed listings. See `docs/CITATIONS.md` |
 | Weekly content | ⚠️ | 5 stories, 8 guides — good depth, published in bursts |
@@ -150,9 +150,15 @@ Pages that do not: `/services` (hub), `/areas` (hub), `/reviews`, `/resources`.
 
 What is in place:
 
-- **AI crawlers allowed** in `robots.txt`: GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot,
-  anthropic-ai, Google-Extended, Bingbot, Applebot, CCBot, Diffbot, YouBot. No crawl-delay.
-- **`llms.txt` and `llms-full.txt`** at the domain root, served as `text/plain`, now generated at build.
+- **AI crawlers explicitly allowed** in `robots.txt` — the full current set: OpenAI (GPTBot, OAI-SearchBot,
+  ChatGPT-User), Anthropic (ClaudeBot, Claude-SearchBot, Claude-Web, anthropic-ai), Perplexity (PerplexityBot,
+  Perplexity-User), Google (Googlebot, Google-Extended), Bingbot, Apple (Applebot, Applebot-Extended),
+  DuckDuckGo (DuckAssistBot), Meta, Amazon, Common Crawl, Cohere, Mistral, AI2 and others. No crawl-delay.
+  `npm run check:seo` fails the build if a required agent loses its `Allow: /`, so a future `User-agent: *`
+  rule can never silently cut the site out of citations.
+- **`llms.txt` and `llms-full.txt`** at the domain root, served as `text/plain`, generated at build from the
+  same arrays that produce the routes. `llms-full.txt` now carries the complete site map (every service,
+  area, guide and story). The build fails if either file omits a URL that is in the sitemap.
 - **Prerendered HTML** — most AI crawlers do not execute JavaScript. This is the single most important GEO decision
   on the site, and it was already right.
 - **Entity graph** with stable `@id`s, `sameAs` links, `knowsAbout`, `areaServed`, `hasOfferCatalog`.
@@ -208,7 +214,7 @@ All six competitor sites responded. Checked for the things that decide local sea
 `llms.txt`, live booking. None of them have booking; only one has meaningful structured data.
 
 So the gap is **not** the website. Which is exactly why "the website isn't giving us leads" is the wrong diagnosis
-and why fixing `docs/LEADS-ROOT-CAUSE.md` §1 and §4 matters more than another redesign.
+and why the off-site work in `docs/CITATIONS.md` and the content plan matter more than another redesign.
 
 ### What they do better (worth borrowing, selectively)
 
@@ -237,7 +243,7 @@ and why fixing `docs/LEADS-ROOT-CAUSE.md` §1 and §4 matters more than another 
 | Non-branded clicks and impressions | Search Console → Performance, filter out `jigisha` | Weekly |
 | Queries with impressions and 0 clicks | Search Console → Queries | Weekly — rewrite those titles |
 | Indexed vs discovered-not-indexed | Search Console → Pages | Monthly |
-| Leads actually stored | `GET /api/lead` + lead sheet | Weekly |
+| Enquiries received on WhatsApp | WhatsApp chat list | Weekly |
 | GBP calls / directions / website clicks | Business Profile → Performance | Monthly |
 | AI citations | §5 checklist | Monthly |
 | Core Web Vitals | PageSpeed Insights, mobile, field data | After each deploy |

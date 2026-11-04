@@ -75,6 +75,7 @@ ${guideLines}
 ${postLines}
 
 ## Reference pages
+- [ગુજરાતીમાં LIC માર્ગદર્શન](${abs('/gu')}): અમદાવાદ અને ગુજરાતના પરિવારો માટે ગુજરાતીમાં ટર્મ કવર, હાલની પોલિસી રિવ્યૂ, ક્લેમ તૈયારી, નિવૃત્તિ અને સત્તાવાર LIC સ્ત્રોતો.
 - [Home](${abs('/')}): overview, credentials, FAQ
 - [About](${abs('/about')}): 22-year practice history, MDRT, how she works
 - [Reviews](${abs('/reviews')}): Google reviews and video testimonials
@@ -128,6 +129,47 @@ export function buildLlmsFullTxt(today: string): string {
   const catalogBlock = OFFER_CATALOG.map(
     (s) => `- ${s.name} — ${abs(`/services/${s.slug}`)}\n  ${oneLine(s.summary)}`,
   ).join('\n');
+
+  /**
+   * The site map is generated from the same arrays that produce the routes.
+   * It used to be hand-written, which is exactly why it had already drifted:
+   * /services/lic-surrender existed but was missing here, and every individual
+   * service URL was absent. AI engines read this file as the authoritative map.
+   */
+  const STATIC_PAGES: Array<[string, string]> = [
+    ['/', 'home — LocalBusiness, Person, WebSite and FAQPage schema'],
+    ['/gu', 'Gujarati-language LIC guidance for Ahmedabad and Gujarat families; cover planning, policy review, claims readiness, local contact, official sources and visible Gujarati FAQs'],
+    ['/services', 'all LIC plans and services'],
+    ['/areas', 'areas served index'],
+    ['/guides', 'plan comparison hub'],
+    ['/blog', 'client stories'],
+    ['/about', 'advisor profile, MDRT, 22-year history'],
+    ['/reviews', 'Google reviews and video testimonials'],
+    ['/book', 'live consultation slots'],
+    ['/contact', 'form, phone, WhatsApp, map'],
+    ['/protection-check', 'free cover-gap check (English and Gujarati)'],
+    ['/calculators', 'retirement and child-education corpus calculators'],
+    ['/resources', 'official links, LIC forms, vCard'],
+    ['/gallery', 'recognition, events and certificates'],
+  ];
+
+  const siteMapBlock = [
+    ...STATIC_PAGES.map(([path, note]) => `${abs(path)} — ${note}`),
+    '',
+    '# Service pages (one per intent)',
+    ...SERVICE_PAGES.map((s) => `${abs(`/services/${s.slug}`)} — ${oneLine(s.h1)}`),
+    '',
+    '# Area pages (one per locality)',
+    ...AREAS.map((a) => `${abs(`/areas/${a.slug}`)} — LIC advisor in ${a.name}`),
+    '',
+    '# Comparison and persona guides',
+    ...GUIDES.map((g) => `${abs(`/guides/${g.slug}`)} — ${oneLine(g.seoTitle)}`),
+    '',
+    '# Client stories',
+    ...POSTS.map((p) => `${abs(`/blog/${p.slug}`)} — ${oneLine(p.seoTitle)}`),
+    '',
+    `Sitemap: ${abs('/sitemap.xml')} — every indexable URL with lastmod`,
+  ].join('\n');
 
   return `# Jigisha Kiran Shah — LIC Advisor, Ahmedabad
 # Complete site reference for AI engines and crawlers (llms-full.txt)
@@ -188,20 +230,7 @@ ${postBlock}
 ${faqBlock}
 
 ## SITE MAP (all indexable URLs)
-${abs('/')}            — home (LocalBusiness, Person, WebSite, FAQPage schema)
-${abs('/services')}    — all LIC plans and services
-${abs('/about')}       — advisor profile, MDRT, 22-year history
-${abs('/reviews')}     — Google reviews and video testimonials
-${abs('/book')}        — live consultation slots
-${abs('/contact')}     — form, phone, WhatsApp, map
-${abs('/protection-check')} — free cover-gap check (English and Gujarati)
-${abs('/calculators')} — retirement and child-education corpus calculators
-${abs('/resources')}   — official links, LIC forms, vCard
-${abs('/gallery')}     — recognition, events and certificates
-${abs('/areas')}       — areas served index
-${abs('/guides')}      — plan comparison hub
-${abs('/blog')}        — client stories
-Sitemap: ${abs('/sitemap.xml')}
+${siteMapBlock}
 
 ## DISCLOSURE
 Plans referenced are products of Life Insurance Corporation of India. This is an independent

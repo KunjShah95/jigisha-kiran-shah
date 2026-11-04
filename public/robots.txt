@@ -1,51 +1,127 @@
-# Allow all crawlers (Google, Bing + AI answer engines)
+# robots.txt — jigishakiranshah.in
+#
+# This site WANTS to be crawled and cited, by search engines and by AI answer
+# engines alike. Every group below is an explicit Allow: the per-agent groups
+# exist so a future `User-agent: *` Disallow can never silently lock an answer
+# engine out of the pages it cites.
+#
+# Verify after any change: npm run check:seo (asserts every required bot is
+# still allowed) or paste the live URL into any robots.txt validator.
+#
+# Machine-readable map for AI answer engines:
+#   https://www.jigishakiranshah.in/llms.txt        — summary + citation NAP
+#   https://www.jigishakiranshah.in/llms-full.txt   — complete site reference
+
 User-agent: *
 Allow: /
 
-# Explicit AI / answer-engine bots (for GEO/AEO citations) — all allowed
+# ── OpenAI (ChatGPT search + training) ────────────────────────────────────────
 User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
 Allow: /
 
 User-agent: OAI-SearchBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: ChatGPT-User
 Allow: /
 
+# ── Anthropic (Claude) ────────────────────────────────────────────────────────
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-Web
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: Google-Extended
+# ── Perplexity ────────────────────────────────────────────────────────────────
+User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# ── Google (Search, Images, Gemini grounding/training) ───────────────────────
+# Google-Extended does not affect Search ranking or AI Overviews; it is the
+# Gemini training/grounding switch. Allowed deliberately.
 User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
+# ── Microsoft / Bing (also powers several AI assistants) ─────────────────────
 User-agent: Bingbot
 Allow: /
 
+# ── Apple (Siri, Spotlight, Apple Intelligence) ──────────────────────────────
 User-agent: Applebot
 Allow: /
 
-User-agent: Bytespider
+User-agent: Applebot-Extended
 Allow: /
 
+# ── DuckDuckGo (DuckAssist answers) ──────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+# ── Meta AI ──────────────────────────────────────────────────────────────────
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+# ── Amazon / Alexa ───────────────────────────────────────────────────────────
+User-agent: Amazonbot
+Allow: /
+
+# ── Common Crawl (feeds many models and research datasets) ───────────────────
 User-agent: CCBot
+Allow: /
+
+# ── Other answer engines and research crawlers ───────────────────────────────
+User-agent: cohere-ai
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: YouBot
 Allow: /
 
 User-agent: Diffbot
 Allow: /
 
-User-agent: YouBot
+User-agent: AI2Bot
+Allow: /
+
+User-agent: AI2Bot-Dolma
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: omgilibot
+Allow: /
+
+User-agent: Bytespider
 Allow: /
 
 Sitemap: https://www.jigishakiranshah.in/sitemap.xml

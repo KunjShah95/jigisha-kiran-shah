@@ -87,18 +87,75 @@ for (const loc of locs) {
   if (html.includes('name="robots" content="noindex')) fail(`${clean}: sitemap URL is marked noindex`);
 }
 
-// llms.txt must describe the whole site, not a subset.
+// llms.txt must describe the whole site, not a subset. Service pages are
+// included now: a new service page that never reaches llms.txt is invisible to
+// the answer engines that read this file as the site's map.
 const llmsPath = join(DIST, 'llms.txt');
+const llmsFullPath = join(DIST, 'llms-full.txt');
 if (!existsSync(llmsPath)) fail('llms.txt was not generated');
 else {
   const llms = readFileSync(llmsPath, 'utf8');
-  const expected = [...seenPaths].filter((p) => /\/(areas|guides|blog)\/[^/]+$/.test(p));
+  const expected = [...seenPaths].filter((p) => /\/(areas|guides|blog|services)\/[^/]+$/.test(p));
   for (const p of expected) {
     if (!llms.includes(`${SITE}${p}`)) fail(`llms.txt does not list ${p}`);
   }
-  if (/\uFFFD/.test(llms)) fail('llms.txt contains a replacement character (encoding damage)');
+  if (/\\uFFFD/.test(llms) || llms.includes('\uFFFD')) fail('llms.txt contains a replacement character (encoding damage)');
   if (/\\u[0-9a-fA-F]{4}/.test(llms)) fail('llms.txt contains a literal escape sequence');
-  if (!existsSync(join(DIST, 'llms-full.txt'))) fail('llms-full.txt was not generated');
+  if (!existsSync(llmsFullPath)) fail('llms-full.txt was not generated');
+}
+
+// llms-full.txt claims to be the complete reference. Hold it to that: every URL
+// in the sitemap must appear in it.
+if (existsSync(llmsFullPath)) {
+  const full = readFileSync(llmsFullPath, 'utf8');
+  for (const p of seenPaths) {
+    if (!full.includes(`${SITE}${p}`)) fail(`llms-full.txt does not list ${p}`);
+  }
+  if (full.includes('\uFFFD')) fail('llms-full.txt contains a replacement character (encoding damage)');
+}
+
+// AI crawlers must be explicitly allowed. A later `User-agent: *` Disallow
+// would otherwise cut the site out of citations without anyone noticing.
+const robotsPath = join(DIST, 'robots.txt');
+if (!existsSync(robotsPath)) fail('robots.txt was not copied into dist/');
+else {
+  const robots = readFileSync(robotsPath, 'utf8');
+  /** Split robots.txt into { agents, rules } groups. */
+  const groups = [];
+  let current = null;
+  for (const rawLine of robots.split(/\r?\n/)) {
+    const line = rawLine.replace(/#.*$/, '').trim();
+    if (!line) { current = null; continue; }
+    const m = line.match(/^([A-Za-z-]+):\s*(.*)$/);
+    if (!m) continue;
+    const key = m[1].toLowerCase();
+    const value = m[2].trim();
+    if (key === 'user-agent') {
+      if (!current || current.rules.length) {
+        current = { agents: [], rules: [] };
+        groups.push(current);
+      }
+      current.agents.push(value);
+    } else if (current) {
+      current.rules.push({ key, value });
+    }
+  }
+
+  const REQUIRED_BOTS = [
+    'GPTBot', 'OAI-SearchBot', 'ChatGPT-User',
+    'ClaudeBot', 'Claude-SearchBot',
+    'PerplexityBot',
+    'Googlebot', 'Google-Extended',
+    'Bingbot', 'Applebot', 'Applebot-Extended', 'CCBot',
+  ];
+  const has = (g, k, v) => g.rules.some((r) => r.key === k && r.value === v);
+  for (const bot of REQUIRED_BOTS) {
+    const group = groups.find((g) => g.agents.some((a) => a.toLowerCase() === bot.toLowerCase()));
+    if (!group) fail(`robots.txt has no explicit group for ${bot}`);
+    else if (has(group, 'disallow', '/')) fail(`robots.txt blocks ${bot} with "Disallow: /"`);
+    else if (!has(group, 'allow', '/')) fail(`robots.txt group for ${bot} is missing "Allow: /"`);
+  }
+  if (!/^\s*Sitemap:\s*https?:\/\//im.test(robots)) fail('robots.txt does not declare a Sitemap');
 }
 
 // Every service page must be discoverable from the one business entity:
