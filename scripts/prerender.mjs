@@ -48,12 +48,14 @@ const setTag = (html, re, tag) => {
 
 function buildPage(body, head) {
   let html = template;
+  html = setTag(html, /<html[^>]*>/, `<html lang="${esc(head.htmlLang)}">`);
   html = setTag(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(head.title)}</title>`);
   html = setTag(html, /<meta\s+name="description"[\s\S]*?>/, `<meta name="description" content="${esc(head.description)}" />`);
   html = setTag(html, /<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${head.canonical}" />`);
   html = setTag(html, /<meta property="og:title"[^>]*>/, `<meta property="og:title" content="${esc(head.ogTitle)}" />`);
   html = setTag(html, /<meta property="og:description"[\s\S]*?>/, `<meta property="og:description" content="${esc(head.ogDescription)}" />`);
   html = setTag(html, /<meta property="og:url"[^>]*>/, `<meta property="og:url" content="${head.canonical}" />`);
+  html = setTag(html, /<meta property="og:locale"[^>]*>/, `<meta property="og:locale" content="${head.htmlLang.replace('-', '_')}" />`);
   html = setTag(html, /<meta name="twitter:title"[^>]*>/, `<meta name="twitter:title" content="${esc(head.ogTitle)}" />`);
   html = setTag(html, /<meta name="twitter:description"[^>]*>/, `<meta name="twitter:description" content="${esc(head.ogDescription)}" />`);
   if (head.keywords) {
@@ -62,10 +64,11 @@ function buildPage(body, head) {
   if (head.noindex) {
     html = setTag(html, /<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex, nofollow" />');
   }
+  const alternates = head.alternateLanguages.map(({ hreflang, href }) => `  <link rel="alternate" hreflang="${esc(hreflang)}" href="${esc(href)}" />`).join('\n');
   const ld = head.jsonLd
     .map((b) => `  <script type="application/ld+json" data-page-jsonld="true">${safeJson(b)}</script>`)
     .join('\n');
-  html = html.replace('</head>', `${ld}\n</head>`);
+  html = html.replace('</head>', `${alternates}\n${ld}\n</head>`);
   html = html.replace('<div id="root"></div>', `<div id="root">${body}</div>`);
   return html;
 }
@@ -100,8 +103,8 @@ writeFileSync(
 );
 
 // llms.txt / llms-full.txt are generated from the same content the pages use,
-// so the AI-facing map cannot drift from the site. app/api/lead health check
-// and the citation list in docs/CITATIONS.md assume these URLs exist.
+// so the AI-facing map cannot drift from the site. The citation list in
+// docs/CITATIONS.md assumes these URLs exist.
 writeFileSync(join(DIST, 'llms.txt'), buildLlmsTxt(today));
 writeFileSync(join(DIST, 'llms-full.txt'), buildLlmsFullTxt(today));
 

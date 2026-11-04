@@ -6,7 +6,6 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Field, SelectField, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage } from '../components/lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
-import { submitLead, honeypotProps } from '../lib/leads';
 
 /**
  * Cal.com event path: a public booking link, not a secret. Deliberately not
@@ -122,7 +121,7 @@ function CalEmbed({ calLink, objective, from, onFail }: { calLink: string; objec
 }
 
 function RequestForm({ objective, from }: { objective: string; from: string }) {
-  const [d, setD] = useState({ name: '', phone: '', topic: '', day: 'any', time: '', mode: 'phone', website: '' });
+  const [d, setD] = useState({ name: '', phone: '', topic: '', day: 'any', time: '', mode: 'phone' });
   const [sent, setSent] = useState(false);
   const startedRef = useRef(false);
 
@@ -144,14 +143,6 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
     const time = optionLabel(TIME_OPTIONS, d.time);
     trackEvent('booking_request_submit', { objective: d.topic || 'none', mode: d.mode });
     trackEvent('booking_completed', { via: 'request', objective: d.topic || 'none' });
-    submitLead({
-      kind: 'booking',
-      name: d.name,
-      phone: d.phone,
-      objective: d.topic,
-      details: { 'Preferred day': day, 'Preferred time': time, Mode: mode, ...(from ? { From: from } : {}) },
-      website: d.website,
-    }).then((ok) => ok && trackEvent('lead_saved', { form: 'booking' }));
     const message = leadMessage('Consultation booking request (website)', [
       ['Name', d.name],
       ['Phone', d.phone],
@@ -180,7 +171,6 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
 
   return (
     <form onSubmit={submit} className="space-y-5 relative">
-      <input {...honeypotProps} value={d.website} onChange={change} />
       <div className="grid md:grid-cols-2 gap-5">
         <Field id="bk-name" label="Your Name" required>
           <input id="bk-name" name="name" required autoComplete="name" value={d.name} onChange={change} placeholder="Enter your name" className={inputClass} />

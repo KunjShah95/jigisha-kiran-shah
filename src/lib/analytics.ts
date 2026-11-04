@@ -18,7 +18,6 @@ export type ConversionEvent =
   | 'consultation_form_submit'
   | 'objective_select'
   | 'share_whatsapp'
-  | 'lead_saved'
   | 'booking_cta_click'
   | 'booking_started'
   | 'booking_calendar_loaded'
@@ -27,7 +26,8 @@ export type ConversionEvent =
   | 'booking_request_submit'
   | 'protection_check_started'
   | 'protection_check_completed'
-  | 'protection_check_handoff';
+  | 'protection_check_handoff'
+  | 'content_navigation_click';
 
 declare global {
   interface Window {
@@ -67,6 +67,9 @@ export function initAnalytics() {
     else if (href.startsWith('mailto:')) trackEvent('contact_email', props);
     else if (href.includes('share.google')) trackEvent('directions_click', props);
     else if (href === '/book' || href.startsWith('/book?')) trackEvent('booking_cta_click', props);
+    else if (anchor.dataset.cta && (href.startsWith('/') || href.startsWith(window.location.origin))) {
+      trackEvent('content_navigation_click', { ...props, destination: href });
+    }
   });
 }
 

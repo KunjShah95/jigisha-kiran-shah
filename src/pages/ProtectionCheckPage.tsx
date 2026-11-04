@@ -18,7 +18,6 @@ import {
 } from '../lib/protection';
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
-import { submitLead, honeypotProps } from '../lib/leads';
 import { inputClass } from '../components/lead-fields';
 
 const LAKH = 100_000;
@@ -205,8 +204,6 @@ export default function ProtectionCheckPage() {
   const [checks, setChecks] = useState<Record<ReviewKey, boolean>>(
     () => Object.fromEntries(REVIEW_KEYS.map((k) => [k, false])) as Record<ReviewKey, boolean>,
   );
-  const [cb, setCb] = useState({ name: '', phone: '', website: '' });
-  const [cbState, setCbState] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle');
   const topRef = useRef<HTMLDivElement>(null);
   const completedRef = useRef(false);
 
@@ -269,7 +266,6 @@ export default function ProtectionCheckPage() {
     setGoal(null);
     setF(INITIAL);
     setA(DEFAULT_ASSUMPTIONS);
-    setCbState('idle');
     completedRef.current = false;
     go(0);
   };
@@ -303,26 +299,6 @@ export default function ProtectionCheckPage() {
       'Hi Jigisha ben, I did the Protection Check on your website. Can we discuss my results?',
       ...summaryLines().map(([k, v]) => `${k}: ${v}`),
     ].join('\n');
-
-  const sendCallback = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!goal || cbState === 'sending') return;
-    setCbState('sending');
-    submitLead({
-      kind: 'check',
-      name: cb.name,
-      phone: cb.phone,
-      objective: OBJECTIVE[goal],
-      details: Object.fromEntries(summaryLines()),
-      website: cb.website,
-    }).then((ok) => {
-      setCbState(ok ? 'sent' : 'failed');
-      if (ok) {
-        trackEvent('lead_saved', { form: 'check' });
-        trackEvent('protection_check_handoff', { goal, via: 'callback' });
-      }
-    });
-  };
 
   const totalSteps = 4;
   const card = 'bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-border p-6 lg:p-8';
@@ -616,26 +592,6 @@ export default function ProtectionCheckPage() {
                   <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" /> {t.ctaWhatsApp}
                 </a>
               </div>
-
-              <form onSubmit={sendCallback} className="mt-6 pt-6 border-t border-white/10 relative">
-                <input {...honeypotProps} value={cb.website} onChange={(e) => setCb((s) => ({ ...s, website: e.target.value }))} />
-                <p className="font-bold mb-1">{t.callbackTitle}</p>
-                <p className="text-xs text-gray-400 mb-4">{t.callbackBody}</p>
-                {cbState === 'sent' ? (
-                  <p role="status" className="text-sm text-gold font-semibold">{t.callbackSent}</p>
-                ) : (
-                  <div className="grid sm:grid-cols-[1fr_1fr_auto] gap-3">
-                    <label className="sr-only" htmlFor="cb-name">{t.name}</label>
-                    <input id="cb-name" required autoComplete="name" placeholder={t.name} value={cb.name} onChange={(e) => setCb((s) => ({ ...s, name: e.target.value }))} className={`${inputClass} bg-white`} />
-                    <label className="sr-only" htmlFor="cb-phone">{t.phone}</label>
-                    <input id="cb-phone" required type="tel" inputMode="tel" autoComplete="tel" pattern="[0-9+\(\)\- ]{10,18}" placeholder="+91 98765 43210" value={cb.phone} onChange={(e) => setCb((s) => ({ ...s, phone: e.target.value }))} className={`${inputClass} bg-white`} />
-                    <button type="submit" disabled={cbState === 'sending'} className="px-5 py-3 rounded-xl bg-white text-midnight font-bold text-sm hover:bg-gold-light disabled:opacity-70 min-h-11">
-                      {t.callbackSend}
-                    </button>
-                  </div>
-                )}
-                {cbState === 'failed' ? <p role="alert" className="mt-3 text-sm text-gold-light">{t.callbackFailed}</p> : null}
-              </form>
             </div>
 
             <div className="flex items-center justify-between gap-4">

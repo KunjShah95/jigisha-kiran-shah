@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom'
 import { Check, ArrowRight } from 'lucide-react';
 import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
-import { submitLead, honeypotProps } from '../lib/leads';
 import { trackEvent } from '../lib/analytics';
 
 const Calculator = () => {
   const [formData, setFormData] = useState({
     name: '',
-    website: '',
     phone: '',
     age: '',
     income: '',
@@ -37,14 +35,6 @@ const Calculator = () => {
       ['Annual Income', optionLabel(INCOME_OPTIONS, formData.income)],
     ])
     trackEvent('consultation_form_submit', { form: 'assessment', objective: formData.planType || 'none' })
-    submitLead({
-      kind: 'assessment',
-      name: formData.name,
-      phone: formData.phone,
-      objective: formData.planType,
-      details: { Age: formData.age, Income: optionLabel(INCOME_OPTIONS, formData.income) },
-      website: formData.website,
-    }).then((ok) => ok && trackEvent('lead_saved', { form: 'assessment' }))
     window.open(whatsappUrl(message), '_blank')
     setTimeout(() => setIsSubmitting(false), 1500);
   }
@@ -94,6 +84,15 @@ const Calculator = () => {
                 </div>
               ))}
             </div>
+
+            <Link
+              to="/calculators"
+              data-cta="assessment-calculators"
+              className="mt-8 lg:mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-gray-300 hover:text-gold transition-colors min-h-11"
+            >
+              Planning retirement or a child&rsquo;s education? Size the goal with the free calculators
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
           </div>
           
           <div className="reveal-right">
@@ -104,7 +103,6 @@ const Calculator = () => {
               <p className="text-gray-500 text-sm mb-8">Free, no obligation. Start with your goal — details can wait for the call.</p>
               
               <form onSubmit={handleSubmit} className="space-y-5 relative">
-                <input {...honeypotProps} value={formData.website} onChange={handleChange} />
                 <div className="grid md:grid-cols-2 gap-5">
                   <Field id="calc-name" label="Full Name" required>
                     <input

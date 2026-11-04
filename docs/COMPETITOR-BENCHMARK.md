@@ -1,8 +1,7 @@
 # Competitor benchmark — jigishakiranshah.in
 
 > **26 Oct 2026:** re-checked live. See `docs/SEO-GEO-AEO-AUDIT.md` §6 for the current
-> technical snapshot, and `docs/LEADS-ROOT-CAUSE.md` for why the site was not producing
-> leads (the lead endpoint had no destination configured — not a design problem).
+> technical snapshot. Enquiries now travel on WhatsApp only — see `docs/LEAD-CAPTURE.md`.
 
 Comparison of our live site (`https://www.jigishakiranshah.in/`) against well-known
 Indian LIC advisor / insurance agent personal websites. Produced from web fetches
@@ -30,8 +29,8 @@ joinasagent.in.
   robots, schema (FAQPage, Person, LocalBusiness/InsuranceAgency, Service, BlogPosting,
   Breadcrumb), `llms.txt` + `llms-full.txt`, AI crawlers allowed.
 - **CRO:** homepage objective picker, objective-first forms, "What happens next", page-aware
-  WhatsApp prefills, mobile sticky Call/WhatsApp, Cal.com booking embed, `/api/lead` capture
-  (→ Google Sheet / email), free Protection Check tool (EN + GU).
+  WhatsApp prefills, mobile sticky Call/WhatsApp, Cal.com booking embed, free Protection
+  Check tool (EN + GU).
 - **Trust:** IRDAI "subject matter of solicitation" footer disclaimer, links to LIC/IRDAI/
   Bima Bharosa, no "100% claims"/guaranteed-return wording.
 - **Measurement:** Vercel Analytics events + optional GA4.
@@ -50,8 +49,8 @@ joinasagent.in.
 | **Local SEO depth** | 12 dedicated area pages (Shela, South Bopal, Bopal, Satellite, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda) with maps + local FAQs | At most city/branch mentions; no area pages |
 | **Content quality (worked examples)** | 4 story guides with real numbers (term/nominee, pension math, child education sizing, retirement at 50) + 10 plan/persona guides | Generic service lists; ajay has "Knowledge"; joinasagent has a blog; shashwat has none |
 | **Interactive tools** | Free Protection Check (cover gap, EN/GU) + homepage Quick Cover Check widget | ajay has a "Smart LIC Plan Finder"; shashwat has SIP/education/retirement/marriage/vacation/dream-house calculators |
-| **Booking friction** | Cal.com embed on `/book` (20-min slots, 2h notice, buffer) + request form + lead capture | WhatsApp/phone/form only; no live slots |
-| **Lead capture & measurement** | `/api/lead` → Sheet/email, Cal.com events, full funnel event map, lead sheet template | None visible; ajay has a chatbot but no measurement |
+| **Booking friction** | Cal.com embed on `/book` (20-min slots, 2h notice, buffer) + request form | WhatsApp/phone/form only; no live slots |
+| **Measurement** | Cal.com events, full funnel event map, lead tracking template | None visible; ajay has a chatbot but no measurement |
 | **Trust/compliance wording** | IRDAI disclaimer, "subject matter of solicitation", no guaranteed-return claims | master/ambika use "9,000 happy claims", "transparent & honest advice"; ajay ships literal "0" stat placeholders |
 | **Verified, specific credentials** | MDRT 2023 & 2024 with years, 2,700+ families, 1,000+ claims, 5.0★ (70+) | pratik: 17× MDRT (unverifiable on site), 1,100 clients; master: 20K+ clients (likely inflated); ajay: "0" placeholders |
 | **Multilingual** | Gujarati toggle on Protection Check | None |

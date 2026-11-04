@@ -3,7 +3,6 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { Phone, MessageCircle, Mail, MapPin, Send, ChevronDown, Download } from 'lucide-react';
 import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
-import { submitLead, honeypotProps } from '../lib/leads';
 import { trackEvent } from '../lib/analytics';
 import { useSpotlight } from '../hooks/useSpotlight';
 
@@ -12,7 +11,6 @@ const SUBJECT_OPTIONS = [...INTEREST_OPTIONS, { value: 'other', label: 'Somethin
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
-    website: '',
     email: '',
     phone: '',
     age: '',
@@ -55,14 +53,6 @@ const Contact = () => {
       ['Message', formData.message],
     ])
     trackEvent('consultation_form_submit', { form: 'contact', objective: formData.subject || 'none' })
-    submitLead({
-      kind: 'contact',
-      name: formData.name,
-      phone: formData.phone,
-      objective: formData.subject,
-      details: { Email: formData.email, Age: formData.age, Income: optionLabel(INCOME_OPTIONS, formData.income), Message: formData.message },
-      website: formData.website,
-    }).then((ok) => ok && trackEvent('lead_saved', { form: 'contact' }))
     window.open(whatsappUrl(message), '_blank')
     setSent(true);
     setTimeout(() => setIsSubmitting(false), 1500);
@@ -164,7 +154,6 @@ const Contact = () => {
                 </Link>
               </p>
               <form onSubmit={handleSubmit} className="space-y-5 relative">
-                <input {...honeypotProps} value={formData.website} onChange={handleChange} />
                 <div className="grid md:grid-cols-2 gap-5">
                   <Field id="contact-name" label="Your Name" required>
                     <input

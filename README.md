@@ -14,7 +14,6 @@ npm run dev          # local dev server
 npm run build        # tsc + client build + SSR build + prerender + SEO check
 npm run preview      # serve dist/
 npm run check:seo    # validate the built HTML (runs automatically in build)
-npm run check:leads  # is production actually storing form submissions?
 ```
 
 `npm run build` fails if any page is missing a title, canonical or single `<h1>`, if JSON-LD is malformed, if a
@@ -35,23 +34,23 @@ checks exist because each of those bugs was live at some point.
 
 ## Lead capture
 
-Forms POST to `/api/lead` before opening WhatsApp. The endpoint stores the lead in a Google Sheet
-(`LEAD_WEBHOOK_URL`) and/or emails it (Resend). **With neither configured it stores nothing** — check with
-`npm run check:leads` after any deploy that touches forms or environment variables.
+There is none on the server. Every form (contact, homepage assessment, `/book`, call back,
+Protection Check) composes the enquiry and opens WhatsApp — that is the only channel it travels
+on. The site is fully static, with no serverless function and nothing to configure.
 
-Setup: `docs/LEADS-ROOT-CAUSE.md` §2.
+The trade-off: a visitor who enters their details and closes WhatsApp without pressing send is
+not recorded anywhere. Details in `docs/LEAD-CAPTURE.md`.
 
 ## Docs
 
 | Document | What it covers |
 |---|---|
-| `docs/LEADS-ROOT-CAUSE.md` | Why no leads were arriving, how to fix it, the 90-day demand plan |
+| `docs/LEAD-CAPTURE.md` | How enquiries reach Jigisha now, and the trade-off of storing none |
 | `docs/SEO-GEO-AEO-AUDIT.md` | Technical audit, sitemap inventory, AEO/GEO standard, competitor snapshot |
 | `docs/KEYWORD-MAP.md` | Keyword → URL mapping, gap list, build order |
 | `docs/CITATIONS.md` | NAP block, GBP checklist, directory submissions |
 | `docs/COMPETITOR-BENCHMARK.md` | Feature-by-feature comparison with six peer sites |
 | `docs/GROWTH-PLAYBOOK.md` | Off-site work, measurement events, content calendar |
-| `docs/lead-capture-apps-script.gs` | Apps Script for the Google Sheet destination |
 | `docs/lead-sheet-template.csv` | Full-funnel lead tracking template |
 
 ## Stack

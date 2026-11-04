@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Phone, MessageCircle, CheckCircle2, Loader2 } from 'lucide-react';
-import { submitLeadResult, honeypotProps } from '../lib/leads';
+import { Phone, MessageCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
 import { whatsappUrl, objectiveWhatsAppText, objectiveShortLabel } from '../lib/contact';
 import { PHONE_DISPLAY } from '../lib/seo';
@@ -13,8 +12,8 @@ import { PHONE_DISPLAY } from '../lib/seo';
  * want to compose a message had nowhere to go. Name + phone is the lowest
  * friction that still produces a usable lead.
  *
- * If `/api/lead` has no destination configured it returns saved: 0 — we say so
- * honestly and hand the visitor to WhatsApp instead of pretending it worked.
+ * Nothing is stored on the server — the form composes the message and hands
+ * the visitor to WhatsApp, which is where the enquiry actually reaches Jigisha.
  */
 export default function CallbackCard({
   objective,
@@ -27,13 +26,25 @@ export default function CallbackCard({
   context?: string;
   className?: string;
 }) {
-  const [form, setForm] = useState({ name: '', phone: '', website: '' });
-  const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'manual'>('idle');
+  const [form, setForm] = useState({ name: '', phone: '' });
+  const [state, setState] = useState<'idle' | 'sending' | 'manual'>('idle');
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const waText = objective
+    ? objectiveWhatsAppText(objective)
+    : "Hi Jigisha ben, I found you on your website. Please call me back about LIC insurance.";
+
+  // Full message: the greeting, who is asking, and which page they asked from.
+  const message = [
+    waText,
+    `Name: ${form.name.trim()}`,
+    `Phone: ${form.phone.trim()}`,
+    ...(context ? [`Page: ${context}`] : []),
+  ].join('\n');
+
+  const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const digits = form.phone.replace(/\D/g, '');
     if (!form.name.trim() || digits.length < 10 || digits.length > 13) return;
@@ -44,52 +55,21 @@ export default function CallbackCard({
       objective: objective || 'unspecified',
     });
 
-    const result = await submitLeadResult({
-      kind: 'contact',
-      name: form.name.trim(),
-      phone: form.phone.trim(),
-      objective,
-      details: context ? { 'Requested from': context } : undefined,
-      website: form.website,
-    });
-
-    if (result.saved > 0) {
-      setState('sent');
-      trackEvent('lead_saved', { form: 'callback', objective: objective || 'unspecified' });
-    } else {
-      setState('manual');
-    }
+    // Opened synchronously inside the handler so popup blockers allow it.
+    window.open(whatsappUrl(message), '_blank');
+    setState('manual');
   };
-
-  const waText = objective
-    ? objectiveWhatsAppText(objective)
-    : "Hi Jigisha ben, I found you on your website. Please call me back about LIC insurance.";
-
-  if (state === 'sent') {
-    return (
-      <div className={`rounded-2xl border border-gold/30 bg-white p-6 md:p-7 ${className}`}>
-        <p className="flex items-center gap-2 font-display font-bold text-lg text-midnight mb-2">
-          <CheckCircle2 className="w-5 h-5 text-gold-dark" aria-hidden="true" />
-          Request received, {form.name.trim().split(' ')[0]}
-        </p>
-        <p className="text-sm text-gray-600 leading-relaxed">
-          Jigisha will call you on {form.phone.trim()}, Monday–Saturday between 9 AM and 6 PM.
-          If it is urgent, call {PHONE_DISPLAY} directly.
-        </p>
-      </div>
-    );
-  }
 
   if (state === 'manual') {
     return (
       <div className={`rounded-2xl border border-border bg-white p-6 md:p-7 ${className}`}>
         <p className="font-display font-bold text-lg text-midnight mb-2">One tap to finish</p>
         <p className="text-sm text-gray-600 leading-relaxed mb-4">
-          We could not save your number just now. Tap WhatsApp below and press send — it reaches
-          Jigisha immediately.
+          WhatsApp is open with your enquiry ready. Press send and it reaches Jigisha
+          immediately. Prefer to talk now? Call {PHONE_DISPLAY}.
         </p>
         <a
-          href={whatsappUrl(`${waText}\nName: ${form.name.trim()}\nPhone: ${form.phone.trim()}`)}
+          href={whatsappUrl(message)}
           data-cta="callback-whatsapp-fallback"
           target="_blank"
           rel="noopener noreferrer"
@@ -116,7 +96,6 @@ export default function CallbackCard({
       </p>
 
       <form onSubmit={onSubmit} className="grid sm:grid-cols-[1fr_1fr_auto] gap-3 items-end">
-        <input {...honeypotProps} value={form.website} onChange={onChange} />
         <div>
           <label htmlFor="cb-name" className="block text-[11px] font-bold uppercase tracking-wider text-white/60 mb-1.5">
             Your name
