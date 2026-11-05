@@ -55,7 +55,7 @@ Rules:
 - **Address:** the full string above. If a platform only accepts a locality, use `Shela, Ahmedabad, Gujarat 380058`
   — never a different address.
 - **One office only (confirmed by Jigisha, Nov 2026):** the Shela office is the only office. Clients are served
-  across all of Ahmedabad by phone, WhatsApp and visits. Any listing that shows a **Maninagar** (or other) address
+  across all of Ahmedabad, and in Gandhinagar, by phone, WhatsApp and visits. Any listing that shows a **Maninagar** (or other) address
   as her office must be edited to the Shela address, or closed if it cannot be edited. Maninagar and other
   localities go in *service areas*, never in the address field.
 - **Website:** always `https://www.jigishakiranshah.in` — with `www`, `https`, no trailing slash.
@@ -99,9 +99,9 @@ Use the same nine names as the website so the profile and the site reinforce eac
 
 ### Service areas
 
-Office: Shela only. Service area: all of Ahmedabad, including
+Office: Shela only. Service area: all of Ahmedabad plus Gandhinagar, including
 Shela · South Bopal · Bopal · Satellite · Prahlad Nagar · SG Highway · Science City · Vastrapur · Ambawadi ·
-Maninagar · Naranpura · Gota · Chandkheda
+Maninagar · Naranpura · Gota · Chandkheda · Gandhinagar
 
 ### Attributes
 
@@ -176,7 +176,8 @@ answer; the website is what people check afterwards.
 - [ ] Appointment link → `https://www.jigishakiranshah.in/book`.
 - [ ] All 9 services, each with a short description and a price of "Free consultation" where allowed.
 - [ ] Service areas: Ahmedabad as a whole, plus the area pages' localities (Shela, South Bopal, Bopal, Satellite,
-      Prahlad Nagar, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda).
+      Prahlad Nagar, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda),
+      plus Gandhinagar.
       The Shela address stays visible — it is a real office clients visit.
 - [ ] Attributes: online appointments, onsite services, languages English/Hindi/Gujarati.
 - [ ] 10+ photos: exterior with signage, entrance, office interior, desk, certificates/MDRT, a consultation in
