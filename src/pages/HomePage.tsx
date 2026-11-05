@@ -55,9 +55,9 @@ const BAND: Array<{
 
 export default function HomePage() {
   useSEO({
-    title: 'LIC Agent in Ahmedabad | Jigisha Kiran Shah, 2x MDRT',
+    title: 'Life Insurance Advisor in Ahmedabad | Jigisha Kiran Shah, LIC',
     description:
-      'LIC agent in Ahmedabad with 22+ years, 2x MDRT and a 5.0★ Google rating. Term, pension, child education and claim help from the Shela office. Free call back: +91 98240 25435.',
+      'Life insurance and family protection advice in Ahmedabad from Jigisha Kiran Shah, LIC advisor since 2004 and 2x MDRT. Free consultation: +91 98240 25435.',
     ogTitle: 'Jigisha Kiran Shah — LIC Advisor in Ahmedabad, Shela',
     ogDescription:
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',
@@ -65,7 +65,7 @@ export default function HomePage() {
     htmlLang: 'en-IN',
     alternateLanguages: { 'en-IN': '/', 'gu-IN': '/gu', 'x-default': '/' },
     keywords:
-      'LIC advisor Ahmedabad, LIC agent Ahmedabad, LIC agent near me, life insurance agent Ahmedabad, life insurance agency Shela, LIC agent Shela, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
+      'life insurance advisor Ahmedabad, life insurance consultant Ahmedabad, insurance advisor Ahmedabad, financial protection advisor Ahmedabad, LIC advisor Ahmedabad, LIC agent Ahmedabad, LIC agent near me, life insurance agent Ahmedabad, life insurance agency Shela, LIC agent Shela, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
     jsonLd: [websiteJsonLd(), localBusinessJsonLd(), personJsonLd(), faqJsonLd()],
   })
   useScrollReveal()

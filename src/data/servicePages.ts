@@ -15,12 +15,16 @@ export interface ServiceSection {
   items?: string[];
   /** Render items as an ordered list — use for step-by-step processes. */
   numbered?: boolean;
+  /** Internal links rendered as cards — hub pages use these to route to the detailed page. */
+  links?: Array<{ label: string; to: string; note: string }>;
 }
 
 export interface ServicePageMeta {
   slug: string;
   title: string;
   description: string;
+  /** Eyebrow above the H1 when the page has no product family in services.ts. */
+  tagline?: string;
   keywords: string;
   targetQuery: string;
   h1: string;
@@ -38,6 +42,135 @@ export interface ServicePageMeta {
 }
 
 export const SERVICE_PAGES: ServicePageMeta[] = [
+  // ---- Hub pages: broad "life insurance advisor" and "family protection" intent ----
+  {
+    slug: 'life-insurance',
+    tagline: 'Life insurance advice',
+    title: 'Life Insurance Plans & Services in Ahmedabad',
+    description:
+      'Life insurance advice in Ahmedabad from Jigisha Kiran Shah, LIC advisor since 2004. Understand term, savings, pension and child plans, then get a free personal consultation.',
+    keywords:
+      'life insurance services Ahmedabad, life insurance plans Ahmedabad, life insurance consultant Ahmedabad, types of life insurance, LIC advisor Ahmedabad, why life insurance is important',
+    targetQuery: 'life insurance services Ahmedabad',
+    h1: 'Life Insurance Plans & Services in Ahmedabad',
+    intro: [
+      'Life insurance has one job: if the person who earns the family’s income dies, the money that income was going to provide still arrives. Everything else — savings, bonuses, tax benefits — is secondary to that promise.',
+      'Jigisha Kiran Shah has advised individuals, families and business owners in Ahmedabad on LIC life insurance since 2004. A consultation starts with your responsibilities — dependants, loans, goals and the policies you already hold — and only then looks at plans. The first discussion is free and carries no obligation to buy.',
+    ],
+    updated: '2026-11-05',
+    sections: [
+      {
+        heading: 'The main types of life insurance, and what each is for',
+        intro: 'Each plan family solves a different problem. Most households need a combination, sized to their own numbers.',
+        links: [
+          { label: 'Term insurance', to: '/services/term-insurance', note: 'The largest cover for the lowest premium. Pays only on death during the term.' },
+          { label: 'Endowment and savings plans', to: '/services/wealth-creation', note: 'Life cover plus a maturity amount on a fixed date, for a known future goal.' },
+          { label: 'Child education plans', to: '/services/child-education', note: 'Payouts timed to college years, with premium waiver if the parent dies.' },
+          { label: 'Retirement and pension plans', to: '/services/retirement', note: 'Turn a corpus into income that continues for life.' },
+          { label: 'Money-back plans', to: '/services/money-back', note: 'Periodic payouts during the term, with life cover running throughout.' },
+          { label: 'Business protection', to: '/services/corporate-insurance', note: 'Partnership, key-person and employer-employee cover for business owners.' },
+        ],
+      },
+      {
+        heading: 'What working with an advisor involves',
+        numbered: true,
+        items: [
+          'A conversation about your family, income, loans and goals — no product talk until the numbers are clear.',
+          'A list of the policies you already hold, with their cover, maturity dates and nominees.',
+          'A cover estimate and a plan illustration you can take home and compare. You decide in your own time.',
+          'Help with the proposal, medicals and documents if you go ahead, and with nominee updates, revival and claims for as long as the policy runs.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Why is life insurance important?',
+        a: 'It replaces the income a family loses if the earning member dies, so loans, school fees and daily expenses can still be paid. Without it, dependants usually fall back on savings, relatives or selling assets. The younger and healthier you are when you buy, the lower the premium.',
+      },
+      {
+        q: 'How much life insurance coverage does a family need?',
+        a: 'A common starting point is 10 to 15 times annual income, plus outstanding loans, minus existing cover and liquid savings. A family with young children or a large home loan needs more; one with grown children and no debt needs less. The free protection check on this site runs the numbers.',
+      },
+      {
+        q: 'Should I buy life insurance through an advisor or online?',
+        a: 'Both reach the same insurer and the same policy terms. An advisor helps you choose the plan type and cover, fills the proposal correctly, keeps nominee details current and supports your family at claim time. Buying online suits people who already know exactly what they need.',
+      },
+      {
+        q: 'Is Jigisha Kiran Shah an independent financial adviser?',
+        a: 'No. She is an individual LIC agent, so the plans she offers are LIC plans, and policies are issued and claims decided by LIC. She has advised Ahmedabad families since 2004 and qualified for MDRT in 2023 and 2024.',
+      },
+    ],
+    relatedPost: { label: 'Free protection check — estimate your cover gap', to: '/protection-check' },
+  },
+  {
+    slug: 'family-financial-protection',
+    tagline: 'Family protection planning',
+    title: 'Family Financial Protection Planning in Ahmedabad',
+    description:
+      'Family financial protection planning in Ahmedabad: income replacement, loan cover, children’s education and health protection, reviewed together. Free discussion: +91 98240 25435.',
+    keywords:
+      'family financial protection Ahmedabad, family protection plan, financial planning for family Ahmedabad, life insurance for married couples, children education financial planning, life changes insurance needs',
+    targetQuery: 'family financial protection Ahmedabad',
+    h1: 'Family Financial Protection Planning in Ahmedabad',
+    intro: [
+      'A family’s financial plan usually fails at one point: the income stops. A protection plan answers four questions before that happens — who depends on the income, what they would need, what is already in place, and what the gap is.',
+      'Jigisha Kiran Shah works through those questions with families across Ahmedabad, from newly married couples to parents planning college fees to people nearing retirement. The result is a short written summary of your cover and the gaps, not a sales pitch.',
+    ],
+    updated: '2026-11-05',
+    sections: [
+      {
+        heading: 'What a family protection review looks at',
+        items: [
+          'Income replacement — how many years of household expenses the family would need if the main earner died.',
+          'Loans — home, vehicle and business loans that would otherwise pass to the family.',
+          'Children’s education — the cost of the milestone years, adjusted for education inflation.',
+          'Health costs — whether hospital and critical-illness expenses would drain the savings meant for other goals.',
+          'Retirement — whether the surviving spouse would still have an income later in life.',
+          'Paperwork — nominees, MWP Act protection where relevant, and where the policy documents are kept.',
+        ],
+      },
+      {
+        heading: 'When to review your family’s protection',
+        intro: 'Cover bought ten years ago was sized for a different family. These events are the usual signal to look again.',
+        items: [
+          'Marriage, or the birth or adoption of a child.',
+          'A new home loan, or a large top-up on an existing one.',
+          'A significant rise in income or a move to self-employment.',
+          'Starting or expanding a business, or taking on a partner.',
+          'A policy maturing, lapsing or being surrendered.',
+          'The death of a nominee, divorce or a change in who depends on you.',
+        ],
+      },
+      {
+        heading: 'Related services',
+        links: [
+          { label: 'Life insurance overview', to: '/services/life-insurance', note: 'The main plan types and how they fit together.' },
+          { label: 'Policy review', to: '/services/policy-review-claims', note: 'List every policy you hold, check nominees and spot gaps.' },
+          { label: 'Child education plans', to: '/services/child-education', note: 'Payouts timed to the years fees fall due.' },
+          { label: 'Health cover', to: '/services/health-insurance', note: 'LIC health and cancer cover, with official documents.' },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What should families consider when planning financial protection?',
+        a: 'Start with who depends on your income and for how long. Then add outstanding loans and dated goals such as education, subtract existing cover and savings, and check nominees on every policy. Health costs and the surviving spouse’s retirement belong in the same plan.',
+      },
+      {
+        q: 'When should you review your life insurance policy?',
+        a: 'Review it after any major life change — marriage, a child, a new loan, a job or income change, starting a business — and otherwise every two to three years. Check that the cover still matches your responsibilities and that the nominee is correct.',
+      },
+      {
+        q: 'How do life changes affect insurance needs?',
+        a: 'Most life changes increase the amount your family would need: a child adds education costs, a home loan adds debt, a higher income raises the lifestyle to protect. Some reduce it, such as a paid-off loan or children becoming independent. Cover should follow those changes.',
+      },
+      {
+        q: 'What is the difference between life insurance and health insurance?',
+        a: 'Life insurance pays a fixed amount to the nominee when the insured person dies (or at maturity, for savings plans). Health insurance pays or reimburses medical expenses while the insured person is alive. A family usually needs both: one protects income, the other protects savings from hospital bills.',
+      },
+    ],
+    relatedPost: { label: 'Free protection check — estimate your cover gap', to: '/protection-check' },
+  },
   {
     slug: 'term-insurance',
     title: 'LIC Term Insurance Ahmedabad | Cover & Plan Review',
@@ -237,6 +370,10 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       {
         q: 'What is an MWP Act policy and who needs one?',
         a: 'A policy endorsed under the Married Women\u2019s Property Act belongs to the wife and children — creditors and business liabilities cannot touch it. Any Ahmedabad businessman with loans should hold core family cover in MWP form.',
+      },
+      {
+        q: 'What is business partnership protection?',
+        a: 'Life cover taken on each partner so that, if one dies, the surviving partners have the money to buy the deceased partner\u2019s share from the family at a fair value. The business continues without draining working capital, and the family receives its share in cash. It works best with a buy-sell clause in the partnership deed.',
       },
       {
         q: 'Can an HUF buy LIC insurance?',

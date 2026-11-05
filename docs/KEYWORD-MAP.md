@@ -207,3 +207,30 @@ In Search Console → Performance:
 - Pages tab → "Crawled – currently not indexed". If service pages sit there, they need internal links, not more
   words.
 - Compare month-over-month for the 10 keywords marked priority 1 above. Nothing else matters until those move.
+
+---
+
+## 9. Growth-proposal keywords (November 2026)
+
+Added from the SEO & Digital Growth Proposal. Tracking: `SEO-PROPOSAL-TRACKER.md`. Volumes still to be validated in
+Keyword Planner. The homepage owns "advisor"; the hub owns "plans/services", so the two do not compete.
+
+| Keyword | Intent | Target URL | Status | Priority |
+|---|---|---|---|---|
+| life insurance advisor in Ahmedabad | Commercial | `/` | LIVE | 1 |
+| insurance advisor Ahmedabad | Commercial | `/` | LIVE | 1 |
+| financial protection advisor Ahmedabad | Commercial | `/` | LIVE | 2 |
+| life insurance consultant Ahmedabad | Commercial | `/services/life-insurance` | LIVE | 2 |
+| life insurance services Ahmedabad | Commercial | `/services/life-insurance` | LIVE | 2 |
+| health insurance advisor Ahmedabad | Commercial | `/services/health-insurance` | LIVE | 3 |
+| family financial protection | Commercial | `/services/family-financial-protection` | LIVE | 2 |
+| life insurance policy review | Commercial | `/services/policy-review-claims` | LIVE | 1 |
+| business partnership protection | Commercial | `/services/corporate-insurance` | LIVE | 3 |
+| employer employee insurance | Commercial | `/services/business-insurance-gidc-vatva` | LIVE | 3 |
+| life insurance advisor Prahlad Nagar | Commercial | `/areas/prahlad-nagar` | LIVE | 3 |
+| LIC advisor Gandhinagar | Commercial | `/areas/gandhinagar` | LIVE | 3 |
+| why is life insurance important | Informational | `/services/life-insurance` (FAQ) | LIVE | 3 |
+| how much life insurance does a family need | Informational | `/services/life-insurance` (FAQ), `/protection-check` | LIVE | 2 |
+| when should you review your life insurance policy | Informational | `/services/family-financial-protection` (FAQ) | LIVE | 3 |
+| what is business partnership protection | Informational | `/services/corporate-insurance` (FAQ) | LIVE | 3 |
+| what should families consider when planning financial protection | Informational | `/services/family-financial-protection` (FAQ) | LIVE | 3 |

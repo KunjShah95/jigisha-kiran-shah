@@ -270,7 +270,7 @@ const Contact = () => {
                 </button>
                 {sent && (
                   <p role="status" className="text-sm text-gold-dark font-semibold">
-                    Got it — your details are saved and Jigisha will call back. For a faster reply, press send in WhatsApp, or call +91 98240 25435.
+                    WhatsApp is open with your details — press send there to reach Jigisha. Prefer to talk? Call +91 98240 25435.
                   </p>
                 )}
                 <div className="pt-2 border-t border-border">

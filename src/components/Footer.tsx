@@ -50,6 +50,8 @@ const Footer = () => {
     ]
 
     const services = [
+      { label: 'Life Insurance Advice', to: '/services/life-insurance' },
+      { label: 'Family Financial Protection', to: '/services/family-financial-protection' },
       { label: 'Term Life Insurance', to: '/services/term-insurance' },
       { label: 'Retirement & Pension Plans', to: '/services/retirement' },
       { label: 'Child Education Plans', to: '/services/child-education' },
@@ -212,6 +214,9 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               &copy; {new Date().getFullYear()} Jigisha Kiran Shah. All rights reserved.
             </p>
+            <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Privacy Policy
+            </Link>
           </div>
           <p className="text-[11px] leading-relaxed text-gray-400 max-w-4xl">
             Insurance is the subject matter of solicitation. Jigisha Kiran Shah is an individual insurance

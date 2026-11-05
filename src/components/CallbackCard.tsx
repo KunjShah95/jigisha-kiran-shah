@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, MessageCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
 import { whatsappUrl, objectiveWhatsAppText, objectiveShortLabel } from '../lib/contact';
@@ -143,7 +144,9 @@ export default function CallbackCard({
       </form>
 
       <p className="mt-3 text-[11px] text-white/45 leading-relaxed">
-        Only your name and number are stored. Mon–Sat, 9 AM–6 PM IST. Prefer to chat?{' '}
+        Opens WhatsApp with your name and number — nothing is stored on this website. Mon–Sat, 9 AM–6 PM IST.{' '}
+        <Link to="/privacy" className="underline underline-offset-2 hover:text-white">Privacy</Link>
+        {' · '}Prefer to chat?{' '}
         <a
           href={whatsappUrl(waText)}
           data-cta="callback-whatsapp"

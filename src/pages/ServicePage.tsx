@@ -17,6 +17,8 @@ const OFFICIAL_SOURCES = [
 
 /** Service slug → contact-form objective, so "Book" preselects the right goal. */
 const CONTACT_OBJECTIVE: Record<string, string> = {
+  'life-insurance': 'term',
+  'family-financial-protection': 'review',
   'term-insurance': 'term',
   retirement: 'retirement',
   'child-education': 'child',
@@ -112,7 +114,7 @@ export default function ServicePage() {
               <Icon className="w-6 h-6 text-gold-dark" aria-hidden="true" />
             </span>
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-gold-dark">
-              {service?.tagline ?? 'Policy servicing'}
+              {meta.tagline ?? service?.tagline ?? 'Policy servicing'}
             </span>
           </div>
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
@@ -227,6 +229,25 @@ export default function ServicePage() {
                           {sec.numbered ? i + 1 : '·'}
                         </span>
                         <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {sec.links && (
+                  <ul className="grid sm:grid-cols-2 gap-3">
+                    {sec.links.map((l) => (
+                      <li key={l.to}>
+                        <Link
+                          to={l.to}
+                          data-cta={`service-hub-${meta.slug}`}
+                          className="group flex h-full flex-col gap-1 rounded-2xl border border-border bg-cream p-5 hover:border-gold/50 transition-colors"
+                        >
+                          <span className="flex items-center justify-between gap-2 font-bold text-midnight">
+                            {l.label}
+                            <ArrowRight className="w-4 h-4 text-gold-dark shrink-0 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                          </span>
+                          <span className="text-sm text-gray-600 leading-relaxed">{l.note}</span>
+                        </Link>
                       </li>
                     ))}
                   </ul>

@@ -33,6 +33,7 @@ declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    clarity?: ((...args: unknown[]) => void) & { q?: unknown[] };
   }
 }
 
@@ -45,6 +46,12 @@ export function trackEvent(event: ConversionEvent, props?: Record<string, string
   }
   try {
     window.gtag?.('event', event, payload);
+  } catch {
+    // ignore
+  }
+  try {
+    // Clarity custom tags let session recordings be filtered by conversion.
+    window.clarity?.('event', event);
   } catch {
     // ignore
   }
@@ -91,4 +98,23 @@ export function initGA4(measurementId: string | undefined) {
   };
   window.gtag('js', new Date());
   window.gtag('config', measurementId);
+}
+
+/**
+ * Optional Microsoft Clarity (heatmaps + session recordings). Loads only when
+ * VITE_CLARITY_ID is set at build time and the page runs on the production
+ * host. Privacy configuration lives in the Clarity dashboard, not here:
+ * Settings → Masking must stay on "Strict" so form input is never recorded.
+ * /privacy lists Clarity automatically when this ID is set.
+ */
+export function initClarity(projectId: string | undefined) {
+  if (!projectId || typeof document === 'undefined' || window.clarity) return;
+  const queued = function clarity(...args: unknown[]) {
+    (queued.q = queued.q || []).push(args);
+  } as NonNullable<Window['clarity']>;
+  window.clarity = queued;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.clarity.ms/tag/${encodeURIComponent(projectId)}`;
+  document.head.appendChild(s);
 }
