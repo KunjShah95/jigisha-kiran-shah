@@ -240,7 +240,7 @@ export default function BookPage() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
+    <section className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{ backgroundImage: 'url("/noise.svg")' }} />
       <div className="container relative z-10 w-full">
         <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">

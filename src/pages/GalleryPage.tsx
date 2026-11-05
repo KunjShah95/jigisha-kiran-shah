@@ -133,7 +133,7 @@ export default function GalleryPage() {
     if (fileRef.current) fileRef.current.value = '';
   };
   return (
-    <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
+    <section className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
       <div className="container relative z-10">
         <div className="max-w-3xl mb-10">
           <p className="text-[11px] font-bold tracking-[0.2em] uppercase text-gold-dark mb-3">Gallery</p>

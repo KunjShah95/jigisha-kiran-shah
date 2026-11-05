@@ -40,7 +40,7 @@ export default function BlogIndexPage() {
   const onMove = useSpotlight();
 
   return (
-    <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
+    <section className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
       <div className="container relative z-10">
         <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
           LIC Stories &amp; Guides for Ahmedabad Families

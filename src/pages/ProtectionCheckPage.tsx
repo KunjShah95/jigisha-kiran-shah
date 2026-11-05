@@ -304,7 +304,7 @@ export default function ProtectionCheckPage() {
   const card = 'bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-border p-6 lg:p-8';
 
   return (
-    <section className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden" lang={lang === 'gu' ? 'gu' : 'en'}>
+    <section className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream relative overflow-hidden" lang={lang === 'gu' ? 'gu' : 'en'}>
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.06] pointer-events-none" style={{ backgroundImage: 'url("/noise.svg")' }} />
       <div ref={topRef} className="container relative z-10 max-w-3xl mx-auto scroll-mt-28">
         <div className="flex items-start justify-between gap-4 mb-6">

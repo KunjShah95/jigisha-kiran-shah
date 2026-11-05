@@ -74,7 +74,7 @@ export default function AreaPage() {
 
   if (!area) {
     return (
-      <main className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream">
+      <main className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream">
         <div className="container relative z-10 max-w-xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">Area not found</h1>
           <p className="text-base text-gray-600 font-light mb-8">That service area does not exist.</p>
@@ -88,7 +88,7 @@ export default function AreaPage() {
 
   return (
     <>
-      <section className="pt-28 lg:pt-32 pb-10 lg:pb-14 bg-cream relative overflow-hidden">
+      <section className="pt-20 lg:pt-24 pb-10 lg:pb-14 bg-cream relative overflow-hidden">
         <div className="container relative z-10">
           <nav aria-label="Breadcrumb" className="text-xs text-gray-500 mb-4">
             <Link to="/" className="hover:text-gold-dark">Home</Link>

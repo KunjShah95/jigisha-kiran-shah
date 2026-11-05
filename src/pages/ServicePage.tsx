@@ -98,7 +98,7 @@ export default function ServicePage() {
 
   return (
     <>
-      <section className="pt-28 lg:pt-32 pb-10 lg:pb-14 bg-cream relative overflow-hidden">
+      <section className="pt-20 lg:pt-24 pb-10 lg:pb-14 bg-cream relative overflow-hidden">
         <div className="container relative z-10">
           <nav aria-label="Breadcrumb" className="text-xs text-gray-500 mb-4">
             <Link to="/" className="hover:text-gold-dark">Home</Link>

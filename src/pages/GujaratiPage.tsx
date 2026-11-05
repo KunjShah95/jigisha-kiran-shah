@@ -35,7 +35,7 @@ export default function GujaratiPage() {
   });
 
   return (
-    <main lang="gu" className="gu-page bg-cream pt-28 lg:pt-32 pb-16 lg:pb-24">
+    <main lang="gu" className="gu-page bg-cream pt-20 lg:pt-24 pb-16 lg:pb-24">
       <div className="container max-w-5xl">
         <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-8"><Link to="/" className="hover:text-gold-dark">હોમ</Link><span aria-hidden="true"> / </span><span>ગુજરાતી માર્ગદર્શન</span></nav>
         <section className="grid lg:grid-cols-[1.35fr_.65fr] gap-8 lg:gap-14 items-center mb-16">

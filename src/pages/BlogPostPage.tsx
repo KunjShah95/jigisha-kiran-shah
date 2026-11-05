@@ -52,7 +52,7 @@ export default function BlogPostPage() {
 
   if (!post) {
     return (
-      <main className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream">
+      <main className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream">
         <div className="container relative z-10 max-w-xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">Story not found</h1>
           <p className="text-base text-gray-600 font-light mb-8">That story does not exist or was moved.</p>
@@ -82,7 +82,7 @@ export default function BlogPostPage() {
   };
 
   return (
-    <article className="pt-28 lg:pt-32 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
+    <article className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
       <div className="container relative z-10 max-w-3xl">
         <nav aria-label="Breadcrumb" className="text-xs text-gray-500 mb-6">
           <Link to="/" className="hover:text-gold-dark">Home</Link>

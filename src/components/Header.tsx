@@ -1,6 +1,29 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+/**
+ * Primary navigation only — four links plus the booking CTA.
+ * Everything else (Guides, Stories, Reviews, Gujarati, Calculators) lives in the
+ * footer and the homepage discovery band, so the bar still fits at 1024px.
+ */
+const navLinks = [
+  { to: '/', label: 'Home' },
+  { to: '/services', label: 'Services' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+]
+
+/** Secondary destinations — drawer only, small print, never in the top bar.
+    `cta` keeps the analytics values the old top-bar links used. */
+const moreLinks = [
+  { to: '/guides', label: 'Guides', cta: 'nav-guides' },
+  { to: '/reviews', label: 'Reviews', cta: 'nav-testimonials' },
+  { to: '/blog', label: 'Stories', cta: 'nav-stories' },
+  { to: '/calculators', label: 'Calculators', cta: 'nav-calculators' },
+  { to: '/protection-check', label: 'Protection check', cta: 'nav-protection-check' },
+  { to: '/gu', label: 'ગુજરાતી', cta: 'nav-gujarati' },
+]
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -10,9 +33,10 @@ const Header = () => {
   const darkPages = ['/reviews']
   const isDarkPage = darkPages.includes(location.pathname)
 
+  // The desktop bar starts at lg (1024px). Close the drawer as soon as it appears.
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
         setIsMobileMenuOpen(false)
       }
     }
@@ -24,6 +48,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
+    handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -43,74 +68,74 @@ const Header = () => {
     }
   }, [isMobileMenuOpen])
 
-  const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/about', label: 'About' },
-    { to: '/services', label: 'Services' },
-    { to: '/guides', label: 'Guides' },
-    { to: '/reviews', label: 'Testimonials' },
-    { to: '/blog', label: 'Stories' },
-    { to: '/contact', label: 'Contact' },
-    { to: '/gu', label: 'ગુજરાતી' },
-  ]
+  // Close the drawer on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [location.pathname])
 
   const isActive = (path: string) => location.pathname === path
+
+  // True whenever the header sits on a light surface (cream page, scrolled, or open drawer)
+  const isLightHeader = isMobileMenuOpen || isScrolled || !isDarkPage
+
+  // White bars on a dark header; midnight whenever the header sits on a light surface
+  const barColor = isLightHeader ? 'bg-midnight' : 'bg-white'
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white/90 backdrop-blur-md shadow-md py-3'
-            : isDarkPage
-              ? 'bg-midnight/70 backdrop-blur-md py-6 border-b border-white/10'
-              : 'bg-cream/80 backdrop-blur-sm py-6'
+          isMobileMenuOpen
+            ? 'bg-cream border-b border-black/[0.06] py-3'
+            : isScrolled
+              ? 'bg-white/95 backdrop-blur-md shadow-md py-2'
+              : isDarkPage
+                ? 'bg-midnight/80 backdrop-blur-md py-3 border-b border-white/10'
+                : 'bg-cream/85 backdrop-blur-md py-3 border-b border-black/[0.06]'
         }`}
       >
-        <div className="container flex items-center justify-between w-full">
+        <div className="container flex items-center justify-between gap-4 w-full">
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 sm:gap-3 group z-50 relative min-w-0"
+            className="flex items-center gap-2.5 sm:gap-3 group z-50 relative shrink-0"
             aria-label="Jigisha Kiran Shah — home"
           >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-midnight to-midnight-light rounded-xl flex items-center justify-center text-white font-display font-bold text-base sm:text-xl shadow-lg border border-white/10 group-hover:scale-105 transition-transform duration-300 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 bg-linear-to-br from-midnight to-midnight-light rounded-xl flex items-center justify-center text-white font-display font-bold text-sm sm:text-base shadow-sm border border-white/10 group-hover:scale-105 transition-transform duration-300 shrink-0">
               JK
             </div>
-            <div className="flex flex-col min-w-0">
-              <span className={`font-display font-bold text-base sm:text-lg leading-none truncate transition-colors ${
-                isScrolled ? 'text-midnight' : isDarkPage ? 'text-white' : 'text-midnight'
+            <div className="flex flex-col">
+              <span className={`font-display font-bold text-[15px] sm:text-base leading-none whitespace-nowrap transition-colors ${
+                isLightHeader ? 'text-midnight' : 'text-white'
               }`}>
                 Jigisha Kiran<span className="text-gold"> Shah</span>
               </span>
-              <span className={`text-[11px] uppercase tracking-[0.2em] font-medium ${
-                isScrolled ? 'text-gray-500' : isDarkPage ? 'text-white/60' : 'text-gray-500'
+              <span className={`mt-1 text-[10px] uppercase tracking-[0.18em] font-medium whitespace-nowrap ${
+                isLightHeader ? 'text-gray-500' : 'text-white/60'
               }`}>LIC Advisor</span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav aria-label="Primary" className="hidden lg:flex items-center gap-7 xl:gap-8 shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 data-cta={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
-                className={`text-sm font-medium transition-colors relative group py-2 ${
+                aria-current={isActive(link.to) ? 'page' : undefined}
+                className={`text-sm font-medium whitespace-nowrap transition-colors relative group py-2 ${
                   isActive(link.to)
                     ? 'text-gold'
-                    : isScrolled
+                    : isLightHeader
                       ? 'text-gray-700 hover:text-gold'
-                      : isDarkPage
-                        ? 'text-white/80 hover:text-gold'
-                        : 'text-gray-700 hover:text-gold'
+                      : 'text-white/80 hover:text-gold'
                 }`}
               >
                 {link.label}
-                {isActive(link.to) && (
+                {isActive(link.to) ? (
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gold" />
-                )}
-                {!isActive(link.to) && (
+                ) : (
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
                 )}
               </Link>
@@ -118,37 +143,39 @@ const Header = () => {
           </nav>
 
           {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-4 z-50">
+          <div className="flex items-center gap-3 sm:gap-4 z-50 shrink-0">
             <a
               href="tel:+919824025435"
-              className="hidden lg:flex flex-col items-end text-right mr-2"
+              className="hidden xl:flex flex-col items-end text-right mr-1 whitespace-nowrap"
             >
-              <span className={`text-[11px] uppercase tracking-widest font-bold ${
-                isScrolled ? 'text-gray-500' : isDarkPage ? 'text-white/60' : 'text-gray-500'
+              <span className={`text-[10px] uppercase tracking-widest font-bold ${
+                isLightHeader ? 'text-gray-500' : 'text-white/60'
               }`}>Advisory Support</span>
-              <span className={`font-semibold hover:text-gold transition-colors font-sans text-sm ${
-                isScrolled ? 'text-midnight' : isDarkPage ? 'text-white' : 'text-midnight'
+              <span className={`font-semibold hover:text-gold transition-colors font-sans text-sm whitespace-nowrap ${
+                isLightHeader ? 'text-midnight' : 'text-white'
               }`}>+91 98240 25435</span>
             </a>
 
             <Link
               to="/book"
               data-cta="header-book"
-              className="hidden sm:inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-bold transition-all duration-300 bg-midnight text-white hover:bg-gold hover:text-white hover:shadow-lg"
+              className="hidden lg:inline-flex items-center justify-center px-4 xl:px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 bg-midnight text-white hover:bg-gold hover:text-white hover:shadow-lg"
             >
               Book Free Consultation
             </Link>
 
             <button
-              className="md:hidden flex flex-col gap-1.5 p-2.5 -m-1 rounded-lg hover:bg-gray-100 transition-colors min-w-11 min-h-11 items-center justify-center"
+              className={`lg:hidden flex flex-col gap-1.5 p-2.5 -m-1 rounded-lg transition-colors min-w-11 min-h-11 items-center justify-center ${
+                isMobileMenuOpen ? 'bg-transparent' : isLightHeader ? 'hover:bg-black/5' : 'hover:bg-white/10'
+              }`}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
-              <span aria-hidden="true" className={`w-6 h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''} ${isDarkPage && !isScrolled ? 'bg-white' : 'bg-midnight'}`} />
-              <span aria-hidden="true" className={`w-6 h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''} ${isDarkPage && !isScrolled ? 'bg-white' : 'bg-midnight'}`} />
-              <span aria-hidden="true" className={`w-6 h-0.5 rounded-full transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''} ${isDarkPage && !isScrolled ? 'bg-white' : 'bg-midnight'}`} />
+              <span aria-hidden="true" className={`w-6 h-0.5 rounded-full transition-all duration-300 ${barColor} ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span aria-hidden="true" className={`w-6 h-0.5 rounded-full transition-all duration-300 ${barColor} ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span aria-hidden="true" className={`w-6 h-0.5 rounded-full transition-all duration-300 ${barColor} ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </button>
           </div>
         </div>
@@ -161,42 +188,70 @@ const Header = () => {
         aria-modal="true"
         aria-label="Site navigation"
         aria-hidden={!isMobileMenuOpen}
-        className={`fixed inset-0 bg-white/95 backdrop-blur-xl z-40 flex flex-col px-8 pb-10 overflow-y-auto transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 bg-cream z-[45] flex flex-col px-6 pb-8 overflow-y-auto transition-all duration-300 lg:hidden ${
           isMobileMenuOpen ? 'translate-x-0 opacity-100 visible' : 'translate-x-full opacity-0 invisible'
         }`}
-        style={{ paddingTop: 'max(6rem, env(safe-area-inset-top))' }}
+        style={{ paddingTop: 'max(5.5rem, env(safe-area-inset-top))' }}
       >
-        <div aria-hidden="true" className="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
-          <div className="w-64 h-64 bg-gold rounded-full blur-3xl" />
-        </div>
-
-        <nav className="flex flex-col gap-6 text-2xl font-display text-midnight relative z-10">
-          {navLinks.map((link, idx) => (
+        <nav aria-label="Primary" className="flex flex-col gap-1 relative z-10">
+          {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
               data-cta={`nav-${link.label.toLowerCase().replace(/\s+/g, '-')}`}
               onClick={() => setIsMobileMenuOpen(false)}
               tabIndex={isMobileMenuOpen ? 0 : -1}
-              className={`hover:text-gold transition-colors transform translate-x-0 hover:translate-x-2 duration-300 flex items-center gap-4 ${
-                isActive(link.to) ? 'text-gold' : ''
+              aria-current={isActive(link.to) ? 'page' : undefined}
+              className={`flex items-center justify-between border-b border-black/[0.06] py-3.5 text-xl font-display font-medium transition-colors ${
+                isActive(link.to) ? 'text-gold' : 'text-midnight hover:text-gold'
               }`}
-              style={{ transitionDelay: `${idx * 50}ms` }}
             >
-              <span aria-hidden="true" className="text-sm font-sans font-bold text-gold/50">0{idx + 1}</span>
               {link.label}
+              <span aria-hidden="true" className="text-gold/30 text-sm font-sans">→</span>
             </Link>
           ))}
-          <div className="h-px bg-gray-100 my-4" />
-          <Link
-            to="/book"
-            data-cta="menu-book"
-            onClick={() => setIsMobileMenuOpen(false)}
-            tabIndex={isMobileMenuOpen ? 0 : -1}
-            className="text-lg font-sans font-bold text-white bg-midnight py-4 px-6 rounded-xl text-center shadow-lg active:scale-95 transition-transform hover:bg-gold"
-          >
-            Book Free Consultation
-          </Link>
+
+          <div className="mt-6">
+            <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-500">
+              More from the site
+            </p>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+              {moreLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  data-cta={link.cta}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  tabIndex={isMobileMenuOpen ? 0 : -1}
+                  className={`py-2 text-sm font-medium transition-colors ${
+                    isActive(link.to) ? 'text-gold' : 'text-gray-600 hover:text-gold-dark'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-2">
+            <Link
+              to="/book"
+              data-cta="menu-book"
+              onClick={() => setIsMobileMenuOpen(false)}
+              tabIndex={isMobileMenuOpen ? 0 : -1}
+              className="text-base font-sans font-bold text-white bg-midnight py-3.5 px-6 rounded-xl text-center shadow-lg active:scale-95 transition-transform hover:bg-gold"
+            >
+              Book Free Consultation
+            </Link>
+            <a
+              href="tel:+919824025435"
+              data-cta="menu-call"
+              tabIndex={isMobileMenuOpen ? 0 : -1}
+              className="text-base font-sans font-bold text-midnight border border-midnight/15 py-3.5 px-6 rounded-xl text-center"
+            >
+              Call +91 98240 25435
+            </a>
+          </div>
         </nav>
       </div>
     </>
