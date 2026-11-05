@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Star, ShieldCheck, Clock, BookOpen, Calculator as CalcIcon, GitCompareArrows } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Hero from '../components/Hero'
+import ScrollProgress from '../components/ScrollProgress'
 import AdvisorProcess from '../components/AdvisorProcess'
 import WhyUs from '../components/WhyUs'
 import Calculator from '../components/Calculator'
@@ -70,29 +70,11 @@ export default function HomePage() {
   })
   useScrollReveal()
 
-  const [scrollProgress, setScrollProgress] = useState(0)
   const onMove = useSpotlight()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight
-      const currentProgress = totalScroll > 0 ? (window.scrollY / totalScroll) * 100 : 0
-      setScrollProgress(currentProgress)
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <>
-      <div
-        className="scroll-progress"
-        style={{
-          width: `${scrollProgress}%`,
-          transition: 'width 0.1s ease-out',
-        }}
-        aria-hidden="true"
-      />
+      <ScrollProgress />
       <Hero />
       <ObjectivePicker />
       <AdvisorProcess />

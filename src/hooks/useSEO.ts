@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { SITE_URL, OG_IMAGE, breadcrumbJsonLd } from '../lib/seo';
 import { isProductionHost } from '../lib/env';
 
@@ -136,6 +136,12 @@ export function useSEO(props: SEOProps) {
 
   const { title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex } = props;
 
+  // `alternateLanguages` is rebuilt from an inline object on every render, so its
+  // identity changes constantly. Compare its serialised value instead — otherwise
+  // this effect re-runs on every render and drags the visitor back to the top.
+  const alternateLanguagesKey = JSON.stringify(props.alternateLanguages ?? {});
+  const lastScrolledPath = useRef<string | null>(null);
+
   useEffect(() => {
     const head = buildHead(props);
     document.title = head.title;
@@ -183,11 +189,16 @@ export function useSEO(props: SEOProps) {
       document.head.appendChild(s);
     });
 
-    window.scrollTo(0, 0);
+    // Reset to the top only when the route really changes. This used to run on
+    // every render, which snapped the page back to the top mid-scroll.
+    if (lastScrolledPath.current !== head.canonical) {
+      lastScrolledPath.current = head.canonical;
+      window.scrollTo(0, 0);
+    }
 
     return () => {
       document.querySelectorAll('script[data-page-jsonld]').forEach((n) => n.remove());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex, props.htmlLang, props.alternateLanguages]);
+  }, [title, description, ogTitle, ogDescription, ogImage, path, keywords, breadcrumbLabel, noindex, props.htmlLang, alternateLanguagesKey]);
 }
