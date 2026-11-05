@@ -234,3 +234,7 @@ Keyword Planner. The homepage owns "advisor"; the hub owns "plans/services", so 
 | when should you review your life insurance policy | Informational | `/services/family-financial-protection` (FAQ) | LIVE | 3 |
 | what is business partnership protection | Informational | `/services/corporate-insurance` (FAQ) | LIVE | 3 |
 | what should families consider when planning financial protection | Informational | `/services/family-financial-protection` (FAQ) | LIVE | 3 |
+| insurance agent near me | Commercial | GBP + `/` | LIVE | 1 |
+| term insurance advisor Ahmedabad | Commercial | `/services/term-insurance` | LIVE | 2 |
+| NRI life insurance India | Commercial | `/services/nri-lic-services` | LIVE | 3 |
+| child insurance plans | Commercial | `/services/child-education` | LIVE | 3 |

@@ -184,3 +184,25 @@ Monthly KPI sheet: impressions, clicks, CTR, average position (Search Console); 
 - **Month 2:** 4 articles from the §8 TODO list; GBP weekly posts; first 10 citations from `CITATIONS.md`.
 - **Month 3:** 4 more articles; rewrite titles/descriptions of pages with impressions but CTR < 2 % (Search Console);
   review Clarity recordings of `/contact` and `/book`.
+
+---
+
+## Second proposal (Comprehensive SEO Audit & Growth Strategy) — delta
+
+Most of it repeats the first proposal and is covered above. What was new:
+
+| Item | Status | Notes |
+|---|---|---|
+| "Live domain did not return a readable page" | Not a site fault | Fetched 5 Nov 2026: home and service pages return full server-rendered HTML with titles and content. The auditor's browser failed, not the site |
+| GA4 event names `whatsapp_click`, `phone_click`, `contact_form_submit`, `consultation_request`, `service_page_view` | DONE | `GA4_NAME` map in `src/lib/analytics.ts`. Vercel keeps the old names so its dashboards don't break. Params are page, CTA, objective, service slug — never form contents |
+| Enquiry form: preferred contact time | DONE | Optional "Best time to call" on `/contact` (same windows as `/book`) |
+| Enquiry form: consent to be contacted | DONE | Consent notice under every form (first round). Not a checkbox: nothing is stored, and the visitor sends the WhatsApp message themselves |
+| Spam protection on forms | Not applicable | Forms have no server endpoint; they open WhatsApp |
+| WebP images | DONE (hero + about) | Hero 124 KB → 64 KB via `<picture>` with JPEG fallback; about photo 115 KB → 74 KB. Gallery JPEGs still to convert |
+| Core Web Vitals targets (LCP ≤ 2.5 s, INP ≤ 200 ms, CLS ≤ 0.1) | OFF-SITE | Measure on PageSpeed Insights (field data) after deploy |
+| Location consistency: public listings show **Maninagar** and **Shela** | OFF-SITE — **confirm with Jigisha** | The site says Shela (Orchid Legacy, Applewoods). If Maninagar was an earlier office, update or close those listings so every directory shows one address. `/areas/maninagar` stays: it describes a served area, not an office |
+| Justdial listing (5.0, 63 ratings) | OFF-SITE | Claim it, align name/address/phone with `src/lib/seo.ts`, then add its URL to `SAME_AS`. Do not copy its rating into schema |
+| Find Everything Local listing | OFF-SITE | Same as Justdial — align NAP, then add to `CITATIONS-TRACKING.csv` |
+| Ahrefs / Screaming Frog | Optional | Search Console + `npm run check:seo` already cover crawl errors; Ahrefs only adds backlink and difficulty data |
+| 12-article calendar (adds NRI families, married couples, pre-retirement) | TODO | Merge with §8 list; NRI article should link to `/services/nri-lic-services` |
+| 5–10 genuine referring domains in 90 days | OFF-SITE | `CITATIONS.md` |

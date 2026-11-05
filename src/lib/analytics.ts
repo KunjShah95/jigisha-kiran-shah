@@ -27,7 +27,8 @@ export type ConversionEvent =
   | 'protection_check_started'
   | 'protection_check_completed'
   | 'protection_check_handoff'
-  | 'content_navigation_click';
+  | 'content_navigation_click'
+  | 'service_page_view';
 
 declare global {
   interface Window {
@@ -37,6 +38,19 @@ declare global {
   }
 }
 
+/**
+ * GA4 gets the plain names the growth proposal reports on; Vercel keeps the
+ * original names so its existing dashboards don't break. Events not listed
+ * here go to GA4 under their own name.
+ */
+const GA4_NAME: Partial<Record<ConversionEvent, string>> = {
+  contact_whatsapp: 'whatsapp_click',
+  contact_call: 'phone_click',
+  contact_email: 'email_click',
+  consultation_form_submit: 'contact_form_submit',
+  booking_completed: 'consultation_request',
+};
+
 export function trackEvent(event: ConversionEvent, props?: Record<string, string>) {
   const payload = { page: window.location.pathname, ...props };
   try {
@@ -45,7 +59,8 @@ export function trackEvent(event: ConversionEvent, props?: Record<string, string
     // Analytics blocked (adblock) — never break the UX.
   }
   try {
-    window.gtag?.('event', event, payload);
+    // Only page + CTA/objective parameters are sent — never form contents.
+    window.gtag?.('event', GA4_NAME[event] ?? event, payload);
   } catch {
     // ignore
   }

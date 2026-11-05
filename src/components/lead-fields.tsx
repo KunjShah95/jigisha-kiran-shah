@@ -10,6 +10,13 @@ export const INCOME_OPTIONS = [
   { value: 'above-50l', label: 'Above ₹50 Lakhs' },
 ];
 
+// Call-back windows within office hours — shared by /book and the contact form.
+export const TIME_OPTIONS = [
+  { value: 'morning', label: 'Morning (9 AM–12 PM)' },
+  { value: 'afternoon', label: 'Afternoon (12–3 PM)' },
+  { value: 'evening', label: 'Late afternoon (3–6 PM)' },
+];
+
 // Objective-first funnel: same list powers the homepage picker and WhatsApp prefill.
 export const INTEREST_OPTIONS = OBJECTIVES.map((o) => ({ value: o.value, label: o.label }));
 

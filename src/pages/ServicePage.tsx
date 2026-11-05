@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { trackEvent } from '../lib/analytics';
 import { Phone, MessageCircle, ArrowRight, CheckCircle2, Star, ExternalLink, FileText } from 'lucide-react';
 import { pageWhatsAppText, whatsappUrl } from '../lib/contact';
 import { NextSteps } from '../components/lead-fields';
@@ -85,6 +87,12 @@ export default function ServicePage() {
       : [],
   });
   useScrollReveal();
+
+  // One event per service page view, so enquiries can be compared with the
+  // traffic each service page actually receives.
+  useEffect(() => {
+    if (meta) trackEvent('service_page_view', { service: meta.slug });
+  }, [meta]);
 
   if (!meta) {
     return (
