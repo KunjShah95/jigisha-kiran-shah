@@ -54,6 +54,10 @@ Rules:
 - **Phone:** one number. `+91 98240 25435` is the only number on the site, the GBP, and every listing.
 - **Address:** the full string above. If a platform only accepts a locality, use `Shela, Ahmedabad, Gujarat 380058`
   — never a different address.
+- **One office only (confirmed by Jigisha, Nov 2026):** the Shela office is the only office. Clients are served
+  across all of Ahmedabad by phone, WhatsApp and visits. Any listing that shows a **Maninagar** (or other) address
+  as her office must be edited to the Shela address, or closed if it cannot be edited. Maninagar and other
+  localities go in *service areas*, never in the address field.
 - **Website:** always `https://www.jigishakiranshah.in` — with `www`, `https`, no trailing slash.
   On Google Business Profile only, use the UTM version so she can see GBP traffic in analytics:
   `https://www.jigishakiranshah.in/?utm_source=google&utm_medium=organic&utm_campaign=gbp`
@@ -95,8 +99,9 @@ Use the same nine names as the website so the profile and the site reinforce eac
 
 ### Service areas
 
-Shela · South Bopal · Bopal · Satellite · SG Highway · Science City · Vastrapur · Ambawadi · Maninagar ·
-Naranpura · Gota · Chandkheda
+Office: Shela only. Service area: all of Ahmedabad, including
+Shela · South Bopal · Bopal · Satellite · Prahlad Nagar · SG Highway · Science City · Vastrapur · Ambawadi ·
+Maninagar · Naranpura · Gota · Chandkheda
 
 ### Attributes
 
@@ -170,7 +175,9 @@ answer; the website is what people check afterwards.
 - [ ] Hours Mon–Sat 09:00–18:00. Mark Indian public holidays as special hours.
 - [ ] Appointment link → `https://www.jigishakiranshah.in/book`.
 - [ ] All 9 services, each with a short description and a price of "Free consultation" where allowed.
-- [ ] All 12 service areas.
+- [ ] Service areas: Ahmedabad as a whole, plus the area pages' localities (Shela, South Bopal, Bopal, Satellite,
+      Prahlad Nagar, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda).
+      The Shela address stays visible — it is a real office clients visit.
 - [ ] Attributes: online appointments, onsite services, languages English/Hindi/Gujarati.
 - [ ] 10+ photos: exterior with signage, entrance, office interior, desk, certificates/MDRT, a consultation in
       progress (with permission). Replace the cover photo with the clearest exterior shot.
