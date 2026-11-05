@@ -41,7 +41,7 @@ const WhyUs = () => {
   const onMove = useSpotlight();
 
   return (
-    <section className="py-20 lg:py-28 bg-midnight text-white relative overflow-hidden">
+    <section className="py-14 lg:py-24 bg-midnight text-white relative overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0">
         <GridPattern
           size={64}
@@ -51,18 +51,18 @@ const WhyUs = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 lg:mb-14">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-7 lg:mb-14">
           <div className="max-w-xl">
-            <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-display font-medium leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-display font-medium leading-tight">
               Two decades of LIC experience, <span className="text-gold italic">one point of contact</span>
             </h2>
           </div>
-          <p className="text-gray-400 font-light leading-relaxed max-w-sm">
+          <p className="text-gray-400 font-light leading-relaxed max-w-sm text-sm sm:text-base">
             Claim-ready paperwork and personal guidance for every milestone — protecting your future and securing your dreams.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4">
           {PILLARS.map((p) => (
             <GlowCard
               key={p.id}
@@ -71,15 +71,15 @@ const WhyUs = () => {
             >
               <div
                 onMouseMove={onMove}
-                className="spotlight-card spotlight-dark relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 lg:p-8 flex flex-col justify-center transition-colors duration-300 group-hover:border-gold/30 group-hover:bg-white/[0.06] h-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+                className="spotlight-card spotlight-dark relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-5 lg:p-8 flex flex-col justify-center transition-colors duration-300 group-hover:border-gold/30 group-hover:bg-white/[0.06] h-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
               >
-                <div className="relative z-10 flex items-start gap-4">
-                  <div className="shrink-0 w-11 h-11 rounded-xl bg-gold/15 border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
-                    <p.icon size={20} aria-hidden="true" className="text-gold group-hover:text-midnight transition-colors duration-300" />
+                <div className="relative z-10 flex items-start gap-3.5 sm:gap-4">
+                  <div className="shrink-0 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gold/15 border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
+                    <p.icon size={18} aria-hidden="true" className="text-gold group-hover:text-midnight transition-colors duration-300" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-lg lg:text-xl font-bold font-display mb-2 text-white">{p.title}</h3>
-                    <p className="text-sm lg:text-[15px] text-gray-400 leading-relaxed font-light max-w-md">{p.description}</p>
+                    <h3 className="text-base lg:text-xl font-bold font-display mb-1.5 sm:text-lg text-white">{p.title}</h3>
+                    <p className="text-[13px] lg:text-[15px] text-gray-400 leading-relaxed font-light max-w-md sm:text-sm">{p.description}</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +87,7 @@ const WhyUs = () => {
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-8 lg:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
           <MovingBorderButton containerClassName="inline-block" borderColor="#f3d6b4">
             <Link
               to="/contact"

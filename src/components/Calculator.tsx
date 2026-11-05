@@ -48,39 +48,39 @@ const Calculator = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-24 bg-midnight-light relative overflow-hidden">
+    <section className="py-12 lg:py-20 bg-midnight-light relative overflow-hidden">
       {/* Background Pattern */}
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: 'url("/noise.svg")' }} />
       <div aria-hidden="true" className="absolute top-0 right-0 w-[800px] h-[800px] bg-gold/5 rounded-full blur-3xl animate-pulse pointer-events-none -translate-y-1/2 translate-x-1/2" />
       <div aria-hidden="true" className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gold-dark/20 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/4" />
       
       <div className="container relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           
           <div className="reveal-left text-white">
-            <h2 className="text-3xl md:text-4xl font-display font-medium mb-4 lg:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-medium mb-3 lg:mb-6">
               Calculate Your Family's <span className="text-gold italic">Security Gap</span>
             </h2>
-            <p className="text-base lg:text-lg text-gray-300 mb-8 lg:mb-10 leading-relaxed font-light">
+            <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-5 lg:mb-10 leading-relaxed font-light">
               A real cover number accounts for your dependants, loans, existing policies, and future goals like education or retirement — not just a multiple of income. Tell us your goal and we'll work it out with you.
             </p>
             
             <Link
               to="/protection-check"
               data-cta="assessment-protection-check"
-              className="inline-flex items-center gap-2 mb-8 lg:mb-10 px-5 py-3 rounded-xl border border-gold/40 text-gold font-bold text-sm hover:bg-gold hover:text-midnight transition-colors min-h-11"
+              className="inline-flex items-center gap-2 mb-5 lg:mb-10 px-5 py-3 rounded-xl border border-gold/40 text-gold font-bold text-sm hover:bg-gold hover:text-midnight transition-colors min-h-11"
             >
               Want a number first? Run the free Protection Check
               <ArrowRight size={16} aria-hidden="true" />
             </Link>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-2.5">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center shrink-0 border border-gold/20 group-hover:bg-gold group-hover:text-midnight transition-all duration-300">
-                    <Check size={14} className="text-gold group-hover:text-midnight" aria-hidden="true" />
+                <div key={index} className="flex items-center gap-2.5 group">
+                  <div className="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 border border-gold/20 group-hover:bg-gold group-hover:text-midnight transition-all duration-300">
+                    <Check size={13} className="text-gold group-hover:text-midnight" aria-hidden="true" />
                   </div>
-                  <span className="text-gray-200 font-medium">{benefit}</span>
+                  <span className="text-gray-200 font-medium text-sm">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -88,7 +88,7 @@ const Calculator = () => {
             <Link
               to="/calculators"
               data-cta="assessment-calculators"
-              className="mt-8 lg:mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-gray-300 hover:text-gold transition-colors min-h-11"
+              className="mt-5 lg:mt-10 inline-flex items-center gap-1.5 text-sm font-semibold text-gray-300 hover:text-gold transition-colors min-h-11"
             >
               Planning retirement or a child&rsquo;s education? Size the goal with the free calculators
               <ArrowRight size={14} aria-hidden="true" />
@@ -96,14 +96,14 @@ const Calculator = () => {
           </div>
           
           <div className="reveal-right">
-            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden ring-1 ring-white/20">
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-6 lg:p-8 shadow-2xl relative overflow-hidden ring-1 ring-white/20">
               <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-gold to-gold-light" />
               
-              <h3 className="text-2xl font-display font-bold text-midnight mb-2">Request Assessment</h3>
-              <p className="text-gray-500 text-sm mb-8">Free, no obligation. Start with your goal — details can wait for the call.</p>
+              <h3 className="text-xl sm:text-2xl font-display font-bold text-midnight mb-1.5">Request Assessment</h3>
+              <p className="text-gray-500 text-sm mb-5">Free, no obligation. Start with your goal — details can wait for the call.</p>
               
-              <form onSubmit={handleSubmit} className="space-y-5 relative">
-                <div className="grid md:grid-cols-2 gap-5">
+              <form onSubmit={handleSubmit} className="space-y-4 relative">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <Field id="calc-name" label="Full Name" required>
                     <input
                       type="text"
@@ -146,7 +146,7 @@ const Calculator = () => {
                   />
                 </Field>
                 
-                <div className="grid md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
                   <Field id="calc-age" label="Age">
                     <input
                       type="number"

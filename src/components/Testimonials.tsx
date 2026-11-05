@@ -40,9 +40,9 @@ const Testimonials = () => {
   const cards = testimonials.map((t) => (
     <article
       key={t.id}
-      className="flex h-full w-[300px] sm:w-[360px] flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors duration-300 hover:border-gold/30 hover:bg-white/[0.06]"
+      className="flex h-full w-[300px] sm:w-[360px] flex-col rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm transition-colors duration-300 hover:border-gold/30 hover:bg-white/[0.06]"
     >
-      <div className="mb-4 flex items-center justify-between gap-3">
+      <div className="mb-3 flex items-center justify-between gap-3">
         <div className="flex gap-1" aria-label={`Rated ${t.rating} out of 5`}>
           {Array.from({ length: t.rating }).map((_, i) => (
             <Star key={i} className="h-4 w-4 fill-gold text-gold" aria-hidden="true" />
@@ -51,15 +51,15 @@ const Testimonials = () => {
         <Quote className="h-7 w-7 shrink-0 text-gold/20" aria-hidden="true" />
       </div>
 
-      <span className="mb-4 inline-block w-fit rounded-lg border border-white/5 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gold">
+      <span className="mb-3 inline-block w-fit rounded-lg border border-white/5 bg-white/5 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-gold">
         {JOURNEY_LABEL[t.journeyType]}
       </span>
 
-      <p className="mb-6 line-clamp-5 min-h-28 text-sm font-light italic leading-relaxed text-gray-300">
+      <p className="mb-4 line-clamp-4 min-h-20 text-sm font-light italic leading-relaxed text-gray-300">
         &ldquo;{t.story}&rdquo;
       </p>
 
-      <div className="mt-auto flex items-center gap-3.5 border-t border-white/10 pt-5">
+      <div className="mt-auto flex items-center gap-3.5 border-t border-white/10 pt-4">
         <div
           aria-hidden="true"
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-gold to-gold-dark text-sm font-bold text-midnight shadow-lg"
@@ -94,7 +94,7 @@ const Testimonials = () => {
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="relative overflow-hidden bg-midnight pt-28 pb-20 text-white lg:pt-32 lg:pb-24"
+      className="relative overflow-hidden bg-midnight pt-16 pb-14 text-white lg:pt-28 lg:pb-24"
     >
       <div aria-hidden="true" className="absolute inset-0">
         <GridPattern
@@ -105,19 +105,19 @@ const Testimonials = () => {
         <div className="absolute bottom-0 left-0 h-[500px] w-[500px] -translate-x-1/4 translate-y-1/4 rounded-full bg-gold/5 blur-3xl" />
       </div>
 
-      <div className="container relative z-10 mb-10 lg:mb-12">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div className="container relative z-10 mb-7 lg:mb-12">
+        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
               Client stories
             </p>
             <h2
               id="testimonials-heading"
-              className="mb-4 font-display text-3xl font-medium leading-tight text-white md:text-4xl"
+              className="mb-3 font-display text-2xl font-medium leading-tight text-white sm:text-3xl md:text-4xl"
             >
               Relationships built on <span className="italic text-gold">trust</span>
             </h2>
-            <p className="max-w-xl text-base font-light leading-relaxed text-gray-300 lg:text-lg">
+            <p className="max-w-xl text-sm font-light leading-relaxed text-gray-300 sm:text-base lg:text-lg">
               For over two decades we have been the quiet custodians of thousands of families,
               keeping the promises they made to each other.
             </p>

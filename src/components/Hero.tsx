@@ -9,7 +9,7 @@ const PROOF = [
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#f6f0e7] pt-28 pb-14 sm:pt-32 lg:pt-36 lg:pb-20">
+    <section className="relative isolate overflow-hidden bg-[#f6f0e7] pt-24 pb-12 lg:pt-28 lg:pb-16">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -right-24 -top-40 h-[34rem] w-[34rem] rounded-full bg-[#e8d2b5]/55 blur-[100px]" />
         <div className="absolute -bottom-64 left-[24%] h-[30rem] w-[30rem] rounded-full bg-white/80 blur-[100px]" />
@@ -17,7 +17,7 @@ export default function Hero() {
       </div>
 
       <div className="container relative">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(390px,0.92fr)] lg:gap-14 xl:gap-20">
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.08fr)_minmax(390px,0.92fr)] lg:gap-14 xl:gap-20">
           <div className="max-w-2xl">
             <h1 className="max-w-[13ch] font-display text-[2.8rem] font-medium leading-[1.04] tracking-[-0.035em] text-midnight sm:text-6xl lg:text-[4.25rem] xl:text-[4.65rem]">
               Is your family&rsquo;s life cover <span className="text-gold-dark italic">enough?</span>
@@ -46,7 +46,7 @@ export default function Hero() {
             </div>
             <p className="mt-2 text-xs text-gray-600">Your first consultation is free. Talk by phone, WhatsApp or in person.</p>
 
-            <dl className="mt-9 grid max-w-xl grid-cols-3 border-t border-[#d9cdbc] pt-5">
+            <dl className="mt-7 grid max-w-xl grid-cols-3 border-t border-[#d9cdbc] pt-4">
               {PROOF.map(({ value, label }, index) => (
                 <div key={label} className={`pr-2 ${index > 0 ? 'border-l border-[#d9cdbc] pl-3 sm:pl-6' : ''}`}>
                   <dt className="font-display text-2xl font-semibold leading-none tracking-tight text-midnight sm:text-[1.75rem]">{value}</dt>
@@ -77,7 +77,7 @@ export default function Hero() {
                 height={762}
                 loading="eager"
                 decoding="async"
-                className="aspect-square w-full object-cover object-center sm:aspect-[4/5]"
+                className="aspect-[5/4] w-full object-cover object-center sm:aspect-[4/5]"
               />
               <figcaption className="flex items-center gap-2.5 border-t border-[#eee7dd] px-4 py-3 sm:px-5">
                 <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#f5ebdc] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-gold-dark">

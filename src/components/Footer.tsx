@@ -1,9 +1,43 @@
-import { Phone, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import { Phone, MapPin, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { whatsappUrl } from '../lib/contact';
 import { AREAS } from '../data/areas';
 
+/**
+ * Footer link column. Collapsible below sm so the phone footer is not 2,000px
+ * of link lists; always expanded from sm up. Links stay in the DOM either way.
+ */
+function FooterGroup({ title, children }: { title: string; children: React.ReactNode }) {
+  const [open, setOpen] = useState(false);
+  const id = `footer-${title.toLowerCase().replace(/\s+/g, '-')}`;
+  return (
+    <div className="border-b border-white/10 sm:border-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls={id}
+        className="flex w-full items-center justify-between py-3.5 text-left sm:hidden"
+      >
+        <span className="font-display font-bold text-base text-gold">{title}</span>
+        <ChevronDown
+          aria-hidden="true"
+          className={`h-5 w-5 shrink-0 text-gold transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+      <h4 className="mb-5 hidden font-display text-lg font-bold text-gold sm:block">{title}</h4>
+      <div id={id} className={`${open ? 'block' : 'hidden'} pb-4 sm:block sm:pb-0`}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 const Footer = () => {
+    /** Distinguishes footer traffic from the header CTA in analytics. */
+    const footerCta = (to: string) => `footer-${to.replace(/^\/+/, '').replace(/\//g, '-') || 'home'}`
+
     const quickLinks = [
       { label: 'Home', to: '/' },
       { label: 'About', to: '/about' },
@@ -48,15 +82,15 @@ const Footer = () => {
     ]
 
     return (
-      <footer className="bg-midnight text-white pt-16 pb-8 border-t border-white/5 relative overflow-hidden">
+      <footer className="bg-midnight text-white pt-10 pb-8 lg:pt-16 border-t border-white/5 relative overflow-hidden">
         {/* Background effects */}
         <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
         <div aria-hidden="true" className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gold-dark/20 rounded-full blur-3xl pointer-events-none" />
 
         <div className="container relative z-10">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 lg:mb-12">
             <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-5 lg:mb-8">
                 <Link to="/" className="flex items-center gap-3 min-w-0" aria-label="Jigisha Kiran Shah — home">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center font-bold font-display text-base sm:text-xl text-midnight shadow-lg shrink-0">JK</div>
                   <div className="font-display font-bold text-xl sm:text-2xl leading-tight">
@@ -64,12 +98,12 @@ const Footer = () => {
                   </div>
                 </Link>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-8 font-light">
+              <p className="text-gray-300 text-sm leading-relaxed mb-5 lg:mb-8 font-light">
                 Trusted LIC Advisor in Ahmedabad with 22+ years of legacy. 
                 Safeguarding your future and securing your dreams with personalized insurance solutions.
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-5 lg:mb-8">
                 <div className="flex items-start gap-3 text-sm text-gray-300 group">
                     <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5 group-hover:text-white transition-colors" />
                     <span className="group-hover:text-white transition-colors">Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058</span>
@@ -105,44 +139,41 @@ const Footer = () => {
               </div>
             </div>
 
-            <div>
-              <h4 className="font-display font-bold text-lg mb-6 text-gold">Quick Links</h4>
-              <nav aria-label="Quick links" className="flex flex-col gap-3">
+            <FooterGroup title="Quick Links">
+              <nav aria-label="Quick links" className="flex flex-col gap-2.5">
                 {quickLinks.map((link, index) => (
-                  <Link key={index} to={link.to} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm flex items-center gap-2">
+                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm flex items-center gap-2">
                     <span aria-hidden="true" className="w-1 h-1 rounded-full bg-gold" />
                     {link.label}
                   </Link>
                 ))}
               </nav>
-            </div>
+            </FooterGroup>
 
-            <div>
-              <h4 className="font-display font-bold text-lg mb-6 text-gold">Our Expertise</h4>
-              <nav aria-label="Services" className="flex flex-col gap-3">
+            <FooterGroup title="Our Expertise">
+              <nav aria-label="Services" className="flex flex-col gap-2.5">
                 {services.map((link, index) => (
-                  <Link key={index} to={link.to} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                     {link.label}
                   </Link>
                 ))}
               </nav>
 
-              <h4 className="font-display font-bold text-sm mb-4 mt-8 text-white/70 uppercase tracking-wider">Policy servicing</h4>
-              <nav aria-label="Policy servicing" className="flex flex-col gap-3">
+              <h4 className="font-display font-bold text-sm mb-3 mt-6 text-white/70 uppercase tracking-wider">Policy servicing</h4>
+              <nav aria-label="Policy servicing" className="flex flex-col gap-2.5">
                 {servicing.map((link, index) => (
-                  <Link key={index} to={link.to} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                     {link.label}
                   </Link>
                 ))}
               </nav>
-            </div>
+            </FooterGroup>
 
-            <div>
-              <h4 className="font-display font-bold text-lg mb-6 text-gold">Resources</h4>
-              <nav aria-label="Resources" className="flex flex-col gap-3">
+            <FooterGroup title="Resources">
+              <nav aria-label="Resources" className="flex flex-col gap-2.5">
                 {resources.map((link, index) => (
                   link.to ? (
-                    <Link key={index} to={link.to} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                    <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                       {link.label}
                     </Link>
                   ) : (
@@ -153,18 +184,18 @@ const Footer = () => {
                 ))}
               </nav>
 
-              <div className="mt-8 p-4 rounded-xl bg-white/5 border border-white/5">
+              <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/5">
                 <p className="text-xs text-gray-300 mb-2 font-bold uppercase tracking-wider">Certifications</p>
                 <div className="flex flex-wrap gap-2">
                     <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">2 Times MDRT</div>
                     <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">LIC Club</div>
                 </div>
               </div>
-            </div>
+            </FooterGroup>
           </div>
 
-          <div className="border-t border-white/10 pt-8 flex flex-col gap-4">
-            <nav aria-label="Areas served" className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          <div className="border-t border-white/10 pt-6 flex flex-col gap-4">
+            <nav aria-label="Areas served" className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm">
               <span className="text-gray-400">Areas served:</span>
               {AREAS.map((area) => (
                 <Link

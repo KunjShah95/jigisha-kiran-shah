@@ -17,19 +17,19 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
   }, [items, query]);
 
   return (
-    <section aria-labelledby="faq-heading" className="py-16 lg:py-24 bg-white relative overflow-hidden">
+    <section aria-labelledby="faq-heading" className="py-12 lg:py-20 bg-white relative overflow-hidden">
       <div className="container relative z-10 max-w-4xl">
-        <div className="text-center mb-8 lg:mb-12">
-          <h2 id="faq-heading" className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
+        <div className="text-center mb-6 lg:mb-9">
+          <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-midnight mb-2 sm:mb-3">
             Frequently Asked <span className="text-gold italic">Questions</span>
           </h2>
-          <p className="text-gray-600 font-light">
+          <p className="text-sm sm:text-base text-gray-600 font-light">
             Direct answers about LIC plans, retirement, claims & consultations in Ahmedabad.
           </p>
         </div>
 
         {searchable && (
-          <div className="mb-6">
+          <div className="mb-4">
             <label htmlFor="faq-search" className="sr-only">Search frequently asked questions</label>
             <div className="relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" aria-hidden="true" />
@@ -50,7 +50,7 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
           </div>
         )}
 
-        <div className="space-y-3">
+        <div className="space-y-2">
           {filtered.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-gray-600 font-light mb-4">No matching questions. Try a different word, or ask Jigisha directly.</p>
@@ -77,7 +77,7 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
-                    className="w-full flex items-center justify-between gap-4 text-left px-4 sm:px-5 lg:px-6 py-4 lg:py-5 min-h-11"
+                    className="w-full flex items-center justify-between gap-4 text-left px-4 sm:px-5 lg:px-6 py-3 lg:py-4 min-h-11"
                   >
                     <h3 className="font-bold text-midnight text-[15px] lg:text-base wrap-anywhere">{f.q}</h3>
                     <span
@@ -89,7 +89,7 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
                       <Plus className="w-4 h-4" />
                     </span>
                   </button>
-                  <div id={`faq-panel-${i}`} hidden={!isOpen} className="px-5 lg:px-6 pb-5">
+                  <div id={`faq-panel-${i}`} hidden={!isOpen} className="px-5 lg:px-6 pb-4">
                     <p className="text-sm lg:text-base text-gray-600 leading-relaxed font-light">{f.a}</p>
                   </div>
                 </div>
