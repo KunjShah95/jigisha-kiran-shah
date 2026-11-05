@@ -48,7 +48,7 @@ joinasagent.in.
 | **AEO / AI discoverability** | `llms.txt` + `llms-full.txt`, AI crawlers allowed, rich schema | None of the six have llms files or comparable AI-crawler setup |
 | **Local SEO depth** | 12 dedicated area pages (Shela, South Bopal, Bopal, Satellite, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda) with maps + local FAQs | At most city/branch mentions; no area pages |
 | **Content quality (worked examples)** | 4 story guides with real numbers (term/nominee, pension math, child education sizing, retirement at 50) + 10 plan/persona guides | Generic service lists; ajay has "Knowledge"; joinasagent has a blog; shashwat has none |
-| **Interactive tools** | Free Protection Check (cover gap, EN/GU) + homepage Quick Cover Check widget | ajay has a "Smart LIC Plan Finder"; shashwat has SIP/education/retirement/marriage/vacation/dream-house calculators |
+| **Interactive tools** | Free Protection Check (cover gap, EN/GU) — the homepage leads with the advisor's photograph and credentials instead of a calculator | ajay has a "Smart LIC Plan Finder"; shashwat has SIP/education/retirement/marriage/vacation/dream-house calculators |
 | **Booking friction** | Cal.com embed on `/book` (20-min slots, 2h notice, buffer) + request form | WhatsApp/phone/form only; no live slots |
 | **Measurement** | Cal.com events, full funnel event map, lead tracking template | None visible; ajay has a chatbot but no measurement |
 | **Trust/compliance wording** | IRDAI disclaimer, "subject matter of solicitation", no guaranteed-return claims | master/ambika use "9,000 happy claims", "transparent & honest advice"; ajay ships literal "0" stat placeholders |

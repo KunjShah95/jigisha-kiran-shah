@@ -1,6 +1,5 @@
 import { ArrowRight, BadgeCheck, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import HeroCoverageWidget from './HeroCoverageWidget'
 
 const PROOF = [
   { value: '22+', label: 'years advising families' },
@@ -24,7 +23,7 @@ export default function Hero() {
               Is your family&rsquo;s life cover <span className="text-gold-dark italic">enough?</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#59544d] sm:text-lg">
-              Start with a simple estimate. Then, if you want, review the full picture one-to-one with Jigisha Kiran Shah, an LIC agent in Ahmedabad with 22+ years of experience.
+              Start with a conversation, not a form. Review the full picture one-to-one with Jigisha Kiran Shah, an LIC agent in Ahmedabad with 22+ years of experience.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -65,21 +64,32 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="relative mx-auto w-full max-w-[32rem] lg:ml-auto">
+          <figure className="relative mx-auto w-full max-w-[32rem] lg:ml-auto">
             <div aria-hidden="true" className="absolute -inset-3 rounded-[1.75rem] border border-[#d7c7b2] sm:-inset-4" />
-            <div className="relative rounded-[1.5rem] bg-white p-4 shadow-[0_24px_70px_rgba(63,47,29,0.13)] sm:p-6">
-              <div className="mb-4 flex items-center justify-between gap-3 border-b border-[#eee7dd] pb-4">
-                <div>
-                  <h2 className="font-display text-2xl font-semibold leading-tight text-midnight sm:text-[1.7rem]">Quick Cover Check</h2>
-                  <p className="mt-1 text-xs leading-relaxed text-gray-600">A rough starting point. No form to fill in.</p>
-                </div>
-                <span className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f5ebdc] text-gold-dark sm:flex" aria-hidden="true">
-                  <BadgeCheck className="h-5 w-5" />
+            <div className="relative overflow-hidden rounded-[1.5rem] bg-white shadow-[0_24px_70px_rgba(63,47,29,0.13)]">
+              {/* The MDRT felicitation frame, cropped to Jigisha, the certificate
+                  and the LIC official, so the hero shows the person the visitor
+                  would actually meet. Crop lives in public/hero-mrdt.jpg. */}
+              <img
+                src="/hero-mrdt.jpg"
+                alt="Jigisha Kiran Shah, holding a bouquet, beside the MDRT 2023 certificate at the LIC felicitation in Ahmedabad"
+                width={610}
+                height={762}
+                loading="eager"
+                decoding="async"
+                className="aspect-square w-full object-cover object-center sm:aspect-[4/5]"
+              />
+              <figcaption className="flex items-center gap-2.5 border-t border-[#eee7dd] px-4 py-3 sm:px-5">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#f5ebdc] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-gold-dark">
+                  <BadgeCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                  2× MDRT
                 </span>
-              </div>
-              <HeroCoverageWidget />
+                <span className="text-[11px] leading-snug text-gray-600">
+                  Felicitated by LIC, Ahmedabad · 2023 &amp; 2024
+                </span>
+              </figcaption>
             </div>
-          </div>
+          </figure>
         </div>
       </div>
     </section>
