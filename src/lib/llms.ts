@@ -151,6 +151,7 @@ export function buildLlmsFullTxt(today: string): string {
     ['/calculators', 'retirement and child-education corpus calculators'],
     ['/resources', 'official links, LIC forms, vCard'],
     ['/gallery', 'recognition, events and certificates'],
+    ['/privacy', 'privacy policy: forms open WhatsApp, nothing is stored on the website'],
   ];
 
   const siteMapBlock = [

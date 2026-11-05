@@ -22,6 +22,8 @@ export const SAME_AS = [
 
 /** The LIC product families offered — reused in schema, llms.txt and the footer. */
 export const OFFER_CATALOG = [
+  { name: 'Life insurance advice', slug: 'life-insurance', summary: 'An overview of term, savings, child, pension and business plans, with a free consultation sized to your family\u2019s responsibilities.' },
+  { name: 'Family financial protection planning', slug: 'family-financial-protection', summary: 'Income replacement, loans, children\u2019s education, health costs and nominees reviewed together, with a written summary of the gaps.' },
   { name: 'Term life insurance', slug: 'term-insurance', summary: 'LIC Tech Term and Jeevan Amar — pure protection at the lowest premium per rupee of cover.' },
   { name: 'Retirement and pension plans', slug: 'retirement', summary: 'Jeevan Akshay VII immediate annuity and Jeevan Umang lifelong income.' },
   { name: 'Child education plans', slug: 'child-education', summary: 'Jeevan Tarun and New Children\u2019s Money Back with premium waiver on the parent.' },
@@ -105,7 +107,7 @@ export function faqJsonLd(items: FAQItem[] = FAQS) {
 export function localBusinessJsonLd() {
   return {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'FinancialService', 'InsuranceAgency'],
+    '@type': ['LocalBusiness', 'ProfessionalService', 'FinancialService', 'InsuranceAgency'],
     '@id': `${SITE_URL}/#business`,
     name: 'Jigisha Kiran Shah - LIC Advisor',
     alternateName: ['Jigisha Kiran Shah LIC Agent', 'Jigisha Kiran Shah Life Insurance Agent Ahmedabad'],
@@ -135,12 +137,10 @@ export function localBusinessJsonLd() {
     ],
     priceRange: 'Free Consultation',
     currenciesAccepted: 'INR',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '73',
-      bestRating: '5',
-    },
+    // No aggregateRating here on purpose. A hand-typed count drifts from the
+    // live Google profile (it said 73 while the page said 70+), and Google
+    // ignores self-serving review markup on a business's own LocalBusiness
+    // entity anyway. The rating stays visible on-page and links to Google.
     paymentAccepted: 'Cash, UPI, Bank Transfer',
     founder: { '@type': 'Person', name: 'Jigisha Kiran Shah', jobTitle: 'LIC Advisor' },
     employee: { '@type': 'Person', name: 'Jigisha Kiran Shah' },
@@ -174,6 +174,8 @@ export function localBusinessJsonLd() {
       'Naranpura',
       'Gota',
       'Chandkheda',
+      'Prahlad Nagar',
+      { '@type': 'City', name: 'Gandhinagar' },
     ],
     knowsAbout: [
       'Life Insurance',
@@ -187,6 +189,8 @@ export function localBusinessJsonLd() {
       'Health Insurance',
       'Money Back Plans',
       'Corporate Insurance',
+      'Family Financial Protection',
+      'Business Partnership Protection',
     ],
   };
 }

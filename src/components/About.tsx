@@ -1,7 +1,7 @@
 import { Award, Star, Users, ArrowRight, CheckCircle, ChevronLeft, ChevronRight, ZoomIn, ExternalLink, MapPin, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import aboutImage from '../assets/images/about.jpeg';
+import aboutImage from '../assets/images/about.webp';
 
 // ─── Gallery: one real photo + one branded office card ──────────────────────
 // NOTE: only one photo asset exists in the repo, so the second slide is an

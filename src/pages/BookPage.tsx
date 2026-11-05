@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Calendar, Phone, Video, MapPin, Check, ShieldCheck } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
-import { Field, SelectField, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage } from '../components/lead-fields';
+import { Field, SelectField, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, ConsentNote, TIME_OPTIONS } from '../components/lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
 
@@ -20,11 +20,6 @@ const DAY_OPTIONS = [
   { value: 'weekday', label: 'Weekday (Mon–Fri)' },
   { value: 'saturday', label: 'Saturday' },
   { value: 'any', label: 'Any day' },
-];
-const TIME_OPTIONS = [
-  { value: 'morning', label: 'Morning (9 AM–12 PM)' },
-  { value: 'afternoon', label: 'Afternoon (12–3 PM)' },
-  { value: 'evening', label: 'Late afternoon (3–6 PM)' },
 ];
 const MODES = [
   { value: 'phone', label: 'Phone call', icon: Phone },
@@ -214,9 +209,9 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
         <Calendar className="w-5 h-5" aria-hidden="true" /> Request this time
       </button>
       <p className="text-xs text-gray-500 leading-relaxed">
-        Your request is saved and opens in WhatsApp. Jigisha confirms the exact slot with you. Please don’t share
-        policy numbers, bank or medical details here.
+        Your request opens in WhatsApp — press send there, and Jigisha confirms the exact slot with you.
       </p>
+      <ConsentNote />
     </form>
   );
 }

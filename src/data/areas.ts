@@ -242,6 +242,50 @@ export const AREAS: Area[] = [
       },
     ],
   },
+  {
+    slug: 'prahlad-nagar',
+    name: 'Prahlad Nagar',
+    seoTitle: 'Life Insurance Advisor in Prahlad Nagar, Ahmedabad',
+    seoDescription:
+      'Life insurance advisor for Prahlad Nagar families and business owners: term cover, partnership protection and policy reviews. Free phone consultation: +91 98240 25435.',
+    mapQuery: 'Prahlad Nagar, Ahmedabad, Gujarat',
+    intro:
+      'Prahlad Nagar mixes family apartments with the offices along Corporate Road, so consultations here often cover two things at once: protection for the household and protection for the business. Jigisha Kiran Shah advises Prahlad Nagar clients on term cover, partnership and key-person insurance, and reviews of existing LIC policies, by phone, on WhatsApp or in person.',
+    landmarks: ['Corporate Road', 'Prahlad Nagar Garden', '100 Feet Road', 'Anand Nagar Road'],
+    commute: 'Prahlad Nagar is roughly 25–35 minutes from the Shela office by road. Meetings at your office or home can be arranged by appointment.',
+    faqs: [
+      {
+        q: 'Is there a life insurance advisor who serves Prahlad Nagar?',
+        a: 'Yes. Jigisha Kiran Shah, an LIC advisor based in Shela since 2004, serves Prahlad Nagar with term cover, child and retirement planning, business protection and policy reviews. Call or WhatsApp +91 98240 25435.',
+      },
+      {
+        q: 'Can you meet at my office on Corporate Road?',
+        a: 'Yes. Office meetings in Prahlad Nagar can be booked Monday to Saturday, 9 AM to 6 PM. Many business owners start with a short phone call and meet once the numbers are ready.',
+      },
+    ],
+  },
+  {
+    slug: 'gandhinagar',
+    name: 'Gandhinagar',
+    seoTitle: 'LIC Advisor for Gandhinagar | Life Insurance & Policy Review',
+    seoDescription:
+      'LIC advisor serving Gandhinagar: term cover, pension planning for government employees, child plans and policy reviews. Phone and WhatsApp consultations: +91 98240 25435.',
+    mapQuery: 'Gandhinagar, Gujarat',
+    intro:
+      'Gandhinagar households include many government and public-sector employees, and professionals working at GIFT City and Infocity. Their questions tend to be about topping up cover beyond employer benefits, turning retirement money into pension income, and checking policies bought years ago. Jigisha Kiran Shah handles most Gandhinagar consultations by phone and WhatsApp, with in-person meetings for documentation.',
+    landmarks: ['GIFT City', 'Infocity', 'Kudasan', 'Sector offices'],
+    commute: 'Gandhinagar is roughly 45–60 minutes from the Shela office. Consultations usually start on phone or WhatsApp, with a scheduled visit when paperwork is needed.',
+    faqs: [
+      {
+        q: 'Do you serve LIC policyholders in Gandhinagar?',
+        a: 'Yes. Policy reviews, nominee updates, revival and claim help are available to Gandhinagar policyholders, including policies sold by another agent. Most of the work is done over phone and WhatsApp. Call +91 98240 25435.',
+      },
+      {
+        q: 'I am a government employee. Do I need life insurance beyond my service benefits?',
+        a: 'Often yes. Employer and group benefits are usually a fixed amount and may stop when you leave service. Compare them with 10–15 times your income plus loans; the shortfall is what personal term cover should fill. A free review works out the exact gap.',
+      },
+    ],
+  },
 ];
 
 export function getArea(slug: string | undefined): Area | undefined {

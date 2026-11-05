@@ -1,4 +1,5 @@
 import { ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { OBJECTIVES } from '../lib/contact';
 
@@ -7,6 +8,13 @@ export const INCOME_OPTIONS = [
   { value: '10l-25l', label: '₹10 - 25 Lakhs' },
   { value: '25l-50l', label: '₹25 - 50 Lakhs' },
   { value: 'above-50l', label: 'Above ₹50 Lakhs' },
+];
+
+// Call-back windows within office hours — shared by /book and the contact form.
+export const TIME_OPTIONS = [
+  { value: 'morning', label: 'Morning (9 AM–12 PM)' },
+  { value: 'afternoon', label: 'Afternoon (12–3 PM)' },
+  { value: 'evening', label: 'Late afternoon (3–6 PM)' },
 ];
 
 // Objective-first funnel: same list powers the homepage picker and WhatsApp prefill.
@@ -94,7 +102,7 @@ export function leadMessage(heading: string, rows: Array<[string, string]>) {
 /** Sets expectations before submit — what happens after the visitor reaches out. */
 export function NextSteps({ dark = false }: { dark?: boolean }) {
   const steps = [
-    'Your name, phone and goal are saved, then WhatsApp opens — press send there, or wait for a call back.',
+    'WhatsApp opens with your name, phone and goal filled in — press send there to reach Jigisha.',
     'You get a reply on WhatsApp or a call back, Mon–Sat, 9 AM–6 PM.',
     'First consultation is free — by phone, on WhatsApp, or in person at the Shela office.',
   ];
@@ -108,10 +116,23 @@ export function NextSteps({ dark = false }: { dark?: boolean }) {
           <li key={s}>{s}</li>
         ))}
       </ol>
-      <p className="mt-3 text-[11px] leading-relaxed text-gray-500">
-        Please don’t share policy numbers, bank or medical details here — anything needed is collected
-        during the consultation.
-      </p>
+      <ConsentNote className="mt-3" />
     </div>
+  );
+}
+
+/**
+ * Consent notice shown under every enquiry form. Must stay true to what the
+ * form does: nothing is stored by the website; WhatsApp carries the message.
+ */
+export function ConsentNote({ className = '', dark = false }: { className?: string; dark?: boolean }) {
+  return (
+    <p className={`text-[11px] leading-relaxed ${dark ? 'text-white/45' : 'text-gray-500'} ${className}`}>
+      By submitting, you agree to be contacted about your enquiry by WhatsApp or phone. Nothing is stored on
+      this website. Please don’t share policy numbers, bank or medical details here.{' '}
+      <Link to="/privacy" className="underline underline-offset-2 hover:text-gold-dark">
+        Privacy policy
+      </Link>
+    </p>
   );
 }

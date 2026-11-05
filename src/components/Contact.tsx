@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { Phone, MessageCircle, Mail, MapPin, Send, ChevronDown, Download } from 'lucide-react';
-import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps } from './lead-fields';
+import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, NextSteps, TIME_OPTIONS } from './lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
 import { useSpotlight } from '../hooks/useSpotlight';
@@ -16,6 +16,7 @@ const Contact = () => {
     age: '',
     income: '',
     subject: '',
+    time: '',
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,6 +48,7 @@ const Contact = () => {
       ['Name', formData.name],
       ['Phone', formData.phone],
       ['Needs help with', optionLabel(SUBJECT_OPTIONS, formData.subject)],
+      ['Best time to call', optionLabel(TIME_OPTIONS, formData.time)],
       ['Email', formData.email],
       ['Age', formData.age],
       ['Income', optionLabel(INCOME_OPTIONS, formData.income)],
@@ -186,6 +188,7 @@ const Contact = () => {
                   </Field>
                 </div>
 
+                <div className="grid md:grid-cols-2 gap-5">
                 <Field id="contact-subject" label="What do you need help with?" required>
                   <SelectField
                     id="contact-subject"
@@ -197,6 +200,17 @@ const Contact = () => {
                     required
                   />
                 </Field>
+                <Field id="contact-time" label="Best time to call">
+                  <SelectField
+                    id="contact-time"
+                    name="time"
+                    value={formData.time}
+                    onChange={handleChange}
+                    placeholder="Any time, Mon–Sat"
+                    options={TIME_OPTIONS}
+                  />
+                </Field>
+                </div>
 
                 <details className="group rounded-xl border border-border bg-gray-50/60 open:bg-white">
                   <summary className="flex items-center justify-between gap-2 cursor-pointer list-none px-4 py-3 text-sm font-semibold text-midnight min-h-11">
@@ -270,7 +284,7 @@ const Contact = () => {
                 </button>
                 {sent && (
                   <p role="status" className="text-sm text-gold-dark font-semibold">
-                    Got it — your details are saved and Jigisha will call back. For a faster reply, press send in WhatsApp, or call +91 98240 25435.
+                    WhatsApp is open with your details — press send there to reach Jigisha. Prefer to talk? Call +91 98240 25435.
                   </p>
                 )}
                 <div className="pt-2 border-t border-border">
