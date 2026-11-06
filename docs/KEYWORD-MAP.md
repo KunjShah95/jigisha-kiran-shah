@@ -238,3 +238,37 @@ Keyword Planner. The homepage owns "advisor"; the hub owns "plans/services", so 
 | term insurance advisor Ahmedabad | Commercial | `/services/term-insurance` | LIVE | 2 |
 | NRI life insurance India | Commercial | `/services/nri-lic-services` | LIVE | 3 |
 | child insurance plans | Commercial | `/services/child-education` | LIVE | 3 |
+
+---
+
+## 10. Keyword research — 6 November 2026
+
+Sources: Search Console queries to 3 Nov 2026 (top 10 shared on 6 Nov) and a review of who appears for
+the money queries. No search volumes are invented; validate in Keyword Planner.
+
+**What the competitor review shows**
+
+- For "LIC agent Ahmedabad" / "near me", Google answers with the **map pack**. The agents shown there carry far
+  more reviews: P P Acharya's Insurance Hut, Bopal (139), Ashok Prajapati (87), Amity Wealth (58), Harmony (49).
+  Her Google listing showed 29. **Reviews are the single biggest lever for the local money keywords** — more than
+  any page change.
+- Organic results are mostly directories (Justdial, Sulekha, AskLaila, IDBF) and listicles (Policylane "Top 10+
+  LIC Advisors in Ahmedabad"). Being *listed in them* is the realistic route onto page one for "best LIC agent
+  Ahmedabad" — see `CITATIONS.md` audit rows 7–9.
+- Competitor agent sites (pratiklic.com, dipakmakadialic.com, sonalsshah.com) are thin: service lists, no plan
+  comparisons, no area pages. This site already out-covers them on content; it loses on reviews and citations.
+- "lic office bopal" has a real answer: LIC's Bopal satellite office in Amrapali Complex, SP Ring Road (Google and
+  Justdial both list it). `/areas/bopal` now says so and offers to save the trip.
+
+**Priority list (do in order)**
+
+| # | Keyword | Page | Action |
+|---|---|---|---|
+| 1 | LIC agent near me / LIC agent Ahmedabad / life insurance advisor near me | GBP + `/` | Reviews + GBP website link fix (not a page change) |
+| 2 | LIC agent Shela / Bopal / South Bopal | `/areas/*` + GBP | GBP service areas; ask Shela/Bopal clients for reviews that mention the area naturally |
+| 3 | jeevan utsav vs jeevan umang (which is better) | `/guides/jeevan-utsav-vs-jeevan-umang` | Title fixed 6 Nov; re-check CTR in 4 weeks |
+| 4 | lic office bopal / gota | `/areas/bopal`, `/areas/gota` | Answered; re-check in 4 weeks |
+| 5 | best LIC agent Ahmedabad | Policylane listicle, directories | Outreach (CITATIONS audit row 9) |
+| 6 | term insurance Ahmedabad Gujarat | `/services/term-insurance` | Title fixed 6 Nov |
+| 7 | jeevan utsav (product name) | guide | If impressions grow, consider a dedicated Jeevan Utsav plan page |
+| — | retirement planning, life insurance (national) | — | Do not chase |

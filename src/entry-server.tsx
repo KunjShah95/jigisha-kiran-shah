@@ -42,7 +42,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/blog', priority: 0.7 },
   { path: '/gallery', priority: 0.5 },
   { path: '/privacy', updated: '2026-11-05', priority: 0.3 },
-  ...SERVICE_PAGES.map((s) => ({ path: `/services/${s.slug}`, priority: 0.9 })),
+  ...SERVICE_PAGES.map((s) => ({ path: `/services/${s.slug}`, updated: s.updated, priority: 0.9 })),
   ...AREAS.map((a) => ({ path: `/areas/${a.slug}`, priority: 0.8 })),
   ...GUIDES.map((g) => ({ path: `/guides/${g.slug}`, updated: g.updated, priority: 0.8 })),
   ...POSTS.map((p) => ({ path: `/blog/${p.slug}`, updated: p.updated, priority: 0.7 })),

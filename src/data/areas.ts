@@ -101,7 +101,7 @@ export const AREAS: Area[] = [
     faqs: [
       {
         q: 'Is this the LIC office in Bopal?',
-        a: 'No. This is the office of Jigisha Kiran Shah, an LIC agent based in neighbouring Shela, not an LIC branch. To find a branch, use the branch locator on licindia.in. Most branch errands, such as premium receipts, nominee changes, revival, policy loans and maturity or claim papers, can be prepared through her first, so a branch visit is needed only where LIC requires one. Call +91 98240 25435.',
+        a: 'No. This is the office of Jigisha Kiran Shah, an LIC agent based in neighbouring Shela, not an LIC branch. LIC\u2019s Bopal satellite office is in Amrapali Complex at the Ambli–Bopal cross road on the SP Ring Road, open on weekdays; confirm timings on the branch locator at licindia.in. Most branch errands, such as premium receipts, nominee changes, revival, policy loans and maturity or claim papers, can be prepared through her first, so a branch visit is needed only where LIC requires one. Call +91 98240 25435.',
       },
       {
         q: 'Is there an LIC agent near Bopal, Ahmedabad?',

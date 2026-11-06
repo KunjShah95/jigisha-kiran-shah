@@ -18,6 +18,9 @@ export const SAME_AS = [
   REVIEW_URL, // Google Business Profile (reviews + directions)
   'https://www.youtube.com/@jigishakiranshah4636',
   'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
+  // Her official LIC agent page (LIC Saathi, agent code 01379839). The Google
+  // Maps listing currently links here.
+  'https://saathi.licindia.co.in/s/jigisha-kiran-shah-life-insurace-advisor/01379839',
 ];
 
 /** The LIC product families offered — reused in schema, llms.txt and the footer. */
@@ -110,7 +113,9 @@ export function localBusinessJsonLd() {
     '@type': ['LocalBusiness', 'ProfessionalService', 'FinancialService', 'InsuranceAgency'],
     '@id': `${SITE_URL}/#business`,
     name: 'Jigisha Kiran Shah - LIC Advisor',
-    alternateName: ['Jigisha Kiran Shah LIC Agent', 'Jigisha Kiran Shah Life Insurance Agent Ahmedabad'],
+    // First entry is the exact Google Maps listing name, so search engines tie
+    // the website to that profile.
+    alternateName: ['JIGISHA KIRAN SHAH Life Insurance Advisor', 'Jigisha Kiran Shah LIC Agent', 'Jigisha Kiran Shah Life Insurance Agent Ahmedabad'],
     image: OG_IMAGE,
     url: `${SITE_URL}/`,
     telephone: PHONE,
@@ -125,7 +130,9 @@ export function localBusinessJsonLd() {
       postalCode: '380058',
       addressCountry: 'IN',
     },
-    geo: { '@type': 'GeoCoordinates', latitude: 22.9734, longitude: 72.5 },
+    // Pin of the Google Maps listing for the Orchid Legacy office. The old
+    // value (22.9734, 72.5) was ~4 km off, towards Sarkhej/Makarba.
+    geo: { '@type': 'GeoCoordinates', latitude: 22.995914, longitude: 72.465441 },
     hasMap: 'https://share.google/VQAFgVhdk114U2ozd',
     openingHoursSpecification: [
       {

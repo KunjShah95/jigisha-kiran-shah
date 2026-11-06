@@ -95,7 +95,9 @@ for (const r of ROUTES) {
 const today = new Date().toISOString().slice(0, 10);
 const urls = ROUTES.map(
   (r) =>
-    `  <url>\n    <loc>${SITE}${r.path === '/' ? '/' : r.path}</loc>\n    <lastmod>${(r.updated || today).slice(0, 10)}</lastmod>\n    <priority>${r.priority.toFixed(1)}</priority>\n  </url>`,
+    // lastmod only when the content has a real date. Stamping every URL with
+    // the build date on each deploy teaches Google to ignore lastmod entirely.
+    `  <url>\n    <loc>${SITE}${r.path === '/' ? '/' : r.path}</loc>\n${r.updated ? `    <lastmod>${r.updated.slice(0, 10)}</lastmod>\n` : ''}    <priority>${r.priority.toFixed(1)}</priority>\n  </url>`,
 ).join('\n');
 writeFileSync(
   join(DIST, 'sitemap.xml'),
