@@ -8,6 +8,36 @@ The goal is not "as many listings as possible". It is **the same eleven facts, e
 
 ---
 
+## Citation audit — 6 November 2026
+
+Found by searching for her name and her phone number (9824025435). Fix the red rows first: an old address on a
+listing tells Google there are two businesses, and the map pack splits its trust between them.
+
+| # | Where | What it shows | Status | Fix |
+|---|---|---|---|---|
+| 1 | **Google Maps / Business Profile** — "JIGISHA KIRAN SHAH Life Insurance Advisor" | Orchid Legacy, D3-1303, Applewoods Twp Main Rd, 380058 · locality labelled **Sarkhej** · 5.0★ from **29 reviews** (snapshot Sep 2026) · website → **LIC Saathi page**, not this site | 🔴 | In the GBP dashboard: set **Website** to `https://www.jigishakiranshah.in/?utm_source=google&utm_medium=organic&utm_campaign=gbp`; check the pin sits on Orchid Legacy and the area reads Shela; check the review count against what the site claims (see below) |
+| 2 | **LocalEye** (localeye.in) | E Block, Kalgi Apartments, Daxini Society, **Maninagar** 380008 · 9824025435 | 🔴 old address | Edit to the Shela NAP, or ask them to update it: contact@localeye.in / WhatsApp 9137002424 (the number on their site) |
+| 3 | **IDBF** (ahmedabad.idbf.in) | Same old **Maninagar** address | 🔴 old address | Claim and edit to the Shela NAP, or request removal |
+| 4 | **LIC Saathi** (official LIC agent page, code 01379839) | Her LIC agent microsite | ✅ | Ask the development officer whether the Saathi page can show the website link. Now in the site's `sameAs` |
+| 5 | **LinkedIn** profile + posts | Name, phone, "Ahmedabad", recent posts link www.jigishakiranshah.in | ✅ | Add the website to the profile's Contact info and Featured section; add the Shela location |
+| 6 | **YouTube** @jigishakiranshah4636 | Channel | ⚪ unchecked | Put the website and NAP in About |
+| 7 | **Justdial** | A second proposal quotes "5.0, 63 ratings" — **not found** in search | ⚪ unverified | Search Justdial for 9824025435; if a listing exists, claim it and fix the NAP; if not, create one |
+| 8 | Sulekha, AskLaila | Both list Ahmedabad LIC agents; **she is not listed** | ⬜ missing | Create listings with the NAP block below |
+| 9 | Policylane "Top 10+ LIC Advisors in Ahmedabad" (Dec 2025) | Ranks for "best LIC advisor Ahmedabad"; **she is not included** | ⬜ outreach | Email the editor with MDRT 2023/2024 and the website; ask to be added. This is an earned mention, not a paid link |
+| 10 | Bing Places | — | ⬜ missing | Import from Google once row 1 is fixed |
+
+**Review count — needs checking.** The site says "70+ Google reviews" in about ten places (home, reviews, about,
+testimonials). The Google listing showed 29 in September 2026. If Google today shows fewer than 70, either the
+number combines several platforms (then say so on the site) or it must be lowered. Tell the developer the current
+Google count; do not leave a number on the site that Google contradicts.
+
+**Name.** Google uses "JIGISHA KIRAN SHAH Life Insurance Advisor"; this document (below) uses
+"Jigisha Kiran Shah - LIC Advisor". Renaming an established profile can trigger re-verification, so keep the
+Google name as it is and use it **exactly** on every new listing. The website already lists it as its first
+`alternateName`.
+
+---
+
 ## 0. The shortlist — do these 12, in this order
 
 Everything else in this document is detail. If only twelve listings ever get built, these are the twelve, because
@@ -39,7 +69,7 @@ Google for her name. Recheck that monthly (§7).
 ## 1. The NAP block — copy this exactly, never retype it
 
 ```
-Jigisha Kiran Shah - LIC Advisor
+JIGISHA KIRAN SHAH Life Insurance Advisor
 Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058
 +91 98240 25435
 jkshahlic@gmail.com
@@ -49,7 +79,7 @@ Mon–Sat 9:00 AM–6:00 PM
 
 Rules:
 
-- **Name:** `Jigisha Kiran Shah - LIC Advisor` everywhere. Do not alternate between "Jigisha Shah", "JKS LIC",
+- **Name:** `JIGISHA KIRAN SHAH Life Insurance Advisor` everywhere (the Google Maps name, Nov 2026). Do not alternate between "Jigisha Shah", "JKS LIC",
   "Jigisha Kiran Shah Insurance" and "Shah Insurance". Pick one and never vary it.
 - **Phone:** one number. `+91 98240 25435` is the only number on the site, the GBP, and every listing.
 - **Address:** the full string above. If a platform only accepts a locality, use `Shela, Ahmedabad, Gujarat 380058`

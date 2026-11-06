@@ -25,7 +25,7 @@ const ROOT = join(__dirname, '..');
 const DIST = join(ROOT, 'dist');
 const SITE = 'https://www.jigishakiranshah.in';
 
-const { render, ROUTES, buildLlmsTxt, buildLlmsFullTxt } = await import(
+const { render, ROUTES, buildLlmsTxt, buildLlmsFullTxt, POSTS, GUIDES } = await import(
   pathToFileURL(join(ROOT, 'dist-ssr', 'entry-server.js')).href
 );
 
@@ -95,12 +95,36 @@ for (const r of ROUTES) {
 const today = new Date().toISOString().slice(0, 10);
 const urls = ROUTES.map(
   (r) =>
-    `  <url>\n    <loc>${SITE}${r.path === '/' ? '/' : r.path}</loc>\n    <lastmod>${(r.updated || today).slice(0, 10)}</lastmod>\n    <priority>${r.priority.toFixed(1)}</priority>\n  </url>`,
+    // lastmod only when the content has a real date. Stamping every URL with
+    // the build date on each deploy teaches Google to ignore lastmod entirely.
+    `  <url>\n    <loc>${SITE}${r.path === '/' ? '/' : r.path}</loc>\n${r.updated ? `    <lastmod>${r.updated.slice(0, 10)}</lastmod>\n` : ''}    <priority>${r.priority.toFixed(1)}</priority>\n  </url>`,
 ).join('\n');
 writeFileSync(
   join(DIST, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
 );
+
+// RSS feed of guides and stories. Google accepts an RSS feed as a sitemap and
+// re-reads it more often than sitemap.xml, so new and updated articles get
+// noticed sooner. Feed tools (LinkedIn/WhatsApp auto-posters, readers) use
+// the same file — distribution and crawling from one source.
+{
+  const rfc822 = (iso) => new Date(`${iso.slice(0, 10)}T09:00:00+05:30`).toUTCString();
+  const items = [
+    ...GUIDES.map((g) => ({ path: `/guides/${g.slug}`, title: g.seoTitle, desc: g.metaDescription, date: g.date, updated: g.updated })),
+    ...POSTS.map((p) => ({ path: `/blog/${p.slug}`, title: p.seoTitle, desc: p.metaDescription, date: p.date, updated: p.updated })),
+  ].sort((a, b) => (b.updated || b.date).localeCompare(a.updated || a.date));
+  const xml = items
+    .map(
+      (i) =>
+        `    <item>\n      <title>${esc(i.title)}</title>\n      <link>${SITE}${i.path}</link>\n      <guid isPermaLink="true">${SITE}${i.path}</guid>\n      <description>${esc(i.desc)}</description>\n      <pubDate>${rfc822(i.updated || i.date)}</pubDate>\n      <dc:creator>Jigisha Kiran Shah</dc:creator>\n    </item>`,
+    )
+    .join('\n');
+  writeFileSync(
+    join(DIST, 'feed.xml'),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">\n  <channel>\n    <title>Jigisha Kiran Shah — LIC guides and client stories</title>\n    <link>${SITE}/</link>\n    <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml" />\n    <description>Plain-language LIC plan comparisons, checklists and client stories from an LIC advisor in Ahmedabad.</description>\n    <language>en-IN</language>\n    <lastBuildDate>${rfc822(items[0].updated || items[0].date)}</lastBuildDate>\n${xml}\n  </channel>\n</rss>\n`,
+  );
+}
 
 // llms.txt / llms-full.txt are generated from the same content the pages use,
 // so the AI-facing map cannot drift from the site. The citation list in
@@ -109,5 +133,5 @@ writeFileSync(join(DIST, 'llms.txt'), buildLlmsTxt(today));
 writeFileSync(join(DIST, 'llms-full.txt'), buildLlmsFullTxt(today));
 
 console.log(
-  `prerender: ${count} routes + 404.html + sitemap.xml (${ROUTES.length} URLs) + llms.txt + llms-full.txt`,
+  `prerender: ${count} routes + 404.html + sitemap.xml (${ROUTES.length} URLs) + feed.xml (${GUIDES.length + POSTS.length} items) + llms.txt + llms-full.txt`,
 );

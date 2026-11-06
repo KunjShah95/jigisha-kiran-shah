@@ -173,7 +173,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
   },
   {
     slug: 'term-insurance',
-    title: 'LIC Term Insurance Ahmedabad | Cover & Plan Review',
+    title: 'LIC Term Insurance in Ahmedabad, Gujarat | Cover & Plan Review',
     description:
       'Compare LIC Tech Term and Jeevan Amar with an Ahmedabad advisor. Estimate cover using income, loans and existing policies, then review nominee details. Free consultation.',
     keywords:
@@ -387,7 +387,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     productsFrom: 'corporate-insurance',
     title: 'Business Insurance in GIDC Vatva | Employer-Employee Cover',
     description:
-      'Business insurance for units in GIDC Vatva, Ahmedabad: employer-employee LIC cover for staff, partnership and key-person insurance, MWP and HUF policies for owners. Free consultation: +91 98240 25435.',
+      'LIC business insurance for GIDC Vatva units: employer-employee cover for staff, partnership and key-person insurance for owners. Free consultation: +91 98240 25435.',
     keywords:
       'business insurance GIDC Vatva, employer employee insurance Vatva, LIC group insurance GIDC, staff insurance engineering unit Ahmedabad, key person insurance Vatva, partnership insurance GIDC Ahmedabad, LIC agent Vatva',
     targetQuery: 'business insurance GIDC Vatva',
@@ -420,7 +420,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     slug: 'policy-review-claims',
     title: 'LIC Policy Review & Claim Help in Ahmedabad',
     description:
-      'Already hold LIC policies? Free policy review in Ahmedabad — check cover, update nominees, revive lapsed policies, and get hands-on LIC claim assistance from Jigisha Kiran Shah.',
+      'Free life insurance policy review in Ahmedabad: check your cover, update nominees, revive lapsed LIC policies and get hands-on claim help. Any agent\u2019s policy.',
     keywords:
       'LIC policy review Ahmedabad, LIC claim assistance Ahmedabad, LIC death claim help, LIC maturity claim, revive lapsed LIC policy, change LIC nominee, LIC agent Shela',
     targetQuery: 'LIC policy review Ahmedabad',
@@ -429,7 +429,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'Most families in Ahmedabad already own two or three LIC policies — bought years ago, from different agents, for different reasons. Few know their total cover, when each policy matures, or whether the nominee is still correct. A policy review answers those questions on one sheet of paper before you spend a rupee on anything new.',
       'When a claim is due — death, maturity or survival benefit — the outcome depends heavily on paperwork. Jigisha Kiran Shah helps families intimate the claim, assemble the right documents, and follow up with the branch. LIC makes the final decision on every claim; good preparation removes avoidable delays.',
     ],
-    updated: '2026-11-04',
+    updated: '2026-11-06',
     sections: [
       {
         heading: 'Where is my LIC claim? — tracking it in four places',

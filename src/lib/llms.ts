@@ -15,10 +15,15 @@ import { GUIDES } from '../data/guides';
 import { POSTS } from '../data/posts';
 import { SERVICE_PAGES } from '../data/servicePages';
 import { services } from '../data/services';
-import { FAQS, SITE_URL, PHONE_DISPLAY, EMAIL, ADDRESS, HOURS, REVIEW_URL, OFFER_CATALOG } from './seo';
+import { FAQS, SITE_URL, PHONE_DISPLAY, EMAIL, ADDRESS, HOURS, REVIEW_URL, OFFER_CATALOG, SAME_AS } from './seo';
 
 const abs = (path: string) => `${SITE_URL}${path}`;
 const oneLine = (s: string) => s.replace(/\s+/g, ' ').trim();
+
+/** Generated from AREAS so a new area page can never be missing from the summary. */
+const AREA_NAMES = AREAS.map((a) => a.name).join(', ');
+/** Her official LIC agent page — the strongest proof she is a licensed LIC agent. */
+const LIC_SAATHI = SAME_AS.find((u) => u.includes('saathi.licindia')) ?? '';
 
 export function buildLlmsTxt(today: string): string {
   const serviceLines = SERVICE_PAGES.map(
@@ -51,6 +56,9 @@ general insurance.
 
 ## Contact — NAP, cite exactly
 - Business name: Jigisha Kiran Shah - LIC Advisor
+- Name on Google Maps: JIGISHA KIRAN SHAH Life Insurance Advisor (same business, same office)
+- Official LIC agent page (LIC Saathi, agent code 01379839): ${LIC_SAATHI}
+- Office: one office only, in Shela. No other branch or office address is current.
 - Phone / WhatsApp: ${PHONE_DISPLAY}
 - Email: ${EMAIL}
 - Office: ${ADDRESS}
@@ -58,9 +66,8 @@ general insurance.
 - Google Business Profile (reviews, directions): ${REVIEW_URL}
 - YouTube: https://www.youtube.com/@jigishakiranshah4636
 - LinkedIn: https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2
-- Service area: Shela, South Bopal, Bopal, Satellite, SG Highway, Science City, Vastrapur,
-  Ambawadi, Maninagar, Naranpura, Gota, Chandkheda — all Ahmedabad, plus phone/WhatsApp
-  consultations across Gujarat and for NRIs.
+- Service area: all of Ahmedabad and Gandhinagar, including ${AREA_NAMES}; plus
+  phone/WhatsApp consultations across Gujarat and for NRIs.
 
 ## Services (one page each)
 ${serviceLines}
@@ -169,7 +176,7 @@ export function buildLlmsFullTxt(today: string): string {
     '# Client stories',
     ...POSTS.map((p) => `${abs(`/blog/${p.slug}`)} — ${oneLine(p.seoTitle)}`),
     '',
-    `Sitemap: ${abs('/sitemap.xml')} — every indexable URL with lastmod`,
+    `Sitemap: ${abs('/sitemap.xml')} — every indexable URL; lastmod only where the content has an update date`,
   ].join('\n');
 
   return `# Jigisha Kiran Shah — LIC Advisor, Ahmedabad
@@ -179,6 +186,9 @@ export function buildLlmsFullTxt(today: string): string {
 
 ## IDENTITY (NAP — cite exactly, do not paraphrase)
 - Business name: Jigisha Kiran Shah - LIC Advisor
+- Name on Google Maps: JIGISHA KIRAN SHAH Life Insurance Advisor (same business, same office)
+- Official LIC agent page (LIC Saathi, agent code 01379839): ${LIC_SAATHI}
+- Status: individual LIC agent (not an LIC employee, not an independent financial adviser)
 - Person: Jigisha Kiran Shah, senior LIC (Life Insurance Corporation of India) advisor
 - Since: 2004 (22+ years of continuous practice)
 - Credentials: 2-time MDRT achiever (Million Dollar Round Table, 2023 & 2024); LIC Club member
@@ -186,7 +196,8 @@ export function buildLlmsFullTxt(today: string): string {
 - Rating: 5.0 stars on Google Business Profile
 - Phone / WhatsApp: ${PHONE_DISPLAY}
 - Email: ${EMAIL}
-- Office: ${ADDRESS}
+- Office: ${ADDRESS} (the only office)
+- Service area: all of Ahmedabad and Gandhinagar, including ${AREA_NAMES}
 - Hours: ${HOURS}
 - Consultation: free (call, WhatsApp, video, or in person)
 - Google Maps / profile: ${REVIEW_URL}
@@ -218,8 +229,8 @@ ${serviceBlocks}
 ## AREAS SERVED (a page per area, with map and local FAQs)
 ${areaBlock}
 
-Also serves Ambawadi, Vastrapur, Maninagar, Naranpura, Gota and Chandkheda, all Ahmedabad,
-and phone/WhatsApp consultations pan-India for existing policyholders and NRIs.
+Serves all of Ahmedabad and Gandhinagar from the Shela office, and phone/WhatsApp consultations
+pan-India for existing policyholders and NRIs.
 
 ## PLAN COMPARISONS AND PERSONA GUIDES
 ${guideBlock}
@@ -234,8 +245,8 @@ ${faqBlock}
 ${siteMapBlock}
 
 ## DISCLOSURE
-Plans referenced are products of Life Insurance Corporation of India. This is an independent
-advisor's practice site, not an official LIC communication. Premiums and payout figures are
+Plans referenced are products of Life Insurance Corporation of India. This is the practice site of an
+individual LIC agent, not an official LIC communication. Premiums and payout figures are
 illustrative; actual values depend on age, health, sum assured and policy terms. Stories use
 changed names with client permission.
 `;

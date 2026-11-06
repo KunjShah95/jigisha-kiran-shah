@@ -125,3 +125,5 @@ User-agent: Bytespider
 Allow: /
 
 Sitemap: https://www.jigishakiranshah.in/sitemap.xml
+# RSS feed of guides and stories — Google accepts feeds as sitemaps.
+Sitemap: https://www.jigishakiranshah.in/feed.xml

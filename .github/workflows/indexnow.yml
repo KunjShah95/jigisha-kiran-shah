@@ -1,0 +1,18 @@
+# Ping IndexNow (Bing, Yandex; Bing feeds Copilot and ChatGPT search) once a
+# Vercel production deploy is live. Vercel reports deployments to GitHub, so
+# this runs after the new pages and the key file are actually being served.
+name: IndexNow
+on:
+  deployment_status:
+permissions:
+  contents: read
+jobs:
+  submit:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/indexnow.mjs

@@ -13,7 +13,7 @@ export default function ServicesPage() {
   useSEO({
     title: 'LIC Insurance Plans Ahmedabad | Term, Endowment, ULIP, Pension',
     description:
-      'All LIC insurance plans & services in Ahmedabad: Term Life (Tech Term, Jeevan Amar), Endowment (Jeevan Labh), Money-Back, Retirement & Pension (Jeevan Akshay VII, Jeevan Umang), Child Education (Jeevan Tarun), Health, Corporate cover and policy review & claims help. Advisor Jigisha Kiran Shah.',
+      'Every LIC plan and service in Ahmedabad: term, pension, child education, endowment, money-back, health and business cover, plus policy review and claim help.',
     ogTitle: 'LIC Insurance Plans & Services Ahmedabad',
     ogDescription:
       'Term life, retirement, ULIP, pension, child education & health insurance in Ahmedabad. Compare LIC plans with expert advisor Jigisha Kiran Shah. Free consultation.',

@@ -206,3 +206,34 @@ Most of it repeats the first proposal and is covered above. What was new:
 | Ahrefs / Screaming Frog | Optional | Search Console + `npm run check:seo` already cover crawl errors; Ahrefs only adds backlink and difficulty data |
 | 12-article calendar (adds NRI families, married couples, pre-retirement) | TODO | Merge with §8 list; NRI article should link to `/services/nri-lic-services` |
 | 5–10 genuine referring domains in 90 days | OFF-SITE | `CITATIONS.md` |
+
+---
+
+## Citations, keywords and indexing — 6 November 2026
+
+| Item | Status | Where |
+|---|---|---|
+| Citation audit (name + phone search) | DONE | `CITATIONS.md` → "Citation audit": 2 listings still show the old Maninagar address; Google listing links to LIC Saathi instead of the website |
+| Keyword research | DONE | `KEYWORD-MAP.md` §10: reviews and citations, not pages, decide the local money keywords |
+| Office coordinates in schema and meta | FIXED | Were ~4 km off; now the Google Maps pin (22.995914, 72.465441) |
+| Entity links | DONE | Google Maps name added as `alternateName`; LIC Saathi page added to `sameAs` |
+| Sitemap `lastmod` | FIXED | Only real content dates (26 of 60 URLs); the build date on every URL had made lastmod meaningless to Google |
+| IndexNow (Bing, Yandex; feeds Copilot/ChatGPT search) | DONE | `scripts/indexnow.mjs` + `.github/workflows/indexnow.yml` run after each Vercel production deploy; manual: `npm run indexnow` |
+| Google indexing | OFF-SITE | Search Console → Sitemaps → submit `sitemap.xml`; URL Inspection → Request indexing for the 5 new pages |
+| Bing Webmaster Tools | OFF-SITE | Import the site from Search Console (one click), then submit the sitemap |
+| Review count claim "70+" | CHECK | Google listing showed 29 (Sep 2026); see `CITATIONS.md` |
+
+## Crawling and distribution — 6 November 2026
+
+Search Console (23 Oct): 6 pages "Discovered – currently not indexed", never crawled: `/about`, `/areas/shela`,
+`/areas/sg-highway`, `/reviews`, `/blog`, `/blog/jevan-labh-or-the-alarm-clock`. Internal linking checked: every
+sitemap URL has 7+ internal links, so this is crawl priority, not a site fault. The 4 "Page with redirect" URLs are
+`http://` / non-`www` variants redirecting correctly — no action.
+
+| Item | Status | Where |
+|---|---|---|
+| RSS feed of guides + stories, declared as a second sitemap | DONE | `/feed.xml`, robots.txt, `<head>`; build fails if an article is missing |
+| Citation tracker updated with the audit | DONE | `CITATIONS-TRACKING.csv` |
+| 12-week distribution plan targeting the never-crawled pages | DONE | `DISTRIBUTION-PLAYBOOK.md` |
+| Submit `feed.xml` as a sitemap in Search Console | OFF-SITE | Search Console → Sitemaps → add `feed.xml` |
+| Request indexing for the 6 pages | OFF-SITE | URL Inspection, ~10/day |
