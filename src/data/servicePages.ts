@@ -173,7 +173,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
   },
   {
     slug: 'term-insurance',
-    title: 'LIC Term Insurance Ahmedabad | Cover & Plan Review',
+    title: 'LIC Term Insurance in Ahmedabad, Gujarat | Cover & Plan Review',
     description:
       'Compare LIC Tech Term and Jeevan Amar with an Ahmedabad advisor. Estimate cover using income, loans and existing policies, then review nominee details. Free consultation.',
     keywords:
@@ -387,7 +387,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     productsFrom: 'corporate-insurance',
     title: 'Business Insurance in GIDC Vatva | Employer-Employee Cover',
     description:
-      'Business insurance for units in GIDC Vatva, Ahmedabad: employer-employee LIC cover for staff, partnership and key-person insurance, MWP and HUF policies for owners. Free consultation: +91 98240 25435.',
+      'LIC business insurance for GIDC Vatva units: employer-employee cover for staff, partnership and key-person insurance for owners. Free consultation: +91 98240 25435.',
     keywords:
       'business insurance GIDC Vatva, employer employee insurance Vatva, LIC group insurance GIDC, staff insurance engineering unit Ahmedabad, key person insurance Vatva, partnership insurance GIDC Ahmedabad, LIC agent Vatva',
     targetQuery: 'business insurance GIDC Vatva',
@@ -420,7 +420,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     slug: 'policy-review-claims',
     title: 'LIC Policy Review & Claim Help in Ahmedabad',
     description:
-      'Already hold LIC policies? Free policy review in Ahmedabad — check cover, update nominees, revive lapsed policies, and get hands-on LIC claim assistance from Jigisha Kiran Shah.',
+      'Free life insurance policy review in Ahmedabad: check your cover, update nominees, revive lapsed LIC policies and get hands-on claim help. Any agent\u2019s policy.',
     keywords:
       'LIC policy review Ahmedabad, LIC claim assistance Ahmedabad, LIC death claim help, LIC maturity claim, revive lapsed LIC policy, change LIC nominee, LIC agent Shela',
     targetQuery: 'LIC policy review Ahmedabad',

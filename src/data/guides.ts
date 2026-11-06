@@ -227,9 +227,9 @@ export const GUIDES: Guide[] = [
   {
     slug: 'jeevan-utsav-vs-jeevan-umang',
     title: 'LIC Jeevan Utsav vs Jeevan Umang: compare income, bonuses and premium terms',
-    seoTitle: 'Jeevan Utsav vs Jeevan Umang: Income & Bonus Comparison',
+    seoTitle: 'Jeevan Utsav vs Jeevan Umang: Which Is Better for You?',
     metaDescription:
-      'Compare LIC Jeevan Utsav (Plan 771) and Jeevan Umang (Plan 745): income start, bonuses, premium terms and who each may suit. Check current LIC brochures.',
+      'Jeevan Utsav or Jeevan Umang: which is better? Utsav pays a fixed 10% income with no bonus; Umang pays 8% plus possible bonuses. Compare start dates and terms.',
     date: '2026-10-11',
     updated: '2026-11-04',
     readMinutes: 5,
@@ -281,12 +281,12 @@ export const GUIDES: Guide[] = [
     ],
     faqs: [
       {
-        q: 'What is the current LIC Jeevan Utsav plan number?',
-        a: 'LIC currently lists Jeevan Utsav as Plan 771 (UIN 512N363V02). Plan 871 (UIN 512N363V01) was withdrawn on 1 October 2024. Check the current LIC brochure before comparing a new purchase.',
+        q: 'Jeevan Utsav or Jeevan Umang: which is better?',
+        a: 'Neither is better for everyone. Jeevan Utsav suits someone who wants a fixed income with no dependence on bonuses and a shorter 5–16 year premium term. Jeevan Umang suits someone who can pay for 15–30 years and accepts bonuses that may vary. Compare both official illustrations at the same age and sum assured.',
       },
       {
-        q: 'Is Jeevan Utsav better than Jeevan Umang?',
-        a: 'Neither is best for everyone. Compare when income starts, premium-paying term, total premiums, death benefit and surrender terms. Utsav is non-participating and Umang is participating, so Umang may receive bonuses declared by LIC while future bonuses are not guaranteed.',
+        q: 'What is the current LIC Jeevan Utsav plan number?',
+        a: 'LIC currently lists Jeevan Utsav as Plan 771 (UIN 512N363V02). Plan 871 (UIN 512N363V01) was withdrawn on 1 October 2024. Check the current LIC brochure before comparing a new purchase.',
       },
       {
         q: 'Is the Jeevan Utsav income guaranteed?',

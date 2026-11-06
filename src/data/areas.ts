@@ -90,12 +90,19 @@ export const AREAS: Area[] = [
   {
     slug: 'bopal',
     name: 'Bopal',
+    seoTitle: 'LIC Agent near Bopal | Policy Work Without a Branch Visit',
+    seoDescription:
+      'LIC help in Bopal: Jigisha Kiran Shah, LIC agent in neighbouring Shela, handles new policies, nominee changes, revival and claims. Call +91 98240 25435.',
     mapQuery: 'Bopal, Ahmedabad, Gujarat',
     intro:
       'Bopal’s mix of long-settled families and new township residents makes it a core service area. Jigisha Kiran Shah helps Bopal families with money-back plans for milestones, Jeevan Labh endowment for wealth creation, current LIC health plans (Health Shield and New Cancer Cover), and policy servicing.',
     landmarks: ['Bopal crossroads', 'Bopal–Ghuma corridor', 'Sterling City area', 'Ambli–Bopal Road'],
     commute: 'Bopal is adjacent to Shela — most areas are 10–20 minutes from the Orchid Legacy office. Home visits in Bopal can be arranged.',
     faqs: [
+      {
+        q: 'Is this the LIC office in Bopal?',
+        a: 'No. This is the office of Jigisha Kiran Shah, an LIC agent based in neighbouring Shela, not an LIC branch. To find a branch, use the branch locator on licindia.in. Most branch errands, such as premium receipts, nominee changes, revival, policy loans and maturity or claim papers, can be prepared through her first, so a branch visit is needed only where LIC requires one. Call +91 98240 25435.',
+      },
       {
         q: 'Is there an LIC agent near Bopal, Ahmedabad?',
         a: 'Yes. Jigisha Kiran Shah\u2019s office in neighbouring Shela (Orchid Legacy, Applewoods Township) is 10–20 minutes from most Bopal areas. Call +91 98240 25435 for term, endowment, pension, and health cover advice.',
@@ -204,15 +211,19 @@ export const AREAS: Area[] = [
   {
     slug: 'gota',
     name: 'Gota',
-    seoTitle: 'LIC Advisor in Gota, Ahmedabad | Term & Home Loan Cover',
+    seoTitle: 'LIC Advisor for Gota | Policy Work Without a Branch Visit',
     seoDescription:
-      'LIC advisor in Gota for term and home-loan cover, child plans and policy reviews. Call or WhatsApp Jigisha Kiran Shah for a free phone consultation: +91 98240 25435.',
+      'LIC help in Gota without a branch visit: term and home-loan cover, nominee changes, revival and claims by phone or WhatsApp. Call +91 98240 25435.',
     mapQuery: 'Gota, Ahmedabad, Gujarat',
     intro:
       'Families in Gota and Ognaj can review term cover against a home loan and income, plan child-education savings, or get help with an existing LIC policy. Jigisha Kiran Shah offers phone and WhatsApp consultations from her Shela office, with in-person meetings by arrangement.',
     landmarks: ['Gota Crossroads', 'Narmada Canal Road', 'Bhagwat Vidyapith', 'Ognaj corridor'],
     commute: 'Gota is roughly 30–40 minutes from Shela via Sola and the SP Ring Road. Consultations start on phone/WhatsApp with in-person meetings as needed.',
     faqs: [
+      {
+        q: 'Is this the LIC office in Gota?',
+        a: 'No. This is the office of Jigisha Kiran Shah, an LIC agent based in Shela who serves Gota by phone, WhatsApp and visits, not an LIC branch. To find a branch, use the branch locator on licindia.in. Most branch errands, such as premium receipts, nominee changes, revival, policy loans and maturity or claim papers, can be prepared through her first, so a branch visit is needed only where LIC requires one. Call +91 98240 25435.',
+      },
       {
         q: 'I just bought a flat in Gota. How much term insurance do I need?',
         a: 'Cover the outstanding home loan plus 10–15x annual income, so EMIs and family expenses both survive you. Share loan and income details on +91 98240 25435 for an exact Tech Term illustration.',

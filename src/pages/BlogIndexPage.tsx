@@ -13,7 +13,7 @@ export default function BlogIndexPage() {
   useSEO({
     title: 'Stories & Guides | LIC Advice from 22 Years in Ahmedabad',
     description:
-      'Real stories and plain-language guides from LIC advisor Jigisha Kiran Shah (22+ years, 2x MDRT): term insurance, pension plans, child education savings, and claims — written for Ahmedabad families.',
+      'Real client stories and plain-language guides from LIC advisor Jigisha Kiran Shah on term cover, pensions, child education and claims, for Ahmedabad families.',
     path: '/blog',
     keywords:
       'LIC blog Ahmedabad, term insurance stories, LIC pension advice, child education plan India, LIC claims help',
