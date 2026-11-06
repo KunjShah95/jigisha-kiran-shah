@@ -429,7 +429,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'Most families in Ahmedabad already own two or three LIC policies — bought years ago, from different agents, for different reasons. Few know their total cover, when each policy matures, or whether the nominee is still correct. A policy review answers those questions on one sheet of paper before you spend a rupee on anything new.',
       'When a claim is due — death, maturity or survival benefit — the outcome depends heavily on paperwork. Jigisha Kiran Shah helps families intimate the claim, assemble the right documents, and follow up with the branch. LIC makes the final decision on every claim; good preparation removes avoidable delays.',
     ],
-    updated: '2026-11-04',
+    updated: '2026-11-06',
     sections: [
       {
         heading: 'Where is my LIC claim? — tracking it in four places',

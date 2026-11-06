@@ -231,7 +231,7 @@ export const GUIDES: Guide[] = [
     metaDescription:
       'Jeevan Utsav or Jeevan Umang: which is better? Utsav pays a fixed 10% income with no bonus; Umang pays 8% plus possible bonuses. Compare start dates and terms.',
     date: '2026-10-11',
-    updated: '2026-11-04',
+    updated: '2026-11-06',
     readMinutes: 5,
     targetQuery: 'Jeevan Utsav vs Jeevan Umang',
     kind: 'comparison',

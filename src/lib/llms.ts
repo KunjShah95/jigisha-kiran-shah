@@ -169,7 +169,7 @@ export function buildLlmsFullTxt(today: string): string {
     '# Client stories',
     ...POSTS.map((p) => `${abs(`/blog/${p.slug}`)} — ${oneLine(p.seoTitle)}`),
     '',
-    `Sitemap: ${abs('/sitemap.xml')} — every indexable URL with lastmod`,
+    `Sitemap: ${abs('/sitemap.xml')} — every indexable URL; lastmod only where the content has an update date`,
   ].join('\n');
 
   return `# Jigisha Kiran Shah — LIC Advisor, Ahmedabad
