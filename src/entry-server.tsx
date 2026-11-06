@@ -18,6 +18,8 @@ import { SERVICE_PAGES } from './data/servicePages'
 import { buildLlmsTxt, buildLlmsFullTxt } from './lib/llms'
 
 export { buildLlmsTxt, buildLlmsFullTxt }
+// Article data for the RSS feed written by scripts/prerender.mjs.
+export { POSTS, GUIDES }
 
 export interface RouteInfo {
   path: string

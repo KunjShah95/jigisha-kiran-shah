@@ -222,3 +222,18 @@ Most of it repeats the first proposal and is covered above. What was new:
 | Google indexing | OFF-SITE | Search Console → Sitemaps → submit `sitemap.xml`; URL Inspection → Request indexing for the 5 new pages |
 | Bing Webmaster Tools | OFF-SITE | Import the site from Search Console (one click), then submit the sitemap |
 | Review count claim "70+" | CHECK | Google listing showed 29 (Sep 2026); see `CITATIONS.md` |
+
+## Crawling and distribution — 6 November 2026
+
+Search Console (23 Oct): 6 pages "Discovered – currently not indexed", never crawled: `/about`, `/areas/shela`,
+`/areas/sg-highway`, `/reviews`, `/blog`, `/blog/jevan-labh-or-the-alarm-clock`. Internal linking checked: every
+sitemap URL has 7+ internal links, so this is crawl priority, not a site fault. The 4 "Page with redirect" URLs are
+`http://` / non-`www` variants redirecting correctly — no action.
+
+| Item | Status | Where |
+|---|---|---|
+| RSS feed of guides + stories, declared as a second sitemap | DONE | `/feed.xml`, robots.txt, `<head>`; build fails if an article is missing |
+| Citation tracker updated with the audit | DONE | `CITATIONS-TRACKING.csv` |
+| 12-week distribution plan targeting the never-crawled pages | DONE | `DISTRIBUTION-PLAYBOOK.md` |
+| Submit `feed.xml` as a sitemap in Search Console | OFF-SITE | Search Console → Sitemaps → add `feed.xml` |
+| Request indexing for the 6 pages | OFF-SITE | URL Inspection, ~10/day |

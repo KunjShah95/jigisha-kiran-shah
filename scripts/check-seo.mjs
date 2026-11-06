@@ -114,6 +114,18 @@ if (existsSync(llmsFullPath)) {
   if (full.includes('\uFFFD')) fail('llms-full.txt contains a replacement character (encoding damage)');
 }
 
+// The RSS feed doubles as a sitemap. Every guide and story must be in it,
+// and every item must point at a URL that is in sitemap.xml.
+const feedPath = join(DIST, 'feed.xml');
+if (!existsSync(feedPath)) fail('feed.xml was not generated');
+else {
+  const feed = readFileSync(feedPath, 'utf8');
+  const links = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).slice(1);
+  const articles = [...seenPaths].filter((p) => /^\/(guides|blog)\/[^/]+$/.test(p));
+  for (const p of articles) if (!links.includes(`${SITE}${p}`)) fail(`feed.xml does not list ${p}`);
+  for (const l of links) if (!seenPaths.has(new URL(l).pathname)) fail(`feed.xml links to ${l}, not in sitemap`);
+}
+
 // AI crawlers must be explicitly allowed. A later `User-agent: *` Disallow
 // would otherwise cut the site out of citations without anyone noticing.
 const robotsPath = join(DIST, 'robots.txt');
