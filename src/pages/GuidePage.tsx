@@ -157,8 +157,31 @@ export default function GuidePage() {
           </p>
         ))}
 
+        {/* Phones: one card per row, so every column is visible without a
+            sideways scroll most readers never notice. The table below takes
+            over from sm (640px) up. */}
         {guide.comparison && (
-          <div className="overflow-x-auto rounded-2xl border border-border bg-white mb-10">
+          <div className="sm:hidden space-y-3 mb-10">
+            {guide.comparison.rows.map((row) => (
+              <div key={row.label} className="rounded-2xl border border-border bg-white p-4">
+                <p className="font-semibold text-midnight mb-2">{row.label}</p>
+                <dl className="space-y-1.5 text-sm leading-relaxed">
+                  <div>
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-gold-dark">{guide.comparison!.columns[1]}</dt>
+                    <dd className="text-gray-700">{row.first}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[11px] font-bold uppercase tracking-wider text-gold-dark">{guide.comparison!.columns[2]}</dt>
+                    <dd className="text-gray-700">{row.second}</dd>
+                  </div>
+                </dl>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {guide.comparison && (
+          <div className="hidden sm:block overflow-x-auto rounded-2xl border border-border bg-white mb-10">
             <table className="w-full min-w-[660px] border-collapse text-left text-sm">
               <caption className="sr-only">Side-by-side comparison of {guide.comparison.columns[1]} and {guide.comparison.columns[2]}</caption>
               <thead className="bg-[#f7f1e8] text-midnight">
