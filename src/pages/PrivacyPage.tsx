@@ -3,7 +3,7 @@ import { useSEO } from '../hooks/useSEO'
 import { EMAIL, PHONE_DISPLAY, ADDRESS } from '../lib/seo'
 
 /** Change this when the policy text changes, not on every build. */
-const UPDATED = '5 November 2026'
+const UPDATED = '8 November 2026'
 
 /**
  * The privacy notice describes what the code actually does. If a form starts
@@ -68,6 +68,12 @@ export default function PrivacyPage() {
             The calculators and the protection check run entirely in your browser. The figures you enter are not sent
             anywhere unless you choose to share the result on WhatsApp. The protection check remembers your language
             choice (English or Gujarati) in your browser&rsquo;s local storage.
+          </p>
+          <p>
+            For the length of your visit, this browser tab also remembers how you arrived (for example &ldquo;Google
+            search&rdquo; or &ldquo;LinkedIn&rdquo;) and the first page you saw. If you send an enquiry, that line is
+            added to the WhatsApp message so we know which channels help people find us. It is cleared when you close
+            the tab and contains nothing about you personally.
           </p>
         </section>
 

@@ -1,6 +1,7 @@
 import About from '../components/About'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSEO } from '../hooks/useSEO'
+import { personJsonLd, SITE_URL } from '../lib/seo'
 
 export default function AboutPage() {
   useSEO({
@@ -14,6 +15,18 @@ export default function AboutPage() {
     keywords:
       'Jigisha Kiran Shah, LIC advisor Shela, best LIC agent Ahmedabad, MDRT advisor Gujarat, life insurance advisor Ahmedabad about',
     breadcrumbLabel: 'About',
+    // The page every article byline links to: the full Person entity lives
+    // here as a ProfilePage, so search and AI engines can resolve the author.
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        '@id': `${SITE_URL}/about#profile`,
+        url: `${SITE_URL}/about`,
+        // @context belongs on the outer object only; undefined drops out of JSON.
+        mainEntity: { ...personJsonLd(), '@context': undefined },
+      },
+    ],
   })
   useScrollReveal()
 

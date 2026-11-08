@@ -36,6 +36,184 @@ export interface Guide {
 
 export const GUIDES: Guide[] = [
   {
+    slug: 'lic-agent-left-who-services-my-policy',
+    title: 'My LIC agent has left. Who services my policy now?',
+    seoTitle: 'LIC Agent Left or Died? Who Services Your Policy Now',
+    metaDescription:
+      'Your LIC policy does not end when your agent leaves. What to check this week, how orphan policies get a new servicing agent, and where to get help in Ahmedabad.',
+    date: '2026-11-08',
+    updated: '2026-11-08',
+    readMinutes: 5,
+    targetQuery: 'LIC agent left who services my policy',
+    kind: 'checklist',
+    intro: [
+      'Agents retire, move away, change careers and, sometimes, pass away. Families then find themselves holding LIC policies with no one to remind them of premiums, help with a nominee change or stand beside them at claim time.',
+      'The first thing to know: your contract is with LIC, not with the agent. An agent leaving does not cancel your policy. What changes is who helps you service it. This guide is what I tell families in Ahmedabad who come to me in exactly this position.',
+    ],
+    sections: [
+      {
+        heading: 'Your policy does not end with the agent',
+        paras: [
+          'Whether your cover continues depends on the policy itself — mainly on whether premiums are paid — not on whether the agent who sold it is still working. A policy with premiums up to date stays in force. A policy where premiums have stopped may have lapsed, and that is a separate problem with its own fix (revival), whoever the agent was.',
+        ],
+      },
+      {
+        heading: 'What to do this week',
+        paras: ['These steps protect the policy whether or not you get a new agent.'],
+        items: [
+          'Find the policy documents, or at least the policy numbers. Old premium receipts and bank debits show them.',
+          'Check each policy’s status on LIC’s customer portal or app, or ask the servicing branch: in force, lapsed, or paid-up, and the next premium due date.',
+          'Update your mobile number, email and address with the servicing branch, so LIC’s notices reach you directly instead of a former agent.',
+          'Pay premiums only through LIC’s own channels: the portal, the app, or the branch. Never pay into a personal account.',
+          'Check that a nominee is registered on every policy, and that the nominee is still the right person.',
+        ],
+      },
+      {
+        heading: 'Orphan policies and a new servicing agent',
+        paras: [
+          'A policy whose agent has died, or whose agency has ended, is called an orphan policy. IRDAI’s guidelines on servicing orphan policies allow the insurer to allot them to active agents so that policyholders are not left without help.',
+          'At LIC, that allotment is done by the branch, under its own rules for which agents are eligible. You cannot simply pick any agent, and where the original agent still holds the agency, there is generally no provision to swap agents. Ask your servicing branch how your policy is currently handled.',
+        ],
+      },
+      {
+        heading: 'Help that does not need a change of agent',
+        paras: [
+          'Most servicing does not need an agent of record at all. Nominee changes, address and mobile updates, revival of a lapsed policy, loans against the policy, and maturity or death claims are all processed by the branch. What an experienced advisor adds is getting the forms and documents right the first time.',
+          'I help families with exactly this, whoever sold the policy. I will never ask you to surrender an existing policy to buy a new one; LIC’s code of conduct for agents rules that out, and it is rarely in your interest anyway.',
+        ],
+      },
+      {
+        heading: 'Warning signs',
+        paras: ['Be careful if anyone who says they are your “new agent”:'],
+        items: [
+          'asks you to pay a premium into a personal bank account or UPI ID',
+          'pushes you to surrender an old policy and buy a new one',
+          'asks for an OTP, your portal password or signed blank forms',
+          'cannot show an LIC agency identity card when asked',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is my LIC policy still valid if my agent died or left?',
+        a: 'Yes, if premiums are paid. Your contract is with LIC, not the agent. Check the policy status on LIC’s customer portal or with your servicing branch, and keep paying premiums through LIC’s own channels.',
+      },
+      {
+        q: 'Can I change my LIC agent?',
+        a: 'Generally not while the original agent still holds the agency. If the agent has died or the agency has ended, the policy becomes an orphan policy, and the LIC branch can allot it to an eligible active agent under its rules. Ask your servicing branch.',
+      },
+      {
+        q: 'Who will remind me about premiums now?',
+        a: 'LIC sends notices to the mobile, email and address on record, so update those at your servicing branch. You can also see due dates on LIC’s customer portal and app.',
+      },
+      {
+        q: 'Can another LIC agent help me if my agent left?',
+        a: 'Yes. Any LIC agent can help you prepare servicing requests such as a nominee change, revival, a policy loan or a claim; the branch processes them. Jigisha Kiran Shah helps Ahmedabad families with policies sold by any agent: +91 98240 25435.',
+      },
+    ],
+    sources: [
+      { label: 'IRDAI — servicing of life insurance orphan policies', url: 'https://irdai.gov.in/en/web/policy-holder/w/servicing-of-life-insurance-orphan-policies-2' },
+      { label: 'LIC — policy guidelines for policyholders', url: 'https://licindia.in/policy-guidelines-helpline' },
+    ],
+    related: [
+      { label: 'Free policy review and claim help', to: '/services/policy-review-claims' },
+      { label: 'Change or update a nominee', to: '/services/nominee-change' },
+      { label: 'Revive a lapsed policy', to: '/services/lic-policy-revival' },
+      { label: 'Find a lost policy', to: '/services/lic-policy-tracing' },
+    ],
+  },
+  {
+    slug: 'lic-tax-benefit-80c-section-123',
+    title: 'LIC and income tax in 2026–27: Section 80C, now Section 123',
+    seoTitle: 'LIC Tax Benefit 2026-27: 80C (Now Section 123) Explained',
+    metaDescription:
+      'From 1 April 2026, 80C is Section 123 of the Income-tax Act, 2025. Which LIC premiums qualify, the ₹1.5 lakh limit, the regime question and tax-free payouts.',
+    date: '2026-11-08',
+    updated: '2026-11-08',
+    readMinutes: 6,
+    targetQuery: 'LIC tax benefit 80C 2026-27',
+    kind: 'checklist',
+    intro: [
+      'Every year from January to March, families rush to buy a policy “for 80C”. Two things have changed that are worth knowing before you do. The Income-tax Act, 2025 replaced the 1961 Act on 1 April 2026, so 80C now has a new section number. And under the new tax regime, which is the default, the deduction is not available at all.',
+      'This guide covers what qualifies, the limits, and when payouts are tax-free. It is general information, not tax advice: confirm your own position with your chartered accountant.',
+    ],
+    comparison: {
+      columns: ['What it covers', 'Income-tax Act, 1961', 'Income-tax Act, 2025 (from 1 April 2026)'],
+      rows: [
+        { label: 'Life insurance premium deduction (₹1.5 lakh)', first: 'Section 80C', second: 'Section 123, read with Schedule XV' },
+        { label: 'Pension plan contribution', first: 'Section 80CCC', second: 'Inside Section 123 / Schedule XV, same ₹1.5 lakh limit' },
+        { label: 'Health insurance premium', first: 'Section 80D', second: 'Section 126' },
+        { label: 'Tax-free policy payouts', first: 'Section 10(10D)', second: 'The Act’s schedule of exempt income' },
+        { label: 'New tax regime', first: 'Section 115BAC', second: 'Section 202 (still the default)' },
+      ],
+    },
+    sections: [
+      {
+        heading: 'Check your tax regime first',
+        paras: [
+          'The life insurance and health insurance deductions apply only if you choose the old tax regime. Under the new regime, which applies unless you opt out, neither is allowed. Under the new regime, income up to ₹12 lakh (₹12.75 lakh for salaried taxpayers, after the standard deduction) carries no tax because of the rebate.',
+          'So for many salaried people, a policy bought “to save tax” saves nothing. Ask your CA which regime suits you before buying anything for tax reasons.',
+        ],
+      },
+      {
+        heading: 'How much of your premium counts (old regime)',
+        paras: [],
+        items: [
+          'The overall limit is ₹1.5 lakh a year, shared with PPF, EPF, ELSS, children’s tuition fees and home-loan principal.',
+          'Premiums count for policies on your own life, your spouse’s or your children’s. For a Hindu undivided family, on any member’s life.',
+          'For policies issued on or after 1 April 2012, only premium up to 10% of the sum assured counts (20% for older policies; 15% from 1 April 2013 where the insured has a disability or a specified illness).',
+          'Health insurance premiums are a separate deduction (Section 126): up to ₹25,000, or ₹50,000 for senior citizens.',
+          'If you end a policy within two years — by surrender or by stopping premiums without revival — the deductions already claimed are reversed.',
+        ],
+      },
+      {
+        heading: 'Are the payouts tax-free?',
+        paras: ['This applies under both regimes.'],
+        items: [
+          'Death benefit paid to the nominee: tax-free, whatever the premium (keyman policies taken by an employer are the exception).',
+          'Maturity and survival benefits: tax-free only if the yearly premium stays within the same 10% (or 20% for older policies) of sum assured.',
+          'Non-ULIP savings policies issued on or after 1 April 2023: maturity is taxable if your total yearly premium across such policies exceeds ₹5 lakh.',
+          'ULIPs issued on or after 1 February 2021: the same, with a ₹2.5 lakh limit.',
+        ],
+      },
+      {
+        heading: 'The 31 March deadline — and why not to rush',
+        paras: [
+          'For the deduction, the premium must be paid within the tax year: by 31 March 2027 for tax year 2026–27.',
+          'Buying in the last week of March is how families end up with a policy that fits the deadline but not their needs. Start with the protection your family needs; the tax benefit, if you are on the old regime, comes with it. I run that conversation from January onwards, free.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can I claim LIC premium under the new tax regime?',
+        a: 'No. The life insurance premium deduction (formerly 80C, now Section 123 of the Income-tax Act, 2025) is available only under the old regime. Death benefits remain tax-free under both regimes.',
+      },
+      {
+        q: 'Does Section 80C still exist in 2026?',
+        a: 'Its content does, under a new number. From 1 April 2026, the Income-tax Act, 2025 moved the deduction to Section 123, read with Schedule XV. The ₹1.5 lakh limit and the 10% of sum assured rule continue.',
+      },
+      {
+        q: 'What is the last date to pay LIC premium for tax saving in 2026–27?',
+        a: 'The premium must be paid within the tax year, so by 31 March 2027, and only if you are on the old tax regime. Check with your CA before buying a policy for tax.',
+      },
+      {
+        q: 'Is the LIC death claim amount taxable?',
+        a: 'No. The sum paid to the nominee on the death of the life assured is tax-free under both regimes. Keyman policies taken by an employer are the main exception.',
+      },
+    ],
+    sources: [
+      { label: 'Income Tax Department — Schedule XV, Income-tax Act, 2025', url: 'https://www.incometaxindia.gov.in/w/schedule-xv-3' },
+      { label: 'India Code — Section 123, Income-tax Act, 2025', url: 'https://indiacode.ecourtsindia.com/income-tax-act-2025/section/123/' },
+    ],
+    related: [
+      { label: 'Term insurance in Ahmedabad', to: '/services/term-insurance' },
+      { label: 'Term vs endowment: which first?', to: '/guides/term-vs-endowment' },
+      { label: 'LIC plans for salaried employees', to: '/guides/lic-plans-salaried-employees' },
+      { label: 'Free protection check', to: '/protection-check' },
+    ],
+  },
+  {
     slug: 'term-vs-endowment',
     title: 'Term insurance vs endowment: which LIC plan fits your family?',
     seoTitle: 'Term vs Endowment LIC in Ahmedabad: Honest Comparison',
