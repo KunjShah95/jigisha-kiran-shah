@@ -2,6 +2,7 @@ import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { ReactNode } from 'react';
 import { OBJECTIVES } from '../lib/contact';
+import { firstTouchSummary } from '../lib/attribution';
 
 export const INCOME_OPTIONS = [
   { value: 'below-10l', label: 'Below ₹10 Lakhs' },
@@ -96,7 +97,10 @@ export function optionLabel(options: Array<{ value: string; label: string }>, va
 
 /** Build a WhatsApp lead message from only the fields the visitor filled. */
 export function leadMessage(heading: string, rows: Array<[string, string]>) {
-  return [heading, ...rows.filter(([, v]) => v.trim()).map(([k, v]) => `${k}: ${v}`)].join('\n');
+  // Called at submit time (client only). The channel line lets Jigisha log
+  // the lead's source in the lead sheet — see docs/LEAD-CAPTURE.md.
+  const all: Array<[string, string]> = [...rows, ['How I found you', firstTouchSummary()]];
+  return [heading, ...all.filter(([, v]) => v.trim()).map(([k, v]) => `${k}: ${v}`)].join('\n');
 }
 
 /** Sets expectations before submit — what happens after the visitor reaches out. */

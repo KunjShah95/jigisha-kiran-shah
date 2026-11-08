@@ -1,4 +1,5 @@
 import { track } from '@vercel/analytics';
+import { getFirstTouch } from './attribution';
 
 /**
  * Conversion + engagement events for Vercel Web Analytics (and GA4 when
@@ -47,12 +48,22 @@ const GA4_NAME: Partial<Record<ConversionEvent, string>> = {
   contact_whatsapp: 'whatsapp_click',
   contact_call: 'phone_click',
   contact_email: 'email_click',
-  consultation_form_submit: 'contact_form_submit',
+  // generate_lead is GA4's recommended lead event: it appears in GA4's lead
+  // reports and can be marked as a key event / Ads conversion directly.
+  consultation_form_submit: 'generate_lead',
   booking_completed: 'consultation_request',
 };
 
+/** Lead events carry the visit's first-touch channel, so leads can be split by source. */
+const LEAD_EVENTS: ConversionEvent[] = ['consultation_form_submit', 'booking_completed', 'protection_check_handoff'];
+
 export function trackEvent(event: ConversionEvent, props?: Record<string, string>) {
-  const payload = { page: window.location.pathname, ...props };
+  const touch = LEAD_EVENTS.includes(event) ? getFirstTouch() : null;
+  const payload = {
+    page: window.location.pathname,
+    ...(touch ? { source: touch.channel, campaign: touch.campaign || 'none' } : {}),
+    ...props,
+  };
   try {
     track(event, payload);
   } catch {

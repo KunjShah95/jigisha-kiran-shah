@@ -6,6 +6,10 @@ import './index.css'
 import { Analytics } from '@vercel/analytics/react'
 import { isProductionHost } from './lib/env'
 import { initGA4, initClarity } from './lib/analytics'
+import { captureFirstTouch } from './lib/attribution'
+
+// Before anything else, while the landing URL and referrer are intact.
+captureFirstTouch()
 
 // Staging/preview guard: never pollute production analytics, and never let
 // crawlers index a non-production URL (belt-and-braces; Vercel also noindexes previews).

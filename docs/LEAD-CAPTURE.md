@@ -40,3 +40,12 @@ deliberate re-introduction, not a configuration flip, and it should come with a
   intent before the visitor presses send.
 - If form submits stay high while actual WhatsApp messages stay low, that gap is the
   cost of not storing leads — and the argument for bringing capture back.
+
+
+## Source attribution (added 8 Nov 2026)
+
+Every form message now ends with a **"How I found you"** line, e.g. `LinkedIn (w01), landed on /areas/shela` or
+`Google search, landed on /`. It comes from `src/lib/attribution.ts`: on the first page of a visit the site
+records the UTM tags (or, without them, the referring site) in sessionStorage for that tab only. Direct visits
+add no line. The same channel is sent as `source` / `campaign` on lead events to Vercel Analytics and GA4, so
+leads can be split by channel without storing anything personal.

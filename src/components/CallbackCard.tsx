@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MessageCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
+import { firstTouchSummary } from '../lib/attribution';
 import { whatsappUrl, objectiveWhatsAppText, objectiveShortLabel } from '../lib/contact';
 import { PHONE_DISPLAY } from '../lib/seo';
 
@@ -37,12 +38,16 @@ export default function CallbackCard({
     ? objectiveWhatsAppText(objective)
     : "Hi Jigisha ben, I found you on your website. Please call me back about LIC insurance.";
 
-  // Full message: the greeting, who is asking, and which page they asked from.
+  // Full message: the greeting, who is asking, which page they asked from, and
+  // how they found the site. The message is never rendered before submit, so
+  // reading sessionStorage here cannot cause a hydration mismatch.
+  const source = firstTouchSummary();
   const message = [
     waText,
     `Name: ${form.name.trim()}`,
     `Phone: ${form.phone.trim()}`,
     ...(context ? [`Page: ${context}`] : []),
+    ...(source ? [`How I found you: ${source}`] : []),
   ].join('\n');
 
   const onSubmit = (e: React.FormEvent) => {
