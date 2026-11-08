@@ -57,11 +57,14 @@ export default function GuidePage() {
             image: OG_IMAGE,
             datePublished: guide.date,
             dateModified: guide.updated,
+            // url must be a page about the author (Google's article guidelines);
+            // /about carries the full Person entity as a ProfilePage.
             author: {
               '@type': 'Person',
               '@id': `${SITE_URL}/#person`,
               name: 'Jigisha Kiran Shah',
-              url: `${SITE_URL}/#person`,
+              jobTitle: 'LIC Advisor',
+              url: `${SITE_URL}/about`,
             },
             publisher: { '@id': `${SITE_URL}/#business` },
             inLanguage: 'en-IN',
@@ -116,8 +119,13 @@ export default function GuidePage() {
             {guide.title}
           </h1>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-500">
-            <span className="font-bold text-midnight">By Jigisha Kiran Shah</span>
-            <span className="text-gray-400">LIC Advisor, Ahmedabad — since 2004</span>
+            <span>
+              By{' '}
+              <Link to="/about" rel="author" className="font-bold text-midnight underline-offset-4 hover:underline hover:text-gold-dark">
+                Jigisha Kiran Shah
+              </Link>
+            </span>
+            <span className="text-gray-400">LIC Advisor in Ahmedabad since 2004 · MDRT 2023 &amp; 2024</span>
             <span className="inline-flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-gold-dark" aria-hidden="true" />
               Published {fmt(guide.date)} · <span className="text-gray-400">Updated {fmtMonthYear(guide.updated)}</span>

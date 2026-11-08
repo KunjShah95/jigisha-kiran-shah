@@ -85,6 +85,18 @@ for (const loc of locs) {
   }
 
   if (html.includes('name="robots" content="noindex')) fail(`${clean}: sitemap URL is marked noindex`);
+
+  // Authorship (E-E-A-T, and how AI engines attribute advice): every guide and
+  // story names its author and points at the page that describes her.
+  if (/^\/(guides|blog)\/[^/]+$/.test(clean)) {
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
+      .map((m) => { try { return JSON.parse(m[1]); } catch { return {}; } });
+    const article = blocks.find((b) => b['@type'] === 'Article' || b['@type'] === 'BlogPosting');
+    if (!article) fail(`${clean}: no Article/BlogPosting schema`);
+    else if (article.author?.url !== `${SITE}/about`) fail(`${clean}: author.url should be ${SITE}/about`);
+    if (!/rel="author"/.test(html)) fail(`${clean}: byline does not link to the author page`);
+  }
+  if (clean === '/about' && !html.includes('"@type":"ProfilePage"')) fail('/about: missing ProfilePage schema');
 }
 
 // llms.txt must describe the whole site, not a subset. Service pages are
