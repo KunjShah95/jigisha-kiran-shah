@@ -36,6 +36,88 @@ export interface Guide {
 
 export const GUIDES: Guide[] = [
   {
+    slug: 'lic-revival-vs-surrender-vs-paid-up',
+    title: 'Can’t keep paying an LIC policy? Revive, make it paid-up, take a loan or surrender',
+    seoTitle: 'LIC Revival vs Surrender vs Paid-Up vs Loan: Which to Choose',
+    metaDescription:
+      'Four ways out when an LIC policy is lapsed or unaffordable: revive, make it paid-up, borrow against it or surrender. What each keeps, what it costs and when it fits.',
+    date: '2026-11-09',
+    updated: '2026-11-09',
+    readMinutes: 6,
+    targetQuery: 'LIC revival vs surrender vs paid up',
+    kind: 'comparison',
+    intro: [
+      'Short answer: if the need is temporary, take a loan against the policy; if you can’t keep paying but want to keep some cover, make it paid-up; if it has lapsed and you still need the full cover, revive it; surrender only when the policy no longer fits at all. Surrender is the only option that ends the cover for good.',
+      'Each option below links to a full page with the steps. Whatever you choose, get LIC’s exact figures for your own policy first: surrender value, paid-up value and revival arrears are all quoted by LIC, not estimated.',
+    ],
+    comparison: {
+      columns: ['Option', 'What you keep', 'What you give up'],
+      rows: [
+        { label: 'Revive (lapsed policy)', first: 'Full sum assured, the original policy date and the nominee; bonuses resume', second: 'Arrears plus interest, and usually a health declaration; must be within the revival period, usually five years and before maturity' },
+        { label: 'Make it paid-up', first: 'Life cover at a reduced sum assured, payable at the original maturity date, plus bonuses already declared', second: 'Future bonuses, and the gap between the full and the reduced sum assured; needs at least two full years of premiums' },
+        { label: 'Loan against the policy', first: 'Full cover, bonuses and the maturity date', second: 'Interest at LIC’s declared rate; loan and interest are deducted from the maturity or claim if not repaid. Not available on term plans' },
+        { label: 'Surrender', first: 'A one-time payout: the higher of the guaranteed and special surrender value, minus any loan', second: 'The life cover, future bonuses and the maturity amount, permanently; usually less than the premiums paid' },
+      ],
+    },
+    sections: [
+      {
+        heading: 'Choose in this order',
+        paras: [],
+        items: [
+          'Is the need for money temporary — fees, a medical bill, a business gap? A policy loan keeps everything intact and is usually cheaper than a personal loan.',
+          'Can you no longer afford the premium, but still want some cover? Make it paid-up, if at least two years’ premiums are paid.',
+          'Has the policy already lapsed, and does your family still need the full cover? Revive it while the revival period is open. Reviving is usually cheaper than buying the same cover at an older age.',
+          'Is the policy simply the wrong product — wrong term, wrong goal? Surrender, but only after comparing the surrender value with the paid-up value.',
+        ],
+      },
+      {
+        heading: 'Figures to get from LIC before deciding',
+        paras: [],
+        items: [
+          'Surrender value today (LIC pays the higher of the guaranteed and special surrender value)',
+          'Paid-up sum assured, if you stop paying now',
+          'Revival arrears with interest, if the policy has lapsed',
+          'Loan amount available and the current loan interest rate',
+          'Any outstanding loan already against the policy',
+        ],
+      },
+      {
+        heading: 'Two mistakes to avoid',
+        paras: [
+          'Letting a policy lapse to avoid repaying a loan. Unpaid loan and interest can grow until LIC forecloses the policy, which turns a manageable debt into a permanent loss of cover.',
+          'Surrendering in the first years. Early premiums fund costs rather than surrender value, so an early surrender often returns much less than was paid. Before two full years of premiums, a policy usually has no surrender value at all.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is it better to surrender or make an LIC policy paid-up?',
+        a: 'Usually paid-up. A paid-up policy keeps reduced life cover and the bonuses already declared until maturity, while surrender ends the cover for good. Surrender only makes sense when the policy no longer fits at all. Compare LIC’s quoted surrender and paid-up values first.',
+      },
+      {
+        q: 'Should I revive a lapsed LIC policy or surrender it?',
+        a: 'Revive it if your family still needs the cover and you can afford the arrears and future premiums: reviving is usually cheaper than buying new cover at an older age. If the arrears approach the surrender value or the policy no longer fits, a paid-up value or surrender may be better.',
+      },
+      {
+        q: 'Can I take a loan instead of surrendering my LIC policy?',
+        a: 'Yes, on endowment, money-back and whole-life policies with a surrender value, usually after two full years of premiums. The cover continues and the loan plus interest is deducted at maturity if not repaid. Term plans have no surrender value, so no loan.',
+      },
+      {
+        q: 'How much will LIC pay if I surrender my policy?',
+        a: 'The higher of the Guaranteed Surrender Value and the Special Surrender Value, minus any outstanding loan. The exact figure is quoted by LIC for your policy; anyone giving a precise amount without the policy is guessing.',
+      },
+    ],
+    sources: [
+      { label: 'LIC — policy conditions (surrender, paid-up, revival, loans)', url: 'https://licindia.in/policy-conditions' },
+    ],
+    related: [
+      { label: 'LIC policy revival', to: '/services/lic-policy-revival' },
+      { label: 'Surrendering an LIC policy', to: '/services/lic-surrender' },
+      { label: 'Loan against your LIC policy', to: '/services/lic-policy-loan' },
+      { label: 'Free policy review', to: '/services/policy-review-claims' },
+    ],
+  },
+  {
     slug: 'lic-maturity-claim-process',
     title: 'LIC maturity claim: the process, the forms and the timeline',
     seoTitle: 'LIC Maturity Claim Process: Form 3825, Documents & Timeline',

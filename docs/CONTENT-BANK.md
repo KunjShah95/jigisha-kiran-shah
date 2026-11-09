@@ -65,6 +65,12 @@ level, in daylight at the office. Add on-screen captions; most people watch mute
 > that buyout.
 > Action: "Read how it works."
 
+**cb31 · Can’t keep paying?** → `/guides/lic-revival-vs-surrender-vs-paid-up`
+> Hook: "Thinking of surrendering an LIC policy? Wait. There are three better options."
+> Body: Need money for a while? Take a loan against it. Can’t keep paying? Make it paid-up and keep some cover.
+> Already lapsed? Revive it. Surrender is the only option that ends your cover for good.
+> Action: "Side-by-side comparison at the link."
+
 ## B. Short videos — Gujarati
 
 **cb09 · નોમિની** → `/services/nominee-change`

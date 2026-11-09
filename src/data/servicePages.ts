@@ -28,6 +28,12 @@ export interface ServicePageMeta {
   keywords: string;
   targetQuery: string;
   h1: string;
+  /**
+   * Two-sentence direct answer shown first on the page and in llms-full.txt.
+   * Answer engines quote the first clean answer they find, so it must stand on
+   * its own and use only facts stated elsewhere on the page.
+   */
+  answer?: string;
   intro: string[];
   faqs: Array<{ q: string; a: string }>;
   relatedPost?: { label: string; to: string };
@@ -53,6 +59,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'life insurance services Ahmedabad, life insurance plans Ahmedabad, life insurance consultant Ahmedabad, types of life insurance, LIC advisor Ahmedabad, why life insurance is important',
     targetQuery: 'life insurance services Ahmedabad',
     h1: 'Life Insurance Plans & Services in Ahmedabad',
+    answer:
+      'Life insurance pays your family a fixed sum if you die during the policy term, replacing the income they would lose. Most families need a mix: term cover sized to income and loans first, then savings, child or pension plans for dated goals.',
     intro: [
       'Life insurance has one job: if the person who earns the family’s income dies, the money that income was going to provide still arrives. Everything else — savings, bonuses, tax benefits — is secondary to that promise.',
       'Jigisha Kiran Shah has advised individuals, families and business owners in Ahmedabad on LIC life insurance since 2004. A consultation starts with your responsibilities — dependants, loans, goals and the policies you already hold — and only then looks at plans. The first discussion is free and carries no obligation to buy.',
@@ -112,6 +120,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'family financial protection Ahmedabad, family protection plan, financial planning for family Ahmedabad, life insurance for married couples, children education financial planning, life changes insurance needs',
     targetQuery: 'family financial protection Ahmedabad',
     h1: 'Family Financial Protection Planning in Ahmedabad',
+    answer:
+      'Family financial protection means checking that income replacement, loans, children’s education, health costs and nominees are all covered together, not one policy at a time. Review it after every big life change: marriage, a child, a home loan or a new business.',
     intro: [
       'A family’s financial plan usually fails at one point: the income stops. A protection plan answers four questions before that happens — who depends on the income, what they would need, what is already in place, and what the gap is.',
       'Jigisha Kiran Shah works through those questions with families across Ahmedabad, from newly married couples to parents planning college fees to people nearing retirement. The result is a short written summary of your cover and the gaps, not a sales pitch.',
@@ -180,6 +190,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'term insurance Ahmedabad, LIC Tech Term, Jeevan Amar, best term plan Gujarat, 1 crore term insurance Ahmedabad',
     targetQuery: 'term insurance Ahmedabad',
     h1: 'Term Insurance in Ahmedabad',
+    answer:
+      'Term insurance pays your family the full sum assured if you die during the term, and nothing if you survive it, which is why it gives the most cover for the lowest premium. A common starting point is 10 to 15 times your yearly income, plus outstanding loans.',
     intro: [
       'Term insurance is the cheapest way to buy the largest protection: a Rs 1 crore cover for the price of a monthly pizza. Plans like LIC Tech Term and Jeevan Amar pay your family the full sum assured if anything happens to you during the term — nothing more, nothing less.',
       'Jigisha Kiran Shah sizes cover by a simple rule — 10 to 15 times your annual income plus outstanding loans — and documents the nominee registration that decides whether claims settle in 19 days or 4 months.',
@@ -209,6 +221,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'retirement planning Ahmedabad, LIC pension plans, Jeevan Akshay VII, Jeevan Umang, annuity plans Gujarat, pension for senior citizens Ahmedabad',
     targetQuery: 'retirement planning Ahmedabad',
     h1: 'Retirement Planning & Pension Plans in Ahmedabad',
+    answer:
+      'Retirement planning turns the money you have into an income that cannot run out. LIC Jeevan Akshay VII starts a pension for life from a lump sum, at a rate fixed on the day you buy.',
     intro: [
       'A lump sum in a fixed deposit is not income — it is a countdown. Retirement planning converts money you have into a monthly payment that cannot run out: LIC Jeevan Akshay VII starts pension the very next month at a rate locked on day one, for as long as you live.',
       'Every engagement starts with the same five numbers — true monthly expense, years to fund, guaranteed income already coming, the gap, and the corpus the gap demands — worked out free on one sheet of paper before any product is discussed.',
@@ -238,6 +252,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'child education plan Ahmedabad, LIC Jeevan Tarun, children money back plan, education planning Gujarat, premium waiver plans',
     targetQuery: 'child education plan Ahmedabad',
     h1: 'Child Education Plans in Ahmedabad',
+    answer:
+      'Child education plans time their payouts to the years college fees fall due, so the money arrives when it is needed. LIC Jeevan Tarun and the New Children’s Money Back Plan pay out between the child’s ages of 18 and 25.',
     intro: [
       'Education inflation in India runs near 10% a year — a degree costing Rs 10 lakh today is quoted at Rs 15 lakh-plus in Gujarat cities within a few years. LIC Jeevan Tarun and the New Children\u2019s Money Back Plan lock a guaranteed share of that bill to payout ages 18 through 25.',
       'The critical feature is premium waiver: if anything happens to the earning parent, future premiums stop but every payout continues. Maturity year is matched to the milestone year first — 18 for undergraduate, 22 for postgraduate.',
@@ -267,6 +283,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'endowment plans Ahmedabad, LIC Jeevan Labh, wealth creation LIC, guaranteed savings plans Gujarat, new endowment plan',
     targetQuery: 'LIC Jeevan Labh Ahmedabad',
     h1: 'Endowment & Wealth Plans in Ahmedabad',
+    answer:
+      'An endowment plan like LIC Jeevan Labh pays a guaranteed maturity amount plus bonuses on a fixed date, with life cover running throughout. It suits a dated goal and disciplined saving, not the highest return.',
     intro: [
       'An endowment plan like LIC Jeevan Labh is not the highest-returning place for a rupee — it is the most disciplined one. You pay premiums for a fixed term, and on a fixed future date a guaranteed maturity amount plus vested bonuses is paid to you, with life cover running throughout.',
       'For Ahmedabad families, endowments fund the predictable milestones: a daughter\u2019s age-18 education corpus, a 15-year business expansion reserve, a retirement top-up. Auto-debit does the discipline; the contract does the rest.',
@@ -296,6 +314,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'health insurance Ahmedabad, LIC Health Shield 907, LIC New Cancer Cover 908, health insurance Gujarat, hospitalisation cover',
     targetQuery: 'LIC health insurance Ahmedabad',
     h1: 'Health Insurance in Ahmedabad',
+    answer:
+      'LIC currently offers Health Shield (Plan 907) and New Cancer Cover (Plan 908); they are LIC’s own health plans, not mediclaim from a general insurer. Compare their policy wording with any family mediclaim you already have before applying.',
     intro: [
       'LIC currently lists Health Shield (Plan 907, UIN 512N369V01) and New Cancer Cover (Plan 908, UIN 512N370V01). Both became available on 19 October 2026. They cover different health-related risks, so compare their policy wording, eligibility, covered events, limits and exclusions before applying.',
       'A plan name or brochure summary cannot tell you whether a policy fits your existing cover. Review the current benefit schedule alongside your mediclaim and ask for the official policy wording before making a decision.',
@@ -334,6 +354,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'money back policy Ahmedabad, LIC Bima Shree, guaranteed payouts LIC, milestone savings Gujarat',
     targetQuery: 'money back policy Ahmedabad',
     h1: 'Money Back Plans in Ahmedabad',
+    answer:
+      'A money-back plan pays a share of the sum assured at set intervals during the term, with life cover running throughout and the balance paid at maturity. LIC’s New Money Back and Bima Shree plans are examples.',
     intro: [
       'Money-back plans pay you during the policy — not just at the end. The New Money Back Plan (25 years) returns 15% of the sum assured in the 5th, 10th, and 15th years with 40% plus bonus at maturity; Bima Shree adds guaranteed additions for high-value savers from Rs 10 lakh.',
       'Ahmedabad families use the payouts for school admissions, business inventory cycles, and home down payments — liquidity with life cover attached, and full sum assured plus bonus still payable on death throughout.',
@@ -362,6 +384,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'corporate insurance Ahmedabad, employer employee insurance, HUF insurance, MWP Act policy, partnership insurance Gujarat, group term insurance',
     targetQuery: 'corporate insurance Ahmedabad',
     h1: 'Corporate & HUF Insurance in Ahmedabad',
+    answer:
+      'Businesses use LIC structures to protect themselves, their partners and their staff: keyman, partnership and employer-employee cover. MWP Act and HUF policies keep family protection separate from business risk.',
     intro: [
       'Businesses on SG Highway, in Naroda\u2019s estates, and across Ahmedabad use LIC structures most advisors never mention: employer-employee policies that make key-person cover a tax-efficient business expense, MWP Act policies creditors cannot attach, and HUF policies that separate family protection from business risk.',
       'This practice handles group term for teams, partnership continuity cover, buy-sell funding, and succession-safe HUF insurance — with documentation support that finance heads actually enjoy.',
@@ -407,6 +431,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'business insurance GIDC Vatva, employer employee insurance Vatva, LIC group insurance GIDC, staff insurance engineering unit Ahmedabad, key person insurance Vatva, partnership insurance GIDC Ahmedabad, LIC agent Vatva',
     targetQuery: 'business insurance GIDC Vatva',
     h1: 'Business Insurance for GIDC Vatva Units',
+    answer:
+      'Units in GIDC Vatva can give staff life cover through employer-employee insurance, protect against losing a partner or key person, and keep the owner’s family cover away from business creditors. Each structure is set up with the unit’s CA.',
     intro: [
       'GIDC Vatva is home to hundreds of engineering, chemical and fabrication units, most of them owner-run, with a skilled team the business depends on. Jigisha Kiran Shah helps these owners put LIC structures in place for their staff, their partners and their own families.',
       'One recent example: an engineering unit in GIDC Vatva set up an employer-employee benefit for its staff. The unit pays the premium as the employer, and each covered employee’s family receives life cover. It gives the owner a concrete benefit to retain skilled workers, and it was set up with the documentation the unit’s accountant needed. Details stay private; the structure is available to any unit, from a handful of employees upward.',
@@ -442,6 +468,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'keyman insurance Ahmedabad, key person insurance, keyman insurance LIC, keyman insurance tax treatment, keyman insurance for partners, key man policy business expense',
     targetQuery: 'keyman insurance Ahmedabad',
     h1: 'Keyman Insurance in Ahmedabad',
+    answer:
+      'Keyman insurance is life cover a business takes on a key person: the business pays the premium and receives the claim. Premiums are generally a business expense, but the claim is taxable as business income.',
     intro: [
       'Many Ahmedabad businesses run on one or two people: the founder who holds the client relationships, the partner who knows production, the director the bank lends against. If that person dies, revenue drops at exactly the moment the business has to find a replacement, reassure lenders and keep paying salaries.',
       'Keyman insurance is life cover that the business takes on that key person. The business pays the premium and receives the claim, so the money arrives where the loss is felt.',
@@ -515,6 +543,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'partnership insurance Ahmedabad, partnership insurance LIC, what happens if a business partner dies, buy sell agreement insurance India, partner life insurance, business partnership protection',
     targetQuery: 'partnership insurance Ahmedabad',
     h1: 'Partnership Insurance in Ahmedabad',
+    answer:
+      'Partnership insurance is life cover on each partner, sized to the value of their share, so that if one dies the money exists to pay their family for that share. The business continues without draining its working capital.',
     intro: [
       'When a partner dies, two people need money at once. The family wants the partner’s share of the business in cash. The surviving partners want to keep the business without pulling that cash out of working capital or bringing in a stranger.',
       'Partnership insurance solves both: life cover on each partner, sized to the value of that partner’s share, so the money to buy out the share is ready when it is needed.',
@@ -586,6 +616,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'employer employee insurance Ahmedabad, employer employee insurance scheme LIC, EE policy tax, staff life insurance paid by company, employee benefit insurance Gujarat',
     targetQuery: 'employer employee insurance Ahmedabad',
     h1: 'Employer-Employee Insurance in Ahmedabad',
+    answer:
+      'Employer-employee insurance is life cover on an employee’s life with the premium paid by the business, protecting the employee’s family and helping the business keep skilled staff. The employer chooses whom to cover.',
     intro: [
       'Skilled staff are hard to find and expensive to replace. Employer-employee insurance lets a business give chosen employees real life cover, with the premium paid by the business, as a benefit that keeps people and protects their families.',
       'It suits small and mid-sized businesses as much as large companies. A unit can cover a handful of key staff, not necessarily everyone.',
@@ -657,6 +689,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'LIC policy review Ahmedabad, LIC claim assistance Ahmedabad, LIC death claim help, LIC maturity claim, revive lapsed LIC policy, change LIC nominee, LIC agent Shela',
     targetQuery: 'LIC policy review Ahmedabad',
     h1: 'LIC Policy Review & Claim Assistance in Ahmedabad',
+    answer:
+      'A free policy review lists every LIC policy your family holds, with its cover, maturity date and nominee, and flags gaps and lapsed policies. Help with claims and servicing is available for any LIC policy, whoever sold it.',
     intro: [
       'Most families in Ahmedabad already own two or three LIC policies — bought years ago, from different agents, for different reasons. Few know their total cover, when each policy matures, or whether the nominee is still correct. A policy review answers those questions on one sheet of paper before you spend a rupee on anything new.',
       'When a claim is due — death, maturity or survival benefit — the outcome depends heavily on paperwork. Jigisha Kiran Shah helps families intimate the claim, assemble the right documents, and follow up with the branch. LIC makes the final decision on every claim; good preparation removes avoidable delays.',
@@ -744,6 +778,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'LIC policy revival Ahmedabad',
     h1: 'LIC Policy Revival in Ahmedabad',
     updated: '2026-11-09',
+    answer:
+      'Most lapsed LIC policies can be revived, usually within five years of the first unpaid premium and before maturity, by paying the arrears with interest and confirming good health. Check the exact arrears and the plan’s rules before paying.',
     intro: [
       'A lapsed LIC policy is not a dead policy. It is a policy that stopped receiving premiums, and in most cases it can be brought back to full force by paying the arrears with interest and confirming that the life assured is still insurable.',
       'Jigisha Kiran Shah checks the policy schedule first — how long it has been lapsed, how many premiums were paid, and whether the plan still allows revival — because the answer sometimes is that revival costs more than the policy is worth, and that is worth knowing before you pay anything.',
@@ -825,6 +861,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'LIC nominee change',
     h1: 'LIC Nominee Change & Update in Ahmedabad',
     updated: '2026-10-26',
+    answer:
+      'You change the nominee on an LIC policy by submitting a change-of-nomination request at the servicing branch. Without a valid nominee, a claim needs legal-heir documents and can take months.',
     intro: [
       'Nomination is the single cheapest thing you can do for your family and the single most common reason a claim gets stuck. It costs nothing, takes one form, and decides whether the money reaches your nominee in weeks or your legal heirs after a succession certificate.',
       'It is also the detail that quietly goes stale: a nominee who has since died, a parent nominated on a policy that now belongs to a married son, a name misspelled at proposal. All three are fixable in a single branch visit.',
@@ -901,6 +939,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'find old LIC policy',
     h1: 'Find a Lost LIC Policy',
     updated: '2026-10-26',
+    answer:
+      'A lost LIC policy can usually be traced from old premium receipts, bank debits, employer records or the branch’s records, and LIC’s unclaimed-amount search lists money not yet paid out. The servicing branch can issue a duplicate policy once it is traced.',
     intro: [
       'Policies go missing for ordinary reasons: a parent dies without telling anyone, a file is lost in a move, the agent left, the premium was paid by salary deduction decades ago. The policy itself does not disappear — the record exists at a branch, and it can usually be found.',
       'What you need is not luck but the right starting points: a name, a date of birth, a rough year of purchase, and any trace of a payment. From there, tracing is a documentation exercise, and it is one of the most valuable things a family can do.',
@@ -977,6 +1017,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'NRI LIC policy',
     h1: 'NRI LIC Policy Servicing',
     updated: '2026-10-26',
+    answer:
+      'NRIs can keep LIC policies in force from abroad, paying premiums from NRE or NRO accounts and handling nominee updates, revival and claims without travelling to India. Keep your overseas mobile and email registered with the branch.',
     intro: [
       'An LIC policy bought in Ahmedabad does not stop working when the policyholder moves to Dubai, Toronto or Melbourne. Everything — premiums, nominee updates, revival, maturity and death claims — can be handled from abroad, but the paperwork has an extra layer that trips people up.',
       'Jigisha Kiran Shah services LIC policies for Gujarati families settled abroad, most of them originally sold to a parent or bought before the move, and coordinates with the branch in India so nobody has to fly back for a form.',
@@ -1053,6 +1095,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'loan against LIC policy',
     h1: 'Loan Against Your LIC Policy',
     updated: '2026-10-26',
+    answer:
+      'You can borrow against an LIC endowment, money-back or whole-life policy once it has a surrender value, usually after two full years of premiums, and the cover continues. Term plans do not qualify, because they have no surrender value.',
     intro: [
       'A loan against an LIC policy lets you reach your own money without ending the policy. The cover continues, bonuses continue to accrue, and the loan plus interest is simply deducted when the policy matures or a claim is paid.',
       'It is the better option whenever the need is temporary. Surrendering a policy to meet a short-term cash requirement permanently gives up cover, bonuses and the maturity date — usually for a fraction of what the policy would have paid.',
@@ -1127,6 +1171,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'LIC address change',
     h1: 'LIC Address, Name & Minor-to-Major Changes',
     updated: '2026-10-26',
+    answer:
+      'Keep your address, mobile, email, bank mandate and PAN up to date with the servicing branch, so that notices and payouts reach you. A minor’s policy is converted when the life assured turns 18.',
     intro: [
       'These are the smallest chores in insurance and the ones most often left undone for a decade. A wrong address means a renewal notice never arrives; an uncorrected name means a bank rejects the payout; a policy still held in a parent’s name after the child turns 18 means the money cannot be released without extra paperwork.',
       'All three are one-visit jobs, and all three are worth doing in the same visit as a nominee update.',
@@ -1206,6 +1252,8 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
     targetQuery: 'LIC policy surrender',
     h1: 'Surrendering an LIC Policy',
     updated: '2026-11-04',
+    answer:
+      'Surrendering ends the policy and pays the higher of its guaranteed or special surrender value, which is usually less than the premiums paid. Before surrendering, check whether a paid-up policy, a loan or revival keeps more of what you have paid for.',
     intro: [
       'Surrendering a policy means ending it and taking back what it is worth today. That number is almost always smaller than the premiums paid so far, because the early years of a life policy fund the commission, the mortality charge and the reserve — not the surrender value. For most families who ask about surrender in Ahmedabad, the honest answer is that a different option does the job better.',
       'This page is the decision, not the pitch: when you are actually allowed to surrender, what LIC will pay, what you give up, and the three alternatives that usually keep the cover alive. If after reading it you still want to surrender, that is a legitimate choice — a free policy review will at least put the exact figures in front of you first.',

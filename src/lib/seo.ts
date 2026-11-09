@@ -93,6 +93,10 @@ export const FAQS: FAQItem[] = [
     a: 'Based in Shela, serving all Ahmedabad areas including Satellite, SG Highway, South Bopal, Science City, Bopal, Ambawadi, Vastrapur, Maninagar, Naranpura, Gota, Chandkheda, and nearby Gujarat towns. Consultations available by phone, WhatsApp, and in-person.',
   },
   {
+    q: 'How does Jigisha Kiran Shah get paid? Is the consultation really free?',
+    a: 'Yes. The first consultation is free, about 20 minutes, with no obligation. There is no fee for advice: if you buy a policy, LIC pays the agent’s commission, and the premium is set by LIC, the same whichever LIC agent you buy through. Ask and she will tell you the commission on any plan.',
+  },
+  {
     q: 'How do I book a free consultation?',
     a: 'Call +91 98240 25435, WhatsApp the same number, email jkshahlic@gmail.com, or fill the contact form. Share your age, income range, and goal (term cover, retirement, child education, health) for personalised LIC plan recommendations.',
   },
