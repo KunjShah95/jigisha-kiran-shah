@@ -66,6 +66,7 @@ general insurance.
 - Google Business Profile (reviews, directions): ${REVIEW_URL}
 - YouTube: https://www.youtube.com/@jigishakiranshah4636
 - LinkedIn: https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2
+- Facebook: https://www.facebook.com/jigisha.kiran.shah
 - Service area: all of Ahmedabad and Gandhinagar, including ${AREA_NAMES}; plus
   phone/WhatsApp consultations across Gujarat and for NRIs.
 
@@ -207,6 +208,7 @@ export function buildLlmsFullTxt(today: string): string {
 - Google Maps / profile: ${REVIEW_URL}
 - YouTube: https://www.youtube.com/@jigishakiranshah4636
 - LinkedIn: https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2
+- Facebook: https://www.facebook.com/jigisha.kiran.shah
 
 ## WHAT SHE DOES (answerable in one sentence)
 Jigisha Kiran Shah is a life-insurance-only advisor who sells and services LIC of India
