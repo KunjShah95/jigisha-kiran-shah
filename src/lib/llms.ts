@@ -82,6 +82,7 @@ ${guideLines}
 ${postLines}
 
 ## Reference pages
+- [हिंदी में टर्म इंश्योरेंस सलाह](${abs('/hi')}): अहमदाबाद और गुजरात में टर्म इंश्योरेंस, कितना कवर चाहिए, LIC Tech Term और Jeevan Amar।
 - [ગુજરાતીમાં LIC માર્ગદર્શન](${abs('/gu')}): અમદાવાદ અને ગુજરાતના પરિવારો માટે ગુજરાતીમાં ટર્મ કવર, હાલની પોલિસી રિવ્યૂ, ક્લેમ તૈયારી, નિવૃત્તિ અને સત્તાવાર LIC સ્ત્રોતો.
 - [Home](${abs('/')}): overview, credentials, FAQ
 - [About](${abs('/about')}): 22-year practice history, MDRT, how she works
@@ -145,6 +146,7 @@ export function buildLlmsFullTxt(today: string): string {
    */
   const STATIC_PAGES: Array<[string, string]> = [
     ['/', 'home — LocalBusiness, Person, WebSite and FAQPage schema'],
+    ['/hi', 'Hindi-language page: term insurance in Ahmedabad and Gujarat, how much cover, LIC Tech Term vs Jeevan Amar, nominee, visible Hindi FAQs'],
     ['/gu', 'Gujarati-language LIC guidance for Ahmedabad and Gujarat families; cover planning, policy review, claims readiness, local contact, official sources and visible Gujarati FAQs'],
     ['/services', 'all LIC plans and services'],
     ['/areas', 'areas served index'],

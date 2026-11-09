@@ -339,3 +339,23 @@ validate in Keyword Planner or Search Console. ✚ = page added on 9 Nov 2026.
 
 **Rule:** a new query gets a new page only when it is a different *need*, not a different wording. Different
 wordings go into the existing page's title, FAQ or headings.
+
+---
+
+## 12. Search Console, all 104 queries to 7 Nov 2026 — actions taken 9 Nov
+
+| Cluster | Impr. | Action |
+|---|---:|---|
+| Hindi term insurance (अहमदाबाद में टर्म इंश्योरेंस, अहमदाबाद टर्म प्लान, गुजरात टर्म प्लान) | ~55 | ✚ `/hi` Hindi page, hreflang with `/` and `/gu` |
+| lic office chandkheda / chandkheda branch contact number / lic naranpura | ~15 | "Is this the LIC office?" answers + branch-locator pointer on both area pages |
+| Senior citizens (monthly income, pension, after 60 / 65) | ~15 | Senior guide title, description and two FAQs |
+| Health / mediclaim in Ahmedabad | ~30 | Honest "she does not sell mediclaim" FAQ; title leads with "Health Insurance in Ahmedabad" |
+| lic lapsed policy revival scheme | 4 | Revival-campaign FAQ |
+| Jeevan Utsav vs Umang (12 wordings), advisor queries, lic office bopal/gota | ~170 | Already changed 5–6 Nov; wait for 4 weeks of data |
+| jeevan utsav / plan details / premium chart | ~23 | Watch: a Jeevan Utsav plan page if this keeps growing |
+| jeevan kiran (LIC term plan, likely matched on her name) | 5 | Watch |
+| Itanagar / Assam / Puducherry term plans, "yes", other names | — | Ignore: not her market |
+
+Also found and fixed: React 18.3's server renderer was inserting NUL bytes into pages with multi-byte text
+(`/gu`, `/services/life-insurance`, `/services/lic-policy-loan` were live with them). Stripped at render;
+`check-seo` now fails the build on NUL or U+FFFD.

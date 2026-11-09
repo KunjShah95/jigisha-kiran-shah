@@ -728,11 +728,11 @@ export const GUIDES: Guide[] = [
   {
     slug: 'lic-plans-senior-citizens',
     title: 'LIC plans for senior citizens in Ahmedabad: guaranteed income, zero stress',
-    seoTitle: 'LIC Plans for Senior Citizens in Ahmedabad | Pension + Health',
+    seoTitle: 'LIC Plans for Senior Citizens: Pension & Monthly Income After 60',
     metaDescription:
-      'Senior citizen in Ahmedabad? Immediate pension via Jeevan Akshay VII, health cover, and claim support for old policies. Free review: +91 98240 25435.',
+      'LIC plans for senior citizens in Ahmedabad: monthly pension for life with Jeevan Akshay VII, what you can buy after 60 or 65, and how to split FDs and annuities.',
     date: '2024-09-13',
-    updated: '2026-11-04',
+    updated: '2026-11-09',
     readMinutes: 4,
     targetQuery: 'LIC plans for senior citizens Ahmedabad',
     kind: 'persona',
@@ -771,6 +771,14 @@ export const GUIDES: Guide[] = [
       {
         q: 'Can senior citizens buy new LIC policies?',
         a: 'Annuity plans like Jeevan Akshay VII are specifically designed for retirees with entry at advanced ages. Pure savings-cum-protection plans make less sense after 60 — the priority shifts to guaranteed income.',
+      },
+      {
+        q: 'Is there an LIC monthly income plan for senior citizens?',
+        a: 'Yes. Jeevan Akshay VII is an immediate annuity: you invest a lump sum once and LIC pays a pension for life, monthly or at a longer interval you choose, at a rate fixed on the day you buy. Joint-life options continue the pension to a spouse.',
+      },
+      {
+        q: 'Can I buy an LIC policy after 60 or 65?',
+        a: 'Yes, mainly annuity (pension) plans, which accept much higher entry ages than savings plans. Each plan has its own maximum entry age in LIC’s brochure, so check that first. After 60, guaranteed income usually matters more than new savings-cum-protection cover.',
       },
       {
         q: 'How do I trace a forgotten LIC policy of my parents?',

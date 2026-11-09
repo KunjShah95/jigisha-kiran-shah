@@ -7,7 +7,7 @@ const FAQs = [
   { q: 'મારા પરિવાર માટે કેટલો ટર્મ ઇન્શ્યોરન્સ કવર યોગ્ય છે?', a: 'દરેક પરિવાર માટે એક સરખી રકમ યોગ્ય નથી. તમારી આવક, ઘરખર્ચ, આશ્રિત સભ્યો, બાકી લોન, આવક કેટલાં વર્ષ સુધી જરૂરી રહેશે અને હાલનું જીવન વીમા કવર સાથે જોઈને અંદાજ બનાવવો જોઈએ. કોઈ પણ યોજના લેતા પહેલાં વ્યક્તિગત જરૂરિયાત અને LICની પોલિસી શરતો તપાસો.' },
   { q: 'બીજા એજન્ટ પાસેથી લીધેલી LIC પોલિસીનું રિવ્યૂ થઈ શકે?', a: 'હા. હાલની LIC પોલિસીનું રિવ્યૂ કરાવવા માટે એ જ એજન્ટ પાસે જવું જરૂરી નથી. પોલિસી નંબર, પ્લાન, પ્રીમિયમની સ્થિતિ, નોમિની, કવર અને મેચ્યોરિટીની તારીખ સાથે વિગતો તપાસી શકાય છે. ખરીદી કરવાની કોઈ ફરજ નથી.' },
   { q: 'પોલિસી રિવ્યૂ માટે કઈ માહિતી સાથે રાખવી?', a: 'પોલિસી બોન્ડ અથવા નંબર, છેલ્લી પ્રીમિયમ રસીદ, નોમિનીનું નામ, જન્મતારીખ, સંપર્કની વિગતો અને પરિવારના નાણાકીય લક્ષ્યો તૈયાર રાખો. મૂળ દસ્તાવેજ મોકલતાં પહેલાં સુરક્ષિત રીતે શેર કરો. ક્લેમમાં જરૂરી દસ્તાવેજો ક્લેમના પ્રકાર પ્રમાણે બદલાય છે.' },
-  { q: 'શું આ LICની સત્તાવાર વેબસાઇટ છે?', a: 'ના. આ જિગિષા કિરણ શાહની સ્વતંત્ર LIC સલાહકાર વેબસાઇટ છે, LICની સત્તાવાર વેબસાઇટ નથી. પોલિસી LIC દ્વારા જારી થાય છે અને ક્લેમનો નિર્ણય LIC કરે છે. સત્તાવાર માહિતી માટે LICની વેબસાઇટ અને પોલિસી દસ્તાવેજ જુઓ.' },
+  { q: 'શું આ LICની સત્તાવાર વેબસાઇટ છે?', a: 'ના. આ LIC એજન્ટ જિગિષા કિરણ શાહની વેબસાઇટ છે, LICની સત્તાવાર વેબસાઇટ નથી. પોલિસી LIC દ્વારા જારી થાય છે અને ક્લેમનો નિર્ણય LIC કરે છે. સત્તાવાર માહિતી માટે LICની વેબસાઇટ અને પોલિસી દસ્તાવેજ જુઓ.' },
   { q: 'અમદાવાદમાં ગુજરાતી ભાષામાં સલાહ કેવી રીતે મેળવી શકું?', a: 'શેલા સ્થિત ઓફિસમાં મુલાકાત માટે પહેલાં સમય નક્કી કરો અથવા +91 98240 25435 પર ફોન કે WhatsApp કરો. શેલા, સાઉથ બોપલ, બોપલ, સેટેલાઇટ, SG હાઇવે, વસ્ત્રાપુર, અંબાવાડી, મણિનગર, નારણપુરા, ગોટા અને ચાંદખેડા સહિત અમદાવાદમાં સલાહ મળે છે.' },
 ];
 
@@ -27,7 +27,7 @@ export default function GujaratiPage() {
     keywords: 'LIC advisor Ahmedabad Gujarati, LIC agent Ahmedabad Gujarati, અમદાવાદ LIC સલાહકાર, ગુજરાતી જીવન વીમા સલાહ, LIC પોલિસી રિવ્યૂ અમદાવાદ, LIC ક્લેમ સહાય ગુજરાતીમાં',
     breadcrumbLabel: 'ગુજરાતી માર્ગદર્શન',
     htmlLang: 'gu-IN',
-    alternateLanguages: { 'en-IN': '/', 'gu-IN': '/gu', 'x-default': '/' },
+    alternateLanguages: { 'en-IN': '/', 'gu-IN': '/gu', 'hi-IN': '/hi', 'x-default': '/' },
     jsonLd: [
       { '@context': 'https://schema.org', '@type': 'WebPage', '@id': `${SITE_URL}/gu#webpage`, url: `${SITE_URL}/gu`, name: 'ગુજરાતીમાં LIC સલાહ — અમદાવાદ', inLanguage: 'gu-IN', about: { '@id': `${SITE_URL}/#person` }, isPartOf: { '@id': `${SITE_URL}/#website` } },
       faqJsonLd(FAQs),
@@ -86,7 +86,7 @@ export default function GujaratiPage() {
           <p className="text-sm text-white/65 mb-6">સરનામું: Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058. સોમવારથી શનિવાર, સવારે 9થી સાંજે 6 (IST).</p>
           <Link to="/contact" className="inline-flex items-center gap-2 rounded-xl bg-white text-midnight px-5 py-3 font-semibold hover:bg-gold hover:text-white transition-colors">સંપર્ક વિગતો અને સમય <ArrowRight size={16} aria-hidden="true" /></Link>
         </section>
-        <p className="flex gap-2 items-start text-xs text-gray-500 leading-relaxed"><BookOpen className="shrink-0 mt-0.5" size={15} aria-hidden="true" />આ વેબસાઇટ સ્વતંત્ર LIC સલાહકારની છે, LICની સત્તાવાર વેબસાઇટ નથી. યોજનાઓના લાભ, પાત્રતા, પ્રીમિયમ અને ચુકવણી પોલિસી દસ્તાવેજ તથા LICના નિયમો પર આધારિત છે. <a className="underline" href="https://licindia.in/" target="_blank" rel="noopener noreferrer">સત્તાવાર LIC વેબસાઇટ</a> અને <a className="underline" href="https://irdai.gov.in/" target="_blank" rel="noopener noreferrer">IRDAI</a> જુઓ.</p>
+        <p className="flex gap-2 items-start text-xs text-gray-500 leading-relaxed"><BookOpen className="shrink-0 mt-0.5" size={15} aria-hidden="true" />આ વેબસાઇટ LIC એજન્ટ જિગિષા કિરણ શાહની છે, LICની સત્તાવાર વેબસાઇટ નથી. યોજનાઓના લાભ, પાત્રતા, પ્રીમિયમ અને ચુકવણી પોલિસી દસ્તાવેજ તથા LICના નિયમો પર આધારિત છે. <a className="underline" href="https://licindia.in/" target="_blank" rel="noopener noreferrer">સત્તાવાર LIC વેબસાઇટ</a> અને <a className="underline" href="https://irdai.gov.in/" target="_blank" rel="noopener noreferrer">IRDAI</a> જુઓ.</p>
       </div>
     </main>
   );
