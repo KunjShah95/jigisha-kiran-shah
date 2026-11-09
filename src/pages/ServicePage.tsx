@@ -131,6 +131,12 @@ export default function ServicePage() {
           <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4">
             {meta.h1}
           </h1>
+          {meta.answer && (
+            <div className="max-w-3xl mb-6 rounded-2xl border-l-4 border-gold bg-white px-5 py-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-gold-dark mb-1">Short answer</p>
+              <p className="text-base lg:text-lg text-midnight leading-relaxed">{meta.answer}</p>
+            </div>
+          )}
           {meta.intro.map((p, i) => (
             <p key={i} className="text-base lg:text-lg text-gray-600 leading-relaxed font-light max-w-3xl mb-4">
               {p}

@@ -300,6 +300,35 @@ export default function ProtectionCheckPage() {
       ...summaryLines().map(([k, v]) => `${k}: ${v}`),
     ].join('\n');
 
+  /**
+   * The two hand-off buttons. Rendered twice on the result screen: straight
+   * after the result cards (where the visitor is looking at their number) and
+   * again at the very end. `place` is recorded so we learn which one converts.
+   */
+  const handoff = (place: 'top' | 'bottom') =>
+    goal ? (
+      <div className="flex flex-col sm:flex-row gap-3">
+        <Link
+          to={`/book?objective=${OBJECTIVE[goal]}&from=check`}
+          data-cta={`check-book-${place}`}
+          onClick={() => trackEvent('protection_check_handoff', { goal, via: 'book', place })}
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gold text-midnight font-bold text-sm hover:bg-gold-light active:scale-[0.98] transition-all min-h-11"
+        >
+          <Calendar className="w-4 h-4" aria-hidden="true" /> {t.ctaBook}
+        </Link>
+        <a
+          href={whatsappUrl(waText())}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cta={`check-whatsapp-${place}`}
+          onClick={() => trackEvent('protection_check_handoff', { goal, via: 'whatsapp', place })}
+          className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-whatsapp text-white font-bold text-sm hover:bg-whatsapp-dark active:scale-[0.98] transition-all min-h-11"
+        >
+          <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" /> {t.ctaWhatsApp}
+        </a>
+      </div>
+    ) : null;
+
   const totalSteps = 4;
   const card = 'bg-white rounded-3xl shadow-xl shadow-gray-200/50 border border-border p-6 lg:p-8';
 
@@ -531,6 +560,12 @@ export default function ProtectionCheckPage() {
               </div>
             ) : null}
 
+            {/* Hand-off while the result is on screen; the full block repeats at the end. */}
+            <div className="rounded-3xl border border-gold/30 bg-white p-5 lg:p-6">
+              <p className="font-display font-bold text-lg text-midnight mb-3">{t.ctaTitle}</p>
+              {handoff('top')}
+            </div>
+
             <details className={`${card} group`}>
               <summary className="cursor-pointer list-none flex items-center justify-between text-sm font-bold text-midnight min-h-11">
                 {t.assumptionsTitle}
@@ -572,26 +607,7 @@ export default function ProtectionCheckPage() {
             <div className="bg-midnight rounded-3xl p-6 lg:p-8 text-white">
               <h3 className="text-2xl font-display font-bold mb-2">{t.ctaTitle}</h3>
               <p className="text-sm text-gray-300 font-light leading-relaxed mb-6">{t.ctaBody}</p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Link
-                  to={`/book?objective=${OBJECTIVE[goal]}&from=check`}
-                  data-cta="check-book"
-                  onClick={() => trackEvent('protection_check_handoff', { goal, via: 'book' })}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gold text-midnight font-bold text-sm hover:bg-gold-light active:scale-[0.98] transition-all min-h-11"
-                >
-                  <Calendar className="w-4 h-4" aria-hidden="true" /> {t.ctaBook}
-                </Link>
-                <a
-                  href={whatsappUrl(waText())}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cta="check-whatsapp"
-                  onClick={() => trackEvent('protection_check_handoff', { goal, via: 'whatsapp' })}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-whatsapp text-white font-bold text-sm hover:bg-whatsapp-dark active:scale-[0.98] transition-all min-h-11"
-                >
-                  <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" /> {t.ctaWhatsApp}
-                </a>
-              </div>
+              {handoff('bottom')}
             </div>
 
             <div className="flex items-center justify-between gap-4">

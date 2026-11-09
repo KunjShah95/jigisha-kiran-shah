@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MessageCircle, Loader2 } from 'lucide-react';
 import { trackEvent } from '../lib/analytics';
+import { CONSULTATION_TERMS_SHORT } from './ConsultationTerms';
 import { firstTouchSummary } from '../lib/attribution';
 import { whatsappUrl, objectiveWhatsAppText, objectiveShortLabel } from '../lib/contact';
 import { PHONE_DISPLAY } from '../lib/seo';
@@ -100,6 +101,7 @@ export default function CallbackCard({
           ? `Jigisha will call you about ${objectiveShortLabel(objective).toLowerCase()} — no obligation, no sales script.`
           : 'Jigisha will call you back — no obligation, no sales script.'}
       </p>
+      <p className="-mt-3 mb-5 text-xs text-white/55 leading-relaxed">{CONSULTATION_TERMS_SHORT}</p>
 
       <form onSubmit={onSubmit} className="grid sm:grid-cols-[1fr_1fr_auto] gap-3 items-end">
         <div>

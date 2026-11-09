@@ -170,7 +170,7 @@ export function buildLlmsFullTxt(today: string): string {
     ...STATIC_PAGES.map(([path, note]) => `${abs(path)} — ${note}`),
     '',
     '# Service pages (one per intent)',
-    ...SERVICE_PAGES.map((s) => `${abs(`/services/${s.slug}`)} — ${oneLine(s.h1)}`),
+    ...SERVICE_PAGES.map((s) => `${abs(`/services/${s.slug}`)} — ${oneLine(s.h1)}${s.answer ? `\n  ${oneLine(s.answer)}` : ''}`),
     '',
     '# Area pages (one per locality)',
     ...AREAS.map((a) => `${abs(`/areas/${a.slug}`)} — LIC advisor in ${a.name}`),

@@ -6,6 +6,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Field, SelectField, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, ConsentNote, TIME_OPTIONS } from '../components/lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
+import ConsultationTerms from '../components/ConsultationTerms';
 
 /**
  * Cal.com event path: a public booking link, not a secret. Deliberately not
@@ -261,6 +262,7 @@ export default function BookPage() {
                 </li>
               ))}
             </ul>
+            <ConsultationTerms className="mb-6" />
             <div className="flex gap-3 p-4 rounded-2xl bg-white border border-border">
               <ShieldCheck className="w-5 h-5 text-gold-dark shrink-0 mt-0.5" aria-hidden="true" />
               <p className="text-sm text-gray-600">
