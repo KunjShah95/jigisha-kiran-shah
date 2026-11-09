@@ -23,6 +23,7 @@ const CalculatorsPage = lazy(() => import('./pages/CalculatorsPage'))
 const GalleryPage = lazy(() => import('./pages/GalleryPage'))
 const GujaratiPage = lazy(() => import('./pages/GujaratiPage'))
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+const HindiPage = lazy(() => import('./pages/HindiPage'))
 
 function NotFound() {
   useSEO({
@@ -52,6 +53,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/gu" element={<GujaratiPage />} />
+        <Route path="/hi" element={<HindiPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:slug" element={<ServicePage />} />
         <Route path="/about" element={<AboutPage />} />

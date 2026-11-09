@@ -192,12 +192,19 @@ export const AREAS: Area[] = [
   {
     slug: 'naranpura',
     name: 'Naranpura',
+    seoTitle: 'LIC Advisor for Naranpura | Policy Work Without a Branch Visit',
+    seoDescription:
+      'LIC help in Naranpura without a branch visit: term cover, child plans, nominee changes, revival and claims by phone or WhatsApp. Call +91 98240 25435.',
     mapQuery: 'Naranpura, Ahmedabad, Gujarat',
     intro:
       'Naranpura\u2019s established residential societies hold many dual-income families balancing home loans with children\u2019s education goals. Jigisha Kiran Shah advises Naranpura clients on term cover sized to liabilities, Jeevan Labh endowment for milestones, and Jeevan Tarun for education — with phone-first consultations.',
     landmarks: ['Naranpura Crossroads', 'Sardar Patel Stadium area', 'Riverfront West Bank', 'Sola Road connection'],
     commute: 'Naranpura is about 30–40 minutes from the Shela office. First meetings run on phone/WhatsApp; in-person reviews are scheduled around your availability.',
     faqs: [
+      {
+        q: 'Is this the LIC office in Naranpura?',
+        a: 'No. This is the office of Jigisha Kiran Shah, an LIC agent based in Shela who serves Naranpura by phone, WhatsApp and visits, not an LIC branch. For a branch’s address and phone number, use the branch locator on licindia.in. Most branch errands, such as premium receipts, nominee changes, revival, policy loans and maturity or claim papers, can be prepared through her first, so a branch visit is needed only where LIC requires one. Call +91 98240 25435.',
+      },
       {
         q: 'Which LIC plans suit a dual-income family in Naranpura with a home loan?',
         a: 'Term cover of 10–15x income plus the outstanding loan (Tech Term, Jeevan Amar), paired with Jeevan Labh or money-back plans for education milestones. A free consultation sizes both precisely.',
@@ -237,12 +244,23 @@ export const AREAS: Area[] = [
   {
     slug: 'chandkheda',
     name: 'Chandkheda',
+    seoTitle: 'LIC Advisor for Chandkheda | Policy Work Without a Branch Visit',
+    seoDescription:
+      'LIC help in Chandkheda without a branch visit: pension, term cover, nominee changes, revival and claims by phone or WhatsApp. Call +91 98240 25435.',
     mapQuery: 'Chandkheda, Ahmedabad, Gujarat',
     intro:
       'Chandkheda\u2019s ONGC colony, bank townships, and highway-corridor professionals value guaranteed, no-surprise products. Jigisha Kiran Shah serves Chandkheda with pension annuities (Jeevan Akshay VII), endowment savings (Jeevan Labh, Bima Shree), and term cover — consultations by phone, WhatsApp, and scheduled visits.',
     landmarks: ['ONGC Colony', 'Visat–Gandhinagar Highway', 'Chandkheda Village Centre', 'Sughad corridor'],
     commute: 'Chandkheda is about 35–45 minutes from Shela. North Ahmedabad clients typically consult over phone/WhatsApp with in-person meetings for documentation.',
     faqs: [
+      {
+        q: 'Is this the LIC office in Chandkheda?',
+        a: 'No. This is the office of Jigisha Kiran Shah, an LIC agent based in Shela who serves Chandkheda by phone, WhatsApp and visits, not an LIC branch. For a branch’s address and phone number, use the branch locator on licindia.in. Most branch errands, such as premium receipts, nominee changes, revival, policy loans and maturity or claim papers, can be prepared through her first, so a branch visit is needed only where LIC requires one. Call +91 98240 25435.',
+      },
+      {
+        q: 'What is the LIC Chandkheda branch contact number?',
+        a: 'Branch addresses and phone numbers are listed on LIC’s official branch locator at licindia.in, which is kept up to date. For help preparing a servicing request before you go, call or WhatsApp Jigisha Kiran Shah on +91 98240 25435.',
+      },
       {
         q: 'Do you serve Chandkheda, Ahmedabad for LIC pension plans?',
         a: 'Yes. Jeevan Akshay VII annuity illustrations, pension-gap math, and joint-life options for Chandkheda retirees and pre-retirees — free consultation on +91 98240 25435.',

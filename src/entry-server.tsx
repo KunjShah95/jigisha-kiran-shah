@@ -30,7 +30,8 @@ export interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   { path: '/', priority: 1.0 },
-  { path: '/gu', updated: '2026-11-04', priority: 0.9 },
+  { path: '/gu', updated: '2026-11-09', priority: 0.9 },
+  { path: '/hi', updated: '2026-11-09', priority: 0.9 },
   { path: '/services', priority: 0.9 },
   { path: '/contact', priority: 0.9 },
   { path: '/book', priority: 0.9 },
@@ -53,13 +54,21 @@ export const ROUTES: RouteInfo[] = [
 export function render(url: string): Promise<{ html: string; head: PageHead | null }> {
   ssrHead.current = null
   return new Promise((resolve, reject) => {
-    let html = ''
+    // Collect raw bytes and decode once at the end, so a multi-byte character
+    // split across two chunks is never decoded in halves.
+    const chunks: Buffer[] = []
     const sink = new Writable({
       write(chunk, _enc, cb) {
-        html += chunk.toString()
+        chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk))
         cb()
       },
       final(cb) {
+        // React 18.3's server renderer flushes its whole 2,048-byte buffer
+        // when a multi-byte character (Gujarati, Hindi, ₹, curly quotes) does
+        // not fit in the remaining space, so the unused zero-filled tail goes
+        // out as NUL bytes. NUL is never valid in HTML: strip it. Fixed upstream
+        // in React 19; check-seo fails the build if any page still has one.
+        const html = Buffer.concat(chunks).toString('utf8').replace(/\u0000/g, '')
         resolve({ html, head: ssrHead.current })
         cb()
       },

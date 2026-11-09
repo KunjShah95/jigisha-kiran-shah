@@ -63,7 +63,7 @@ export default function HomePage() {
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',
     path: '/',
     htmlLang: 'en-IN',
-    alternateLanguages: { 'en-IN': '/', 'gu-IN': '/gu', 'x-default': '/' },
+    alternateLanguages: { 'en-IN': '/', 'gu-IN': '/gu', 'hi-IN': '/hi', 'x-default': '/' },
     keywords:
       'life insurance advisor Ahmedabad, life insurance consultant Ahmedabad, insurance advisor Ahmedabad, financial protection advisor Ahmedabad, LIC advisor Ahmedabad, LIC agent Ahmedabad, LIC agent near me, life insurance agent Ahmedabad, life insurance agency Shela, LIC agent Shela, life insurance agent Shela, best LIC agent Ahmedabad, retirement planning Ahmedabad, term insurance Ahmedabad, pension plans Gujarat, Jigisha Kiran Shah',
     jsonLd: [websiteJsonLd(), localBusinessJsonLd(), personJsonLd(), faqJsonLd()],

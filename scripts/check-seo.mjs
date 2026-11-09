@@ -72,6 +72,11 @@ for (const loc of locs) {
   const h1s = html.match(/<h1[\s>]/g)?.length ?? 0;
   if (h1s !== 1) fail(`${clean}: ${h1s} <h1> tags (expected exactly 1)`);
 
+  // Broken text encoding: a NUL byte or U+FFFD means a character was split
+  // or mis-decoded (this shipped on /gu until 9 Nov 2026).
+  if (html.includes('\u0000')) fail(`${clean}: NUL byte in rendered HTML (encoding damage)`);
+  if (html.includes('\uFFFD')) fail(`${clean}: replacement character in rendered HTML (encoding damage)`);
+
   // Escape sequences belong in code, never in rendered text.
   const escapes = html.match(/\\u[0-9a-fA-F]{4}/g);
   if (escapes) fail(`${clean}: literal escape ${escapes[0]} in rendered HTML`);

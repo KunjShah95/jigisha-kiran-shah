@@ -289,7 +289,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
   },
   {
     slug: 'health-insurance',
-    title: 'LIC Health Insurance Ahmedabad | Health Shield & Cancer Cover',
+    title: 'Health Insurance in Ahmedabad | LIC Health Shield & Cancer Cover',
     description:
       'Compare LIC Health Shield (Plan 907) and New Cancer Cover (Plan 908) in Ahmedabad. Review eligibility, covered events and policy terms using LIC’s current brochures.',
     keywords:
@@ -300,13 +300,17 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'LIC currently lists Health Shield (Plan 907, UIN 512N369V01) and New Cancer Cover (Plan 908, UIN 512N370V01). Both became available on 19 October 2026. They cover different health-related risks, so compare their policy wording, eligibility, covered events, limits and exclusions before applying.',
       'A plan name or brochure summary cannot tell you whether a policy fits your existing cover. Review the current benefit schedule alongside your mediclaim and ask for the official policy wording before making a decision.',
     ],
-    updated: '2026-11-04',
+    updated: '2026-11-09',
     officialSources: [
       { label: 'LIC Health Shield — Plan 907, UIN 512N369V01', url: 'https://www.licindia.in/web/guest/lic-s-health-shield' },
       { label: 'LIC New Cancer Cover — Plan 908, UIN 512N370V01', url: 'https://www.licindia.in/web/guest/lic-s-new-cancer-cover' },
       { label: 'LIC health insurance plans', url: 'https://web.licindia.in/web/guest/health-insurance-plans' },
     ],
     faqs: [
+      {
+        q: 'Do you sell mediclaim or family floater health insurance?',
+        a: 'No. Jigisha Kiran Shah is an individual LIC agent, so she offers LIC’s health plans — currently Health Shield (Plan 907) and New Cancer Cover (Plan 908) — not mediclaim policies from general or health insurers. LIC’s plans can sit alongside a family mediclaim, and she can review how the two fit together.',
+      },
       {
         q: 'Which LIC health plans are currently listed?',
         a: 'LIC lists Health Shield (Plan 907, UIN 512N369V01) and New Cancer Cover (Plan 908, UIN 512N370V01). LIC states both were available from 19 October 2026. Check each current brochure and policy document for benefits and eligibility.',
@@ -733,7 +737,7 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       'LIC policy revival Ahmedabad, revive lapsed LIC policy, lapsed policy revival, LIC policy arrears interest, LIC revival period, lapsed policy paid up value, LIC agent revival help',
     targetQuery: 'LIC policy revival Ahmedabad',
     h1: 'LIC Policy Revival in Ahmedabad',
-    updated: '2026-10-26',
+    updated: '2026-11-09',
     intro: [
       'A lapsed LIC policy is not a dead policy. It is a policy that stopped receiving premiums, and in most cases it can be brought back to full force by paying the arrears with interest and confirming that the life assured is still insurable.',
       'Jigisha Kiran Shah checks the policy schedule first — how long it has been lapsed, how many premiums were paid, and whether the plan still allows revival — because the answer sometimes is that revival costs more than the policy is worth, and that is worth knowing before you pay anything.',
@@ -781,6 +785,10 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       },
     ],
     faqs: [
+      {
+        q: 'Is there an LIC lapsed policy revival scheme running now?',
+        a: 'LIC runs special revival campaigns from time to time, usually with a concession on late fees for eligible lapsed policies. Each campaign, like the one in 2020, has fixed dates and conditions, so ask your servicing branch or check licindia.in whether one is running now. Outside a campaign, the ordinary revival rules apply.',
+      },
       {
         q: 'How long can a lapsed LIC policy be revived?',
         a: 'Most LIC plans allow revival within five years from the due date of the first unpaid premium, provided the policy has not matured. Some plans carry a shorter window. The exact limit is printed on your policy schedule and confirmed by the servicing branch.',

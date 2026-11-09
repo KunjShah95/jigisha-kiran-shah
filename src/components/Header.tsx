@@ -22,6 +22,7 @@ const moreLinks = [
   { to: '/calculators', label: 'Calculators', cta: 'nav-calculators' },
   { to: '/protection-check', label: 'Protection check', cta: 'nav-protection-check' },
   { to: '/gu', label: 'ગુજરાતી', cta: 'nav-gujarati' },
+  { to: '/hi', label: 'हिंदी', cta: 'nav-hindi' },
 ]
 
 const Header = () => {
