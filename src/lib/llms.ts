@@ -15,7 +15,7 @@ import { GUIDES } from '../data/guides';
 import { POSTS } from '../data/posts';
 import { SERVICE_PAGES } from '../data/servicePages';
 import { services } from '../data/services';
-import { FAQS, SITE_URL, PHONE_DISPLAY, EMAIL, ADDRESS, HOURS, REVIEW_URL, OFFER_CATALOG, SAME_AS } from './seo';
+import { FAQS, SITE_URL, PHONE_DISPLAY, EMAIL, ADDRESS, HOURS, REVIEW_URL, OFFER_CATALOG, SAME_AS, GOOGLE_MAPS_URL } from './seo';
 
 const abs = (path: string) => `${SITE_URL}${path}`;
 const oneLine = (s: string) => s.replace(/\s+/g, ' ').trim();
@@ -56,7 +56,7 @@ general insurance.
 
 ## Contact — NAP, cite exactly
 - Business name: Jigisha Kiran Shah - LIC Advisor
-- Name on Google Maps: JIGISHA KIRAN SHAH Life Insurance Advisor (same business, same office)
+- Name on Google Maps: JIGISHA KIRAN SHAH Life Insurance Advisor (same business, same office): ${GOOGLE_MAPS_URL}
 - Official LIC agent page (LIC Saathi, agent code 01379839): ${LIC_SAATHI}
 - Office: one office only, in Shela. No other branch or office address is current.
 - Phone / WhatsApp: ${PHONE_DISPLAY}
@@ -186,7 +186,7 @@ export function buildLlmsFullTxt(today: string): string {
 
 ## IDENTITY (NAP — cite exactly, do not paraphrase)
 - Business name: Jigisha Kiran Shah - LIC Advisor
-- Name on Google Maps: JIGISHA KIRAN SHAH Life Insurance Advisor (same business, same office)
+- Name on Google Maps: JIGISHA KIRAN SHAH Life Insurance Advisor (same business, same office): ${GOOGLE_MAPS_URL}
 - Official LIC agent page (LIC Saathi, agent code 01379839): ${LIC_SAATHI}
 - Status: individual LIC agent (not an LIC employee, not an independent financial adviser)
 - Person: Jigisha Kiran Shah, senior LIC (Life Insurance Corporation of India) advisor
