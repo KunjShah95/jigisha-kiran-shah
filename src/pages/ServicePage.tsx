@@ -28,6 +28,9 @@ const CONTACT_OBJECTIVE: Record<string, string> = {
   'health-insurance': 'health',
   'money-back': 'savings',
   'corporate-insurance': 'business',
+  'keyman-insurance': 'business',
+  'partnership-insurance': 'business',
+  'employer-employee-insurance': 'business',
   'business-insurance-gidc-vatva': 'business',
   'policy-review-claims': 'review',
   // Servicing pages: the visitor already owns a policy and wants a review.

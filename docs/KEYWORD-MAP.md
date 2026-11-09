@@ -272,3 +272,70 @@ the money queries. No search volumes are invented; validate in Keyword Planner.
 | 6 | term insurance Ahmedabad Gujarat | `/services/term-insurance` | Title fixed 6 Nov |
 | 7 | jeevan utsav (product name) | guide | If impressions grow, consider a dedicated Jeevan Utsav plan page |
 | — | retirement planning, life insurance (national) | — | Do not chase |
+
+---
+
+## 11. Target map — November 2026 (current, use this one)
+
+How people phrase each need, and the one page that answers it. Sources: Search Console queries (to 3 Nov), the
+questions that LIC's own FAQ and the ranking pages answer, and competitor research. Search volumes are not invented:
+validate in Keyword Planner or Search Console. ✚ = page added on 9 Nov 2026.
+
+### Find an advisor (local, highest intent — decided mostly by Google Maps + reviews)
+
+| What people type | Page |
+|---|---|
+| LIC agent in Ahmedabad · LIC agent near me · life insurance advisor near me · insurance advisor Ahmedabad | `/` + Google Business Profile |
+| LIC agent Shela / Bopal / South Bopal / Satellite / SG Highway / Prahlad Nagar / Gandhinagar … | `/areas/<area>` |
+| lic office bopal · lic office gota (branch-seeking) | `/areas/bopal`, `/areas/gota` (honest "not a branch" answer) |
+| LIC એજન્ટ અમદાવાદ (Gujarati) | `/gu` |
+| best LIC agent Ahmedabad | `/reviews` + directory and listicle mentions |
+
+### Plans
+
+| What people type | Page |
+|---|---|
+| life insurance plans Ahmedabad · types of life insurance · why is life insurance important | `/services/life-insurance` |
+| term insurance Ahmedabad · how much term insurance do I need · LIC Tech Term / Jeevan Amar | `/services/term-insurance`, `/protection-check` |
+| retirement planning Ahmedabad · pension plan · Jeevan Akshay VII | `/services/retirement` |
+| child education plan · Jeevan Tarun | `/services/child-education` |
+| Jeevan Labh · endowment plan | `/services/wealth-creation` |
+| money back policy · Bima Shree | `/services/money-back` |
+| LIC health insurance · cancer cover | `/services/health-insurance` |
+| family financial protection · when to review life insurance | `/services/family-financial-protection` |
+| jeevan utsav vs jeevan umang (which is better) · term vs endowment | `/guides/*` comparisons |
+
+### Business owners (largest policies)
+
+| What people type | Page |
+|---|---|
+| keyman insurance · key person insurance · keyman insurance tax | ✚ `/services/keyman-insurance` |
+| partnership insurance · what happens if a business partner dies · business partnership protection | ✚ `/services/partnership-insurance` |
+| employer employee insurance · EE policy LIC · employer paid life insurance tax | ✚ `/services/employer-employee-insurance` |
+| corporate insurance · HUF insurance · MWP Act policy | `/services/corporate-insurance` (hub for the three above) |
+| business insurance GIDC Vatva | `/services/business-insurance-gidc-vatva` |
+
+### Existing policyholders (servicing — where many new clients start)
+
+| What people type | Page |
+|---|---|
+| LIC policy review · check my LIC policies | `/services/policy-review-claims` |
+| LIC agent left / died · change LIC agent · orphan policy | `/guides/lic-agent-left-who-services-my-policy` |
+| LIC maturity claim process · Form 3825 · when is maturity amount credited · lost policy bond at maturity | ✚ `/guides/lic-maturity-claim-process` |
+| LIC death claim documents · claim status | `/guides/lic-claim-documents-checklist`, `/services/policy-review-claims` |
+| revive lapsed LIC policy | `/services/lic-policy-revival` |
+| change nominee in LIC | `/services/nominee-change` |
+| lost LIC policy number | `/services/lic-policy-tracing` |
+| loan against LIC policy | `/services/lic-policy-loan` |
+| LIC surrender value | `/services/lic-surrender` |
+| NRI LIC premium payment | `/services/nri-lic-services` |
+
+### Tax (peaks January–March)
+
+| What people type | Page |
+|---|---|
+| LIC tax benefit 80C · 80C new tax regime · Section 123 | `/guides/lic-tax-benefit-80c-section-123` |
+| LIC premium paid certificate download | same guide, new section (9 Nov) |
+
+**Rule:** a new query gets a new page only when it is a different *need*, not a different wording. Different
+wordings go into the existing page's title, FAQ or headings.

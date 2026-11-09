@@ -59,6 +59,9 @@ const Footer = () => {
       { label: 'Money-Back Plans', to: '/services/money-back' },
       { label: 'Health Cover', to: '/services/health-insurance' },
       { label: 'Corporate & HUF Insurance', to: '/services/corporate-insurance' },
+      { label: 'Keyman Insurance', to: '/services/keyman-insurance' },
+      { label: 'Partnership Insurance', to: '/services/partnership-insurance' },
+      { label: 'Employer-Employee Insurance', to: '/services/employer-employee-insurance' },
       { label: 'Business Cover — GIDC Vatva', to: '/services/business-insurance-gidc-vatva' },
       { label: 'Policy Review & Claims', to: '/services/policy-review-claims' }
     ]

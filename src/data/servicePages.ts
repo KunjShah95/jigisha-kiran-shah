@@ -380,6 +380,17 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
         a: 'Yes. The HUF can be proposer with the karta or a member as life assured, earning Section 80C benefits while ring-fencing family protection from the family business\u2019s risks. Structures are set up with proper resolutions and documentation.',
       },
     ],
+    sections: [
+      {
+        heading: 'Each option in detail',
+        links: [
+          { label: 'Keyman insurance', to: '/services/keyman-insurance', note: 'Cover on a key person; the claim goes to the business.' },
+          { label: 'Partnership insurance', to: '/services/partnership-insurance', note: 'Funds the buy-out of a partner’s share for the family.' },
+          { label: 'Employer-employee insurance', to: '/services/employer-employee-insurance', note: 'Life cover for staff, paid by the business.' },
+        ],
+      },
+    ],
+    updated: '2026-11-09',
     relatedPost: { label: 'Example: staff cover for an engineering unit in GIDC Vatva', to: '/services/business-insurance-gidc-vatva' },
   },
   {
@@ -413,6 +424,223 @@ export const SERVICE_PAGES: ServicePageMeta[] = [
       {
         q: 'Do you visit units in GIDC Vatva?',
         a: 'Yes. Meetings can be held at your unit in Vatva by appointment (Mon–Sat, 9 AM–6 PM), at the Shela office, or over phone and WhatsApp. Book a time at jigishakiranshah.in/book.',
+      },
+    ],
+  },
+  // ---- Business protection: one page per product, each a distinct search intent ----
+  {
+    slug: 'keyman-insurance',
+    tagline: 'Business protection',
+    title: 'Keyman Insurance in Ahmedabad | Key Person Cover & Tax',
+    description:
+      'Keyman insurance in Ahmedabad: life cover a business takes on a key person. How it works, who qualifies, and how premiums and payouts are taxed. Free discussion: +91 98240 25435.',
+    keywords:
+      'keyman insurance Ahmedabad, key person insurance, keyman insurance LIC, keyman insurance tax treatment, keyman insurance for partners, key man policy business expense',
+    targetQuery: 'keyman insurance Ahmedabad',
+    h1: 'Keyman Insurance in Ahmedabad',
+    intro: [
+      'Many Ahmedabad businesses run on one or two people: the founder who holds the client relationships, the partner who knows production, the director the bank lends against. If that person dies, revenue drops at exactly the moment the business has to find a replacement, reassure lenders and keep paying salaries.',
+      'Keyman insurance is life cover that the business takes on that key person. The business pays the premium and receives the claim, so the money arrives where the loss is felt.',
+    ],
+    updated: '2026-11-09',
+    sections: [
+      {
+        heading: 'How keyman insurance works',
+        items: [
+          'The business (company or firm) is the proposer and pays the premium.',
+          'The life insured is the key person: a director, a partner, or an employee whose skills or relationships drive profits.',
+          'If the key person dies during the term, the claim is paid to the business, not to the family.',
+          'LIC writes keyman cover on term assurance plans, so there is no maturity value: it is pure protection for the business.',
+          'The amount of cover is linked to the person’s contribution to the business, measured from the company’s profits or the person’s salary. LIC’s branch confirms the limit for each case.',
+        ],
+      },
+      {
+        heading: 'How it is taxed',
+        intro: 'This is the usual treatment; set up every keyman policy together with your chartered accountant.',
+        items: [
+          'Premiums paid by the business are generally allowed as a business expense.',
+          'The claim received by the business is taxable as business income: the life-insurance payout exemption does not apply to keyman policies.',
+          'A keyman policy stays a keyman policy even if it is later assigned to the employee; it does not become tax-free by being handed over.',
+          'For partnership firms, CBDT Circular 38/2016 accepts that keyman premiums on a partner’s life are an allowable business expense.',
+        ],
+      },
+      {
+        heading: 'What the branch usually asks for',
+        items: [
+          'The business’s audited accounts or income-tax returns for recent years, to show profitability',
+          'The key person’s income and existing insurance details',
+          'A board resolution (company) or authority letter and partnership deed (firm)',
+          'Medical examination of the key person, as per the sum assured',
+        ],
+      },
+      {
+        heading: 'Related business protection',
+        links: [
+          { label: 'Partnership insurance', to: '/services/partnership-insurance', note: 'Funds the buy-out of a partner’s share for the family.' },
+          { label: 'Employer-employee insurance', to: '/services/employer-employee-insurance', note: 'Life cover for staff, paid by the business.' },
+          { label: 'Corporate, HUF and MWP cover', to: '/services/corporate-insurance', note: 'All business and family-structure options together.' },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is keyman insurance?',
+        a: 'Life cover that a business takes on a person whose death would hurt its profits, such as a founder, partner or key employee. The business pays the premium and receives the claim, which helps it absorb the loss while it recovers.',
+      },
+      {
+        q: 'Is keyman insurance premium tax deductible?',
+        a: 'Generally yes. Premiums paid by the business are allowed as a business expense, including keyman cover on a partner’s life (CBDT Circular 38/2016). The claim received is taxable as business income. Confirm the treatment for your business with your CA.',
+      },
+      {
+        q: 'Is a keyman insurance payout tax-free?',
+        a: 'No. The life-insurance payout exemption does not cover keyman policies, so the amount received by the business is taxed as business income, even if the policy was later assigned to the employee.',
+      },
+      {
+        q: 'Can a partnership firm take keyman insurance on a partner?',
+        a: 'Yes. A firm can insure a partner as a key person, and the premium is treated as a business expense. If the aim is to buy out a partner’s share for the family, partnership insurance is usually the better fit.',
+      },
+    ],
+  },
+  {
+    slug: 'partnership-insurance',
+    tagline: 'Business protection',
+    title: 'Partnership Insurance in Ahmedabad | If a Partner Dies',
+    description:
+      'Partnership insurance in Ahmedabad: life cover that funds the buy-out of a partner’s share, so the family is paid and the business keeps its capital. Free discussion: +91 98240 25435.',
+    keywords:
+      'partnership insurance Ahmedabad, partnership insurance LIC, what happens if a business partner dies, buy sell agreement insurance India, partner life insurance, business partnership protection',
+    targetQuery: 'partnership insurance Ahmedabad',
+    h1: 'Partnership Insurance in Ahmedabad',
+    intro: [
+      'When a partner dies, two people need money at once. The family wants the partner’s share of the business in cash. The surviving partners want to keep the business without pulling that cash out of working capital or bringing in a stranger.',
+      'Partnership insurance solves both: life cover on each partner, sized to the value of that partner’s share, so the money to buy out the share is ready when it is needed.',
+    ],
+    updated: '2026-11-09',
+    sections: [
+      {
+        heading: 'How it works',
+        numbered: true,
+        items: [
+          'The partners agree, in writing, what happens to a partner’s share on death, and at what value. This buy-sell clause belongs in the partnership deed.',
+          'Each partner’s life is insured for roughly the value of their share.',
+          'If a partner dies, the claim provides the money to pay the family for the share, as the deed sets out.',
+          'The business continues with the surviving partners, and its working capital stays untouched.',
+        ],
+      },
+      {
+        heading: 'Partnership insurance or keyman insurance?',
+        items: [
+          'Partnership insurance answers: who pays the family for the share? The money goes to fund the buy-out.',
+          'Keyman insurance answers: how does the business survive losing this person? The money goes to the business as compensation.',
+          'Many firms need both. They are set up and taxed differently, so plan them with your CA.',
+        ],
+      },
+      {
+        heading: 'Before you start',
+        items: [
+          'A current partnership deed, and a supplementary deed if the buy-sell terms are added later',
+          'A fair basis for valuing each partner’s share, reviewed every few years as the business grows',
+          'Recent audited accounts and each partner’s capital account',
+          'Review the cover when a partner joins or leaves, or when the business value changes',
+        ],
+      },
+      {
+        heading: 'Related business protection',
+        links: [
+          { label: 'Keyman insurance', to: '/services/keyman-insurance', note: 'Compensates the business for losing a key person.' },
+          { label: 'Employer-employee insurance', to: '/services/employer-employee-insurance', note: 'Life cover for staff, paid by the business.' },
+          { label: 'Corporate, HUF and MWP cover', to: '/services/corporate-insurance', note: 'MWP Act cover keeps family protection away from business creditors.' },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What happens to a partnership firm if one partner dies?',
+        a: 'Unless the deed says otherwise, the deceased partner’s family is entitled to their share, and the firm may have to pay it out of working capital or reconstitute. Partnership insurance funds that payout, so the family is paid and the business carries on.',
+      },
+      {
+        q: 'What is business partnership protection?',
+        a: 'Life cover on each partner so that, if one dies, the surviving partners have the money to buy the deceased partner’s share from the family at a fair value. It works best with a buy-sell clause in the partnership deed.',
+      },
+      {
+        q: 'How much partnership insurance does each partner need?',
+        a: 'Roughly the value of that partner’s share of the business, using the valuation method agreed in the deed. Recheck it every few years, because a growing business makes old cover too small.',
+      },
+      {
+        q: 'Does partnership insurance need a change in the partnership deed?',
+        a: 'It should have one. The cover provides the money; the deed decides who buys the share, at what value and how the family is paid. Without that clause, the money and the obligation may not line up.',
+      },
+    ],
+  },
+  {
+    slug: 'employer-employee-insurance',
+    tagline: 'Business protection',
+    title: 'Employer-Employee Insurance in Ahmedabad | Staff Life Cover',
+    description:
+      'Employer-employee insurance in Ahmedabad: life cover for staff, paid by the business. How the LIC scheme works, eligibility and how it is taxed. Free discussion: +91 98240 25435.',
+    keywords:
+      'employer employee insurance Ahmedabad, employer employee insurance scheme LIC, EE policy tax, staff life insurance paid by company, employee benefit insurance Gujarat',
+    targetQuery: 'employer employee insurance Ahmedabad',
+    h1: 'Employer-Employee Insurance in Ahmedabad',
+    intro: [
+      'Skilled staff are hard to find and expensive to replace. Employer-employee insurance lets a business give chosen employees real life cover, with the premium paid by the business, as a benefit that keeps people and protects their families.',
+      'It suits small and mid-sized businesses as much as large companies. A unit can cover a handful of key staff, not necessarily everyone.',
+    ],
+    updated: '2026-11-09',
+    sections: [
+      {
+        heading: 'How the scheme works',
+        items: [
+          'The employer pays the premium on a policy on the employee’s life.',
+          'The employer can be the proposer and later assign the policy to the employee, as set out in a letter given with the proposal.',
+          'The employee’s family receives the claim if the employee dies; savings plans can also pay a maturity amount to the employee.',
+          'The employer chooses which employees to cover and can set the cover by grade or role.',
+          'LIC sets eligibility rules, for example limits on the employee’s and the family’s shareholding in the employer company.',
+        ],
+      },
+      {
+        heading: 'How it is taxed',
+        intro: 'The treatment depends on how the scheme is structured, so it is set up together with your chartered accountant.',
+        items: [
+          'For the employer, the premium is generally a business expense.',
+          'For the employee, an employer-paid premium on a policy for a specific employee may be taxed as a perquisite (part of salary). It is generally not, where cover is provided to all employees.',
+          'Maturity amounts paid to the employee follow the usual payout rules, depending on how and when the policy is assigned.',
+        ],
+      },
+      {
+        heading: 'What the branch usually asks for',
+        items: [
+          'The proposal, with the employer’s letter on the object of the insurance and its assignment',
+          'The employer’s books of accounts or income-tax orders for recent years',
+          'The employee’s income proof, since cover is sized to their eligibility',
+          'A board resolution or authority letter',
+        ],
+      },
+      {
+        heading: 'Related business protection',
+        links: [
+          { label: 'Example: staff cover for a GIDC Vatva unit', to: '/services/business-insurance-gidc-vatva', note: 'How one engineering unit set it up.' },
+          { label: 'Keyman insurance', to: '/services/keyman-insurance', note: 'Protects the business itself against losing a key person.' },
+          { label: 'Partnership insurance', to: '/services/partnership-insurance', note: 'Funds a partner’s buy-out for the family.' },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is employer-employee insurance?',
+        a: 'Life insurance on an employee’s life with the premium paid by the employer. The employee’s family is protected, and the business gets a benefit that helps it keep skilled staff. The employer chooses which employees to cover.',
+      },
+      {
+        q: 'Is employer-employee insurance premium a business expense?',
+        a: 'Generally yes, for the employer. For the employee, the premium may be a taxable perquisite where the cover is for specific employees rather than all staff. The exact treatment depends on the structure, so set it up with your CA.',
+      },
+      {
+        q: 'Can a small business offer employer-employee insurance?',
+        a: 'Yes. It is not limited to large companies; a unit can cover a few key employees, with cover set per grade or role, subject to LIC’s eligibility rules.',
+      },
+      {
+        q: 'What is the difference between keyman and employer-employee insurance?',
+        a: 'Keyman cover protects the business: it pays the premium and receives the claim. Employer-employee cover protects the employee’s family: the business pays the premium, but the benefit goes to the employee or their nominee.',
       },
     ],
   },

@@ -36,6 +36,101 @@ export interface Guide {
 
 export const GUIDES: Guide[] = [
   {
+    slug: 'lic-maturity-claim-process',
+    title: 'LIC maturity claim: the process, the forms and the timeline',
+    seoTitle: 'LIC Maturity Claim Process: Form 3825, Documents & Timeline',
+    metaDescription:
+      'When LIC pays your maturity amount, what to submit (Form 3825, policy bond, NEFT details), what to do if the bond is lost, and how money-back payouts differ.',
+    date: '2026-11-09',
+    updated: '2026-11-09',
+    readMinutes: 5,
+    targetQuery: 'LIC maturity claim process',
+    kind: 'checklist',
+    intro: [
+      'A maturing policy should be good news: years of premiums paid back with bonuses. LIC aims to pay maturity on the due date itself, and it usually does, provided the paperwork reaches the branch in time.',
+      'This is the sequence I follow with families in Ahmedabad so that the money is in their account on the day, not three months later.',
+    ],
+    sections: [
+      {
+        heading: 'The timeline',
+        paras: [],
+        items: [
+          'About two months before the maturity date, the servicing branch sends a maturity intimation with the discharge form (Form 3825).',
+          'Submit the completed form with the original policy bond at least one month before the due date.',
+          'LIC processes the claim in advance and pays by NEFT into your bank account on the due date.',
+          'No intimation within two months of maturity? Contact your servicing branch straight away. A changed address is the usual reason.',
+        ],
+      },
+      {
+        heading: 'What to submit',
+        paras: [],
+        items: [
+          'Discharge form (Form 3825), signed as instructed',
+          'Original policy bond, with any deed of assignment',
+          'NEFT mandate with a cancelled cheque or bank passbook copy, in the policyholder’s own name',
+          'KYC: identity and address proof, and PAN',
+        ],
+      },
+      {
+        heading: 'Money-back policies: survival benefits',
+        paras: [
+          'Survival benefits under money-back plans are paid on their due dates as long as premiums are paid up to that anniversary. Where the amount is up to ₹5 lakh, LIC generally releases it without asking for the discharge form or the policy bond. Larger amounts need both. The final payout at the end of the term is a maturity claim, as above.',
+        ],
+      },
+      {
+        heading: 'If the policy bond is lost',
+        paras: [
+          'Search properly first: home papers, office files, and check whether the bond is with LIC or a bank against a loan. If it is truly lost, apply at the servicing branch for a duplicate policy. Start at least two to three months before maturity.',
+        ],
+        items: [
+          'Indemnity bond on stamp paper of the required value, notarised',
+          'Photo identity proof and residence proof',
+          'The duplicate policy preparation fee, paid at the branch',
+        ],
+      },
+      {
+        heading: 'Tax on the maturity amount',
+        paras: [
+          'Most maturity amounts are tax-free, but not all. A policy issued on or after 1 April 2012 qualifies only if its yearly premium was within 10% of the sum assured, and newer high-premium policies have further limits. Where the amount is taxable, LIC deducts TDS on the income part, so make sure your PAN is on record. The tax guide below has the details.',
+        ],
+      },
+      {
+        heading: 'Before you reinvest it',
+        paras: [
+          'A maturity amount is often the largest single sum a family receives. Before it goes into anything new, check two things: that your family still has enough life cover now that this policy has ended, and that the next home for the money matches when you will need it. I am happy to go through both with you, with no obligation to buy.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'When will I get my LIC maturity amount?',
+        a: 'On the maturity due date, by NEFT, if the discharge form (Form 3825), policy bond and bank details reach the servicing branch at least a month earlier. The branch usually sends the intimation about two months before maturity.',
+      },
+      {
+        q: 'What documents are needed for an LIC maturity claim?',
+        a: 'The discharge form (Form 3825), the original policy bond, an NEFT mandate with a cancelled cheque in the policyholder’s name, and KYC including PAN. The branch may ask for more in special cases, such as an assigned policy.',
+      },
+      {
+        q: 'I did not receive the maturity intimation. What should I do?',
+        a: 'Contact your servicing branch if no intimation has arrived within two months of the maturity date. An outdated address is the usual cause, so update your address, mobile and email at the same time.',
+      },
+      {
+        q: 'Can I claim LIC maturity if the policy bond is lost?',
+        a: 'Yes. Apply at the servicing branch for a duplicate policy with a notarised indemnity bond, identity and residence proof and the fee. Start two to three months before maturity so the payout is not delayed.',
+      },
+    ],
+    sources: [
+      { label: 'LIC — FAQs: maturity claims and Form 3825', url: 'https://licindia.in/faqs' },
+      { label: 'LIC — policy conditions: claims settlement and duplicate policy', url: 'https://licindia.in/policy-conditions' },
+    ],
+    related: [
+      { label: 'LIC claim documents checklist', to: '/guides/lic-claim-documents-checklist' },
+      { label: 'LIC and income tax in 2026–27', to: '/guides/lic-tax-benefit-80c-section-123' },
+      { label: 'Find a lost policy', to: '/services/lic-policy-tracing' },
+      { label: 'Free policy review', to: '/services/policy-review-claims' },
+    ],
+  },
+  {
     slug: 'lic-agent-left-who-services-my-policy',
     title: 'My LIC agent has left. Who services my policy now?',
     seoTitle: 'LIC Agent Left or Died? Who Services Your Policy Now',
@@ -129,7 +224,7 @@ export const GUIDES: Guide[] = [
     metaDescription:
       'From 1 April 2026, 80C is Section 123 of the Income-tax Act, 2025. Which LIC premiums qualify, the ₹1.5 lakh limit, the regime question and tax-free payouts.',
     date: '2026-11-08',
-    updated: '2026-11-08',
+    updated: '2026-11-09',
     readMinutes: 6,
     targetQuery: 'LIC tax benefit 80C 2026-27',
     kind: 'checklist',
@@ -177,6 +272,19 @@ export const GUIDES: Guide[] = [
         ],
       },
       {
+        heading: 'Proof for your employer: the premium paid certificate',
+        paras: [
+          'Employers ask for proof of LIC premiums in January and February to apply the deduction in your salary TDS. LIC’s customer portal gives this as a premium paid certificate.',
+        ],
+        items: [
+          'Individual policy certificate: premiums paid under one policy during the financial year.',
+          'Consolidated certificate: premiums under all your registered own-life policies. It leaves out policies on your spouse and children, so download those separately.',
+          'Both cover the current and the previous two financial years.',
+          'For policies paid by monthly NACH auto-debit, no receipts are sent; the servicing branch issues a premium paid certificate twice a year, and the portal has it too.',
+          'Not registered on the portal? Your servicing branch can issue the certificate, or I can help you register.',
+        ],
+      },
+      {
         heading: 'The 31 March deadline — and why not to rush',
         paras: [
           'For the deduction, the premium must be paid within the tax year: by 31 March 2027 for tax year 2026–27.',
@@ -198,6 +306,10 @@ export const GUIDES: Guide[] = [
         a: 'The premium must be paid within the tax year, so by 31 March 2027, and only if you are on the old tax regime. Check with your CA before buying a policy for tax.',
       },
       {
+        q: 'How do I download the LIC premium paid certificate for tax?',
+        a: 'Log in to LIC’s customer portal and choose the premium paid certificate: individual (one policy) or consolidated (all your own-life policies, excluding spouse and children). It covers the current and previous two financial years. Your servicing branch can also issue it.',
+      },
+      {
         q: 'Is the LIC death claim amount taxable?',
         a: 'No. The sum paid to the nominee on the death of the life assured is tax-free under both regimes. Keyman policies taken by an employer are the main exception.',
       },
@@ -205,6 +317,7 @@ export const GUIDES: Guide[] = [
     sources: [
       { label: 'Income Tax Department — Schedule XV, Income-tax Act, 2025', url: 'https://www.incometaxindia.gov.in/w/schedule-xv-3' },
       { label: 'India Code — Section 123, Income-tax Act, 2025', url: 'https://indiacode.ecourtsindia.com/income-tax-act-2025/section/123/' },
+      { label: 'LIC — FAQs (customer portal services, premium paid certificate)', url: 'https://licindia.in/faqs' },
     ],
     related: [
       { label: 'Term insurance in Ahmedabad', to: '/services/term-insurance' },
