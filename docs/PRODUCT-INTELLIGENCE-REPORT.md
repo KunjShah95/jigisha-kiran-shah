@@ -202,11 +202,11 @@ For an agent, "returning users" means clients who keep policies in force and com
 | Merge PR #5 and request indexing (`/hi`, `/about`, `/areas/shela`, new pages) | NUL bytes on 3 live pages; core pages uncrawled; 56 Hindi impressions | Medium–high | Merge + 20 minutes in Search Console | **P0** |
 | Ask the branch about orphan-policy allotment | LIC portability rules; Agents Regulations §8(1)(g) | Potentially high revenue: existing policies, renewal commission | One conversation | **P0** |
 | Fix the old Maninagar address on LocalEye, IDBF, Justdial | 6 Nov citation audit | Medium: entity consistency, crawl trust | 1–2 hours | **P1** |
-| Lead with "help with any LIC policy, any agent" (homepage hero line, GBP description, posts) | 69 branch-seeking impressions; servicing guides exist | Medium | Small copy change | **P1** |
+| Lead with "help with any LIC policy, any agent" (homepage hero line, GBP description, posts) — *hero line done 9 Nov; GBP description and posts still to do* | 69 branch-seeking impressions; servicing guides exist | Medium | Small copy change | **P1** |
 | Review drive: steady new reviews monthly | 73 vs 139 for the area leader | Medium–high for Maps | Ongoing, 10 minutes a week | **P1** |
 | Utsav vs Umang: measure, then decide on a plan page | 96 impressions, 1 click; title changed 6 Nov | Medium | Wait 4 weeks | **P2** |
 | Stop adding pages until the core pages are indexed | C4 | Saves effort | None | **P2** |
-| Family Policy Card tool (§11) | Servicing intent; her one-sheet principle | Medium, compounding | 1–2 days of build | **P3** |
+| Family Policy Card tool (§11) — *built 9 Nov* | Servicing intent; her one-sheet principle | Medium, compounding | Done | **P3** |
 
 **How we'll know it worked (30 days):**
 
@@ -240,7 +240,7 @@ For an agent, "returning users" means clients who keep policies in force and com
 2. Set `VITE_GA4_ID` and `VITE_CLARITY_ID` in Vercel and redeploy; start the lead log.
 3. Merge PR #5; request indexing for `/hi`, `/about`, `/areas/shela`.
 
-**One unconventional idea: the Family Policy Card**
+**One unconventional idea: the Family Policy Card** — *built 9 Nov 2026 at `/policy-card`*
 
 A free tool on the site where a family lists its LIC policies:
 - what each one is called;

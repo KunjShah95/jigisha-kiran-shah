@@ -67,7 +67,7 @@ export default function HindiPage() {
   });
 
   return (
-    <main lang="hi" className="bg-cream pt-20 lg:pt-24 pb-16 lg:pb-24">
+    <div lang="hi" className="bg-cream pt-20 lg:pt-24 pb-16 lg:pb-24">
       <div className="container max-w-5xl">
         <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-8">
           <Link to="/" className="hover:text-gold-dark">होम</Link>
@@ -190,6 +190,6 @@ export default function HindiPage() {
           <a className="underline" href="https://irdai.gov.in/" target="_blank" rel="noopener noreferrer">IRDAI</a> देखें।
         </p>
       </div>
-    </main>
+    </div>
   );
 }

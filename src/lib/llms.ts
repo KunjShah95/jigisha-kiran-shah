@@ -89,6 +89,7 @@ ${postLines}
 - [Reviews](${abs('/reviews')}): Google reviews and video testimonials
 - [Book a free consultation](${abs('/book')}): live 20-minute slots, or request a call back
 - [Free protection check](${abs('/protection-check')}): cover-gap calculator in English and Gujarati
+- [Family policy card](${abs('/policy-card')}): free one-page summary of a family's LIC policies; flags missing nominees and due maturities
 - [Calculators](${abs('/calculators')}): retirement corpus and child-education corpus
 - [Resources and LIC forms](${abs('/resources')}): official links, forms, vCard
 - [Full site reference](${abs('/llms-full.txt')}): every fact, plan and FAQ in one file
@@ -158,6 +159,7 @@ export function buildLlmsFullTxt(today: string): string {
     ['/contact', 'form, phone, WhatsApp, map'],
     ['/protection-check', 'free cover-gap check (English and Gujarati)'],
     ['/calculators', 'retirement and child-education corpus calculators'],
+    ['/policy-card', 'free family policy card: one printable page listing every LIC policy, flags missing nominees and due maturities; runs in the browser, nothing stored'],
     ['/resources', 'official links, LIC forms, vCard'],
     ['/gallery', 'recognition, events and certificates'],
     ['/privacy', 'privacy policy: forms open WhatsApp, nothing is stored on the website'],

@@ -35,7 +35,7 @@ export default function GujaratiPage() {
   });
 
   return (
-    <main lang="gu" className="gu-page bg-cream pt-20 lg:pt-24 pb-16 lg:pb-24">
+    <div lang="gu" className="gu-page bg-cream pt-20 lg:pt-24 pb-16 lg:pb-24">
       <div className="container max-w-5xl">
         <nav aria-label="Breadcrumb" className="text-sm text-gray-500 mb-8"><Link to="/" className="hover:text-gold-dark">હોમ</Link><span aria-hidden="true"> / </span><span>ગુજરાતી માર્ગદર્શન</span></nav>
         <section className="grid lg:grid-cols-[1.35fr_.65fr] gap-8 lg:gap-14 items-center mb-16">
@@ -88,6 +88,6 @@ export default function GujaratiPage() {
         </section>
         <p className="flex gap-2 items-start text-xs text-gray-500 leading-relaxed"><BookOpen className="shrink-0 mt-0.5" size={15} aria-hidden="true" />આ વેબસાઇટ LIC એજન્ટ જિગિષા કિરણ શાહની છે, LICની સત્તાવાર વેબસાઇટ નથી. યોજનાઓના લાભ, પાત્રતા, પ્રીમિયમ અને ચુકવણી પોલિસી દસ્તાવેજ તથા LICના નિયમો પર આધારિત છે. <a className="underline" href="https://licindia.in/" target="_blank" rel="noopener noreferrer">સત્તાવાર LIC વેબસાઇટ</a> અને <a className="underline" href="https://irdai.gov.in/" target="_blank" rel="noopener noreferrer">IRDAI</a> જુઓ.</p>
       </div>
-    </main>
+    </div>
   );
 }

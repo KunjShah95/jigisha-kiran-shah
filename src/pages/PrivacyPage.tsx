@@ -3,7 +3,7 @@ import { useSEO } from '../hooks/useSEO'
 import { EMAIL, PHONE_DISPLAY, ADDRESS } from '../lib/seo'
 
 /** Change this when the policy text changes, not on every build. */
-const UPDATED = '8 November 2026'
+const UPDATED = '9 November 2026'
 
 /**
  * The privacy notice describes what the code actually does. If a form starts
@@ -63,9 +63,9 @@ export default function PrivacyPage() {
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-display font-bold text-midnight">Calculators and the protection check</h2>
+          <h2 className="text-xl font-display font-bold text-midnight">Calculators, the protection check and the policy card</h2>
           <p>
-            The calculators and the protection check run entirely in your browser. The figures you enter are not sent
+            The calculators, the protection check and the family policy card run entirely in your browser. The figures you enter are not sent
             anywhere unless you choose to share the result on WhatsApp. The protection check remembers your language
             choice (English or Gujarati) in your browser&rsquo;s local storage.
           </p>

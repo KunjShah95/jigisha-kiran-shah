@@ -82,6 +82,7 @@ const Footer = () => {
       { label: 'Claim Documents Checklist', to: '/guides/lic-claim-documents-checklist' },
       { label: 'Resources & Forms', to: '/resources' },
       { label: 'Calculators', to: '/calculators' },
+      { label: 'Family Policy Card', to: '/policy-card' },
       { label: 'IRDAI (Regulator)', href: 'https://irdai.gov.in/' },
       { label: 'Bima Bharosa Grievances', href: 'https://bimabharosa.irdai.gov.in/' }
     ]
