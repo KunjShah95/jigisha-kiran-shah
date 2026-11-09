@@ -142,7 +142,7 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
       ['Name', d.name],
       ['Phone', d.phone],
       ['Topic', optionLabel(INTEREST_OPTIONS, d.topic)],
-      ['Preferred', `${day}, ${time}`],
+      ['Preferred', [day, time].filter(Boolean).join(', ')],
       ['Meeting', mode],
     ]);
     window.open(whatsappUrl(message), '_blank');
@@ -174,15 +174,17 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
           <input id="bk-phone" name="phone" type="tel" inputMode="tel" required autoComplete="tel" pattern="[0-9+\(\)\- ]{10,18}" title="Enter a valid phone number" value={d.phone} onChange={change} placeholder="+91 98765 43210" className={inputClass} />
         </Field>
       </div>
-      <Field id="bk-topic" label="What would you like to discuss?" required>
-        <SelectField id="bk-topic" name="topic" value={d.topic} onChange={change} placeholder="Choose your main goal" options={INTEREST_OPTIONS} required />
+      {/* Only name and phone are required: Vercel Analytics showed 43 starts of
+          this form from 10 visitors with no submit event in the top list. */}
+      <Field id="bk-topic" label="What would you like to discuss? (optional)">
+        <SelectField id="bk-topic" name="topic" value={d.topic} onChange={change} placeholder="Not sure yet" options={INTEREST_OPTIONS} />
       </Field>
       <div className="grid md:grid-cols-2 gap-5">
         <Field id="bk-day" label="Preferred day">
           <SelectField id="bk-day" name="day" value={d.day} onChange={change} placeholder="Any day" options={DAY_OPTIONS} />
         </Field>
-        <Field id="bk-time" label="Preferred time" required>
-          <SelectField id="bk-time" name="time" value={d.time} onChange={change} placeholder="Choose a time window" options={TIME_OPTIONS} required />
+        <Field id="bk-time" label="Preferred time (optional)">
+          <SelectField id="bk-time" name="time" value={d.time} onChange={change} placeholder="Any time, 9 AM–6 PM" options={TIME_OPTIONS} />
         </Field>
       </div>
       <fieldset>
@@ -305,6 +307,16 @@ export default function BookPage() {
               Prefer to talk now?{' '}
               <a href="tel:+919824025435" data-cta="book-call" className="font-semibold text-midnight underline underline-offset-2">
                 Call +91 98240 25435
+              </a>{' '}
+              or{' '}
+              <a
+                href={whatsappUrl('Hi Jigisha ben, I would like to book a free consultation. When are you free?')}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="book-whatsapp"
+                className="font-semibold text-midnight underline underline-offset-2"
+              >
+                message on WhatsApp
               </a>
             </p>
           </div>

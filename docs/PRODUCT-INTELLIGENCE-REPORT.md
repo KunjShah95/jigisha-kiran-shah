@@ -12,7 +12,7 @@ Strategist". Every number below is from a source listed in §0. Anything not bac
 |---|---|---|
 | Payment gateway | **Does not exist** | The site takes no payments. Revenue is LIC commission on policies sold offline (first-year + renewal commission). There is nothing to analyse here, and nothing should be built that pretends otherwise |
 | Microsoft Clarity | **Not running** | Loader is in the code; `VITE_CLARITY_ID` is not set, so zero sessions are recorded. No heatmaps, rage clicks or scroll data exist |
-| Vercel Analytics | **Not seen** | The Vercel dashboard shared on 6 Nov was for `lattice.kunjshah.in`, a different project. No traffic, referrer, device or event data for this site has been shared |
+| Vercel Analytics | **Seen 9 Nov** (12 months, production) | See §12. Only the top 5 events were shared |
 | GA4 | **Not running** | Code ready; `VITE_GA4_ID` not set |
 | Google Search Console | **Partial** | Performance: all 104 queries, 12 Sep – 7 Nov 2026 (shared 9 Nov). Indexing: report to 23 Oct (shared 6 Nov). No page-level performance, no CTR/position by page |
 | Google Business Profile | **Indirect** | Public listing: 5.0★, 73 reviews (8 Nov report); website field points to LIC Saathi, not this site (6 Nov audit). No GBP Insights (calls, direction requests) |
@@ -266,3 +266,35 @@ browser; nothing is stored, which matches the site's privacy promise.
 - Each flagged gap is a natural reason to book a review.
 
 *Measure:* cards created (an event, never the contents), cards shared, and bookings that follow.
+
+
+---
+
+## 12. Update, 9 Nov 2026 — Vercel Analytics, last 12 months
+
+| Metric | Value | Reading |
+|---|---|---|
+| Visitors / page views / bounce | 378 / 1,156 / 62% | About one visitor a day |
+| Top pages (visitors) | `/` 349 · `/contact` 55 · `/services` 52 · `/about` 48 · `/reviews` 48 · `/blog` 22 · `/book` 17 | 92% of visitors see the homepage; deep pages (areas, guides, services/*) don't make the top 7 |
+| Referrers | google.com 63 · facebook 27 (18 + 9 m.) · LinkedIn 23 (13 app + 10 web) · websitelaunches.com 13 · vercel.com 10 | **Social (50) is almost level with Google (63)** |
+| Countries / devices | India 68%, USA 23% · desktop 61%, Linux 7% | **Hypothesis:** a large share is the owner, developer, tests and bots — a local Ahmedabad audience would be mobile-heavy and Indian |
+| Events (visitors / total) | booking_cta_click 12/44 · booking_started 10/43 · contact_whatsapp 9/9 · content_navigation_click 8/46 · booking_calendar_loaded 4/4 | — |
+
+**Correct reading of the booking events.** `booking_started` fires only when someone types in the *fallback
+request form* (shown when Cal.com fails or the visitor chooses "request a time"). So 10 visitors started that form
+43 times, and only 4 saw the Cal.com calendar load. No `booking_completed`, `booking_request_submit` or
+`booking_calendar_failed` appears in the five events shared. **Unknown:** whether they exist further down the list.
+43 starts from 10 visitors could also be testing.
+
+**Changes made (9 Nov):**
+- **Own-visit exclusion:** `?notrack=1` on a device stops Vercel Analytics, GA4, Clarity and custom events there;
+  `?notrack=0` undoes it.
+- **Request form:** now needs only name and phone (topic and time optional).
+- **Booking page:** offers WhatsApp next to the phone number.
+
+**Also found:** the Cal.com event requires an **email address** (Cal.com settings). For local families a phone
+number is the natural contact. Consider making email optional in Cal.com, or adding phone as a required booking
+question.
+
+**To read next time:** the full Events list (scroll it), filtered to the last 30 days *after* every own device has
+opened `?notrack=1`.
