@@ -14,7 +14,7 @@ What each channel does — honestly:
 | LinkedIn / Facebook / YouTube links | No (nofollow) | Real visitors, crawl discovery, brand searches ("jigisha kiran shah" is already the #1 query) |
 | WhatsApp status / broadcast | No | Visitors and enquiries from people who already know her — the highest-converting traffic |
 | Directory listings, Policylane mention, society/association sites | Yes | Followed links + consistent NAP: the actual ranking signal. See `CITATIONS.md` |
-| Google reviews | Yes, for the map pack | The single biggest local lever (competitors: 58–139; her listing: 29) |
+| Google reviews | Yes, for the map pack | The single biggest local lever (competitors: 58–139; her listing: 73) |
 
 ## Rules
 

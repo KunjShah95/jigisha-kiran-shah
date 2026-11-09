@@ -250,7 +250,7 @@ the money queries. No search volumes are invented; validate in Keyword Planner.
 
 - For "LIC agent Ahmedabad" / "near me", Google answers with the **map pack**. The agents shown there carry far
   more reviews: P P Acharya's Insurance Hut, Bopal (139), Ashok Prajapati (87), Amity Wealth (58), Harmony (49).
-  Her Google listing showed 29. **Reviews are the single biggest lever for the local money keywords** — more than
+  Her Google listing has 73 (8 Nov 2026), which already puts her in that range. **Reviews are the single biggest lever for the local money keywords** — more than
   any page change.
 - Organic results are mostly directories (Justdial, Sulekha, AskLaila, IDBF) and listicles (Policylane "Top 10+
   LIC Advisors in Ahmedabad"). Being *listed in them* is the realistic route onto page one for "best LIC agent

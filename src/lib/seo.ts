@@ -4,6 +4,12 @@ export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
 export const PHONE = '+919824025435';
 export const PHONE_DISPLAY = '+91 98240 25435';
 export const REVIEW_URL = 'https://share.google/VQAFgVhdk114U2ozd';
+/**
+ * Canonical Google Maps URL of the listing (CID 0x28428dfcc5b669b). The
+ * share.google link above is a redirect for people; search engines and AI
+ * engines match entities better on the stable Maps URL.
+ */
+export const GOOGLE_MAPS_URL = 'https://maps.google.com/?cid=181314826673022619';
 export const EMAIL = 'jkshahlic@gmail.com';
 export const ADDRESS = 'Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058';
 export const HOURS = 'Monday–Saturday, 9:00 AM–6:00 PM IST';
@@ -15,7 +21,7 @@ export const HOURS = 'Monday–Saturday, 9:00 AM–6:00 PM IST';
  * docs/CITATIONS.md — a profile added there belongs here too.
  */
 export const SAME_AS = [
-  REVIEW_URL, // Google Business Profile (reviews + directions)
+  GOOGLE_MAPS_URL, // Google Business Profile / Maps listing
   'https://www.youtube.com/@jigishakiranshah4636',
   'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
   // Her official LIC agent page (LIC Saathi, agent code 01379839). The Google
@@ -133,7 +139,7 @@ export function localBusinessJsonLd() {
     // Pin of the Google Maps listing for the Orchid Legacy office. The old
     // value (22.9734, 72.5) was ~4 km off, towards Sarkhej/Makarba.
     geo: { '@type': 'GeoCoordinates', latitude: 22.995914, longitude: 72.465441 },
-    hasMap: 'https://share.google/VQAFgVhdk114U2ozd',
+    hasMap: GOOGLE_MAPS_URL,
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',

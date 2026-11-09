@@ -15,21 +15,20 @@ listing tells Google there are two businesses, and the map pack splits its trust
 
 | # | Where | What it shows | Status | Fix |
 |---|---|---|---|---|
-| 1 | **Google Maps / Business Profile** — "JIGISHA KIRAN SHAH Life Insurance Advisor" | Orchid Legacy, D3-1303, Applewoods Twp Main Rd, 380058 · locality labelled **Sarkhej** · 5.0★ from **29 reviews** (snapshot Sep 2026) · website → **LIC Saathi page**, not this site | 🔴 | In the GBP dashboard: set **Website** to `https://www.jigishakiranshah.in/?utm_source=google&utm_medium=organic&utm_campaign=gbp`; check the pin sits on Orchid Legacy and the area reads Shela; check the review count against what the site claims (see below) |
+| 1 | **Google Maps / Business Profile** — "JIGISHA KIRAN SHAH Life Insurance Advisor" | Orchid Legacy, D3-1303, Applewoods Twp Main Rd, 380058 · locality labelled **Sarkhej** · 5.0★ from **73 reviews** (8 Nov 2026; an older third-party snapshot showed 29) · website → **LIC Saathi page**, not this site | 🔴 | In the GBP dashboard: set **Website** to `https://www.jigishakiranshah.in/?utm_source=google&utm_medium=organic&utm_campaign=gbp`; check the pin sits on Orchid Legacy and the area reads Shela; keep asking for reviews |
 | 2 | **LocalEye** (localeye.in) | E Block, Kalgi Apartments, Daxini Society, **Maninagar** 380008 · 9824025435 | 🔴 old address | Edit to the Shela NAP, or ask them to update it: contact@localeye.in / WhatsApp 9137002424 (the number on their site) |
 | 3 | **IDBF** (ahmedabad.idbf.in) | Same old **Maninagar** address | 🔴 old address | Claim and edit to the Shela NAP, or request removal |
 | 4 | **LIC Saathi** (official LIC agent page, code 01379839) | Her LIC agent microsite | ✅ | Ask the development officer whether the Saathi page can show the website link. Now in the site's `sameAs` |
 | 5 | **LinkedIn** profile + posts | Name, phone, "Ahmedabad", recent posts link www.jigishakiranshah.in | ✅ | Add the website to the profile's Contact info and Featured section; add the Shela location |
 | 6 | **YouTube** @jigishakiranshah4636 | Channel | ⚪ unchecked | Put the website and NAP in About |
-| 7 | **Justdial** | A second proposal quotes "5.0, 63 ratings" — **not found** in search | ⚪ unverified | Search Justdial for 9824025435; if a listing exists, claim it and fix the NAP; if not, create one |
+| 7 | **Justdial** | Reports quote 5.0 with 63–83 ratings; one points to Justdial's **Khokhara–Mehmadabad** (East Ahmedabad) LIC-agent category, which suggests the listing still carries the old Maninagar-area address | 🔴 likely old address | Search Justdial for 9824025435, claim the listing, change the address to Shela and the name to the Google Maps name |
 | 8 | Sulekha, AskLaila | Both list Ahmedabad LIC agents; **she is not listed** | ⬜ missing | Create listings with the NAP block below |
 | 9 | Policylane "Top 10+ LIC Advisors in Ahmedabad" (Dec 2025) | Ranks for "best LIC advisor Ahmedabad"; **she is not included** | ⬜ outreach | Email the editor with MDRT 2023/2024 and the website; ask to be added. This is an earned mention, not a paid link |
 | 10 | Bing Places | — | ⬜ missing | Import from Google once row 1 is fixed |
 
-**Review count — needs checking.** The site says "70+ Google reviews" in about ten places (home, reviews, about,
-testimonials). The Google listing showed 29 in September 2026. If Google today shows fewer than 70, either the
-number combines several platforms (then say so on the site) or it must be lowered. Tell the developer the current
-Google count; do not leave a number on the site that Google contradicts.
+**Review count — resolved (8 Nov 2026).** The Google listing shows 5.0★ from 73 reviews, so the site's "70+ Google
+reviews" is accurate. Update the site wording if the count passes 100. (A September third-party snapshot had shown
+29; it was stale.)
 
 **Name.** Google uses "JIGISHA KIRAN SHAH Life Insurance Advisor"; this document (below) uses
 "Jigisha Kiran Shah - LIC Advisor". Renaming an established profile can trigger re-verification, so keep the

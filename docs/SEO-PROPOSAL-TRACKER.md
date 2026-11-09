@@ -221,7 +221,7 @@ Most of it repeats the first proposal and is covered above. What was new:
 | IndexNow (Bing, Yandex; feeds Copilot/ChatGPT search) | DONE | `scripts/indexnow.mjs` + `.github/workflows/indexnow.yml` run after each Vercel production deploy; manual: `npm run indexnow` |
 | Google indexing | OFF-SITE | Search Console → Sitemaps → submit `sitemap.xml`; URL Inspection → Request indexing for the 5 new pages |
 | Bing Webmaster Tools | OFF-SITE | Import the site from Search Console (one click), then submit the sitemap |
-| Review count claim "70+" | CHECK | Google listing showed 29 (Sep 2026); see `CITATIONS.md` |
+| Review count claim "70+" | RESOLVED | Google listing shows 73 reviews (8 Nov 2026); the claim is accurate |
 
 ## Crawling and distribution — 6 November 2026
 
