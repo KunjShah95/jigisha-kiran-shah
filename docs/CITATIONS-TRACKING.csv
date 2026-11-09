@@ -6,8 +6,8 @@ priority,platform,category,url,what_it_feeds,status,submitted_on,listing_url,not
 1,YouTube channel About,entity,https://www.youtube.com/@jigishakiranshah4636,Google entity; AI citations of video,not started,,,Address + phone + website in the About tab. Pin a 60-second intro.
 1,WhatsApp Business profile,entity,https://business.whatsapp.com/,Customer trust; local signals,not started,,,Name," category ""Insurance agent""", address, hours, catalogue of 9 services.
 2,LinkedIn company page,entity,https://www.linkedin.com/company/setup/new/,Google entity reconciliation,not started,,,Same NAP as the person profile. Link the two.
-2,Facebook page,entity,https://www.facebook.com/pages/create,Google entity reconciliation,not started,,,Create even if it is never posted to. It is a citation, not a channel.
-2,Justdial,directory,https://www.justdial.com/,Justdial rankings; some AI scrapers,likely wrong address,,,"Reports quote 5.0 with 63-83 ratings under the Khokhara-Mehmadabad category: likely the old East Ahmedabad address. Claim via 9824025435 and change to the Shela NAP."
+2,Facebook page,entity,https://www.facebook.com/pages/create,Google entity reconciliation,profile exists,,https://www.facebook.com/jigisha.kiran.shah,"Personal profile, now linked from the site footer and sameAs (9 Nov 2026). A Facebook Page (business) adds reviews, a category and insights; consider one with the same NAP.", not a channel.
+2,Justdial,directory,https://www.justdial.com/,Justdial rankings; some AI scrapers,likely wrong address,,,Reports quote 5.0 with 63-83 ratings under the Khokhara-Mehmadabad category: likely the old East Ahmedabad address. Claim via 9824025435 and change to the Shela NAP.
 2,Sulekha,directory,https://www.sulekha.com/,Sulekha local search,not listed,,,"Category ""Insurance agents / LIC agents""."
 2,IndiaMART,B2B directory,https://www.indiamart.com/,B2B queries; corporate/HUF cover,not started,,,Use the business description, not the consumer one.
 2,TradeIndia,B2B directory,https://www.tradeindia.com/,B2B queries,not started,,,Same B2B description as IndiaMART.

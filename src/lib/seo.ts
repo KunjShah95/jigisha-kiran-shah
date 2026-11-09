@@ -10,6 +10,7 @@ export const REVIEW_URL = 'https://share.google/VQAFgVhdk114U2ozd';
  * engines match entities better on the stable Maps URL.
  */
 export const GOOGLE_MAPS_URL = 'https://maps.google.com/?cid=181314826673022619';
+export const FACEBOOK_URL = 'https://www.facebook.com/jigisha.kiran.shah';
 export const EMAIL = 'jkshahlic@gmail.com';
 export const ADDRESS = 'Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058';
 export const HOURS = 'Monday–Saturday, 9:00 AM–6:00 PM IST';
@@ -24,6 +25,7 @@ export const SAME_AS = [
   GOOGLE_MAPS_URL, // Google Business Profile / Maps listing
   'https://www.youtube.com/@jigishakiranshah4636',
   'https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2',
+  FACEBOOK_URL,
   // Her official LIC agent page (LIC Saathi, agent code 01379839). The Google
   // Maps listing currently links here.
   'https://saathi.licindia.co.in/s/jigisha-kiran-shah-life-insurace-advisor/01379839',

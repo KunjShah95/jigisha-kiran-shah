@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Phone, MapPin, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { whatsappUrl } from '../lib/contact';
+import { FACEBOOK_URL } from '../lib/seo';
 import { AREAS } from '../data/areas';
 
 /**
@@ -137,6 +138,10 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/in/jigisha-kiran-shah-4b48851b2" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-[#0A66C2] hover:text-white transition-all duration-300" title="LinkedIn Profile">
                   <span className="sr-only">LinkedIn</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45z"/></svg>
+                </a>
+                <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-all duration-300" title="Facebook">
+                  <span className="sr-only">Facebook</span>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
                 </a>
                 <a href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")} data-cta="footer-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300" title="WhatsApp">
                   <span className="sr-only">WhatsApp</span>

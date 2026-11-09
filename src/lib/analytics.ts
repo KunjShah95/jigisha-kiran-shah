@@ -1,5 +1,6 @@
 import { track } from '@vercel/analytics';
 import { getFirstTouch } from './attribution';
+import { isTrackingDisabled } from './env';
 
 /**
  * Conversion + engagement events for Vercel Web Analytics (and GA4 when
@@ -61,6 +62,7 @@ const GA4_NAME: Partial<Record<ConversionEvent, string>> = {
 const LEAD_EVENTS: ConversionEvent[] = ['consultation_form_submit', 'booking_completed', 'protection_check_handoff'];
 
 export function trackEvent(event: ConversionEvent, props?: Record<string, string>) {
+  if (isTrackingDisabled()) return;
   const touch = LEAD_EVENTS.includes(event) ? getFirstTouch() : null;
   const payload = {
     page: window.location.pathname,

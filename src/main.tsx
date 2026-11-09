@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
 import './index.css'
 import { Analytics } from '@vercel/analytics/react'
-import { isProductionHost } from './lib/env'
+import { isProductionHost, applyTrackingOptOut, isTrackingDisabled } from './lib/env'
 import { initGA4, initClarity } from './lib/analytics'
 import { captureFirstTouch } from './lib/attribution'
 
@@ -20,7 +20,11 @@ if (!isProductionHost()) {
   document.head.appendChild(meta)
 }
 
-if (isProductionHost()) {
+// ?notrack=1 / ?notrack=0 — exclude this device from analytics (see lib/env.ts).
+applyTrackingOptOut()
+const countVisits = isProductionHost() && !isTrackingDisabled()
+
+if (countVisits) {
   initGA4(import.meta.env.VITE_GA4_ID)
   initClarity(import.meta.env.VITE_CLARITY_ID)
 }
@@ -30,7 +34,7 @@ const app = (
   <React.StrictMode>
     <BrowserRouter>
       <App />
-      {isProductionHost() ? <Analytics /> : null}
+      {countVisits ? <Analytics /> : null}
     </BrowserRouter>
   </React.StrictMode>
 )
