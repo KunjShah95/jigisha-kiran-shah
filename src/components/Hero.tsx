@@ -44,7 +44,7 @@ export default function Hero() {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <p className="mt-2 text-xs text-gray-600">Your first consultation is free. Talk by phone, WhatsApp or in person.</p>
+            <p className="mt-2 text-xs text-gray-600">Free, for any LIC policy — even one another agent sold. Talk by phone, WhatsApp or in person.</p>
 
             <dl className="mt-7 grid max-w-xl grid-cols-3 border-t border-[#d9cdbc] pt-4">
               {PROOF.map(({ value, label }, index) => (

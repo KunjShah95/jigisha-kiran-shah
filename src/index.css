@@ -547,3 +547,10 @@
     animation: none !important;
   }
 }
+
+/* Family policy card (/policy-card): print only the card. */
+@media print {
+  body * { visibility: hidden; }
+  #policy-card, #policy-card * { visibility: visible; }
+  #policy-card { position: absolute; left: 0; top: 0; width: 100%; border: none; }
+}

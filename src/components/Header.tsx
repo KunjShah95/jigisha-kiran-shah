@@ -21,6 +21,7 @@ const moreLinks = [
   { to: '/blog', label: 'Stories', cta: 'nav-stories' },
   { to: '/calculators', label: 'Calculators', cta: 'nav-calculators' },
   { to: '/protection-check', label: 'Protection check', cta: 'nav-protection-check' },
+  { to: '/policy-card', label: 'Family policy card', cta: 'nav-policy-card' },
   { to: '/gu', label: 'ગુજરાતી', cta: 'nav-gujarati' },
   { to: '/hi', label: 'हिंदी', cta: 'nav-hindi' },
 ]

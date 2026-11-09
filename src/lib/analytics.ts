@@ -29,7 +29,10 @@ export type ConversionEvent =
   | 'protection_check_completed'
   | 'protection_check_handoff'
   | 'content_navigation_click'
-  | 'service_page_view';
+  | 'service_page_view'
+  | 'policy_card_printed'
+  | 'policy_card_shared'
+  | 'policy_card_review_request';
 
 declare global {
   interface Window {
