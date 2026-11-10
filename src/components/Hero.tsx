@@ -1,5 +1,10 @@
-import { ArrowRight, BadgeCheck, Star } from 'lucide-react'
+import { ArrowRight, BadgeCheck, MessageCircle, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { whatsappUrl } from '../lib/contact'
+
+// WhatsApp is the primary CTA: it was the only path that converted in the
+// first year's analytics (9 visitors), while 0 completed the booking flow.
+const HERO_WA_TEXT = "Hi Jigisha ben, I found you on your website. I'd like to check if my family's life cover is enough."
 
 const PROOF = [
   { value: '22+', label: 'years advising families' },
@@ -27,24 +32,31 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <a
+                href={whatsappUrl(HERO_WA_TEXT)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="hero-whatsapp"
+                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-whatsapp px-6 py-3.5 text-sm font-bold text-white shadow-[0_8px_20px_rgba(37,211,102,0.25)] transition duration-200 hover:-translate-y-0.5 hover:bg-whatsapp-dark focus-visible:outline-offset-4"
+              >
+                <MessageCircle className="h-5 w-5 fill-current" aria-hidden="true" />
+                Chat on WhatsApp
+              </a>
               <Link
                 to="/book"
                 data-cta="hero-book"
-                className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-midnight px-6 py-3.5 text-sm font-bold text-white shadow-[0_8px_20px_rgba(23,23,23,0.14)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#29292d] focus-visible:outline-offset-4"
-              >
-                Book a free consultation
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </Link>
-              <Link
-                to="/services/policy-review-claims"
-                data-cta="hero-policy-review"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#cdbba3] bg-white/70 px-5 py-3.5 text-sm font-semibold text-midnight transition-colors hover:border-gold-dark hover:bg-white"
               >
-                Get a free policy review
+                Book a free consultation
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
-            <p className="mt-2 text-xs text-gray-600">Free, for any LIC policy — even one another agent sold. Talk by phone, WhatsApp or in person.</p>
+            <p className="mt-2 text-xs text-gray-600">
+              Free, for any LIC policy — even one another agent sold.{' '}
+              <Link to="/services/policy-review-claims" data-cta="hero-policy-review" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-gold">
+                Get a free policy review
+              </Link>
+            </p>
 
             <dl className="mt-7 grid max-w-xl grid-cols-3 border-t border-[#d9cdbc] pt-4">
               {PROOF.map(({ value, label }, index) => (
