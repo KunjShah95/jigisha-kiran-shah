@@ -69,6 +69,79 @@ interface Flag {
   label: string;
 }
 
+/**
+ * One policy's inputs as a self-contained card: a header with the policy
+ * number and remove action, then a two-column field grid. Every grid child
+ * gets `min-w-0` so native controls (notably `type="month"`, which has a
+ * wide intrinsic width in Chrome) shrink to the card instead of overflowing.
+ */
+function PolicyInputCard({
+  row: r,
+  index,
+  canRemove,
+  onChange,
+  onRemove,
+}: {
+  row: PolicyRow;
+  index: number;
+  canRemove: boolean;
+  onChange: (key: keyof PolicyRow, value: string) => void;
+  onRemove: () => void;
+}) {
+  const titleId = `pc-policy-${r.id}-title`;
+  const summary = [r.plan.trim(), r.insured.trim()].filter(Boolean).join(' · ');
+  return (
+    <div role="group" aria-labelledby={titleId} className="min-w-0 overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+      <div className="flex items-center justify-between gap-3 border-b border-border bg-cream/60 px-5 py-3">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-midnight text-sm font-bold text-white" aria-hidden="true">
+            {index + 1}
+          </span>
+          <div className="min-w-0">
+            <h3 id={titleId} className="text-sm font-bold text-midnight">Policy {index + 1}</h3>
+            {summary && <p className="truncate text-xs text-gray-500">{summary}</p>}
+          </div>
+        </div>
+        {canRemove && (
+          <button
+            type="button"
+            onClick={onRemove}
+            aria-label={`Remove policy ${index + 1}`}
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold text-gray-500 hover:bg-red-50 hover:text-red-700 min-h-11"
+          >
+            <Trash2 className="w-4 h-4" aria-hidden="true" /> <span className="hidden sm:inline">Remove</span>
+          </button>
+        )}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-5">
+        <Field id={`pc-plan-${r.id}`} label="Plan name">
+          <input id={`pc-plan-${r.id}`} value={r.plan} onChange={(e) => onChange('plan', e.target.value)} placeholder="e.g. Jeevan Labh" className={inputClass} />
+        </Field>
+        <Field id={`pc-insured-${r.id}`} label="Life insured">
+          <input id={`pc-insured-${r.id}`} value={r.insured} onChange={(e) => onChange('insured', e.target.value)} placeholder="e.g. Kiran" className={inputClass} />
+        </Field>
+        <Field id={`pc-sa-${r.id}`} label="Sum assured (₹)">
+          <input id={`pc-sa-${r.id}`} inputMode="numeric" value={r.sumAssured} onChange={(e) => onChange('sumAssured', digits(e.target.value))} placeholder="e.g. 1000000" className={inputClass} />
+        </Field>
+        <Field id={`pc-mat-${r.id}`} label="Maturity month">
+          <input id={`pc-mat-${r.id}`} type="month" value={r.maturity} onChange={(e) => onChange('maturity', e.target.value)} className={inputClass} />
+        </Field>
+        <Field id={`pc-nom-${r.id}`} label="Nominee">
+          <input id={`pc-nom-${r.id}`} value={r.nominee} onChange={(e) => onChange('nominee', e.target.value)} placeholder="Leave blank if unsure" className={inputClass} />
+        </Field>
+        <Field id={`pc-branch-${r.id}`} label="Servicing branch">
+          <input id={`pc-branch-${r.id}`} value={r.branch} onChange={(e) => onChange('branch', e.target.value)} placeholder="Printed on the policy bond" className={inputClass} />
+        </Field>
+        <div className="sm:col-span-2">
+          <Field id={`pc-last4-${r.id}`} label="Last 4 digits of policy no. (optional)">
+            <input id={`pc-last4-${r.id}`} inputMode="numeric" maxLength={4} value={r.last4} onChange={(e) => onChange('last4', digits(e.target.value).slice(0, 4))} placeholder="1234" className={`${inputClass} sm:max-w-[calc(50%-0.5rem)]`} />
+          </Field>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function PolicyCardPage() {
   useSEO({
     title: 'Family LIC Policy Card — Free One-Page Summary Tool',
@@ -177,11 +250,11 @@ export default function PolicyCardPage() {
           </p>
         </header>
 
-        <div className="grid lg:grid-cols-[1.05fr_.95fr] gap-8 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,.95fr)] gap-8 items-start">
           {/* ---- Inputs ---- */}
-          <section aria-labelledby="pc-inputs" className="space-y-5 print:hidden">
+          <section aria-labelledby="pc-inputs" className="min-w-0 space-y-5 print:hidden">
             <h2 id="pc-inputs" className="sr-only">Enter your policies</h2>
-            <div className="grid sm:grid-cols-2 gap-4 rounded-2xl border border-border bg-white p-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-2xl border border-border bg-white p-5 shadow-sm">
               <Field id="pc-family" label="Family name">
                 <input id="pc-family" value={family} onChange={(e) => setFamily(e.target.value)} placeholder="e.g. Shah family" className={inputClass} />
               </Field>
@@ -191,39 +264,14 @@ export default function PolicyCardPage() {
             </div>
 
             {rows.map((r, i) => (
-              <fieldset key={r.id} className="rounded-2xl border border-border bg-white p-5">
-                <legend className="px-1 text-sm font-bold text-midnight">Policy {i + 1}</legend>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <Field id={`pc-plan-${r.id}`} label="Plan name">
-                    <input id={`pc-plan-${r.id}`} value={r.plan} onChange={(e) => update(r.id, 'plan', e.target.value)} placeholder="e.g. Jeevan Labh" className={inputClass} />
-                  </Field>
-                  <Field id={`pc-insured-${r.id}`} label="Life insured">
-                    <input id={`pc-insured-${r.id}`} value={r.insured} onChange={(e) => update(r.id, 'insured', e.target.value)} placeholder="e.g. Kiran" className={inputClass} />
-                  </Field>
-                  <Field id={`pc-sa-${r.id}`} label="Sum assured (₹)">
-                    <input id={`pc-sa-${r.id}`} inputMode="numeric" value={r.sumAssured} onChange={(e) => update(r.id, 'sumAssured', digits(e.target.value))} placeholder="e.g. 1000000" className={inputClass} />
-                  </Field>
-                  <Field id={`pc-mat-${r.id}`} label="Maturity month">
-                    <input id={`pc-mat-${r.id}`} type="month" value={r.maturity} onChange={(e) => update(r.id, 'maturity', e.target.value)} className={inputClass} />
-                  </Field>
-                  <Field id={`pc-nom-${r.id}`} label="Nominee">
-                    <input id={`pc-nom-${r.id}`} value={r.nominee} onChange={(e) => update(r.id, 'nominee', e.target.value)} placeholder="Leave blank if unsure" className={inputClass} />
-                  </Field>
-                  <Field id={`pc-branch-${r.id}`} label="Servicing branch">
-                    <input id={`pc-branch-${r.id}`} value={r.branch} onChange={(e) => update(r.id, 'branch', e.target.value)} placeholder="Printed on the policy bond" className={inputClass} />
-                  </Field>
-                  <Field id={`pc-last4-${r.id}`} label="Last 4 digits of policy no. (optional)">
-                    <input id={`pc-last4-${r.id}`} inputMode="numeric" maxLength={4} value={r.last4} onChange={(e) => update(r.id, 'last4', digits(e.target.value).slice(0, 4))} placeholder="1234" className={inputClass} />
-                  </Field>
-                  <div className="flex items-end">
-                    {rows.length > 1 && (
-                      <button type="button" onClick={() => removeRow(r.id)} className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-red-700 min-h-11">
-                        <Trash2 className="w-4 h-4" aria-hidden="true" /> Remove policy
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </fieldset>
+              <PolicyInputCard
+                key={r.id}
+                row={r}
+                index={i}
+                canRemove={rows.length > 1}
+                onChange={(key, value) => update(r.id, key, value)}
+                onRemove={() => removeRow(r.id)}
+              />
             ))}
 
             <button type="button" onClick={addRow} className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-5 py-3 text-sm font-bold text-midnight hover:border-gold/60 min-h-11">
@@ -236,7 +284,7 @@ export default function PolicyCardPage() {
           </section>
 
           {/* ---- The card ---- */}
-          <section aria-labelledby="pc-card-title" className="lg:sticky lg:top-24">
+          <section aria-labelledby="pc-card-title" className="min-w-0 lg:sticky lg:top-24">
             <div id="policy-card" className="rounded-2xl border border-border bg-white p-6">
               <div className="flex items-start gap-3 mb-4">
                 <ShieldCheck className="w-6 h-6 text-gold-dark shrink-0 mt-0.5" aria-hidden="true" />
