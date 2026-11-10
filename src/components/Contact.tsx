@@ -5,6 +5,7 @@ import { Field, SelectField, INCOME_OPTIONS, INTEREST_OPTIONS, inputClass, optio
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
 import { useSpotlight } from '../hooks/useSpotlight';
+import TrustStrip from './TrustStrip';
 
 const SUBJECT_OPTIONS = [...INTEREST_OPTIONS, { value: 'other', label: 'Something else' }];
 
@@ -149,10 +150,11 @@ const Contact = () => {
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
                
               <h2 className="text-2xl font-display font-bold text-midnight mb-2">Book a Free Consultation</h2>
+              <TrustStrip className="mb-3" />
               <p className="text-sm text-gray-500 mb-6">
                 Three quick fields. Everything else is optional.{' '}
                 <Link to="/book" data-cta="contact-book" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-gold">
-                  Prefer to pick a time? Book a call
+                  Prefer to pick a time? Book on WhatsApp
                 </Link>
               </p>
               <form onSubmit={handleSubmit} className="space-y-5 relative">

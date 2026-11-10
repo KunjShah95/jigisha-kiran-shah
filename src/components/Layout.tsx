@@ -46,10 +46,10 @@ export default function Layout() {
           data-cta="sticky-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
+          className="flex-[2] flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
         >
           <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
-          WhatsApp
+          Chat on WhatsApp
         </a>
         <a
           href="tel:+919824025435"
@@ -57,7 +57,7 @@ export default function Layout() {
           className="flex-1 flex items-center justify-center gap-2 bg-midnight text-white font-bold py-3 rounded-xl text-sm hover:bg-midnight-light transition-colors min-h-11"
         >
           <Phone className="w-5 h-5" aria-hidden="true" />
-          Call Now
+          Call
         </a>
       </div>
       <div aria-hidden="true" className="h-20 md:hidden" />

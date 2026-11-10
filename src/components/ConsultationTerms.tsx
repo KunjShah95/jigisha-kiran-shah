@@ -5,7 +5,7 @@ import { BadgeIndianRupee } from 'lucide-react';
  * its own reads like a sales trap; this answers the objection up front.
  *
  * Every line must stay true:
- * - The Cal.com event is 20 minutes.
+ * - The first consultation is about 20 minutes.
  * - LIC pays agents' commission; premiums are set by LIC, so a plan costs the
  *   same whichever LIC agent sells it. (Not "same as buying direct": some LIC
  *   plans, e.g. Tech Term, are sold online.)

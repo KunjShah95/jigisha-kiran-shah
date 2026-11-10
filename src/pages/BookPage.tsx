@@ -1,21 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Calendar, Phone, Video, MapPin, Check, ShieldCheck } from 'lucide-react';
+import { MessageCircle, Phone, Video, MapPin, Check, ShieldCheck } from 'lucide-react';
 import { useSEO } from '../hooks/useSEO';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { Field, SelectField, INTEREST_OPTIONS, inputClass, optionLabel, leadMessage, ConsentNote, TIME_OPTIONS } from '../components/lead-fields';
 import { whatsappUrl } from '../lib/contact';
 import { trackEvent } from '../lib/analytics';
 import ConsultationTerms from '../components/ConsultationTerms';
+import TrustStrip from '../components/TrustStrip';
 
 /**
- * Cal.com event path: a public booking link, not a secret. Deliberately not
- * read from an env var: Vite inlines env values into the public bundle, so a
- * mis-pasted API key would ship to every visitor. Change it here.
- * Set to undefined to fall back to the booking-request form (saved + WhatsApp).
+ * Booking goes straight to WhatsApp (wa.me) — no calendar embed.
+ * Vercel Analytics (first year): 10 visitors started booking, 5 saw the
+ * Cal.com calendar, 0 completed; meanwhile 9 tapped WhatsApp directly. So the
+ * form below just composes a WhatsApp message and opens the chat; Jigisha
+ * confirms the exact time there. No phone field: WhatsApp already shows it.
  */
-const CAL_LINK: string | undefined = 'jigisha-kiran-shah-emz0xs/free-consultation';
-const CAL_NS = 'consult';
 
 const DAY_OPTIONS = [
   { value: 'weekday', label: 'Weekday (Mon–Fri)' },
@@ -35,89 +35,8 @@ const AGENDA = [
   'A clear next step — or none, if you don’t need anything',
 ];
 
-type CalApi = ((...args: unknown[]) => void) & { ns?: Record<string, (...args: unknown[]) => void>; loaded?: boolean; q?: unknown[] };
-
-/** Official Cal.com embed loader, typed. Loads https://app.cal.com/embed/embed.js once. */
-function loadCal(): CalApi {
-  const w = window as unknown as { Cal?: CalApi };
-  if (w.Cal) return w.Cal;
-  const push = (api: CalApi, args: unknown) => (api.q = api.q || []).push(args);
-  const cal = function (...args: unknown[]) {
-    const self = w.Cal!;
-    if (!self.loaded) {
-      self.ns = {};
-      self.q = self.q || [];
-      document.head.appendChild(document.createElement('script')).src = 'https://app.cal.com/embed/embed.js';
-      self.loaded = true;
-    }
-    if (args[0] === 'init') {
-      const api = function (...a: unknown[]) {
-        push(api as CalApi, a);
-      } as CalApi;
-      const namespace = args[1];
-      if (typeof namespace === 'string') {
-        self.ns![namespace] = self.ns![namespace] || api;
-        push(self.ns![namespace] as CalApi, args);
-        push(self, ['initNamespace', namespace]);
-      } else push(self, args);
-      return;
-    }
-    push(self, args);
-  } as CalApi;
-  w.Cal = cal;
-  return cal;
-}
-
-/** How long to wait for Cal.com to report the calendar ready before falling back. */
-const CAL_TIMEOUT_MS = 12_000;
-
-function CalEmbed({ calLink, objective, from, onFail }: { calLink: string; objective: string; from: string; onFail: (reason: string) => void }) {
-  const started = useRef(false);
-  useEffect(() => {
-    if (started.current) return;
-    started.current = true;
-    let ready = false;
-    let failed = false;
-    const fail = (reason: string) => {
-      if (ready || failed) return;
-      failed = true;
-      trackEvent('booking_calendar_failed', { reason });
-      onFail(reason);
-    };
-    // Script blocked (adblock, network) or Cal.com down: never leave a blank box.
-    const timer = window.setTimeout(() => fail('timeout'), CAL_TIMEOUT_MS);
-
-    const Cal = loadCal();
-    Cal('init', CAL_NS, { origin: 'https://app.cal.com' });
-    const ns = Cal.ns![CAL_NS];
-    const config: Record<string, string> = { layout: 'month_view' };
-    if (objective) {
-      config.notes = `Goal: ${optionLabel(INTEREST_OPTIONS, objective)}${from ? ` (via ${from})` : ''}`;
-      config['metadata[objective]'] = objective;
-    }
-    ns('inline', { elementOrSelector: '#cal-inline', calLink, config });
-    ns('ui', { hideEventTypeDetails: false, layout: 'month_view' });
-    ns('on', {
-      action: 'linkReady',
-      callback: () => {
-        ready = true;
-        window.clearTimeout(timer);
-        trackEvent('booking_calendar_loaded', { objective: objective || 'none' });
-      },
-    });
-    ns('on', { action: 'linkFailed', callback: () => fail('link-failed') });
-    ns('on', {
-      action: 'bookingSuccessful',
-      callback: () => trackEvent('booking_completed', { via: 'cal', objective: objective || 'none' }),
-    });
-    return () => window.clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [calLink, objective, from]);
-  return <div id="cal-inline" className="w-full min-h-[640px] overflow-auto rounded-2xl" />;
-}
-
-function RequestForm({ objective, from }: { objective: string; from: string }) {
-  const [d, setD] = useState({ name: '', phone: '', topic: '', day: 'any', time: '', mode: 'phone' });
+function WhatsAppBookingForm({ objective, from }: { objective: string; from: string }) {
+  const [d, setD] = useState({ name: '', topic: '', day: 'any', time: '', mode: 'phone' });
   const [sent, setSent] = useState(false);
   const startedRef = useRef(false);
 
@@ -126,7 +45,7 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
   const change = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (!startedRef.current) {
       startedRef.current = true;
-      trackEvent('booking_started', { via: 'request', objective: objective || 'none' });
+      trackEvent('booking_started', { via: 'whatsapp', objective: objective || 'none' });
     }
     setD({ ...d, [e.target.name]: e.target.value });
   };
@@ -138,15 +57,18 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
     const day = optionLabel(DAY_OPTIONS, d.day);
     const time = optionLabel(TIME_OPTIONS, d.time);
     trackEvent('booking_request_submit', { objective: d.topic || 'none', mode: d.mode });
-    trackEvent('booking_completed', { via: 'request', objective: d.topic || 'none' });
-    const message = leadMessage('Consultation booking request (website)', [
+    trackEvent('booking_completed', { via: 'whatsapp', objective: d.topic || 'none' });
+    trackEvent('contact_whatsapp', { cta: 'book-form' });
+    const message = leadMessage('Hi Jigisha ben, I’d like to book a free consultation.', [
       ['Name', d.name],
-      ['Phone', d.phone],
-      ['Topic', optionLabel(INTEREST_OPTIONS, d.topic)],
+      ['Topic', d.topic ? optionLabel(INTEREST_OPTIONS, d.topic) : ''],
       ['Preferred', [day, time].filter(Boolean).join(', ')],
       ['Meeting', mode],
+      ['Came from', from],
     ]);
-    window.open(whatsappUrl(message), '_blank');
+    const url = whatsappUrl(message);
+    // Popup blockers (some in-app browsers) return null: navigate instead.
+    if (!window.open(url, '_blank', 'noopener')) window.location.href = url;
     setSent(true);
   };
 
@@ -156,27 +78,24 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
         <div className="w-14 h-14 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-4">
           <Check className="w-7 h-7 text-gold-dark" aria-hidden="true" />
         </div>
-        <h3 className="text-xl font-display font-bold text-midnight mb-2">Request received</h3>
-        <p className="text-sm text-gray-600 max-w-sm mx-auto">
-          Jigisha will confirm an exact time with you by phone or WhatsApp (Mon–Sat, 9 AM–6 PM). If WhatsApp opened,
-          pressing send there gets the fastest reply.
+        <h3 className="text-xl font-display font-bold text-midnight mb-2">Your message is ready in WhatsApp</h3>
+        <p className="text-sm text-gray-600 max-w-sm mx-auto mb-5">
+          Press <strong>send</strong> in WhatsApp and Jigisha will confirm the exact time with you (Mon–Sat, 9 AM–6 PM).
         </p>
+        <button type="button" onClick={() => setSent(false)} className="text-sm font-semibold text-gold-dark underline underline-offset-2 min-h-11">
+          WhatsApp didn’t open? Try again
+        </button>
       </div>
     );
   }
 
   return (
     <form onSubmit={submit} className="space-y-5 relative">
-      <div className="grid md:grid-cols-2 gap-5">
-        <Field id="bk-name" label="Your Name" required>
-          <input id="bk-name" name="name" required autoComplete="name" value={d.name} onChange={change} placeholder="Enter your name" className={inputClass} />
-        </Field>
-        <Field id="bk-phone" label="Phone Number" required>
-          <input id="bk-phone" name="phone" type="tel" inputMode="tel" required autoComplete="tel" pattern="[0-9+\(\)\- ]{10,18}" title="Enter a valid phone number" value={d.phone} onChange={change} placeholder="+91 98765 43210" className={inputClass} />
-        </Field>
-      </div>
-      {/* Only name and phone are required: Vercel Analytics showed 43 starts of
-          this form from 10 visitors with no submit event in the top list. */}
+      <Field id="bk-name" label="Your Name" required>
+        <input id="bk-name" name="name" required autoComplete="name" value={d.name} onChange={change} placeholder="Enter your name" className={inputClass} />
+      </Field>
+      {/* Only the name is required: Vercel Analytics showed 43 starts of the old
+          form from 10 visitors with no submit. WhatsApp supplies the number. */}
       <Field id="bk-topic" label="What would you like to discuss? (optional)">
         <SelectField id="bk-topic" name="topic" value={d.topic} onChange={change} placeholder="Not sure yet" options={INTEREST_OPTIONS} />
       </Field>
@@ -207,12 +126,12 @@ function RequestForm({ objective, from }: { objective: string; from: string }) {
       </fieldset>
       <button
         type="submit"
-        className="w-full py-4 bg-midnight text-white font-bold rounded-xl shadow-lg hover:bg-gold active:scale-[0.98] transition-all flex items-center justify-center gap-2 min-h-11"
+        className="w-full py-4 bg-whatsapp text-white font-bold rounded-xl shadow-lg hover:bg-whatsapp-dark active:scale-[0.98] transition-all flex items-center justify-center gap-2 min-h-12"
       >
-        <Calendar className="w-5 h-5" aria-hidden="true" /> Request this time
+        <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" /> Send on WhatsApp
       </button>
       <p className="text-xs text-gray-500 leading-relaxed">
-        Your request opens in WhatsApp — press send there, and Jigisha confirms the exact slot with you.
+        Opens WhatsApp with your details filled in. Press send there, and Jigisha confirms the exact time with you.
       </p>
       <ConsentNote />
     </form>
@@ -232,10 +151,6 @@ export default function BookPage() {
   const [params] = useSearchParams();
   const objective = INTEREST_OPTIONS.some((o) => o.value === params.get('objective')) ? params.get('objective')! : '';
   const from = params.get('from') === 'check' ? 'Protection Check' : '';
-  // Cal embed is client-only; render the shell on the server and mount after hydration.
-  const [mounted, setMounted] = useState(false);
-  const [calFailed, setCalFailed] = useState(false);
-  useEffect(() => setMounted(true), []);
 
   return (
     <section className="pt-20 lg:pt-24 pb-16 lg:pb-24 bg-cream relative overflow-hidden">
@@ -277,40 +192,13 @@ export default function BookPage() {
 
           <div className="lg:col-span-3 reveal-right">
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 border border-border p-4 sm:p-6 lg:p-8">
-              {CAL_LINK && !calFailed ? (
-                <>
-                  <h2 className="text-xl font-display font-bold text-midnight mb-4 px-2">Pick a time</h2>
-                  {mounted ? (
-                    <CalEmbed calLink={CAL_LINK} objective={objective} from={from} onFail={() => setCalFailed(true)} />
-                  ) : (
-                    <div className="min-h-[640px]" aria-busy="true" />
-                  )}
-                  <p className="mt-3 px-2 text-xs text-gray-500">
-                    Calendar not loading?{' '}
-                    <a href={`https://cal.com/${CAL_LINK}`} target="_blank" rel="noopener noreferrer" data-cta="book-cal-newtab" className="font-semibold text-gold-dark underline underline-offset-2">
-                      Open it in a new tab
-                    </a>{' '}
-                    or{' '}
-                    <button type="button" onClick={() => setCalFailed(true)} className="font-semibold text-gold-dark underline underline-offset-2">
-                      request a time instead
-                    </button>
-                    .
-                  </p>
-                </>
-              ) : (
-                <>
-                  <h2 className="text-2xl font-display font-bold text-midnight mb-2">Request a time</h2>
-                  <p className="text-sm text-gray-500 mb-6">Tell us when suits you. Takes 30 seconds.</p>
-                  <RequestForm objective={objective} from={from} />
-                </>
-              )}
+              <h2 className="text-2xl font-display font-bold text-midnight mb-2">Book on WhatsApp</h2>
+              <p className="text-sm text-gray-500 mb-3">Your name and a preferred time. Takes 20 seconds.</p>
+              <TrustStrip className="mb-6" />
+              <WhatsAppBookingForm objective={objective} from={from} />
             </div>
             <p className="mt-4 text-sm text-gray-600 text-center">
-              Prefer to talk now?{' '}
-              <a href="tel:+919824025435" data-cta="book-call" className="font-semibold text-midnight underline underline-offset-2">
-                Call +91 98240 25435
-              </a>{' '}
-              or{' '}
+              Rather skip the form?{' '}
               <a
                 href={whatsappUrl('Hi Jigisha ben, I would like to book a free consultation. When are you free?')}
                 target="_blank"
@@ -318,7 +206,11 @@ export default function BookPage() {
                 data-cta="book-whatsapp"
                 className="font-semibold text-midnight underline underline-offset-2"
               >
-                message on WhatsApp
+                Just say hi on WhatsApp
+              </a>{' '}
+              or{' '}
+              <a href="tel:+919824025435" data-cta="book-call" className="font-semibold text-midnight underline underline-offset-2">
+                call +91 98240 25435
               </a>
             </p>
           </div>

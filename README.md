@@ -56,4 +56,4 @@ not recorded anywhere. Details in `docs/LEAD-CAPTURE.md`.
 ## Stack
 
 React 18 · TypeScript · Vite 5 · Tailwind CSS 4 · React Router 7 · Vercel (static + one serverless function) ·
-Cal.com booking · optional GA4 via `VITE_GA4_ID` · optional Microsoft Clarity via `VITE_CLARITY_ID`.
+WhatsApp (wa.me) booking · optional GA4 via `VITE_GA4_ID` · optional Microsoft Clarity via `VITE_CLARITY_ID`.
