@@ -22,7 +22,7 @@ export const TIME_OPTIONS = [
 export const INTEREST_OPTIONS = OBJECTIVES.map((o) => ({ value: o.value, label: o.label }));
 
 export const inputClass =
-  'w-full px-4 py-3 rounded-xl border border-border focus:border-gold focus:ring-2 focus:ring-gold/40 outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium min-h-11';
+  'w-full min-w-0 px-4 py-3 rounded-xl border border-border focus:border-gold focus:ring-2 focus:ring-gold/40 outline-none transition-all bg-gray-50 hover:bg-white text-midnight font-medium min-h-11';
 
 export function Field({
   id,
@@ -36,10 +36,10 @@ export function Field({
   children: ReactNode;
 }) {
   return (
-    <div className="space-y-1">
+    <div className="min-w-0 space-y-1">
       <label
         htmlFor={id}
-        className="text-[11px] font-bold text-gray-500 uppercase tracking-wider ml-1"
+        className="block text-[11px] font-bold text-gray-500 uppercase tracking-wider ml-1"
       >
         {label} {required ? <span aria-hidden="true">*</span> : null}
       </label>
