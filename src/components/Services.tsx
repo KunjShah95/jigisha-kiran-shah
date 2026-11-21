@@ -1,56 +1,57 @@
 import { Shield, Sparkles, Building2, Umbrella, GraduationCap, Cross, Check, ArrowRight, FileSearch } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useSpotlight } from '../hooks/useSpotlight';
+import { SERVICE_PAGES } from '../data/servicePages';
 
 const services = [
   {
     icon: Shield,
-    title: 'Term Life Assurance',
+    title: 'Term Insurance',
     href: '/services/term-insurance',
-    description: 'Pure protection for your legacy. High-value coverage designed to secure your family\'s standard of living.',
-    features: ['High Sum Assured', 'Affordable Premiums', 'Tax Efficiency']
+    description: 'The simplest cover. If something happens to you, your family gets a large lump sum. Lowest cost for the amount of cover.',
+    features: ['Big cover for a small premium', 'Pays your family if you die', 'Tax benefits']
   },
   {
     icon: Sparkles,
-    title: 'Wealth Endowment',
+    title: 'Savings Plans',
     href: '/services/wealth-creation',
-    description: 'A sophisticated blend of life protection and guaranteed savings for future milestones.',
-    features: ['Guaranteed Sum Assured', 'Bonuses (not guaranteed)', 'Loan Facility']
+    description: 'Save steadily and get a lump sum at the end, with life cover along the way.',
+    features: ['Lump sum at maturity', 'Bonuses (not guaranteed)', 'Loan against the policy']
   },
   {
     icon: Building2,
     title: 'Business Insurance',
     href: '/services/corporate-insurance',
-    description: 'Comprehensive insurance solutions designed to protect your business, partnerships, and key relationships.',
-    features: ['Employer Employee Insurance', 'Partnership Insurance', 'MWP Insurance', 'HUF Insurance']
+    description: 'Protect your business if you, a partner or a key person is no longer around.',
+    features: ['Cover for your staff', 'Cover for business partners', 'Cover for a family firm (HUF)', 'Policies for a wife\'s and children\'s benefit']
   },
   {
     icon: Umbrella,
-    title: 'Retirement Planning',
+    title: 'Retirement Income',
     href: '/services/retirement',
-    description: 'Ensure a dignified lifestyle in your golden years with guaranteed lifetime pension streams.',
-    features: ['Lifetime Income', 'Family Protection', 'Inflation Hedge']
+    description: 'Turn your savings into a regular monthly income that lasts as long as you live.',
+    features: ['Income for life', 'Choose to protect your family', 'Start now or after you retire']
   },
   {
     icon: GraduationCap,
-    title: 'Child Education Legacy',
+    title: 'Child Education',
     href: '/services/child-education',
-    description: 'Build a dedicated fund for your children\'s education, with cover that keeps the plan going if you can\'t.',
-    features: ['Milestone Funding', 'Premium Waiver', 'Target Savings']
+    description: 'Put money aside for your child\'s school and college. If you are not there, the plan still pays.',
+    features: ['Money arrives when fees are due', 'Future premiums waived if you die', 'Savings built for a goal']
   },
   {
     icon: Cross,
-    title: 'Health & Wellness Cover',
+    title: 'Health & Cancer Cover',
     href: '/services/health-insurance',
-    description: 'Compare LIC Health Shield (Plan 907) and New Cancer Cover (Plan 908) using current policy documents.',
-    features: ['Health Shield · Plan 907', 'New Cancer Cover · Plan 908', 'Benefits & exclusions explained']
+    description: 'Cover for hospital bills and for cancer, explained using LIC\'s current policy documents.',
+    features: ['Health Shield (Plan 907)', 'New Cancer Cover (Plan 908)', 'What is and isn\'t covered, explained']
   },
   {
     icon: FileSearch,
-    title: 'Policy Review & Claims',
+    title: 'Policy Check-up & Claims',
     href: '/services/policy-review-claims',
-    description: 'Already hold LIC policies? Check your cover, fix nominees, revive lapsed policies, and get hands-on help with claims.',
-    features: ['Free Cover Review', 'Nominee & KYC Updates', 'Claim Documentation']
+    description: 'Already have LIC policies? Check what you are covered for, fix the nominee, revive a lapsed policy, or get help with a claim.',
+    features: ['Free check of your policies', 'Nominee and KYC updates', 'Help with claim paperwork']
   }
 ]
 
@@ -69,9 +70,9 @@ const Services = () => {
             LIC Insurance <span className="text-gold italic">Plans in Ahmedabad</span>
           </h1>
           <p className="text-base lg:text-lg text-gray-600 leading-relaxed font-light">
-            <strong className="text-midnight font-semibold">Jigisha Kiran Shah offers 15 LIC plans and services to families in Ahmedabad</strong>,
-            spanning term life, retirement, child education, health and claims assistance. She has
-            practised as an LIC advisor since 2004 and is a 2-time MDRT achiever (2023 &amp; 2024).
+            <strong className="text-midnight font-semibold">Jigisha Kiran Shah offers {SERVICE_PAGES.length} LIC plans and services to families in Ahmedabad</strong>,
+            from family protection and retirement income to child education, health cover and claim help. She
+            has been an LIC advisor since 2004 and won the MDRT top-advisor award in 2023 and 2024.
           </p>
         </div>
         

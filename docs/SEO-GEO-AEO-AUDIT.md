@@ -2,6 +2,16 @@
 
 Audit date: 26 October 2026. Checked against the live deployment and the repository, not against intentions.
 
+**Re-verified 10 November 2026** against the live deployment. Three things below changed after this audit was
+written, and the stale figures have been corrected in place:
+
+- The site now serves **69 URLs, not 53** — `/gu`, `/hi`, `/policy-card`, two more area pages (Prahlad Nagar,
+  Gandhinagar), four more service pages (keyman, partnership, employer–employee, LIC surrender), two more guides.
+- **Cal.com is gone.** `/book` now composes a WhatsApp message and opens the chat; Jigisha confirms the time there.
+  The `booking_calendar_loaded` / `booking_calendar_failed` events in `src/lib/analytics.ts` are dead code.
+- Apex → `www` is a **308 permanent redirect**, verified with `curl -I`. The "redirect wasn't accessible" claim
+  that has circulated in outside audits is wrong; the redirect has been in place and working.
+
 Definitions used here, because the acronyms get mixed up:
 
 - **SEO** — ranking in Google/Bing search results.
@@ -18,38 +28,40 @@ format and distribution, and that is what §4 and §5 cover.
 
 | Area | State | Notes |
 |---|---|---|
-| Prerendered HTML for every route | ✅ | 53 routes rendered at build; crawlers that ignore JS still see full content |
-| Per-page title / description / canonical | ✅ | One source of truth: each page's `useSEO` call. Audited: 53/53 self-referencing, no duplicates, no trailing slashes |
-| Sitemap | ✅ | Generated from the route list, so it cannot drift. 53 URLs |
+| Prerendered HTML for every route | ✅ | 69 routes rendered at build; crawlers that ignore JS still see full content |
+| Per-page title / description / canonical | ✅ | One source of truth: each page's `useSEO` call. Audited: 69/69 self-referencing, no duplicates, no trailing slashes |
+| Sitemap | ✅ | Generated from the route list, so it cannot drift. 69 URLs |
+| hreflang | ✅ | `/`, `/gu`, `/hi` carry reciprocal `en-IN` / `gu-IN` / `hi-IN` + `x-default`; verified in live HTML |
 | robots.txt | ✅ | AI crawlers explicitly allowed |
 | Structured data | ✅ | WebSite, LocalBusiness+FinancialService+InsuranceAgency, Person, Service, FAQPage, Article, BlogPosting, BreadcrumbList |
 | Entity consistency | ✅ (fixed today) | Area pages no longer invent 12 duplicate agencies |
 | `llms.txt` / `llms-full.txt` | ✅ (fixed today) | Now generated from content at build |
-| Local landing pages | ✅ | 12 real area pages with maps and local FAQs |
+| Local landing pages | ✅ | 14 real area pages with maps and local FAQs |
 | Lead capture | ⚪ none by design | Forms open WhatsApp; nothing stored. See `docs/LEAD-CAPTURE.md` |
-| Traffic | ❌ | ~16 clicks / 28 days. Nothing ranks except brand, home and contact |
+| Traffic | ❌ | ~16 clicks / 28 days (28 days to 8 Oct 2026). Nothing ranks except brand, home and contact |
 | Citations / GBP | ❌ unknown | No evidence of claimed listings. See `docs/CITATIONS.md` |
-| Weekly content | ⚠️ | 5 stories, 8 guides — good depth, published in bursts |
+| Weekly content | ⚠️ | 5 stories, 12 guides — good depth, published in bursts |
 | Internal linking | ⚠️ (improved today) | Footer was missing 2 services and 6 areas |
-| Core Web Vitals | ⚠️ not measured | Render-blocking Google Fonts, 274 KB hero JPEG, 317 KB JS bundle |
+| Core Web Vitals | ⚠️ not measured | Fonts self-hosted and hero is a 64 KB WebP — both fixed. Remaining weight is the JS bundle; nobody has run field data yet |
 
 ---
 
 ## 2. Sitemap inventory
 
-`https://www.jigishakiranshah.in/sitemap.xml` — 53 URLs, regenerated on every build by `scripts/prerender.mjs`.
+`https://www.jigishakiranshah.in/sitemap.xml` — 69 URLs, regenerated on every build by `scripts/prerender.mjs`.
 
 | Group | Count | URLs |
 |---|---|---|
 | Home | 1 | `/` |
+| Language landing pages | 2 | `/gu`, `/hi` |
 | Services hub | 1 | `/services` |
-| Product pages | 9 | term-insurance, retirement, child-education, wealth-creation, money-back, health-insurance, corporate-insurance, business-insurance-gidc-vatva, policy-review-claims |
-| Servicing pages | 6 | lic-policy-revival, nominee-change, lic-policy-tracing, nri-lic-services, lic-policy-loan, lic-address-name-change |
+| Product pages | 13 | life-insurance, family-financial-protection, term-insurance, retirement, child-education, wealth-creation, money-back, health-insurance, corporate-insurance, business-insurance-gidc-vatva, keyman-insurance, partnership-insurance, employer-employee-insurance |
+| Servicing pages | 8 | policy-review-claims, lic-policy-revival, nominee-change, lic-policy-tracing, nri-lic-services, lic-policy-loan, lic-address-name-change, lic-surrender |
 | Areas hub | 1 | `/areas` |
-| Area pages | 12 | shela, south-bopal, bopal, satellite, sg-highway, science-city, vastrapur, ambawadi, maninagar, naranpura, gota, chandkheda |
-| Guides hub + guides | 9 | 7 comparisons/persona guides + 1 document checklist |
+| Area pages | 14 | shela, south-bopal, bopal, satellite, sg-highway, science-city, vastrapur, ambawadi, maninagar, naranpura, gota, chandkheda, prahlad-nagar, gandhinagar |
+| Guides hub + guides | 13 | 11 comparisons/persona/process guides + 1 document checklist + 1 revival-vs-surrender-vs-paid-up |
 | Blog hub + posts | 6 | 5 client stories |
-| Tools & trust | 8 | about, reviews, contact, book, protection-check, calculators, resources, gallery |
+| Tools & trust | 10 | about, reviews, contact, book, protection-check, calculators, resources, gallery, privacy, policy-card |
 
 **Fixed today:** `/gallery` existed in the app but was missing from `ROUTES` — it 404'd on production and was
 absent from the sitemap, while the footer linked to it. Now prerendered, indexed, and in the sitemap.
@@ -104,13 +116,13 @@ copy-pasted page is far more likely to inherit the previous page's canonical tha
 
 | Item | Impact | Effort | Note |
 |---|---|---|---|
-| `aggregateRating` on LocalBusiness | Medium risk | 10 min | Google's review policy discourages self-serving ratings even when the reviews are real. It has not caused a problem, but it is the most likely source of a structured-data warning. Keep `reviewCount` accurate or move the rating to a `Review`-free presentation. |
-| Blog posts have no FAQ block | Low | 1 h | Guides have `FAQPage`; stories do not. Adding 3 post-specific FAQs per story would give AI engines clean answers to quote. |
-| Hero image is a 274 KB JPEG | Medium | 1 h | Convert to WebP/AVIF and add `width`/`height` to stop layout shift. Likely the largest LCP win. |
-| Google Fonts are render-blocking | Medium | 2 h | Self-host the two families, subset to Latin + Gujarati, `font-display: swap`, preload the display face. |
+| `aggregateRating` on LocalBusiness | ✅ done | — | Removed from the business node entirely (verified in live HTML), so the self-serving-rating risk is gone. The 5.0 and the review count now live in visible page content, where Google permits them. |
+| Blog posts have no FAQ block | ✅ done | — | Stories now emit `FAQPage` (verified live on `/blog/*`) |
+| Hero image | ✅ done | — | Now `<picture>`: 64 KB WebP for modern browsers, JPEG fallback, explicit `width`/`height` (610×762), `loading="eager"`. Verified live. |
+| Google Fonts are render-blocking | ✅ done | — | Self-hosted `/fonts/*.woff2` with `font-display: swap`; deliberately not preloaded because preloading raced the hero for bandwidth |
 | 317 KB main JS bundle | Low-medium | 1 day | Route splitting is in place; the rest is component weight. Not urgent at this traffic level. |
-| No `hreflang` (single language) | None | — | Correct to omit. Add only when `/gu` ships. |
-| No FAQ on `/areas` hub | Low | 30 min | The hub is currently a link list. Add 5 city-level FAQs. |
+| `hreflang` | ✅ done | — | `/gu` and `/hi` shipped, so the reciprocal `en-IN` / `gu-IN` / `hi-IN` + `x-default` set is now required and present on all three |
+| No FAQ on `/areas` hub | ✅ done | — | Hub now emits `FAQPage`; `/services` hub is the one still missing it |
 
 ---
 
@@ -141,8 +153,8 @@ Rules:
 6. **Link to the official source** (LIC, IRDAI, Bima Bharosa) near any product claim. It is a trust signal for both
    Google and LLMs, and it protects against being classified as promotional content.
 
-Pages that already meet the standard: `/`, `/services/*`, `/areas/*`, `/guides/*`, `/blog/*`.
-Pages that do not: `/services` (hub), `/areas` (hub), `/reviews`, `/resources`.
+Pages that already meet the standard: `/`, `/services/*`, `/areas/*`, `/guides/*`, `/blog/*`, `/areas`.
+Pages that do not: `/services` (hub — no `FAQPage`), `/reviews`, `/resources`. Verified live 10 Nov 2026.
 
 ---
 
@@ -173,8 +185,9 @@ What is missing, in order of value:
    The realistic target is: GBP + 8 directories + LinkedIn + YouTube + 2 local mentions, all saying the same thing.
 3. **Freshness signals.** Add an "Updated {month year}" line to every guide and story (guides already carry
    `updated` in schema; show it on the page). LLMs weight recency for "best/current" queries.
-4. **Gujarati content.** Gujarati-language models and voice assistants have almost no local insurance content to
-   cite. One good `/gu` page is a disproportionate GEO win.
+4. **Gujarati and Hindi content.** ✅ Shipped — `/gu` and `/hi` are live, prerendered, hreflang-linked, and in the
+   sitemap. Gujarati-language models have almost no local insurance content to cite, so this remains a
+   disproportionate GEO asset; the next step is two or three `/gu` guides, not more landing pages.
 
 ### Monthly AI visibility check
 
@@ -208,10 +221,10 @@ All six competitor sites responded. Checked for the things that decide local sea
 | shashwatinvestment.com | 200 | 0 | 0 | 1 | 0 | none |
 | joinasagent.in | 200 | 0 | 0 | 1 | 0 | none |
 | ajay-g-pandey-lic.vercel.app | 200 | 3 | 6 | 2 | 1 | none |
-| **jigishakiranshah.in** | 200 | 4 | 10 | 3 | 1 (+ call-back on 21 pages) | **Cal.com** |
+| **jigishakiranshah.in** | 200 | 4 | 10 | 3 | 1 (+ call-back on 21 pages) | **WhatsApp form** |
 
-**Read:** on technical SEO/GEO this site is ahead of every competitor — schema depth, prerendering, 12 area pages,
-`llms.txt`, live booking. None of them have booking; only one has meaningful structured data.
+**Read:** on technical SEO/GEO this site is ahead of every competitor — schema depth, prerendering, 14 area pages,
+`llms.txt`, a WhatsApp booking form. None of them have dedicated booking; only one has meaningful structured data.
 
 So the gap is **not** the website. Which is exactly why "the website isn't giving us leads" is the wrong diagnosis
 and why the off-site work in `docs/CITATIONS.md` and the content plan matter more than another redesign.
@@ -255,7 +268,8 @@ Target by day 90: **≥100 non-branded clicks/month, ≥12 stored leads/month, �
 
 ## 8. Risks and compliance notes
 
-1. **Rating markup** — see §3. Keep `reviewCount` truthful.
+1. **Rating markup** — resolved: `aggregateRating` was removed from the schema (see §3). Keep the visible review
+   count honest instead, and keep collecting genuine reviews.
 2. **Plan accuracy** — LIC withdraws plans. Any page naming a plan must be checked against the current brochure
    before it receives paid traffic.
 3. **"Advice" framing** — the site correctly uses "subject matter of solicitation" and avoids guaranteed-return
@@ -265,3 +279,40 @@ Target by day 90: **≥100 non-branded clicks/month, ≥12 stored leads/month, �
    Google penalises, and it would also dilute the entity.
 5. **Lead data** — name, phone, goal only. Delete non-converting rows after 12 months. The privacy note in
    `GROWTH-PLAYBOOK.md` §5a still applies.
+
+---
+
+## 9. Senior review — 21 November 2026 (what is actually causing the problem)
+
+Method: read the repository, ran `npm run build` (69 routes, `check:seo` passes, 0 warnings), checked the live
+site's status codes and redirects, and rendered the pages at desktop and 390 px width. Search Console and GBP data
+were not available, so traffic figures below are the ones already recorded in §7.
+
+**Root cause: not on-page SEO.** Technical SEO, schema, prerendering, `llms.txt` and AI-crawler access are all
+sound. The ~16 clicks / 28 days is an authority and entity problem (few third-party mentions, unverified
+citations, thin review/GBP signal), plus a conversion problem once visitors do arrive.
+
+| # | Issue | Impact | Status |
+|---|---|---|---|
+| 1 | Header CTA was "Book Free Consultation" → `/book` (a form), the one path that converted 0 times. WhatsApp, the path that did convert, was not in the header | High (conversion) | Fixed: header, mobile menu, hero, process and why-us CTAs open WhatsApp with page-aware prefill |
+| 2 | Floating WhatsApp label only appeared on hover (invisible on touch/desktop-idle) | Medium | Fixed: label always visible |
+| 3 | Contact page led with Phone; WhatsApp was one of five equal cards; phone number was a required form field | High | Fixed: full-width WhatsApp card first; phone now optional |
+| 4 | Jargon in the visible copy (MDRT, HUF, MWP, corpus, sum assured, "wealth architecture", "concierge support", "customer services: nomination change, minor to major…") | High (bounce, and AI engines quote plain sentences more readily) | Fixed on home, hero, picker, services hub, footer, about, FAQ, contact. Service/guide body copy still uses LIC terms, see below |
+| 5 | `/services` said "15 plans and services"; the site has 21 | Medium (AEO: a wrong number gets quoted) | Fixed: count now comes from `SERVICE_PAGES.length` |
+| 6 | `/services` rendered a visible FAQ with no `FAQPage` schema | Medium | Fixed |
+| 7 | No machine-readable contact method in schema; AI assistants asked "how do I contact her" had only prose | Medium (GEO) | Fixed: `contactPoint` with phone/WhatsApp number, hours, languages |
+| 8 | `priceRange: "Free Consultation"` is not a valid price range | Low | Removed |
+| 9 | FAQ had no answer to the questions people actually ask: "can I just WhatsApp?", "do I have to visit?", "Hindi/Gujarati?" | Medium (AEO) | Added three; contact answer now leads with WhatsApp |
+
+### Still open (highest value first)
+
+1. **Off-site entity work** (`docs/CITATIONS.md`): verified GBP with the WhatsApp number as a contact method, a
+   steady flow of genuine reviews, LinkedIn/YouTube descriptions that repeat the same facts, two local mentions.
+2. **Plain-language pass on `servicePages.ts` and `guides.ts`** (about 2,300 lines): the product names must stay
+   (people search them), but each page should open with a one-line plain explanation before the term.
+3. **A plain-English glossary page** ("What does sum assured / maturity / nominee / lapsed mean?"): strong
+   long-tail and AI-citation target, and it removes the need for jargon explanations everywhere else.
+4. **Gujarati guides** (two or three) rather than more landing pages.
+5. Measure: GBP "message" clicks and WhatsApp chats per week are now the lead metric. Vercel events
+   `header-whatsapp`, `hero-whatsapp`, `process-whatsapp`, `whyus-whatsapp`, `contact-whatsapp-primary` and
+   `services-whatsapp` replace the old `*-book` events.

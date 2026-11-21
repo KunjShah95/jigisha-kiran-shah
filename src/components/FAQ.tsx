@@ -24,7 +24,7 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
             Frequently Asked <span className="text-gold italic">Questions</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 font-light">
-            Direct answers about LIC plans, retirement, claims & consultations in Ahmedabad.
+            Simple answers about LIC plans, retirement, claims and how to get in touch.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
                 type="search"
                 value={query}
                 onChange={(e) => { setQuery(e.target.value); setOpen(null); }}
-                placeholder="Search questions (e.g. claims, pension, MDRT)"
+                placeholder="Search questions (e.g. claims, pension, fees)"
                 className="w-full pl-11 pr-4 py-3 rounded-xl border border-border bg-white text-midnight focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold min-h-11"
               />
             </div>

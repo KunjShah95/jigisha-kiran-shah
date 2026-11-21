@@ -29,19 +29,19 @@ const BAND: Array<{
     to: '/services',
     icon: ShieldCheck,
     title: 'Explore LIC Plans',
-    subtitle: 'Term, pension, child & wealth plans',
+    subtitle: 'Family cover, pension, child & savings plans',
   },
   {
     to: '/calculators',
     icon: CalcIcon,
     title: 'Free Calculators',
-    subtitle: 'Retirement & education corpus',
+    subtitle: 'How much should you save?',
   },
   {
     to: '/guides/jeevan-utsav-vs-jeevan-umang',
     icon: GitCompareArrows,
     title: 'Jeevan Utsav vs Umang',
-    subtitle: 'Income, bonuses & premium terms',
+    subtitle: 'Two lifelong-income plans side by side',
     cta: 'home-featured-guide',
   },
   {
@@ -57,7 +57,7 @@ export default function HomePage() {
   useSEO({
     title: 'Life Insurance Advisor in Ahmedabad | Jigisha Kiran Shah, LIC',
     description:
-      'Life insurance and family protection advice in Ahmedabad from Jigisha Kiran Shah, LIC advisor since 2004 and 2x MDRT. Free consultation: +91 98240 25435.',
+      'Life insurance and family protection advice in Ahmedabad from Jigisha Kiran Shah, LIC advisor since 2004. Free to ask: WhatsApp or call +91 98240 25435.',
     ogTitle: 'Jigisha Kiran Shah — LIC Advisor in Ahmedabad, Shela',
     ogDescription:
       'Trusted LIC advisor in Ahmedabad: term insurance, retirement & pension plans, child education. 22+ yrs, 2x MDRT, 5.0★ rated. Free consultation.',

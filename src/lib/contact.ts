@@ -4,6 +4,7 @@
  * with context ("Hi, I'm interested in term insurance…") instead of a blank chat.
  */
 export const WHATSAPP_NUMBER = '919824025435';
+export const WHATSAPP_DISPLAY = '+91 98240 25435';
 
 export function whatsappUrl(text?: string) {
   const base = `https://wa.me/${WHATSAPP_NUMBER}`;
@@ -12,15 +13,15 @@ export function whatsappUrl(text?: string) {
 
 /** Visitor objectives — shared by the objective picker, lead forms and WhatsApp prefill. */
 export const OBJECTIVES = [
-  { value: 'term', label: 'Protect my family’s income (term insurance)', short: 'Term protection', to: '/services/term-insurance' },
-  { value: 'review', label: 'Review my existing LIC policies', short: 'Policy review', to: '/services/policy-review-claims' },
-  { value: 'child', label: 'Plan my child’s education', short: 'Child education', to: '/services/child-education' },
-  { value: 'retirement', label: 'Plan retirement / pension income', short: 'Retirement income', to: '/services/retirement' },
-  { value: 'claim', label: 'Customer services: nomination change, minor to major, survival / maturity / death claim', short: 'Customer services', to: '/services/policy-review-claims' },
-  { value: 'business', label: 'Business insurance: employer-employee, partnership, HUF, MWP', short: 'Business insurance', to: '/services/corporate-insurance' },
-  { value: 'savings', label: 'Savings with life cover (endowment / money back)', short: 'Savings plans', to: '/services/wealth-creation' },
+  { value: 'term', label: 'Protect my family if something happens to me (term insurance)', short: 'Family protection', to: '/services/term-insurance' },
+  { value: 'review', label: 'Check the LIC policies I already have', short: 'Policy check-up', to: '/services/policy-review-claims' },
+  { value: 'child', label: 'Save for my child’s education', short: 'Child education', to: '/services/child-education' },
+  { value: 'retirement', label: 'Get a regular income after I retire (pension)', short: 'Retirement income', to: '/services/retirement' },
+  { value: 'claim', label: 'Help with an LIC claim, nominee change or other paperwork', short: 'Claims & paperwork', to: '/services/policy-review-claims' },
+  { value: 'business', label: 'Insurance for my business, partners or family firm', short: 'Business insurance', to: '/services/corporate-insurance' },
+  { value: 'savings', label: 'Save money with life cover (savings plans)', short: 'Savings plans', to: '/services/wealth-creation' },
   { value: 'health', label: 'Health or cancer cover', short: 'Health cover', to: '/services/health-insurance' },
-  { value: 'nri', label: 'NRI policy servicing', short: 'NRI services', to: '/contact' },
+  { value: 'nri', label: 'LIC policy help from abroad (NRI)', short: 'Help from abroad', to: '/contact' },
 ] as const;
 
 export type ObjectiveValue = (typeof OBJECTIVES)[number]['value'];

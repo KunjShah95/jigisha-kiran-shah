@@ -1,5 +1,5 @@
-import { Award, ShieldCheck, HeartPulse, Headphones, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Award, ShieldCheck, HeartPulse, Headphones, MessageCircle } from 'lucide-react';
+import { whatsappUrl } from '../lib/contact';
 import { useSpotlight } from '../hooks/useSpotlight';
 import { MovingBorderButton } from './aceternity/MovingBorderButton';
 import { GlowCard } from './aceternity/GlowCard';
@@ -9,30 +9,30 @@ const PILLARS = [
   {
     id: 'claim-assistance',
     icon: ShieldCheck,
-    title: 'Hands-on claim assistance',
+    title: 'Help when a claim comes up',
     description:
-      '1,000+ claims supported to settlement — intimation, documents and branch follow-up handled with your family. Settlement decisions rest with LIC.',
+      'Jigisha has helped families through 1,000+ claims. She fills in the forms, gathers the documents and follows up at the LIC branch. LIC makes the final decision on every claim.',
     span: 'lg:col-span-7 lg:row-span-2',
   },
   {
     id: 'expertise',
     icon: Award,
-    title: 'Recognised expertise',
-    description: 'MDRT qualifier in 2023 & 2024, licensed LIC agent since 2004.',
+    title: 'An award-winning advisor',
+    description: 'Licensed LIC agent since 2004. Won the MDRT top-advisor award in 2023 and 2024.',
     span: 'lg:col-span-5',
   },
   {
     id: 'wealth',
     icon: HeartPulse,
-    title: 'Wealth architecture',
-    description: 'Planning tailored to your goals and family legacy.',
+    title: 'Plans built around your goals',
+    description: 'No one-size-fits-all pitch. She starts with your family, your income and what you want to achieve.',
     span: 'lg:col-span-5',
   },
   {
     id: 'concierge',
     icon: Headphones,
-    title: 'Concierge support',
-    description: 'Direct, prioritized access for policy management and emergency assistance.',
+    title: 'One person you can always reach',
+    description: 'Message or call Jigisha directly for policy changes, premium questions or an urgent claim.',
     span: 'lg:col-span-12',
   },
 ] as const;
@@ -54,11 +54,11 @@ const WhyUs = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-7 lg:mb-14">
           <div className="max-w-xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-display font-medium leading-tight">
-              Two decades of LIC experience, <span className="text-gold italic">one point of contact</span>
+              22 years of LIC experience, <span className="text-gold italic">one person to talk to</span>
             </h2>
           </div>
           <p className="text-gray-400 font-light leading-relaxed max-w-sm text-sm sm:text-base">
-            Claim-ready paperwork and personal guidance for every milestone — protecting your future and securing your dreams.
+            Simple explanations and personal help at every stage, from your first question to your last claim.
           </p>
         </div>
 
@@ -89,13 +89,16 @@ const WhyUs = () => {
 
         <div className="mt-8 lg:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
           <MovingBorderButton containerClassName="inline-block" borderColor="#f3d6b4">
-            <Link
-              to="/contact"
+            <a
+              href={whatsappUrl('Hi Jigisha ben, I found you on your website. I would like to talk about my family’s insurance.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="whyus-whatsapp"
               className="inline-flex items-center gap-3 px-8 py-4 text-white font-bold text-base min-h-11"
             >
-              Book Free Consultation
-              <ArrowRight className="w-5 h-5" aria-hidden="true" />
-            </Link>
+              <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
+              Chat with Jigisha on WhatsApp
+            </a>
           </MovingBorderButton>
         </div>
       </div>

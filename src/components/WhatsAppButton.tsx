@@ -12,7 +12,7 @@ const WhatsAppButton = ({ href }: { href: string }) => {
     >
       <div aria-hidden="true" className="absolute inset-0 bg-white/20 rounded-full animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
       <MessageCircle size={28} className="fill-current relative z-10" aria-hidden="true" />
-      <span className="font-bold max-w-0 overflow-hidden group-hover:max-w-xs transition-[max-width] duration-500 ease-in-out whitespace-nowrap relative z-10 text-lg">Chat With Us</span>
+      <span className="font-bold whitespace-nowrap relative z-10 text-base">Chat on WhatsApp</span>
     </a>
   );
 };

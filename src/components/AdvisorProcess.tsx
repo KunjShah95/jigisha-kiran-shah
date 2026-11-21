@@ -1,24 +1,24 @@
-import { ArrowRight, FileSearch, MessageCircle, ShieldCheck } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { FileSearch, MessageCircle, ShieldCheck } from 'lucide-react'
+import { whatsappUrl } from '../lib/contact'
 
 const STEPS = [
   {
     icon: MessageCircle,
-    title: 'Start with your situation',
+    title: 'Tell Jigisha what you need',
     description:
-      'Share what matters to you — family protection, a policy you already hold, education or retirement. Your first consultation is free.',
+      'Send a message about your family, a policy you already have, your child’s education or retirement. The first chat is free.',
   },
   {
     icon: FileSearch,
-    title: 'Understand your options',
+    title: 'Understand your choices',
     description:
-      'Review suitable LIC options together, including premiums, benefits and what is not guaranteed. Take time to decide what fits.',
+      'She explains the options in plain words: what you pay, what you get, and what is not guaranteed. Take your time to decide.',
   },
   {
     icon: ShieldCheck,
-    title: 'Get help beyond the paperwork',
+    title: 'Get help after you buy',
     description:
-      'Jigisha can help with policy servicing and claim documents. LIC issues policies and makes claim decisions.',
+      'She helps with policy changes and claim paperwork. LIC issues the policy and decides every claim.',
   },
 ]
 
@@ -35,15 +35,17 @@ export default function AdvisorProcess() {
               Know what to expect <span className="text-gold italic">before you begin.</span>
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              Speak directly with Jigisha, an LIC agent in Ahmedabad. Get clear explanations and support that continues after you choose a policy.
+              You deal with Jigisha herself, not a call centre. Clear answers now, and help for as long as your policy runs.
             </p>
-            <Link
-              to="/book"
-              data-cta="process-book"
-              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl bg-midnight px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-gold"
+            <a
+              href={whatsappUrl('Hi Jigisha ben, I found you on your website. I have a question about LIC insurance.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="process-whatsapp"
+              className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl bg-whatsapp px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-whatsapp-dark"
             >
-              Book a free consultation <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </Link>
+              <MessageCircle className="h-4 w-4 fill-current" aria-hidden="true" /> Message Jigisha on WhatsApp
+            </a>
           </div>
 
           <ol className="grid gap-3 sm:grid-cols-3">

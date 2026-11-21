@@ -6,12 +6,12 @@ import { trackEvent } from '../lib/analytics';
 import { useSpotlight } from '../hooks/useSpotlight';
 
 const PICKS: Array<{ value: ObjectiveValue; icon: LucideIcon; title: string; hint: string }> = [
-  { value: 'term', icon: Shield, title: 'Protect my family’s income', hint: 'How much term cover is enough?' },
-  { value: 'review', icon: FileSearch, title: 'Review my existing policies', hint: 'Gaps, nominees, lapsed policies' },
-  { value: 'child', icon: GraduationCap, title: 'Plan my child’s education', hint: 'Fund school, college, abroad' },
-  { value: 'retirement', icon: Sunset, title: 'Plan retirement income', hint: 'Turn savings into a monthly pension' },
-  { value: 'claim', icon: LifeBuoy, title: 'Customer services', hint: 'Nomination changes, minor to major, survival, maturity & death claims' },
-  { value: 'business', icon: Building2, title: 'Business insurance', hint: 'Employer-employee, partnership, HUF, MWP' },
+  { value: 'term', icon: Shield, title: 'Protect my family', hint: 'How much cover is enough?' },
+  { value: 'review', icon: FileSearch, title: 'Check my existing policies', hint: 'Find gaps, lapsed policies, wrong nominees' },
+  { value: 'child', icon: GraduationCap, title: 'Save for my child’s education', hint: 'School, college or studying abroad' },
+  { value: 'retirement', icon: Sunset, title: 'Plan my retirement income', hint: 'Turn savings into a monthly pension' },
+  { value: 'claim', icon: LifeBuoy, title: 'Claims & policy paperwork', hint: 'Claims, nominee changes, address updates' },
+  { value: 'business', icon: Building2, title: 'Insurance for my business', hint: 'For owners, partners and staff' },
 ];
 
 /**
@@ -31,7 +31,7 @@ export default function ObjectivePicker() {
             </h2>
           </div>
           <p className="text-sm md:text-base text-gray-500 font-light max-w-sm">
-            Pick your goal — read the plain-language guide, or send it straight to Jigisha on WhatsApp.
+            Pick your goal. Read a simple guide, or message Jigisha on WhatsApp and get a direct answer.
             {' '}<Link to="/guides" data-cta="home-compare-guides" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-midnight">Prefer a plan comparison?</Link>
           </p>
         </div>

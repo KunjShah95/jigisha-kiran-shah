@@ -74,19 +74,19 @@ export const FAQS: FAQItem[] = [
   },
   {
     q: 'What LIC plans does Jigisha Kiran Shah offer?',
-    a: 'Term Life Insurance (LIC Tech Term, Jeevan Amar), Endowment Plans (Jeevan Labh, New Endowment), Money-Back Plans, Whole Life (Jeevan Umang), Annuity/Pension (Jeevan Akshay VII), Child Education Plans (Jeevan Tarun), ULIP, Health and Cancer Cover (Health Shield Plan 907, New Cancer Cover Plan 908), and Corporate/HUF/MWP insurance.',
+    a: 'Term insurance for family protection (LIC Tech Term, Jeevan Amar), savings plans (Jeevan Labh, New Endowment), money-back plans, lifelong income (Jeevan Umang), pension (Jeevan Akshay VII), child education plans (Jeevan Tarun), market-linked ULIPs, health and cancer cover (Health Shield Plan 907, New Cancer Cover Plan 908), and business, HUF and MWP policies.',
   },
   {
     q: 'Is Jigisha Kiran Shah an LIC agent or a life insurance agency?',
     a: 'Jigisha Kiran Shah is a licensed LIC agent and life insurance advisor working from her own office in Shela, Ahmedabad since 2004. Clients deal with her directly — plan selection, paperwork, premium reminders and claims — not with a call centre.',
   },
   {
-    q: 'What is MDRT and why does it matter?',
-    a: 'MDRT (Million Dollar Round Table) is an international association of life insurance and financial professionals. Members must meet demanding annual production standards and commit to its code of ethics and client service. Jigisha Kiran Shah qualified in 2023 and 2024.',
+    q: 'What does MDRT mean?',
+    a: 'MDRT (Million Dollar Round Table) is a worldwide award for top life insurance advisors. To qualify, an advisor must reach demanding yearly service standards and follow a code of ethics. Jigisha Kiran Shah qualified in 2023 and 2024.',
   },
   {
     q: 'How do I choose between term insurance and endowment plans?',
-    a: 'Choose term insurance for maximum protection at lowest cost (e.g. Rs 1 crore cover at affordable premiums). Choose endowment or money-back plans if you want guaranteed savings plus protection for milestones like child education or retirement. A free consultation maps the right mix to your age, income, and goals.',
+    a: 'Choose term insurance if you want the biggest cover for the lowest premium, for example Rs 1 crore of cover for your family. Choose a savings or money-back plan if you also want money back at a set time, such as for your child’s education or retirement. A free chat works out the right mix for your age, income and goals.',
   },
   {
     q: 'Which areas does Jigisha Kiran Shah serve in Ahmedabad?',
@@ -97,8 +97,16 @@ export const FAQS: FAQItem[] = [
     a: 'Yes. The first consultation is free, about 20 minutes, with no obligation. There is no fee for advice: if you buy a policy, LIC pays the agent’s commission, and the premium is set by LIC, the same whichever LIC agent you buy through. Ask and she will tell you the commission on any plan.',
   },
   {
-    q: 'How do I book a free consultation?',
-    a: 'Call +91 98240 25435, WhatsApp the same number, email jkshahlic@gmail.com, or fill the contact form. Share your age, income range, and goal (term cover, retirement, child education, health) for personalised LIC plan recommendations.',
+    q: 'How can I contact Jigisha Kiran Shah?',
+    a: 'The quickest way is WhatsApp: message +91 98240 25435 and Jigisha replies herself, Monday to Saturday, 9 AM to 6 PM. You can also call the same number, email jkshahlic@gmail.com or visit the Shela office. The first chat is free and carries no obligation to buy.',
+  },
+  {
+    q: 'Do I have to visit the office, or can I just message on WhatsApp?',
+    a: 'You do not have to visit. The first conversation can happen entirely on WhatsApp or by phone, and many clients start that way. Meeting at the Shela office is optional, and any paperwork follows LIC’s own process, so Jigisha tells you exactly what is needed.',
+  },
+  {
+    q: 'Can I talk in Hindi or Gujarati?',
+    a: 'Yes. Jigisha Kiran Shah advises in English, Hindi and Gujarati, in writing on WhatsApp or by phone. Send your message in the language you are most comfortable with. There are also Gujarati and Hindi pages on this website.',
   },
   {
     q: 'Does Jigisha Kiran Shah help with LIC claims?',
@@ -136,7 +144,7 @@ export function localBusinessJsonLd() {
     telephone: PHONE,
     email: EMAIL,
     description:
-      'Trusted LIC Advisor in Ahmedabad with 22+ years of experience. 2-time MDRT achiever (2023 & 2024). Retirement planning, pension plans, term insurance, endowment, ULIP, child education and health cover.',
+      'LIC advisor in Ahmedabad since 2004, MDRT top-advisor award in 2023 and 2024. Plain-language help with term insurance, pension and retirement income, child education, savings plans, health cover and LIC claims. Message on WhatsApp or call +91 98240 25435.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Orchid Legacy, D3-1303, Applewoods Township, Shela',
@@ -157,13 +165,32 @@ export function localBusinessJsonLd() {
         closes: '18:00',
       },
     ],
-    priceRange: 'Free Consultation',
     currenciesAccepted: 'INR',
     // No aggregateRating here on purpose. A hand-typed count drifts from the
     // live Google profile (it said 73 while the page said 70+), and Google
     // ignores self-serving review markup on a business's own LocalBusiness
     // entity anyway. The rating stays visible on-page and links to Google.
     paymentAccepted: 'Cash, UPI, Bank Transfer',
+    // The ways to reach her, stated machine-readably so assistants can quote
+    // them. WhatsApp is the primary channel; there is no schema.org type for it,
+    // so the number is shared with the voice line and named in the description.
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: PHONE,
+        email: EMAIL,
+        areaServed: 'IN',
+        availableLanguage: ['English', 'Hindi', 'Gujarati'],
+        description: 'Phone and WhatsApp on the same number. Monday to Saturday, 9:00 AM to 6:00 PM IST.',
+        hoursAvailable: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          opens: '09:00',
+          closes: '18:00',
+        },
+      },
+    ],
     founder: { '@type': 'Person', name: 'Jigisha Kiran Shah', jobTitle: 'LIC Advisor' },
     employee: { '@type': 'Person', name: 'Jigisha Kiran Shah' },
     sameAs: SAME_AS,

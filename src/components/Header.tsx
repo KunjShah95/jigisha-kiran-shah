@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { MessageCircle } from 'lucide-react'
+import { pageWhatsAppText, whatsappUrl } from '../lib/contact'
 
 /**
- * Primary navigation only — four links plus the booking CTA.
+ * Primary navigation only — four links plus the WhatsApp CTA.
  * Everything else (Guides, Stories, Reviews, Gujarati, Calculators) lives in the
  * footer and the homepage discovery band, so the bar still fits at 1024px.
  */
@@ -30,6 +32,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
+  const waHref = whatsappUrl(pageWhatsAppText(location.pathname))
 
   // Pages with a dark midnight background — nav text must be white when unscrolled
   const darkPages = ['/reviews']
@@ -152,19 +155,22 @@ const Header = () => {
             >
               <span className={`text-[10px] uppercase tracking-widest font-bold ${
                 isLightHeader ? 'text-gray-500' : 'text-white/60'
-              }`}>Advisory Support</span>
+              }`}>Call us</span>
               <span className={`font-semibold hover:text-gold transition-colors font-sans text-sm whitespace-nowrap ${
                 isLightHeader ? 'text-midnight' : 'text-white'
               }`}>+91 98240 25435</span>
             </a>
 
-            <Link
-              to="/book"
-              data-cta="header-book"
-              className="hidden lg:inline-flex items-center justify-center px-4 xl:px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 bg-midnight text-white hover:bg-gold hover:text-white hover:shadow-lg"
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="header-whatsapp"
+              className="hidden lg:inline-flex items-center justify-center gap-2 px-4 xl:px-5 py-2.5 rounded-xl text-sm font-bold whitespace-nowrap transition-all duration-300 bg-whatsapp text-white hover:bg-whatsapp-dark hover:shadow-lg"
             >
-              Book Free Consultation
-            </Link>
+              <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" />
+              Chat on WhatsApp
+            </a>
 
             <button
               className={`lg:hidden flex flex-col gap-1.5 p-2.5 -m-1 rounded-lg transition-colors min-w-11 min-h-11 items-center justify-center ${
@@ -236,15 +242,17 @@ const Header = () => {
           </div>
 
           <div className="mt-6 flex flex-col gap-2">
-            <Link
-              to="/book"
-              data-cta="menu-book"
-              onClick={() => setIsMobileMenuOpen(false)}
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="menu-whatsapp"
               tabIndex={isMobileMenuOpen ? 0 : -1}
-              className="text-base font-sans font-bold text-white bg-midnight py-3.5 px-6 rounded-xl text-center shadow-lg active:scale-95 transition-transform hover:bg-gold"
+              className="flex items-center justify-center gap-2 text-base font-sans font-bold text-white bg-whatsapp py-3.5 px-6 rounded-xl text-center shadow-lg active:scale-95 transition-transform hover:bg-whatsapp-dark"
             >
-              Book Free Consultation
-            </Link>
+              <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
+              Chat on WhatsApp
+            </a>
             <a
               href="tel:+919824025435"
               data-cta="menu-call"

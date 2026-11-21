@@ -27,14 +27,14 @@ const gallerySlides: GallerySlide[] = [
 
 // ─── Highlights & Stats ───────────────────────────────────────────────────────
 const highlights = [
-  '2-Time MDRT Achiever (2023 & 2024)',
+  'MDRT top-advisor award, 2023 and 2024',
   '22+ Years in LIC Insurance Advisory',
   '70+ Five-Star Google Reviews',
   'Office at Orchid Legacy, Shela, Ahmedabad',
 ];
 
 const stats = [
-  { icon: Award, value: '2×', label: 'MDRT Achiever' },
+  { icon: Award, value: '2×', label: 'MDRT top-advisor award' },
   { icon: Star, value: '5.0★', label: 'Google Rating' },
   { icon: Users, value: '2,700+', label: 'Families Served' },
 ];
@@ -256,7 +256,7 @@ const About = () => {
               </p>
 
               <p className="text-base lg:text-lg text-gray-600 mb-8 leading-relaxed font-light">
-                As a <strong className="text-midnight font-semibold">2-time MDRT achiever (2023 &amp; 2024)</strong>, I architect personalized wealth-protection strategies — from retirement planning and pension optimization to salary protection and comprehensive life insurance. Every recommendation is rooted in deep expertise and unwavering ethics.
+                As a <strong className="text-midnight font-semibold">2-time MDRT achiever (2023 &amp; 2024)</strong>, I help families protect their income, plan for retirement and look after their children’s future, from pension plans to everyday life insurance. I explain every option plainly and recommend only what fits your situation.
               </p>
 
               {/* Highlights */}

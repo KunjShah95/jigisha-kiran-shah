@@ -64,17 +64,10 @@ const Contact = () => {
   const contactMethods = [
     {
       icon: Phone,
-      title: 'Phone',
+      title: 'Call',
       value: '+91 98240 25435',
       link: 'tel:+919824025435',
       cta: 'Call Now'
-    },
-    {
-      icon: MessageCircle,
-      title: 'WhatsApp',
-      value: '+91 98240 25435',
-      link: whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation."),
-      cta: 'Chat Now'
     },
     {
       icon: Mail,
@@ -108,16 +101,32 @@ const Contact = () => {
 
       <div className="container relative z-10 w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          
+
           <div className="reveal-left">
             <div className="inline-block px-3 py-1 bg-white border border-gold/20 text-gold-dark text-[11px] font-bold tracking-[0.2em] uppercase rounded-full mb-4 lg:mb-6">Get In Touch</div>
             <h1 className="text-3xl md:text-4xl font-display font-medium text-midnight mb-4 lg:mb-6">
               Contact Your <span className="text-gold italic">LIC Advisor</span> in Ahmedabad
             </h1>
             <p className="text-base lg:text-lg text-gray-600 mb-8 lg:mb-10 leading-relaxed font-light">
-              Have questions about insurance plans? Want to know which policy is right for you? 
-              Reach out and I'll be happy to help you make an informed decision.
+              The easiest way to reach Jigisha is a WhatsApp message. Ask your question in your own words, in English, Hindi or Gujarati, and she replies herself. Open Monday to Saturday, 9 AM to 6 PM.
             </p>
+
+            <a
+              href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="contact-whatsapp-primary"
+              className="mb-4 md:mb-5 flex items-center gap-4 rounded-2xl bg-whatsapp p-5 text-white shadow-lg shadow-green-900/10 transition hover:bg-whatsapp-dark hover:-translate-y-0.5"
+            >
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white/20">
+                <MessageCircle size={26} className="fill-current" aria-hidden="true" />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-lg font-bold leading-tight">Chat on WhatsApp</span>
+                <span className="block text-sm text-white/90">+91 98240 25435 · Free to ask, no obligation</span>
+              </span>
+              <span aria-hidden="true" className="ml-auto text-2xl leading-none">→</span>
+            </a>
             
             <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
               {contactMethods.map((method, index) => (
@@ -144,17 +153,17 @@ const Contact = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="reveal-right">
             <div className="bg-white rounded-3xl shadow-2xl shadow-gray-200/50 p-6 lg:p-8 border border-white/50 relative overflow-hidden backdrop-blur-sm">
                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none" />
-               
-              <h2 className="text-2xl font-display font-bold text-midnight mb-2">Book a Free Consultation</h2>
+
+              <h2 className="text-2xl font-display font-bold text-midnight mb-2">Prefer to fill in a short form?</h2>
               <TrustStrip className="mb-3" />
               <p className="text-sm text-gray-500 mb-6">
-                Three quick fields. Everything else is optional.{' '}
+                Add your name and what you need. We open WhatsApp with your message ready to send.{' '}
                 <Link to="/book" data-cta="contact-book" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-gold">
-                  Prefer to pick a time? Book on WhatsApp
+                  Want to pick a day and time?
                 </Link>
               </p>
               <form onSubmit={handleSubmit} className="space-y-5 relative">
@@ -172,7 +181,7 @@ const Contact = () => {
                       required
                     />
                   </Field>
-                  <Field id="contact-phone" label="Phone Number" required>
+                  <Field id="contact-phone" label="Phone Number (optional)">
                     <input
                       type="tel"
                       id="contact-phone"
@@ -185,7 +194,6 @@ const Contact = () => {
                       pattern="[0-9+\(\)\- ]{10,18}"
                       title="Enter a valid phone number"
                       className={inputClass}
-                      required
                     />
                   </Field>
                 </div>
@@ -272,7 +280,7 @@ const Contact = () => {
                   </div>
                 </details>
 
-                <button 
+                <button
                   type="submit"
                   disabled={isSubmitting}
                   aria-busy={isSubmitting}
@@ -295,7 +303,7 @@ const Contact = () => {
               </form>
             </div>
           </div>
-          
+
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import { ArrowRight, BadgeCheck, MessageCircle, Star } from 'lucide-react'
+import { ArrowRight, BadgeCheck, MessageCircle, Phone, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { whatsappUrl } from '../lib/contact'
 
@@ -8,7 +8,7 @@ const HERO_WA_TEXT = "Hi Jigisha ben, I found you on your website. I'd like to c
 
 const PROOF = [
   { value: '22+', label: 'years advising families' },
-  { value: '2×', label: 'MDRT · 2023 & 2024' },
+  { value: '2×', label: 'MDRT top-advisor award (2023, 2024)' },
   { value: '2,700+', label: 'families served' },
 ] as const
 
@@ -28,7 +28,7 @@ export default function Hero() {
               Is your family&rsquo;s life cover <span className="text-gold-dark italic">enough?</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#59544d] sm:text-lg">
-              Start with a conversation, not a form. Review the full picture one-to-one with Jigisha Kiran Shah, an LIC agent in Ahmedabad with 22+ years of experience.
+              Message Jigisha Kiran Shah on WhatsApp and get a straight answer. No forms, no pressure. She has helped families in Ahmedabad with LIC insurance for over 22 years.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
@@ -42,19 +42,19 @@ export default function Hero() {
                 <MessageCircle className="h-5 w-5 fill-current" aria-hidden="true" />
                 Chat on WhatsApp
               </a>
-              <Link
-                to="/book"
-                data-cta="hero-book"
+              <a
+                href="tel:+919824025435"
+                data-cta="hero-call"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#cdbba3] bg-white/70 px-5 py-3.5 text-sm font-semibold text-midnight transition-colors hover:border-gold-dark hover:bg-white"
               >
-                Book a free consultation
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                Call +91 98240 25435
+              </a>
             </div>
             <p className="mt-2 text-xs text-gray-600">
-              Free, for any LIC policy — even one another agent sold.{' '}
+              Free to ask. Open Mon–Sat, 9 AM–6 PM. Already have an LIC policy, even from another agent?{' '}
               <Link to="/services/policy-review-claims" data-cta="hero-policy-review" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-gold">
-                Get a free policy review
+                Get it checked for free
               </Link>
             </p>
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, MapPin, ChevronDown } from 'lucide-react';
+import { Phone, MapPin, ChevronDown, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { whatsappUrl } from '../lib/contact';
 import { FACEBOOK_URL } from '../lib/seo';
@@ -52,14 +52,14 @@ const Footer = () => {
 
     const services = [
       { label: 'Life Insurance Advice', to: '/services/life-insurance' },
-      { label: 'Family Financial Protection', to: '/services/family-financial-protection' },
+      { label: 'Protecting Your Family', to: '/services/family-financial-protection' },
       { label: 'Term Life Insurance', to: '/services/term-insurance' },
-      { label: 'Retirement & Pension Plans', to: '/services/retirement' },
+      { label: 'Retirement & Pension', to: '/services/retirement' },
       { label: 'Child Education Plans', to: '/services/child-education' },
-      { label: 'Endowment & Savings', to: '/services/wealth-creation' },
+      { label: 'Savings Plans', to: '/services/wealth-creation' },
       { label: 'Money-Back Plans', to: '/services/money-back' },
       { label: 'Health Cover', to: '/services/health-insurance' },
-      { label: 'Corporate & HUF Insurance', to: '/services/corporate-insurance' },
+      { label: 'Business & Family-Firm Insurance', to: '/services/corporate-insurance' },
       { label: 'Keyman Insurance', to: '/services/keyman-insurance' },
       { label: 'Partnership Insurance', to: '/services/partnership-insurance' },
       { label: 'Employer-Employee Insurance', to: '/services/employer-employee-insurance' },
@@ -106,8 +106,8 @@ const Footer = () => {
                 </Link>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-5 lg:mb-8 font-light">
-                Trusted LIC Advisor in Ahmedabad with 22+ years of legacy. 
-                Safeguarding your future and securing your dreams with personalized insurance solutions.
+                LIC advisor in Ahmedabad for over 22 years. Message or call Jigisha for plain answers about
+                protecting your family, saving for your children and planning retirement.
               </p>
 
               <div className="space-y-3 mb-5 lg:mb-8">
@@ -115,6 +115,10 @@ const Footer = () => {
                     <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5 group-hover:text-white transition-colors" />
                     <span className="group-hover:text-white transition-colors">Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058</span>
                 </div>
+                <a href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")} data-cta="footer-whatsapp-line" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-semibold text-white group hover:text-gold transition-colors">
+                    <MessageCircle className="w-5 h-5 text-whatsapp shrink-0" aria-hidden="true" />
+                    <span>WhatsApp +91 98240 25435</span>
+                </a>
                 <a href="tel:+919824025435" className="flex items-center gap-3 text-sm text-gray-300 group hover:text-gold transition-colors">
                     <Phone className="w-5 h-5 text-gold shrink-0 group-hover:text-white transition-colors" />
                     <span>+91 98240 25435</span>
@@ -196,9 +200,9 @@ const Footer = () => {
               </nav>
 
               <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/5">
-                <p className="text-xs text-gray-300 mb-2 font-bold uppercase tracking-wider">Certifications</p>
+                <p className="text-xs text-gray-300 mb-2 font-bold uppercase tracking-wider">Awards</p>
                 <div className="flex flex-wrap gap-2">
-                    <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">2 Times MDRT</div>
+                    <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">MDRT top-advisor award (2023, 2024)</div>
                     <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">LIC Club</div>
                 </div>
               </div>
