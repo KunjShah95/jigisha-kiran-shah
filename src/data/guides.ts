@@ -994,6 +994,136 @@ export const GUIDES: Guide[] = [
       { label: 'Book a free consultation', to: '/contact' },
     ],
   },
+  {
+    slug: 'how-to-choose-lic-agent',
+    title: 'How to choose an LIC agent in Ahmedabad: 7 questions worth asking',
+    seoTitle: 'How to Choose an LIC Agent in Ahmedabad: 7 Checks Before You Buy',
+    metaDescription:
+      'A practical checklist for choosing an LIC agent: verify the agent code, ask about claims and service after the sale, check how premiums and commission work, and spot the red flags. Written by a 22-year LIC advisor in Ahmedabad.',
+    date: '2026-11-22',
+    updated: '2026-11-22',
+    readMinutes: 7,
+    targetQuery: 'how to choose an LIC agent in Ahmedabad',
+    kind: 'checklist',
+    intro: [
+      'Short answer: check the agent code on LIC\'s official portal, ask seven specific questions, and judge the answers rather than the claims on a business card. A good LIC agent explains the plan in plain language, tells you what is not guaranteed, and stays with you when a claim or a servicing request comes up years later.',
+      'This guide is written from 22 years of advising families in Ahmedabad. It deliberately does not name a "best agent" — that depends on the person, and no listicle can know your situation. It gives you the checks that let you decide for yourself. Also read the glossary if a term below is unfamiliar.',
+    ],
+    sections: [
+      {
+        heading: '1. Verify the person is a serving LIC agent',
+        paras: [
+          'Ask for the agent code. Every licensed LIC agent has one, and it can be checked on LIC\'s official website or the agent\'s LIC Saathi page. A name without a verifiable code is not enough, however impressive the business card looks.',
+          'An LIC agent is not an LIC employee. They are licensed to sell and service LIC policies; the policy is issued by LIC of India, and LIC decides every claim. That distinction matters when someone promises that "their office" will pay a claim.',
+        ],
+        items: [
+          'Ask for the code and verify it on licindia.in, not on a link the agent sends you.',
+          'Check the name and city match the person sitting in front of you.',
+          'If they also sell other insurers, ask which licence covers which product.',
+        ],
+      },
+      {
+        heading: '2. Ask how they handle a claim — including your policy if they did not sell it',
+        paras: [
+          'The real test of an advisor is what happens at claim time, years after the sale. Ask exactly what they will do: intimation, document checklist, branch follow-up, and what they will not do. No agent can promise settlement — LIC decides claims — but a good one will tell you honestly how they help and how long it usually takes.',
+          'Also ask whether they will help if you already hold a policy bought through another agent. Many will; some will not. It is better to know before you need it.',
+        ],
+      },
+      {
+        heading: '3. Ask how they are paid — the answer should be simple',
+        paras: [
+          'LIC pays the agent a commission on the policy. The premium you pay is set by LIC and is the same whichever LIC agent you buy through. There is no separate advisory fee for a first consultation, and no legitimate percentage or "success fee" for helping with a claim.',
+          'If someone asks for cash on the side, a cut of a future payout, or a payment to an account that is not LIC\'s, stop. That is a red flag, not a service.',
+        ],
+      },
+      {
+        heading: '4. Ask for written figures, not verbal return promises',
+        paras: [
+          'Ask for the benefit illustration for your age and term, with the premium, sum assured, maturity amount and the portion that is guaranteed versus dependent on bonuses or fund performance. Read it at home before deciding.',
+          'Be careful with phrases such as "guaranteed 8% return" or "double your money". LIC plans have declared bonuses and conditions; a verbal promise is worth nothing when the policy document says something else.',
+        ],
+        items: [
+          'Which part is guaranteed, and which part depends on bonuses or funds?',
+          'What happens if a premium is missed — grace period, revival, paid-up or surrender?',
+          'What is the surrender value in year 3, year 5 and year 10?',
+          'Does the plan have a free-look period, and how do I use it?',
+        ],
+      },
+      {
+        heading: '5. Ask what happens after the sale',
+        paras: [
+          'A policy is a long relationship. Ask who handles premium reminders, a change of address or nominee, a policy loan, a revival, and a maturity claim. Get the answer in plain language: who to call, what to send, and how long it normally takes.',
+          'Ask for the office location and hours. For a local advisor, a real office you can visit is a useful signal — but the address must match across their website, Google Business Profile and other listings.',
+        ],
+      },
+      {
+        heading: '6. Check their track record without believing vanity numbers',
+        paras: [
+          'Years in practice, professional memberships and genuine reviews are useful. A profile that says "20,000 clients" or "9,000 happy claims" without evidence is not. Google reviews, an MDRT membership that can be checked, and a specific account of how they helped a family are worth more than a big round number.',
+          'Ask for one anonymised example of a difficult claim or a lapsed policy they revived. A person who has actually done the work can describe the steps without drama.',
+        ],
+      },
+      {
+        heading: '7. Know where to go if something goes wrong',
+        paras: [
+          'Even with a good agent, keep your own copy of every policy document and check the nominee on each one. If a complaint is not resolved, LIC has a Grievance Redressal Officer and IRDAI runs the Bima Bharosa grievance platform. You can use both without going through the agent.',
+          'A good advisor will tell you this themselves. If someone says "come only to me" or discourages you from contacting the insurer directly, treat it as a warning sign.',
+        ],
+      },
+      {
+        heading: 'Red flags — walk away',
+        paras: [],
+        items: [
+          'Cash payment, or a premium paid to a personal account instead of LIC.',
+          'A guaranteed return or a promise that a claim will certainly be paid.',
+          'Pressure to buy today, or a request to hide health or age details on the proposal form.',
+          'Someone who keeps your original policy bond, cheque book or Aadhaar/PAN copies indefinitely.',
+          'An agent who will not give a code, an office address, or the benefit illustration in writing.',
+        ],
+      },
+      {
+        heading: 'A note about this site',
+        paras: [
+          'Jigisha Kiran Shah is an LIC agent in Shela, Ahmedabad (agent code 01379839), practising since 2004. She is a two-time MDRT qualifier (2023 and 2024) and has served more than 2,700 families. The checks above apply to her too — verify the code, ask the seven questions, and compare the answers with what you need.',
+          'Policies are issued by LIC of India and claims are decided by LIC. This is the practice site of an individual agent, not an official LIC communication.',
+        ],
+      },
+    ],
+    sources: [
+      { label: 'LIC of India — official site (agent verification, forms, branch locator)', url: 'https://licindia.in/' },
+      { label: 'IRDAI — insurance regulator', url: 'https://irdai.gov.in/' },
+      { label: 'Bima Bharosa — IRDAI grievance redressal', url: 'https://bimabharosa.irdai.gov.in/' },
+      { label: 'MDRT — professional membership directory', url: 'https://www.mdrt.org/' },
+    ],
+    faqs: [
+      {
+        q: 'How do I check if an LIC agent is genuine?',
+        a: 'Ask for the agent code and verify it on LIC of India\'s official website or the agent\'s LIC Saathi page. Check that the name and city match. An LIC agent is licensed by LIC but is not an LIC employee; the policy and the claim decision both come from LIC of India.',
+      },
+      {
+        q: 'Do I pay an LIC agent extra for advice?',
+        a: 'No. LIC pays the agent a commission; the premium is set by LIC and is the same whichever LIC agent you buy through. A first consultation should be free. There is no legitimate success fee for helping with a claim.',
+      },
+      {
+        q: 'Can an LIC agent help with a policy bought from another agent?',
+        a: 'Often yes — policy reviews, revival, nomination changes, claim paperwork and maturity documents can usually be handled by any serving LIC agent. Ask the agent directly before you need the help, and confirm what they will and will not do.',
+      },
+      {
+        q: 'What are the warning signs of a bad LIC agent?',
+        a: 'Cash payments to a personal account, guaranteed-return promises, pressure to buy immediately, asking you to hide health or age facts, keeping your original documents indefinitely, and refusing to share the agent code or a written benefit illustration.',
+      },
+      {
+        q: 'Where do I complain about an LIC agent or a policy?',
+        a: 'Start with LIC\'s Grievance Redressal Officer, whose details are on licindia.in and in your policy document. If it is not resolved, use IRDAI\'s Bima Bharosa platform at bimabharosa.irdai.gov.in. You do not need the agent\'s permission to escalate.',
+      },
+    ],
+    related: [
+      { label: 'Plain-English insurance glossary', to: '/glossary' },
+      { label: 'Free policy review & claim assistance', to: '/services/policy-review-claims' },
+      { label: 'About Jigisha Kiran Shah', to: '/about' },
+      { label: 'Book a free consultation', to: '/contact' },
+    ],
+  },
 ];
 
 export function getGuide(slug: string | undefined): Guide | undefined {

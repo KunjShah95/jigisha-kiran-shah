@@ -292,9 +292,12 @@ request form* (shown when Cal.com fails or the visitor chooses "request a time")
 - **Request form:** now needs only name and phone (topic and time optional).
 - **Booking page:** offers WhatsApp next to the phone number.
 
-**Also found:** the Cal.com event requires an **email address** (Cal.com settings). For local families a phone
-number is the natural contact. Consider making email optional in Cal.com, or adding phone as a required booking
-question.
+**Also found:** the Cal.com event required an **email address** (Cal.com settings). For local families a phone
+number is the natural contact.
+
+> **Superseded 10 Nov 2026 — Cal.com has been removed entirely.** The fix chosen was not to make email optional but
+> to drop the calendar: `/book` now composes a WhatsApp message. Read this section as the reasoning that led to that
+> decision, not as a description of the current site. See `docs/GROWTH-PLAYBOOK.md` §5a.
 
 **To read next time:** the full Events list (scroll it), filtered to the last 30 days *after* every own device has
 opened `?notrack=1`.

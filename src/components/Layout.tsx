@@ -4,6 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react'
 import Header from './Header'
 import Footer from './Footer'
 import WhatsAppButton from './WhatsAppButton'
+import PageTransition from './PageTransition'
 import { initAnalytics } from '../lib/analytics'
 import { pageWhatsAppText, whatsappUrl } from '../lib/contact'
 
@@ -33,7 +34,9 @@ export default function Layout() {
       <Header />
       <main id="main-content">
         <Suspense fallback={<PageFallback />}>
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </Suspense>
       </main>
       <Footer />

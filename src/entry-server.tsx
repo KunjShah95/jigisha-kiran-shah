@@ -44,6 +44,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/calculators', priority: 0.7 },
   { path: '/policy-card', updated: '2026-11-09', priority: 0.8 },
   { path: '/blog', priority: 0.7 },
+  { path: '/glossary', updated: '2026-11-22', priority: 0.7 },
   { path: '/gallery', priority: 0.5 },
   { path: '/privacy', updated: '2026-11-09', priority: 0.3 },
   ...SERVICE_PAGES.map((s) => ({ path: `/services/${s.slug}`, updated: s.updated, priority: 0.9 })),

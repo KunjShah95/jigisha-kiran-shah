@@ -112,6 +112,13 @@ export default function ResourcesPage() {
             </div>
 
             <div className="mt-6 p-5 bg-white rounded-2xl border border-border">
+              <p className="text-sm text-gray-600 font-light leading-relaxed mb-4">
+                New to LIC paperwork? The{' '}
+                <Link to="/glossary" className="font-semibold text-gold-dark underline underline-offset-2 hover:text-gold">
+                  plain-English glossary
+                </Link>{' '}
+                explains sum assured, nominee, revival, surrender value and 35 other terms in one sentence each.
+              </p>
               <p className="text-sm text-gray-600 font-light leading-relaxed">
                 Need a form filled or a claim filed? Jigisha handles the paperwork end to end —
                 intimation, documents, branch follow-up.{' '}

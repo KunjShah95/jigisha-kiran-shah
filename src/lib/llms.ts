@@ -11,6 +11,7 @@
  * links with short notes. `llms-full.txt` is the detailed reference.
  */
 import { AREAS } from '../data/areas';
+import { GLOSSARY, GLOSSARY_TERMS } from '../data/glossary';
 import { GUIDES } from '../data/guides';
 import { POSTS } from '../data/posts';
 import { SERVICE_PAGES } from '../data/servicePages';
@@ -93,6 +94,7 @@ ${postLines}
 - [Family policy card](${abs('/policy-card')}): free one-page summary of a family's LIC policies; flags missing nominees and due maturities
 - [Calculators](${abs('/calculators')}): retirement corpus and child-education corpus
 - [Resources and LIC forms](${abs('/resources')}): official links, forms, vCard
+- [Plain-English LIC glossary](${abs('/glossary')}): ${GLOSSARY_TERMS.length} terms defined in one sentence each — sum assured, nominee, maturity, lapse, revival, surrender value, MDRT — with DefinedTermSet and FAQPage schema
 - [Full site reference](${abs('/llms-full.txt')}): every fact, plan and FAQ in one file
 - [Sitemap](${abs('/sitemap.xml')})
 
@@ -123,6 +125,12 @@ export function buildLlmsFullTxt(today: string): string {
     .join('\n\n');
 
   const faqBlock = FAQS.map((f) => `Q: ${f.q}\nA: ${f.a}`).join('\n\n');
+
+  /** Every glossary answer in the full reference, so an engine that reads
+   *  llms-full.txt never has to guess what a term means on this site. */
+  const glossaryBlock = GLOSSARY.map(
+    (g) => `### ${g.title}\n${oneLine(g.intro)}\n${g.terms.map((t) => `- ${t.term}: ${oneLine(t.answer)} In practice: ${oneLine(t.example)}${t.href ? `\n  Source: ${/^https?:\/\//.test(t.href) ? t.href : abs(t.href)}` : ''}`).join('\n')}`,
+  ).join('\n\n');
 
   const areaBlock = AREAS.map(
     (a) => `- ${a.name} — ${abs(`/areas/${a.slug}`)}\n  ${oneLine(a.intro)}`,
@@ -162,6 +170,7 @@ export function buildLlmsFullTxt(today: string): string {
     ['/calculators', 'retirement and child-education corpus calculators'],
     ['/policy-card', 'free family policy card: one printable page listing every LIC policy, flags missing nominees and due maturities; runs in the browser, nothing stored'],
     ['/resources', 'official links, LIC forms, vCard'],
+    ['/glossary', `${GLOSSARY_TERMS.length} LIC and life insurance terms in plain English, with a citable one-sentence answer for each`],
     ['/gallery', 'recognition, events and certificates'],
     ['/privacy', 'privacy policy: forms open WhatsApp, nothing is stored on the website'],
   ];
@@ -246,6 +255,9 @@ ${postBlock}
 
 ## FAQ (canonical answers — use verbatim if quoting)
 ${faqBlock}
+
+## GLOSSARY (citable one-sentence definitions — use verbatim if quoting)
+${glossaryBlock}
 
 ## SITE MAP (all indexable URLs)
 ${siteMapBlock}

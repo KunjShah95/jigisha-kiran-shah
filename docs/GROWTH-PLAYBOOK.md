@@ -13,7 +13,7 @@ consultations — not traffic for its own sake.
 
 | Area | What exists |
 |---|---|
-| SEO | Prerendered HTML for every route, per-page title/description/canonical, sitemap, robots, 8 service pages, 6 area pages, guides, stories |
+| SEO | Prerendered HTML for every route, per-page title/description/canonical, hreflang for EN/GU/HI, sitemap, robots, 21 service pages, 14 area pages, guides, stories — 69 URLs total |
 | AEO / GEO | FAQPage, Person, LocalBusiness/InsuranceAgency, Service, BlogPosting, Breadcrumb schema; `llms.txt` + `llms-full.txt`; AI crawlers allowed |
 | CRO | Objective picker on homepage, objective-first forms (name, phone, goal; rest optional), "What happens next" on forms and service pages, page-aware WhatsApp prefills, mobile sticky Call/WhatsApp |
 | Trust | IRDAI "subject matter of solicitation" disclaimer in footer, links to LIC / IRDAI / Bima Bharosa on service pages, no "100% claims" or guaranteed-return wording |
@@ -116,9 +116,9 @@ Never offer gifts or discounts in exchange for reviews, and never write reviews 
 | `share_whatsapp` | Article shared on WhatsApp (not a lead) | `page` |
 | `contact_email`, `directions_click` | Email / map links | `cta`, `page` |
 | `booking_cta_click` | Any link to `/book` | `cta` |
-| `booking_started` | Cal.com calendar loaded, or first field touched on the request form | `via` (cal / request), `objective` |
-| `booking_completed` | Cal.com confirms a booking | `via`, `objective` |
-| `booking_request_submit` | Booking request form sent (no Cal.com) | `objective`, `mode` |
+| `booking_started` | First field touched on the `/book` WhatsApp form | `via` (whatsapp), `objective` |
+| `booking_completed` | `/book` form submitted — opens WhatsApp with the composed message | `via` (whatsapp), `objective` |
+| `booking_request_submit` | Booking request form sent | `objective`, `mode` |
 | `protection_check_started` / `_completed` | Goal picked / report reached on `/protection-check` | `goal`, `lang` |
 | `protection_check_handoff` | Report → book, WhatsApp or call back | `goal`, `via` |
 
@@ -136,8 +136,14 @@ There is **no server-side lead capture**. Every form (contact, homepage assessme
 back, Protection Check) composes the enquiry and opens WhatsApp; nothing is stored anywhere. See
 `docs/LEAD-CAPTURE.md` for the trade-off and how to bring storage back if you want it.
 
-1. **Live booking slots (set up 13 Oct 2026):** Cal.com account `jigisha-kiran-shah-emz0xs`, event "Free LIC Consultation" (`/free-consultation`, 20 min, phone / Shela office / Cal Video, 2 h notice, 10 min buffer), hours Mon–Sat 9–6 IST. `/book` embeds it by default and fires `booking_completed`. Cal.com emails Jigisha each booking. Connect her Google Calendar in Cal.com → Settings → Calendars so personal events block slots. The link is set in `src/pages/BookPage.tsx` (`CAL_LINK`), not an env var. Never put the Cal.com API key in Vercel env vars: `VITE_*` values are published in the site's JavaScript.
-2. Test after each deploy: submit `/book` once from your phone, and check the booking arrives.
+1. **Booking — WhatsApp, no calendar (changed 8 Nov 2026):** Cal.com has been removed. A year of data settled it:
+   10 visitors started booking, 5 ever saw the calendar load, **0 completed**, while 9 tapped WhatsApp directly in
+   the same period. `/book` now composes a WhatsApp message (goal, day, time window, mode — phone / video / Shela
+   office) and opens the chat; Jigisha confirms the exact time there. No account, no email, no failed embeds. The
+   `CAL_LINK` constant is gone from `src/pages/BookPage.tsx`, and no Cal.com keys belong in Vercel or anywhere else.
+   The `booking_calendar_loaded` / `booking_calendar_failed` event types still exist in `src/lib/analytics.ts` but
+   nothing fires them — safe to delete whenever that file is next touched.
+2. Test after each deploy: submit `/book` once from your phone and confirm the WhatsApp message arrives pre-filled.
 
 **Privacy:** no enquiry data is stored on the server, so there are no rows to delete. The Protection Check runs entirely in the browser; its figures leave the device only in the WhatsApp message the visitor chooses to send.
 

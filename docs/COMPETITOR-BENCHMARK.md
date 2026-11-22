@@ -22,19 +22,20 @@ joinasagent.in.
 - **Positioning:** life-insurance-only advisor (term, pension/annuity, whole life, endowment,
   child education, money-back, health, ULIP, corporate/HUF/MWP, claims & servicing).
   Deliberately does NOT sell motor/travel/general insurance.
-- **Routes (19+):** Home, Services + 8 service pages, About, Reviews, Contact, Book,
-  Protection Check, Areas index + 12 area pages, Blog + 4 story guides, Guides index + 10
-  guides (plan comparisons + persona guides).
+- **Routes (69):** Home, Services + 21 service pages, About, Reviews, Contact, Book, Policy Card,
+  Privacy, Hindi, Gujarati, Protection Check, Areas index + 14 area pages, Blog + 5 story guides,
+  Guides index + 12 guides, Calculators, Resources, Gallery.
 - **Tech/SEO/AEO:** prerendered HTML per route, per-page title/description/canonical, sitemap,
   robots, schema (FAQPage, Person, LocalBusiness/InsuranceAgency, Service, BlogPosting,
   Breadcrumb), `llms.txt` + `llms-full.txt`, AI crawlers allowed.
 - **CRO:** homepage objective picker, objective-first forms, "What happens next", page-aware
-  WhatsApp prefills, mobile sticky Call/WhatsApp, Cal.com booking embed, free Protection
-  Check tool (EN + GU).
+  WhatsApp prefills, mobile sticky Call/WhatsApp, WhatsApp booking form on `/book` (no calendar
+  embed — it was removed after a year of data showed 0 completed calendar bookings vs 9 direct
+  WhatsApp taps), free Protection Check tool (EN + GU).
 - **Trust:** IRDAI "subject matter of solicitation" footer disclaimer, links to LIC/IRDAI/
   Bima Bharosa, no "100% claims"/guaranteed-return wording.
 - **Measurement:** Vercel Analytics events + optional GA4.
-- **Content:** 4 long-form story guides with worked numbers, 10 plan/persona guides, 12 local
+- **Content:** 5 long-form story guides with worked numbers, 12 plan/persona/process guides, 14 local
   area pages, FAQ, testimonials.
 - **Contact:** +91 98240 25435 (call/WhatsApp), jkshahlic@gmail.com, Orchid Legacy D3-1303,
   Applewoods Township, Shela. Social: Google Business, YouTube, LinkedIn, WhatsApp.
@@ -46,11 +47,11 @@ joinasagent.in.
 | Advantage | Evidence on our site | Competitors |
 |---|---|---|
 | **AEO / AI discoverability** | `llms.txt` + `llms-full.txt`, AI crawlers allowed, rich schema | None of the six have llms files or comparable AI-crawler setup |
-| **Local SEO depth** | 12 dedicated area pages (Shela, South Bopal, Bopal, Satellite, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda) with maps + local FAQs | At most city/branch mentions; no area pages |
-| **Content quality (worked examples)** | 4 story guides with real numbers (term/nominee, pension math, child education sizing, retirement at 50) + 10 plan/persona guides | Generic service lists; ajay has "Knowledge"; joinasagent has a blog; shashwat has none |
+| **Local SEO depth** | 14 dedicated area pages (Shela, South Bopal, Bopal, Satellite, SG Highway, Science City, Vastrapur, Ambawadi, Maninagar, Naranpura, Gota, Chandkheda, Prahlad Nagar, Gandhinagar) with maps + local FAQs | At most city/branch mentions; no area pages |
+| **Content quality (worked examples)** | 5 story guides with real numbers (term/nominee, pension math, child education sizing, retirement at 50) + 12 plan/persona/process guides | Generic service lists; ajay has "Knowledge"; joinasagent has a blog; shashwat has none |
 | **Interactive tools** | Free Protection Check (cover gap, EN/GU) — the homepage leads with the advisor's photograph and credentials instead of a calculator | ajay has a "Smart LIC Plan Finder"; shashwat has SIP/education/retirement/marriage/vacation/dream-house calculators |
-| **Booking friction** | Cal.com embed on `/book` (20-min slots, 2h notice, buffer) + request form | WhatsApp/phone/form only; no live slots |
-| **Measurement** | Cal.com events, full funnel event map, lead tracking template | None visible; ajay has a chatbot but no measurement |
+| **Booking friction** | WhatsApp booking form on `/book` — no account, no calendar, no email; the message arrives in the chat Jigisha already answers | WhatsApp/phone/form only, but with no structured prefill; no live slots anywhere |
+| **Measurement** | Full funnel event map (`booking_started` → `booking_request_submit` → `booking_completed`), first-touch attribution, lead tracking template | None visible; ajay has a chatbot but no measurement |
 | **Trust/compliance wording** | IRDAI disclaimer, "subject matter of solicitation", no guaranteed-return claims | master/ambika use "9,000 happy claims", "transparent & honest advice"; ajay ships literal "0" stat placeholders |
 | **Verified, specific credentials** | MDRT 2023 & 2024 with years, 2,700+ families, 1,000+ claims, 5.0★ (70+) | pratik: 17× MDRT (unverifiable on site), 1,100 clients; master: 20K+ clients (likely inflated); ajay: "0" placeholders |
 | **Multilingual** | Gujarati toggle on Protection Check | None |
@@ -226,3 +227,43 @@ these. Our main gaps are **calculators, downloadable forms, a vCard, a recogniti
 section, and an important-links hub**, plus two small consistency fixes (headline numbers,
 unrendered stats). None of the gaps are existential; the life-only positioning is a
 deliberate strength to protect, not a hole to fill.
+
+---
+
+## 8. Re-check — 22 November 2026 (live search + page fetches)
+
+Fresh search for "LIC agent Ahmedabad", "best LIC advisor Shela / Bopal" and the same
+queries in directory sites. The six sites in §4 are still live and still thin; the real
+competition for the money queries is **not** other personal sites but three other surfaces.
+
+### 8a. Who actually ranks now
+
+| Surface | What it shows | Implication |
+|---|---|---|
+| **Google map pack** | LIC Bopal satellite office (4.1★, 41 ratings on Google; 4.4★, 69 on Justdial), Ashok Prajapati (5.0★, 87–99 ratings), P P Acharya's Insurance Hut (~139), Jayesh B Patel (4.8★, 99), Dhara Raval (5.0★, 6), Sonal S Shah (5.0★, 1) | The "LIC agent near me" answer is a map profile, not a website. Jigisha's 73 reviews put her in range but below the leaders; more genuine reviews is the single biggest lever and cannot be done in code. |
+| **Listicles** | Policylane, "Top 10+ LIC Advisors in Ahemadabad" (Dec 2025) and "Top 10+ LIC Advisor Companies" (Mar 2026) both rank; **she is not in either**. They name Sarika Vohra / PolicyLane, local agents and LIC branches. | Earned outreach to the editor (MDRT 2023/24 + site) is the fix, not another page. See `CITATIONS.md` row 9. |
+| **Directories** | Justdial (306+ LIC-agent listings in Relief Road alone), Sulekha (Odhav), financial1000, worldorgs, LocalEye, IDBF | NAP consistency and claimed listings matter more than on-page changes. Two of her existing listings still carry the old Maninagar address — see `CITATIONS.md` rows 2–3. |
+| **Personal sites** | pratiklic.com, ajay-g-pandey-lic.vercel.app, ambikaassociates.co.in, masterinsurances.com, shashwatinvestment.com, joinasagent.in — unchanged | Still no `llms.txt`, no area pages, no schema depth on their side. |
+| **Recruitment sites** | ketanbarot.com (recruitment-focused) | Different audience; not a competitor for client enquiries. |
+
+### 8b. Gaps from §5 that are now closed
+
+- **vCard:** `jigisha-kiran-shah.vcf` is linked on `/contact` and `/resources` (with `download`). QR code still not added — low value.
+- **Resources / important links:** `/resources` is live with 8 official links and 5 forms.
+- **Recognition:** `/about` has a "Recognition & credentials" block; `/gallery` is live.
+- **Unverified stats:** `src/data/stats.ts` contains only four defensible figures (22 years, 2,700+ families, MDRT ×2, 1,000+ claims). The "₹100 Cr / 99% satisfaction" figures flagged in §5.5 are not present — no action needed.
+- **Headline numbers:** hero, `/about`, `/reviews` and the home review card all say 5.0★ and 70+ reviews alongside 2,700+ families. Consistent.
+
+### 8c. Work done from this re-check
+
+1. **Plain-English glossary** at `/glossary` — 41 terms, each with a one-sentence answer, `DefinedTermSet` + `FAQPage` schema, and every definition in `llms-full.txt`. This answers the article's "define your terms" advice and gives citation engines quotable passages. No competitor has anything comparable.
+2. **"How to choose an LIC agent in Ahmedabad" guide** at `/guides/how-to-choose-lic-agent` — a 7-question checklist with agent-code verification, commission transparency, claim red flags and official sources. This is the honest on-page counter to the Policylane listicles that currently own that query; it does not name a "best agent".
+3. Both are prerendered, in the sitemap, in `llms.txt` / `llms-full.txt`, linked from the footer and from related pages.
+
+### 8d. Still open — owner actions, not code
+
+1. **Reviews:** target 2 genuine Google reviews a week until she passes the map-pack leaders (≈100+). Ask after a real milestone; never incentivise. Keep `reviewCount` in `src/lib/seo.ts` in sync.
+2. **Policylane outreach:** email the editor with MDRT years, office address and the site; ask to be included in the "Top LIC Advisors" listicle.
+3. **Fix stale listings:** LocalEye and IDBF still show the old Maninagar address (`CITATIONS.md` rows 2–3). Claim or remove.
+4. **Bing Places / Apple Business Connect / LinkedIn company page:** still unchecked.
+5. **Calculators:** competitors offer 5–6; we have 2 plus the Protection Check. Add a SIP and a loan-vs-cover calculator only after the above are done — more tools do not fix an authority problem.
