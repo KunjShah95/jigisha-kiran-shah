@@ -172,6 +172,20 @@ const Header = () => {
               Chat on WhatsApp
             </a>
 
+            {/* Mobile: visible without opening the menu. Search visitors often leave
+                before scrolling to the sticky bar or any mid-page CTA. */}
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cta="header-mobile-book"
+              aria-label="Book a call on WhatsApp"
+              className="lg:hidden inline-flex items-center justify-center gap-1.5 min-h-11 min-w-11 px-3 rounded-xl text-xs font-bold whitespace-nowrap bg-whatsapp text-white active:scale-95 transition-transform"
+            >
+              <MessageCircle className="w-4 h-4 fill-current" aria-hidden="true" />
+              <span className="hidden min-[400px]:inline">Book a call</span>
+            </a>
+
             <button
               className={`lg:hidden flex flex-col gap-1.5 p-2.5 -m-1 rounded-lg transition-colors min-w-11 min-h-11 items-center justify-center ${
                 isMobileMenuOpen ? 'bg-transparent' : isLightHeader ? 'hover:bg-black/5' : 'hover:bg-white/10'
