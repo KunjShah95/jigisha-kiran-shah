@@ -1,48 +1,43 @@
 #!/usr/bin/env node
 /**
- * Downloads the brand fonts from Google Fonts into public/fonts/ so they can be
- * self-hosted. Run this only when the font families or weight ranges change.
+ * Downloads the brand fonts from Fontshare (Indian Type Foundry) into
+ * public/fonts/ so they can be self-hosted. Run only when families or
+ * weights change.
  *
  *   node scripts/fetch-fonts.mjs
  *
- * Why self-host (context for whoever reads this next):
- *   The site used to load a render-blocking <link rel="stylesheet"> from
- *   fonts.googleapis.com. That forced a chained round trip before first paint:
- *   resolve googleapis.com -> fetch 17 KB of CSS -> parse -> only then discover
- *   the fonts.gstatic.com files. Self-hosting collapses it to a same-origin
- *   request the browser can start during HTML parsing.
+ * Why self-host: a render-blocking <link> to a third-party font CSS forces a
+ * chained round trip before first paint (DNS -> TLS -> CSS -> font discovery).
+ * Self-hosting collapses it to same-origin requests the browser can start
+ * during HTML parsing. See docs/DESIGN-BENCHMARK-2026.md §2.
  *
- * Why the range syntax:
- *   Fraunces and Plus Jakarta Sans are variable fonts. Asking for discrete
- *   weights (300;400;500;600;700;800) makes Google emit 24 @font-face blocks
- *   that all point at the same 4 files. Asking for `wght@300..800` emits 4
- *   blocks with a `font-weight: 300 800` range — same bytes, a quarter of the
- *   CSS. The script asserts that, so a future family swap that isn't variable
- *   fails loudly here instead of silently synthesising weights in the browser.
+ * Cabinet Grotesk (display) ships static weights 500/700/800 and has no
+ * italic. Satoshi (body) ships 400/500/700 plus italic 400. Fontshare's CSS
+ * API encodes italic as weight+1 (401 = italic 400).
  */
 
 import { mkdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const OUT_DIR = 'public/fonts'
-
-// A current desktop Chrome UA is required; Google serves legacy formats otherwise.
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
 
-const CSS_URL =
-  'https://fonts.googleapis.com/css2?' +
-  'family=Fraunces:wght@400..800&' +
-  'family=Plus+Jakarta+Sans:wght@300..800&' +
-  'display=swap'
-
-// Only latin scripts ship. Gujarati copy on /protection-check has no coverage in
-// either family and already falls back to the system font — bundling a Gujarati
-// face would add weight for zero visual change.
-const SUBSETS = new Set(['latin', 'latin-ext'])
-
-const slug = (family) => family.toLowerCase().replace(/\s+/g, '-')
+/** family -> list of [cssWeightCode, outputFileName] */
+const FACES = {
+  'cabinet-grotesk': [
+    [500, 'cabinet-grotesk-500.woff2'],
+    [700, 'cabinet-grotesk-700.woff2'],
+    [800, 'cabinet-grotesk-800.woff2'],
+  ],
+  satoshi: [
+    [400, 'satoshi-400.woff2'],
+    [500, 'satoshi-500.woff2'],
+    [700, 'satoshi-700.woff2'],
+    [401, 'satoshi-italic-400.woff2'],
+  ],
+}
 
 const get = async (url) => {
   const res = await fetch(url, { headers: { 'User-Agent': UA } })
@@ -50,58 +45,33 @@ const get = async (url) => {
   return res
 }
 
-const css = await (await get(CSS_URL)).text()
-
-// Google emits "/* subset */" immediately before each @font-face block.
-const BLOCK = /\/\*\s*([a-z0-9-]+)\s*\*\/\s*@font-face\s*\{([^}]+)\}/g
-
-const faces = new Map()
-for (const [, subset, body] of css.matchAll(BLOCK)) {
-  const family = /font-family:\s*'([^']+)'/.exec(body)?.[1]
-  const weight = /font-weight:\s*([^;]+);/.exec(body)?.[1]?.trim()
-  const url = /url\((https:[^)]+\.woff2)\)/.exec(body)?.[1]
-  const unicodeRange = /unicode-range:\s*([^;]+);/.exec(body)?.[1]?.trim()
-  if (!family || !url || !SUBSETS.has(subset)) continue
-
-  const key = `${family}|${subset}`
-  if (!faces.has(key)) faces.set(key, { family, subset, weight, url, unicodeRange })
-}
-
-if (faces.size === 0) {
-  throw new Error('No latin @font-face blocks found — Google changed its response format.')
-}
-
 await mkdir(OUT_DIR, { recursive: true })
 
-const manifest = []
-for (const face of faces.values()) {
-  // A range like "300 800" proves the file is variable; a single value means
-  // Google shipped a static instance and our one-file-per-family model is wrong.
-  if (!/^\d+\s+\d+$/.test(face.weight ?? '')) {
-    throw new Error(
-      `${face.family} (${face.subset}) is not variable — got font-weight "${face.weight}". ` +
-        'Re-check the family supports a weight range before self-hosting.'
-    )
+for (const [family, faces] of Object.entries(FACES)) {
+  const codes = faces.map(([code]) => code).join(',')
+  const css = await (
+    await get(`https://api.fontshare.com/v2/css?f[]=${family}@${codes}&display=swap`)
+  ).text()
+
+  // Each @font-face block carries font-weight, optional font-style and a
+  // protocol-relative cdn.fontshare.com woff2 URL.
+  const BLOCK = /@font-face\s*\{([^}]+)\}/g
+  const byCode = new Map()
+  for (const [, body] of css.matchAll(BLOCK)) {
+    const weight = Number(/font-weight:\s*(\d+)/.exec(body)?.[1])
+    const italic = /font-style:\s*italic/.test(body)
+    const url = /url\('(\/\/[^']+\.woff2)'\)/.exec(body)?.[1]
+    if (!weight || !url) continue
+    byCode.set(italic ? weight + 1 : weight, `https:${url}`)
   }
 
-  const name = `${slug(face.family)}-${face.subset}.woff2`
-  const bytes = Buffer.from(await (await get(face.url)).arrayBuffer())
-  await writeFile(join(OUT_DIR, name), bytes)
-
-  manifest.push({
-    file: name,
-    family: face.family,
-    subset: face.subset,
-    weight: face.weight,
-    unicodeRange: face.unicodeRange,
-    kb: Number((bytes.length / 1024).toFixed(1)),
-  })
-
-  console.log(`${name.padEnd(38)} ${(bytes.length / 1024).toFixed(1).padStart(6)} KB  ${face.weight}`)
+  for (const [code, file] of faces) {
+    const url = byCode.get(code)
+    if (!url) throw new Error(`No woff2 for ${family} code ${code}`)
+    const buf = Buffer.from(await (await get(url)).arrayBuffer())
+    await writeFile(join(OUT_DIR, file), buf)
+    console.log(`${file}  ${(buf.length / 1024).toFixed(1)} KB`)
+  }
 }
 
-await writeFile(join(OUT_DIR, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n')
-
-const total = manifest.reduce((sum, m) => sum + m.kb, 0)
-console.log(`\n${manifest.length} files, ${total.toFixed(1)} KB total -> ${OUT_DIR}/`)
-console.log('Copy the font-weight and unicode-range values into @font-face in src/index.css.')
+console.log('Done. Update public/fonts/manifest.json if weights changed.')

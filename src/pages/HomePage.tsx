@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Star, ShieldCheck, Clock, BookOpen, Calculator as CalcIcon, GitCompareArrows } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Calculator as CalcIcon, GitCompareArrows, Star, MessageCircle, Phone, Clock } from 'lucide-react'
 import Hero from '../components/Hero'
 import ScrollProgress from '../components/ScrollProgress'
 import AdvisorProcess from '../components/AdvisorProcess'
@@ -9,49 +8,12 @@ import Calculator from '../components/Calculator'
 import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
 import ObjectivePicker from '../components/ObjectivePicker'
-import { TracingBeam } from '../components/aceternity/TracingBeam'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useSpotlight } from '../hooks/useSpotlight'
 import { useSEO } from '../hooks/useSEO'
 import { faqJsonLd, localBusinessJsonLd, websiteJsonLd, personJsonLd } from '../lib/seo'
+import { whatsappUrl } from '../lib/contact'
 import { POSTS } from '../data/posts'
-
-/** Compact discovery band — one row on desktop, two tiles per row on phones. */
-const BAND: Array<{
-  to: string
-  icon: LucideIcon
-  title: string
-  subtitle: string
-  dark?: boolean
-  cta?: string
-}> = [
-  {
-    to: '/services',
-    icon: ShieldCheck,
-    title: 'Explore LIC Plans',
-    subtitle: 'Family cover, pension, child & savings plans',
-  },
-  {
-    to: '/calculators',
-    icon: CalcIcon,
-    title: 'Free Calculators',
-    subtitle: 'How much should you save?',
-  },
-  {
-    to: '/guides/jeevan-utsav-vs-jeevan-umang',
-    icon: GitCompareArrows,
-    title: 'Jeevan Utsav vs Umang',
-    subtitle: 'Two lifelong-income plans side by side',
-    cta: 'home-featured-guide',
-  },
-  {
-    to: '/reviews',
-    icon: Star,
-    title: '5.0★ · 70+ Google Reviews',
-    subtitle: 'Real stories from 2,700+ families',
-    dark: true,
-  },
-]
 
 export default function HomePage() {
   useSEO({
@@ -79,110 +41,172 @@ export default function HomePage() {
       <ObjectivePicker />
       <AdvisorProcess />
       <WhyUs />
-      {/* Compact discovery band — links home visitors to Services & Reviews
-          without the weight of full sections (keeps mobile scroll short) */}
-      <section aria-label="Explore services and reviews" className="py-10 lg:py-16 bg-cream relative overflow-hidden">
-        <div className="container grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-          {BAND.map(({ to, icon: Icon, title, subtitle, dark, cta }) => (
+
+      {/* Discovery bento — four asymmetric cells, each a different surface,
+          linking home visitors deeper into the site */}
+      <section aria-label="Explore services and reviews" className="py-14 lg:py-24 bg-white border-t border-border">
+        <div className="container">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4">
             <Link
-              key={to}
-              to={to}
+              to="/services"
               onMouseMove={onMove}
-              data-cta={cta}
-              className={`spotlight-card group relative overflow-hidden flex flex-col gap-2.5 p-3.5 rounded-2xl border transition-all hover:-translate-y-0.5 min-h-11 sm:flex-row sm:items-center sm:gap-4 sm:p-5 sm:rounded-3xl ${
-                dark
-                  ? 'spotlight-dark bg-midnight border-white/10'
-                  : 'bg-white border-border hover:border-gold/40 shadow-[0_1px_0_0_rgba(0,0,0,0.03)]'
-              }`}
+              className="spotlight-card group relative overflow-hidden rounded-2xl bg-sage/70 border border-emerald/15 p-6 lg:p-8 flex flex-col justify-between gap-6 sm:col-span-2 lg:col-span-5 lg:row-span-2 transition-all hover:-translate-y-0.5 hover:border-emerald/40"
             >
-              <span
-                className={`relative z-10 w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
-                  dark ? 'bg-gold' : 'bg-gold/10 group-hover:bg-gold'
-                }`}
-              >
-                <Icon
-                  className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${
-                    dark ? 'text-midnight' : 'text-gold-dark group-hover:text-white'
-                  }`}
-                  aria-hidden="true"
-                />
+              <span className="relative z-10 w-12 h-12 rounded-xl bg-emerald flex items-center justify-center">
+                <ShieldCheck className="w-6 h-6 text-white" aria-hidden="true" />
+              </span>
+              <span className="relative z-10">
+                <span className="block font-display text-2xl lg:text-3xl font-extrabold tracking-tight text-ink">Explore LIC plans</span>
+                <span className="block mt-2 text-sm text-ink/60 max-w-xs">Family cover, pension, child education and savings — explained in plain words.</span>
+                <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-emerald-deep group-hover:gap-3 transition-all">
+                  See all plans <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </span>
+              </span>
+            </Link>
+
+            <Link
+              to="/calculators"
+              onMouseMove={onMove}
+              className="spotlight-card group relative overflow-hidden rounded-2xl bg-paper border border-border p-6 flex flex-col justify-between gap-4 lg:col-span-4 transition-all hover:-translate-y-0.5 hover:border-emerald/40"
+            >
+              <span className="relative z-10 w-10 h-10 rounded-xl bg-white border border-border flex items-center justify-center group-hover:bg-emerald group-hover:border-emerald transition-colors">
+                <CalcIcon className="w-5 h-5 text-emerald-deep group-hover:text-white transition-colors" aria-hidden="true" />
+              </span>
+              <span className="relative z-10">
+                <span className="block font-display text-lg font-extrabold tracking-tight text-ink">Free calculators</span>
+                <span className="block mt-1 text-sm text-ink/55">How much should you save?</span>
+              </span>
+            </Link>
+
+            <Link
+              to="/reviews"
+              onMouseMove={onMove}
+              className="spotlight-card spotlight-dark group relative overflow-hidden rounded-2xl bg-emerald p-6 flex flex-col justify-between gap-4 lg:col-span-3 transition-all hover:-translate-y-0.5 hover:bg-emerald-deep"
+            >
+              <span className="relative z-10 flex gap-0.5" aria-label="5 out of 5 stars">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-white text-white" aria-hidden="true" />
+                ))}
+              </span>
+              <span className="relative z-10">
+                <span className="block font-display text-lg font-extrabold tracking-tight text-white">5.0 on Google</span>
+                <span className="block mt-1 text-sm text-white/75">70+ reviews · 2,700+ families</span>
+              </span>
+            </Link>
+
+            <Link
+              to="/guides/jeevan-utsav-vs-jeevan-umang"
+              data-cta="home-featured-guide"
+              onMouseMove={onMove}
+              className="spotlight-card spotlight-dark group relative overflow-hidden rounded-2xl bg-ink p-6 lg:p-7 flex flex-col sm:flex-row sm:items-center gap-4 sm:col-span-2 lg:col-span-7 transition-all hover:-translate-y-0.5"
+            >
+              <span className="relative z-10 w-10 h-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center shrink-0">
+                <GitCompareArrows className="w-5 h-5 text-emerald-bright" aria-hidden="true" />
               </span>
               <span className="relative z-10 flex-1 min-w-0">
-                <span className={`block font-bold text-sm sm:text-base ${dark ? 'text-white' : 'text-midnight'}`}>
-                  {title}
-                </span>
-                <span className={`block text-xs sm:text-sm font-light ${dark ? 'text-white/50' : 'text-gray-500'}`}>
-                  {subtitle}
-                </span>
+                <span className="block font-display text-lg font-extrabold tracking-tight text-white">Jeevan Utsav vs Jeevan Umang</span>
+                <span className="block mt-1 text-sm text-white/55">Two lifelong-income plans, side by side.</span>
               </span>
-              <ArrowRight
-                className={`relative z-10 w-4 h-4 sm:w-5 sm:h-5 shrink-0 hidden sm:block group-hover:translate-x-1 transition-transform ${
-                  dark ? 'text-gold' : 'text-gold-dark'
-                }`}
-                aria-hidden="true"
-              />
+              <ArrowRight className="relative z-10 w-5 h-5 text-emerald-bright shrink-0 hidden sm:block group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </Link>
-          ))}
+          </div>
         </div>
       </section>
+
       <Calculator />
-      <Testimonials />
+
       {/* Stories & guides preview — internal linking: lifts pages/visit and
           distributes homepage authority to blog posts */}
-      <section aria-label="Stories and guides" className="py-10 lg:py-20 bg-white relative overflow-hidden">
+      <section aria-label="Stories and guides" className="py-14 lg:py-24 bg-paper border-t border-border">
         <div className="container">
-          <div className="flex items-end justify-between gap-4 mb-5 lg:mb-8">
-            <div>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-medium text-midnight">
-                22 years of lessons, <span className="text-gold italic">plainly told</span>
-              </h2>
-            </div>
+          <div className="flex items-end justify-between gap-4 mb-6 lg:mb-10">
+            <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl leading-[1.05] max-w-xl">
+              22 years of lessons, <span className="text-emerald">plainly told.</span>
+            </h2>
             <Link
               to="/blog"
-              className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-gold-dark hover:gap-3 transition-all shrink-0"
+              className="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-emerald-deep hover:gap-3 transition-all shrink-0"
             >
-              <BookOpen className="w-4 h-4" aria-hidden="true" />
               All stories
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
-          <TracingBeam>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-              {POSTS.slice(0, 4).map((post, i) => (
-                <Link
-                  key={post.slug}
-                  to={`/blog/${post.slug}`}
-                  data-cta={`home-story-${post.slug}`}
-                  onMouseMove={onMove}
-                  className={`spotlight-card group relative overflow-hidden flex-col p-4 sm:p-5 bg-cream/70 rounded-2xl border border-border hover:border-gold/40 hover:-translate-y-0.5 transition-all ${
-                    i === 3 ? 'hidden sm:flex' : 'flex'
-                  }`}
-                >
-                  <span className="relative z-10 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.14em] text-gold-dark mb-1.5">
-                    {post.targetQuery}
-                  </span>
-                  <span className="relative z-10 font-bold text-midnight text-sm sm:text-[15px] leading-snug mb-2 group-hover:text-gold-dark transition-colors">
+          <div className="grid sm:grid-cols-2 gap-x-10 border-t border-border">
+            {POSTS.slice(0, 4).map((post, i) => (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                data-cta={`home-story-${post.slug}`}
+                className={`group flex items-start gap-4 border-b border-border py-5 transition-colors hover:bg-white/60 sm:px-2 ${
+                  i === 3 ? 'hidden sm:flex' : 'flex'
+                }`}
+              >
+                <span className="font-display text-lg font-extrabold text-emerald/30 tabular-nums shrink-0 pt-0.5" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className="flex-1 min-w-0">
+                  <span className="block font-bold text-ink text-[15px] leading-snug group-hover:text-emerald-deep transition-colors">
                     {post.title}
                   </span>
-                  <span className="relative z-10 mt-auto inline-flex items-center gap-1.5 text-xs text-gray-500">
+                  <span className="mt-1.5 flex items-center gap-2 text-xs text-ink/50">
+                    <span className="font-bold uppercase tracking-[0.1em] text-emerald-deep/70">{post.targetQuery}</span>
+                    <span aria-hidden="true">·</span>
                     <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                     {post.readMinutes} min read
                   </span>
-                </Link>
-              ))}
-            </div>
-          </TracingBeam>
+                </span>
+                <ArrowRight className="w-4 h-4 text-emerald-deep shrink-0 mt-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
           <Link
             to="/blog"
-            className="mt-4 sm:hidden inline-flex items-center gap-2 text-sm font-bold text-gold-dark"
+            className="mt-5 sm:hidden inline-flex items-center gap-2 text-sm font-bold text-emerald-deep"
           >
-            <BookOpen className="w-4 h-4" aria-hidden="true" />
             All stories
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
       </section>
+
       <FAQ searchable />
+
+      {/* Dark closing band flows into the footer — one deliberate theme switch */}
+      <Testimonials />
+      <section aria-label="Book a consultation" className="bg-ink text-white pb-16 lg:pb-24">
+        <div className="container">
+          <div className="border-t border-white/10 pt-12 lg:pt-16 grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+            <div>
+              <h2 className="font-display text-3xl font-extrabold tracking-tight leading-[1.05] sm:text-4xl lg:text-5xl">
+                Talk to Jigisha <span className="text-emerald-bright">today.</span>
+              </h2>
+              <p className="mt-3 text-white/60 text-sm sm:text-base max-w-md">
+                Free to ask. Open Mon–Sat, 9 AM–6 PM. Office at Orchid Legacy, Shela, Ahmedabad.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3">
+              <a
+                href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cta="final-whatsapp"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-3.5 text-sm font-bold text-white transition-colors hover:bg-whatsapp-dark active:scale-[0.98]"
+              >
+                <MessageCircle className="h-5 w-5 fill-current" aria-hidden="true" />
+                Chat on WhatsApp
+              </a>
+              <a
+                href="tel:+919824025435"
+                data-cta="final-call"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3.5 text-sm font-bold text-white transition-colors hover:border-emerald-bright hover:text-emerald-bright"
+              >
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                Call +91 98240 25435
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

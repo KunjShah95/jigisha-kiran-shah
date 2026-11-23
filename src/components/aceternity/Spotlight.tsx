@@ -14,7 +14,7 @@ interface SpotlightProps {
  * rotation is exact at any viewport width. The animation lives in index.css
  * (`.spotlight-cone`) and is disabled under prefers-reduced-motion.
  */
-export function Spotlight({ className, fill = '#c4772a' }: SpotlightProps) {
+export function Spotlight({ className, fill = '#0e6b4a' }: SpotlightProps) {
   return (
     <svg
       aria-hidden="true"

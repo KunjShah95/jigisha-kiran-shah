@@ -21,13 +21,13 @@ function FooterGroup({ title, children }: { title: string; children: React.React
         aria-controls={id}
         className="flex w-full items-center justify-between py-3.5 text-left sm:hidden"
       >
-        <span className="font-display font-bold text-base text-gold">{title}</span>
+        <span className="font-display font-bold text-base text-sage">{title}</span>
         <ChevronDown
           aria-hidden="true"
-          className={`h-5 w-5 shrink-0 text-gold transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+          className={`h-5 w-5 shrink-0 text-sage transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
         />
       </button>
-      <h4 className="mb-5 hidden font-display text-lg font-bold text-gold sm:block">{title}</h4>
+      <h4 className="mb-5 hidden font-display text-lg font-bold text-sage sm:block">{title}</h4>
       <div id={id} className={`${open ? 'block' : 'hidden'} pb-4 sm:block sm:pb-0`}>
         {children}
       </div>
@@ -90,44 +90,42 @@ const Footer = () => {
     ]
 
     return (
-      <footer className="bg-midnight text-white pt-10 pb-8 lg:pt-16 border-t border-white/5 relative overflow-hidden">
-        {/* Background effects */}
-        <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-px bg-linear-to-r from-transparent via-gold/30 to-transparent" />
-        <div aria-hidden="true" className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gold-dark/20 rounded-full blur-3xl pointer-events-none" />
+      <footer className="bg-ink text-white pt-10 pb-8 lg:pt-16 border-t border-white/5 relative overflow-hidden">
+        <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-px bg-linear-to-r from-transparent via-emerald/50 to-transparent" />
 
         <div className="container relative z-10">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8 lg:mb-12">
             <div className="lg:col-span-1">
               <div className="flex items-center gap-3 mb-5 lg:mb-8">
                 <Link to="/" className="flex items-center gap-3 min-w-0" aria-label="Jigisha Kiran Shah — home">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-linear-to-br from-gold to-gold-dark rounded-xl flex items-center justify-center font-bold font-display text-base sm:text-xl text-midnight shadow-lg shrink-0">JK</div>
-                  <div className="font-display font-bold text-xl sm:text-2xl leading-tight">
-                    Jigisha Kiran<span className="text-gold"> Shah</span>
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald rounded-xl flex items-center justify-center font-bold font-display text-lg sm:text-xl text-white shrink-0">J</div>
+                  <div className="font-display font-bold text-xl sm:text-2xl leading-tight tracking-tight">
+                    Jigisha Kiran Shah
                   </div>
                 </Link>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-5 lg:mb-8 font-light">
+              <p className="text-white/60 text-sm leading-relaxed mb-5 lg:mb-8">
                 LIC advisor in Ahmedabad for over 22 years. Message or call Jigisha for plain answers about
                 protecting your family, saving for your children and planning retirement.
               </p>
 
               <div className="space-y-3 mb-5 lg:mb-8">
-                <div className="flex items-start gap-3 text-sm text-gray-300 group">
-                    <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5 group-hover:text-white transition-colors" />
-                    <span className="group-hover:text-white transition-colors">Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058</span>
+                <div className="flex items-start gap-3 text-sm text-white/60 group">
+                    <MapPin className="w-5 h-5 text-emerald-bright shrink-0 mt-0.5" />
+                    <span>Orchid Legacy, D3-1303, Applewoods Township, Shela, Ahmedabad, Gujarat 380058</span>
                 </div>
-                <a href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")} data-cta="footer-whatsapp-line" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-semibold text-white group hover:text-gold transition-colors">
+                <a href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")} data-cta="footer-whatsapp-line" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm font-semibold text-white group hover:text-emerald-bright transition-colors">
                     <MessageCircle className="w-5 h-5 text-whatsapp shrink-0" aria-hidden="true" />
                     <span>WhatsApp +91 98240 25435</span>
                 </a>
-                <a href="tel:+919824025435" className="flex items-center gap-3 text-sm text-gray-300 group hover:text-gold transition-colors">
-                    <Phone className="w-5 h-5 text-gold shrink-0 group-hover:text-white transition-colors" />
+                <a href="tel:+919824025435" className="flex items-center gap-3 text-sm text-white/60 group hover:text-emerald-bright transition-colors">
+                    <Phone className="w-5 h-5 text-emerald-bright shrink-0" />
                     <span>+91 98240 25435</span>
                 </a>
               </div>
 
               <div className="flex gap-3">
-                <a href="https://share.google/VQAFgVhdk114U2ozd" target="_blank" rel="noopener noreferrer" aria-label="Google Business Reviews" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-gold hover:text-midnight transition-all duration-300" title="Google Business Reviews">
+                <a href="https://share.google/VQAFgVhdk114U2ozd" target="_blank" rel="noopener noreferrer" aria-label="Google Business Reviews" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-white/15 transition-all duration-300" title="Google Business Reviews">
                   <span className="sr-only">Google Business</span>
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -148,7 +146,7 @@ const Footer = () => {
                   <span className="sr-only">Facebook</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
                 </a>
-                <a href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")} data-cta="footer-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white transition-all duration-300" title="WhatsApp">
+                <a href={whatsappUrl("Hi Jigisha ben, I found you on your website. I'd like to book a free consultation.")} data-cta="footer-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center hover:bg-whatsapp hover:text-white transition-all duration-300" title="WhatsApp">
                   <span className="sr-only">WhatsApp</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 </a>
@@ -158,8 +156,8 @@ const Footer = () => {
             <FooterGroup title="Quick Links">
               <nav aria-label="Quick links" className="flex flex-col gap-2.5">
                 {quickLinks.map((link, index) => (
-                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm flex items-center gap-2">
-                    <span aria-hidden="true" className="w-1 h-1 rounded-full bg-gold" />
+                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-white/60 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm flex items-center gap-2">
+                    <span aria-hidden="true" className="w-1 h-1 rounded-full bg-emerald-bright" />
                     {link.label}
                   </Link>
                 ))}
@@ -169,7 +167,7 @@ const Footer = () => {
             <FooterGroup title="Our Expertise">
               <nav aria-label="Services" className="flex flex-col gap-2.5">
                 {services.map((link, index) => (
-                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-white/60 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                     {link.label}
                   </Link>
                 ))}
@@ -178,7 +176,7 @@ const Footer = () => {
               <h4 className="font-display font-bold text-sm mb-3 mt-6 text-white/70 uppercase tracking-wider">Policy servicing</h4>
               <nav aria-label="Policy servicing" className="flex flex-col gap-2.5">
                 {servicing.map((link, index) => (
-                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                  <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-white/60 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                     {link.label}
                   </Link>
                 ))}
@@ -189,22 +187,22 @@ const Footer = () => {
               <nav aria-label="Resources" className="flex flex-col gap-2.5">
                 {resources.map((link, index) => (
                   link.to ? (
-                    <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                    <Link key={index} to={link.to} data-cta={footerCta(link.to)} className="text-white/60 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                       {link.label}
                     </Link>
                   ) : (
-                    <a key={index} href={link.href} target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
+                    <a key={index} href={link.href} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm">
                       {link.label}
                     </a>
                   )
                 ))}
               </nav>
 
-              <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/5">
-                <p className="text-xs text-gray-300 mb-2 font-bold uppercase tracking-wider">Awards</p>
+              <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
+                <p className="text-xs text-white/60 mb-2 font-bold uppercase tracking-wider">Awards</p>
                 <div className="flex flex-wrap gap-2">
-                    <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">MDRT top-advisor award (2023, 2024)</div>
-                    <div className="px-2 py-1 bg-gold/10 text-gold text-[11px] font-bold rounded border border-gold/20">LIC Club</div>
+                    <div className="px-2 py-1 bg-emerald/15 text-sage text-[11px] font-bold rounded border border-emerald/30">MDRT top-advisor award (2023, 2024)</div>
+                    <div className="px-2 py-1 bg-emerald/15 text-sage text-[11px] font-bold rounded border border-emerald/30">LIC Club</div>
                 </div>
               </div>
             </FooterGroup>
@@ -212,27 +210,27 @@ const Footer = () => {
 
           <div className="border-t border-white/10 pt-6 flex flex-col gap-4">
             <nav aria-label="Areas served" className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs sm:text-sm">
-              <span className="text-gray-400">Areas served:</span>
+              <span className="text-white/45">Areas served:</span>
               {AREAS.map((area) => (
                 <Link
                   key={area.slug}
                   to={`/areas/${area.slug}`}
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-white/60 hover:text-white transition-colors"
                 >
                   {area.name}
                 </Link>
               ))}
-              <Link to="/areas" className="text-gold hover:text-white transition-colors">All areas →</Link>
+              <Link to="/areas" className="text-emerald-bright hover:text-white transition-colors">All areas →</Link>
             </nav>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
+            <p className="text-white/45 text-sm">
               &copy; {new Date().getFullYear()} Jigisha Kiran Shah. All rights reserved.
             </p>
-            <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
+            <Link to="/privacy" className="text-white/45 hover:text-white text-sm transition-colors">
               Privacy Policy
             </Link>
           </div>
-          <p className="text-[11px] leading-relaxed text-gray-400 max-w-4xl">
+          <p className="text-[11px] leading-relaxed text-white/40 max-w-4xl">
             Insurance is the subject matter of solicitation. Jigisha Kiran Shah is an individual insurance
             agent of Life Insurance Corporation of India (LIC); policies are issued and claims are decided by
             LIC. Plan summaries and calculators on this website are for general information only and are not

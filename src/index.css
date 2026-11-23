@@ -1,123 +1,122 @@
 @import "tailwindcss";
 
 /* ── Self-hosted brand fonts ────────────────────────────────────────
-   Fraunces + Plus Jakarta Sans, latin and latin-ext, variable files.
+   Cabinet Grotesk (display) + Satoshi (body), both from Indian Type
+   Foundry via Fontshare, self-hosted as static woff2 weights.
 
-   Previously these came from a render-blocking <link> to
-   fonts.googleapis.com, which meant the browser could not paint until it
-   had resolved DNS + TLS for that origin, fetched and parsed 17 KB of
-   CSS, and only THEN discovered the fonts.gstatic.com files. That is the
-   chained round trip behind the ~480 ms First Contentful Paint gap
-   measured in docs/DESIGN-BENCHMARK-2026.md §2.
+   No third-party origin, no render-blocking stylesheet round trip —
+   same performance contract as the previous Fraunces/Jakarta setup
+   (docs/DESIGN-BENCHMARK-2026.md §2). font-display: swap means text
+   paints immediately with the system fallback.
 
-   The weight ranges mean one file per family serves every weight the site
-   uses (300–800), instead of the 24 @font-face blocks Google emits for the
-   same four files. Same bytes, no third-party origin, no chained request.
-
-   Regenerate with: node scripts/fetch-fonts.mjs */
+   Files live in public/fonts/. Cabinet Grotesk has no italic, so
+   headline emphasis is colour-only; Satoshi italic is available for
+   body emphasis. */
 
 @font-face {
-  font-family: 'Fraunces';
+  font-family: 'Cabinet Grotesk';
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 500;
   font-display: swap;
-  src: url('/fonts/fraunces-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/cabinet-grotesk-500.woff2') format('woff2');
 }
-
 @font-face {
-  font-family: 'Fraunces';
+  font-family: 'Cabinet Grotesk';
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 700;
   font-display: swap;
-  src: url('/fonts/fraunces-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url('/fonts/cabinet-grotesk-700.woff2') format('woff2');
 }
-
 @font-face {
-  font-family: 'Plus Jakarta Sans';
+  font-family: 'Cabinet Grotesk';
   font-style: normal;
-  font-weight: 300 800;
+  font-weight: 800;
   font-display: swap;
-  src: url('/fonts/plus-jakarta-sans-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
-    U+2212, U+2215, U+FEFF, U+FFFD;
+  src: url('/fonts/cabinet-grotesk-800.woff2') format('woff2');
 }
-
 @font-face {
-  font-family: 'Plus Jakarta Sans';
+  font-family: 'Satoshi';
   font-style: normal;
-  font-weight: 300 800;
+  font-weight: 400;
   font-display: swap;
-  src: url('/fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-    U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  src: url('/fonts/satoshi-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/satoshi-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/satoshi-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/satoshi-italic-400.woff2') format('woff2');
 }
 
 @theme {
-  --color-gold: #c4772a;
-  --color-gold-light: #f3d6b4;
-  --color-gold-dark: #8b4d1d;
-  --color-midnight: #171717;
-  --color-midnight-light: #2a2a30;
-  --color-cream: #f7f1e9;
+  /* ── Brand system: evergreen ink + porcelain + one emerald accent ──
+     New names are canonical. The legacy names (midnight/cream/gold)
+     are kept as aliases so every page inherits the new palette. */
+  --color-ink: #0d1512;
+  --color-ink-soft: #182420;
+  --color-paper: #f4f5f1;
+  --color-emerald: #0e6b4a;
+  --color-emerald-deep: #0a5238;
+  --color-emerald-bright: #4cb88a;
+  --color-sage: #dce8de;
+
+  --color-midnight: #0d1512;
+  --color-midnight-light: #182420;
+  --color-cream: #f4f5f1;
+  --color-gold: #0e6b4a;
+  --color-gold-light: #dce8de;
+  --color-gold-dark: #0a5238;
   --color-whatsapp: #25d366;
   --color-whatsapp-dark: #1da851;
 
-  /* Back-compat aliases — shadcn/ui tokens mapped to brand system */
-  --color-navy: #171717;
-  --color-navy-dark: #0f0f0f;
-  --color-navy-light: #2a2a30;
-  --color-primary: #171717;
+  /* shadcn/ui tokens mapped to the brand system */
+  --color-navy: #0d1512;
+  --color-navy-dark: #0a100e;
+  --color-navy-light: #182420;
+  --color-primary: #0d1512;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f3d6b4;
-  --color-secondary-foreground: #171717;
-  --color-accent: #c4772a;
+  --color-secondary: #dce8de;
+  --color-secondary-foreground: #0d1512;
+  --color-accent: #0e6b4a;
   --color-accent-foreground: #ffffff;
-  --color-muted: #efe6d8;
-  --color-muted-foreground: #6b6259;
+  --color-muted: #eceee7;
+  --color-muted-foreground: #5c6660;
   --color-card: #ffffff;
-  --color-card-foreground: #171717;
+  --color-card-foreground: #0d1512;
   --color-popover: #ffffff;
-  --color-popover-foreground: #171717;
-  --color-background: #f7f1e9;
-  --color-foreground: #1a1a1a;
-  --color-border: #e7dccb;
-  --color-input: #e7dccb;
-  --color-ring: #c4772a;
+  --color-popover-foreground: #0d1512;
+  --color-background: #f4f5f1;
+  --color-foreground: #16211c;
+  --color-border: #e3e6df;
+  --color-input: #e3e6df;
+  --color-ring: #0e6b4a;
   --color-destructive: #b3261e;
   --color-destructive-foreground: #ffffff;
 
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-playfair: "Fraunces", ui-serif, Georgia, serif;
-  --font-inter: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-playfair: "Cabinet Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-inter: "Satoshi", ui-sans-serif, system-ui, sans-serif;
 
   --radius-4xl: 2rem;
 
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-beam: beam 2s linear infinite;
   --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
 
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  /* Hover beam that sweeps across a button (`.btn-beam:after`). It is a
-     decorative overlay, so translating it is correct here — do NOT reuse this
-     keyframe on an element that carries text, or the text itself slides. */
   @keyframes shimmer {
     100% {
       transform: translateX(100%);
@@ -147,14 +146,10 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-sans antialiased selection:bg-gold/30;
-    color: #1a1a1a;
-    background-color: #f7f1e9;
-    background-image:
-      radial-gradient(circle at 10% 10%, rgba(196, 119, 42, 0.12), transparent 45%),
-      radial-gradient(circle at 85% 20%, rgba(42, 42, 48, 0.12), transparent 40%),
-      linear-gradient(120deg, rgba(255, 255, 255, 0.8), rgba(247, 241, 233, 0.9));
-    line-height: 1.7;
+    @apply font-sans antialiased selection:bg-sage;
+    color: #16211c;
+    background-color: #f4f5f1;
+    line-height: 1.65;
     text-rendering: optimizeLegibility;
   }
   main {
@@ -162,12 +157,12 @@
     scroll-margin-top: 5rem;
   }
   :focus-visible {
-    outline: 2px solid #c4772a;
+    outline: 2px solid #0e6b4a;
     outline-offset: 3px;
     border-radius: 4px;
   }
   ::selection {
-    background: rgba(196, 119, 42, 0.3);
+    background: rgba(14, 107, 74, 0.22);
   }
 }
 
@@ -204,7 +199,7 @@
     overflow-x: clip;
   }
   body {
-    -webkit-tap-highlight-color: rgba(196, 119, 42, 0.2);
+    -webkit-tap-highlight-color: rgba(14, 107, 74, 0.18);
     -webkit-text-size-adjust: 100%;
   }
   img {
@@ -230,18 +225,18 @@
 
 @layer utilities {
   /* Range slider inside the hero cover widget. The input uses
-     `appearance-none` to draw its own two-tone track, which also removes the
-     native thumb in WebKit — without an explicit thumb rule Chrome and Safari
-     render the slider with nothing to drag. */
+      `appearance-none` to draw its own two-tone track, which also removes the
+      native thumb in WebKit — without an explicit thumb rule Chrome and Safari
+      render the slider with nothing to drag. */
   .range-gold::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     height: 1rem;
     width: 1rem;
     border-radius: 9999px;
-    background: var(--color-gold);
+    background: var(--color-emerald);
     border: 2px solid #fff;
-    box-shadow: 0 1px 4px rgb(23 23 23 / 0.22);
+    box-shadow: 0 1px 4px rgb(13 21 18 / 0.22);
     cursor: pointer;
   }
 
@@ -249,32 +244,24 @@
     height: 1rem;
     width: 1rem;
     border-radius: 9999px;
-    background: var(--color-gold);
+    background: var(--color-emerald);
     border: 2px solid #fff;
-    box-shadow: 0 1px 4px rgb(23 23 23 / 0.22);
+    box-shadow: 0 1px 4px rgb(13 21 18 / 0.22);
     cursor: pointer;
   }
 
-  /* Gold accent on a display word (the hero's "protection").
-     A static gradient, deliberately: the previous version animated
-     `transform: translateX(100%)` on this element, which slid the whole
-     word sideways and snapped it back every 3 seconds. If a shimmer is
-     ever reintroduced here it must animate `background-position`, never
-     `transform` — the element IS the text. */
+  /* Accent on a display word. Solid colour, deliberately: no gradient
+     text, no animated shimmer on an element that carries text. */
   .text-gradient-gold {
-    color: #8b4d1d; /* fallback where background-clip: text is unsupported */
-    background-image: linear-gradient(100deg, #8b4d1d 0%, #c4772a 48%, #a85e1f 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0a5238;
   }
 
   .glass-card {
-    @apply bg-white/85 backdrop-blur-lg border border-border shadow-xl;
+    @apply bg-white/90 backdrop-blur-lg border border-border shadow-xl;
   }
 
   /* Reveal animations — visible by default, hidden only when JS opts in.
-     useScrollReveal should add `js-reveal` to <html> on mount. */
+      useScrollReveal should add `js-reveal` to <html> on mount. */
   .js-reveal .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -333,42 +320,19 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background-color: #c4772a;
+    height: 3px;
+    background-color: #0e6b4a;
     z-index: 60;
   }
 
-  /* ── Signature: hero aurora ─────────────────────────────────────
-     Drifting mesh of brand-tinted radial glows. GPU-only (transform),
-     killed under prefers-reduced-motion via the global rule above. */
-  .aurora {
-    position: absolute;
-    inset: -25%;
-    pointer-events: none;
-    background:
-      radial-gradient(38% 38% at 22% 28%, rgba(196, 119, 42, 0.30), transparent 62%),
-      radial-gradient(34% 34% at 78% 18%, rgba(243, 214, 180, 0.42), transparent 60%),
-      radial-gradient(44% 44% at 62% 82%, rgba(139, 77, 29, 0.22), transparent 62%),
-      radial-gradient(30% 30% at 8% 72%, rgba(196, 119, 42, 0.18), transparent 60%);
-    filter: blur(64px);
-    animation: aurora-drift 20s ease-in-out infinite alternate;
-    will-change: transform;
-  }
-
-  @keyframes aurora-drift {
-    0%   { transform: translate3d(-3%, -2%, 0) rotate(0deg)  scale(1.05); }
-    50%  { transform: translate3d(4%, 3%, 0)   rotate(7deg)  scale(1.16); }
-    100% { transform: translate3d(-2%, 4%, 0)  rotate(-6deg) scale(1.08); }
-  }
-
   /* ── Spotlight-follow card reward ───────────────────────────────
-     JS sets --mx/--my on pointer move (useSpotlight). Glow tracks cursor. */
+      JS sets --mx/--my on pointer move (useSpotlight). Glow tracks cursor. */
   .spotlight-card::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(196, 119, 42, 0.16), transparent 68%);
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(14, 107, 74, 0.10), transparent 68%);
     opacity: 0;
     transition: opacity 0.35s ease;
     pointer-events: none;
@@ -377,9 +341,9 @@
   .spotlight-card:hover::before {
     opacity: 1;
   }
-  /* On dark (WhyUs) cards a warmer, brighter tint reads better */
+  /* On dark ink cards a brighter sage tint reads better */
   .spotlight-card.spotlight-dark::before {
-    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(243, 214, 180, 0.14), transparent 68%);
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(220, 232, 222, 0.10), transparent 68%);
   }
 
   .btn-beam {
@@ -393,68 +357,20 @@
     @apply animate-[shimmer_1s_infinite];
   }
 
-  /* ── Signature: dot-grid canvas, radial-masked toward the edges ── */
+  /* ── Dot-grid canvas, radial-masked toward the edges ── */
   .dot-grid {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(23, 23, 23, 0.14) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(13, 21, 18, 0.12) 1px, transparent 1px);
     background-size: 22px 22px;
     -webkit-mask-image: radial-gradient(ellipse 65% 60% at 50% 40%, black 40%, transparent 85%);
     mask-image: radial-gradient(ellipse 65% 60% at 50% 40%, black 40%, transparent 85%);
   }
 
-  /* ── Signature: meteors ───────────────────────────────────────── */
-  .meteor {
-    animation: meteor-fall linear infinite;
-  }
-  .meteor::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 1px;
-    background: linear-gradient(90deg, #c4772a, transparent);
-  }
-  @keyframes meteor-fall {
-    0% {
-      transform: rotate(215deg) translateX(0);
-      opacity: 1;
-    }
-    70% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(215deg) translateX(-500px);
-      opacity: 0;
-    }
-  }
-
-  /* ── Signature: Aceternity spotlight cone ─────────────────────
-     A blurred ellipse fades in behind the hero copy and holds. Pure
-     opacity/transform, so it composites on the GPU and is free under
-     prefers-reduced-motion (see the block at the end of this file). */
-  .spotlight-cone {
-    opacity: 0;
-    animation: spotlight-in 2s ease 0.15s 1 forwards;
-    will-change: transform, opacity;
-  }
-
-  @keyframes spotlight-in {
-    0% {
-      opacity: 0;
-      transform: translate(-72%, -62%) scale(0.5);
-    }
-    100% {
-      opacity: 1;
-      transform: translate(-50%, -40%) scale(1);
-    }
-  }
-
-  /* ── Signature: Aceternity infinite moving cards ───────────────
-     The track holds two identical groups. Translating by exactly -50%
-     lands the second group where the first started, so the loop has no
-     seam. Duration comes from --marquee-duration per instance. */
+  /* ── Infinite moving cards ─────────────────────────────────────
+      The track holds two identical groups. Translating by exactly -50%
+      lands the second group where the first started, so the loop has no
+      seam. Duration comes from --marquee-duration per instance. */
   .marquee-track {
     display: flex;
     width: max-content;
@@ -479,9 +395,9 @@
     }
   }
 
-  /* ── Signature: hover border gradient ─────────────────────────
-     A conic ring masked to a 1px outline, revealed on card hover.
-     --glow-angle is registered below so the sweep animates smoothly. */
+  /* ── Hover border gradient ─────────────────────────────────────
+      A conic ring masked to a 1px outline, revealed on card hover.
+      --glow-angle is registered below so the sweep animates smoothly. */
   .glow-ring {
     position: absolute;
     inset: -1px;
@@ -491,8 +407,8 @@
     background: conic-gradient(
       from var(--glow-angle, 0deg),
       transparent 0%,
-      var(--glow-color, rgba(196, 119, 42, 0.9)) 10%,
-      var(--glow-color, rgba(196, 119, 42, 0.9)) 17%,
+      var(--glow-color, rgba(14, 107, 74, 0.85)) 10%,
+      var(--glow-color, rgba(14, 107, 74, 0.85)) 17%,
       transparent 30%
     );
     -webkit-mask:
@@ -532,11 +448,6 @@
 /* Motion-off fallbacks. Declared last so they beat the global
    `animation-duration: 0.01ms` rule earlier in the file. */
 @media (prefers-reduced-motion: reduce) {
-  .spotlight-cone {
-    animation: none !important;
-    opacity: 1;
-    transform: translate(-50%, -40%);
-  }
   .marquee-track {
     animation: none !important;
     width: 100%;

@@ -236,7 +236,7 @@ export default function GuidePage() {
                 <div
                   key={i}
                   className={`border rounded-2xl transition-all duration-300 ${
-                    isOpen ? 'border-gold/40 shadow-lg shadow-gold/5 bg-[#fffdf8]' : 'border-gray-200 bg-white hover:border-gold/30'
+                    isOpen ? 'border-emerald/40 bg-sage/30' : 'border-gray-200 bg-white hover:border-emerald/30'
                   }`}
                 >
                   <button

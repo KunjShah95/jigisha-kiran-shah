@@ -49,7 +49,7 @@ export default function Layout() {
           data-cta="sticky-whatsapp"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-[2] flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3 rounded-xl text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
+          className="flex-[2] flex items-center justify-center gap-2 bg-whatsapp text-white font-bold py-3 rounded-full text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
         >
           <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
           Chat on WhatsApp
@@ -57,7 +57,7 @@ export default function Layout() {
         <a
           href="tel:+919824025435"
           data-cta="sticky-call"
-          className="flex-1 flex items-center justify-center gap-2 bg-midnight text-white font-bold py-3 rounded-xl text-sm hover:bg-midnight-light transition-colors min-h-11"
+          className="flex-1 flex items-center justify-center gap-2 bg-ink text-white font-bold py-3 rounded-full text-sm hover:bg-ink-soft transition-colors min-h-11"
         >
           <Phone className="w-5 h-5" aria-hidden="true" />
           Call

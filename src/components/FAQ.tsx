@@ -17,48 +17,48 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
   }, [items, query]);
 
   return (
-    <section aria-labelledby="faq-heading" className="py-12 lg:py-20 bg-white relative overflow-hidden">
-      <div className="container relative z-10 max-w-4xl">
-        <div className="text-center mb-6 lg:mb-9">
-          <h2 id="faq-heading" className="text-2xl sm:text-3xl md:text-4xl font-display font-medium text-midnight mb-2 sm:mb-3">
-            Frequently Asked <span className="text-gold italic">Questions</span>
+    <section aria-labelledby="faq-heading" className="py-14 lg:py-24 bg-paper border-t border-border">
+      <div className="container max-w-3xl">
+        <div className="mb-6 lg:mb-9">
+          <h2 id="faq-heading" className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl leading-[1.05]">
+            Frequently asked <span className="text-emerald">questions.</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 font-light">
+          <p className="mt-3 text-sm sm:text-base text-ink/60">
             Simple answers about LIC plans, retirement, claims and how to get in touch.
           </p>
         </div>
 
         {searchable && (
-          <div className="mb-4">
+          <div className="mb-5">
             <label htmlFor="faq-search" className="sr-only">Search frequently asked questions</label>
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" aria-hidden="true" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ink/40" aria-hidden="true" />
               <input
                 id="faq-search"
                 type="search"
                 value={query}
                 onChange={(e) => { setQuery(e.target.value); setOpen(null); }}
                 placeholder="Search questions (e.g. claims, pension, fees)"
-                className="w-full pl-11 pr-4 py-3 rounded-xl border border-border bg-white text-midnight focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold min-h-11"
+                className="w-full pl-11 pr-4 py-3 rounded-xl border border-border bg-white text-ink placeholder:text-ink/40 focus:outline-none focus:ring-2 focus:ring-emerald/40 focus:border-emerald min-h-11"
               />
             </div>
             {query.trim() && (
-              <p className="text-xs text-gray-500 mt-2 font-light">
+              <p className="text-xs text-ink/55 mt-2">
                 {filtered.length} result{filtered.length === 1 ? '' : 's'} for "{query.trim()}"
               </p>
             )}
           </div>
         )}
 
-        <div className="space-y-2">
+        <div className="border-t border-border">
           {filtered.length === 0 ? (
-            <div className="text-center py-8">
-              <p className="text-gray-600 font-light mb-4">No matching questions. Try a different word, or ask Jigisha directly.</p>
+            <div className="py-10">
+              <p className="text-ink/60 mb-4">No matching questions. Try a different word, or ask Jigisha directly.</p>
               <a
                 href={whatsappUrl('Hi Jigisha ben, I searched your FAQ and could not find an answer. My question is: ')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-midnight text-white font-bold text-sm hover:bg-gold transition-colors min-h-11"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-whatsapp text-white font-bold text-sm hover:bg-whatsapp-dark transition-colors min-h-11"
               >
                 Ask on WhatsApp
               </a>
@@ -67,30 +67,25 @@ export default function FAQ({ compact = false, searchable = false }: { compact?:
             filtered.map((f, i) => {
               const isOpen = open === i;
               return (
-                <div
-                  key={i}
-                  className={`border rounded-2xl transition-all duration-300 ${
-                    isOpen ? 'border-gold/40 shadow-lg shadow-gold/5 bg-[#fffdf8]' : 'border-gray-200 bg-white hover:border-gold/30'
-                  }`}
-                >
+                <div key={i} className="border-b border-border">
                   <button
                     onClick={() => setOpen(isOpen ? null : i)}
                     aria-expanded={isOpen}
                     aria-controls={`faq-panel-${i}`}
-                    className="w-full flex items-center justify-between gap-4 text-left px-4 sm:px-5 lg:px-6 py-3 lg:py-4 min-h-11"
+                    className="w-full flex items-center justify-between gap-4 text-left py-4 lg:py-5 min-h-11 group"
                   >
-                    <h3 className="font-bold text-midnight text-[15px] lg:text-base wrap-anywhere">{f.q}</h3>
+                    <h3 className={`font-bold text-[15px] lg:text-base wrap-anywhere transition-colors ${isOpen ? 'text-emerald-deep' : 'text-ink group-hover:text-emerald-deep'}`}>{f.q}</h3>
                     <span
                       aria-hidden="true"
-                      className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all ${
-                        isOpen ? 'bg-gold text-white rotate-45' : 'bg-gray-100 text-gray-500'
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        isOpen ? 'bg-emerald text-white rotate-45' : 'bg-sage text-emerald-deep'
                       }`}
                     >
                       <Plus className="w-4 h-4" />
                     </span>
                   </button>
-                  <div id={`faq-panel-${i}`} hidden={!isOpen} className="px-5 lg:px-6 pb-4">
-                    <p className="text-sm lg:text-base text-gray-600 leading-relaxed font-light">{f.a}</p>
+                  <div id={`faq-panel-${i}`} hidden={!isOpen} className="pb-5 pr-12">
+                    <p className="text-sm lg:text-base text-ink/65 leading-relaxed">{f.a}</p>
                   </div>
                 </div>
               );

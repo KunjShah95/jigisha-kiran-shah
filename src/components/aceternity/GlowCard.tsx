@@ -22,7 +22,7 @@ interface GlowCardProps {
 export function GlowCard({
   children,
   className,
-  glowColor = 'rgba(196, 119, 42, 0.9)',
+  glowColor = 'rgba(14, 107, 74, 0.85)',
   as: Tag = 'div',
   style,
 }: GlowCardProps) {

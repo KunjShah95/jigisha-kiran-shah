@@ -1,9 +1,6 @@
 import { Award, ShieldCheck, HeartPulse, Headphones, MessageCircle } from 'lucide-react';
 import { whatsappUrl } from '../lib/contact';
 import { useSpotlight } from '../hooks/useSpotlight';
-import { MovingBorderButton } from './aceternity/MovingBorderButton';
-import { GlowCard } from './aceternity/GlowCard';
-import { GridPattern } from './aceternity/GridPattern';
 
 const PILLARS = [
   {
@@ -13,6 +10,7 @@ const PILLARS = [
     description:
       'Jigisha has helped families through 1,000+ claims. She fills in the forms, gathers the documents and follows up at the LIC branch. LIC makes the final decision on every claim.',
     span: 'lg:col-span-7 lg:row-span-2',
+    tint: 'bg-white',
   },
   {
     id: 'expertise',
@@ -20,6 +18,7 @@ const PILLARS = [
     title: 'An award-winning advisor',
     description: 'Licensed LIC agent since 2004. Won the MDRT top-advisor award in 2023 and 2024.',
     span: 'lg:col-span-5',
+    tint: 'bg-sage/60',
   },
   {
     id: 'wealth',
@@ -27,6 +26,7 @@ const PILLARS = [
     title: 'Plans built around your goals',
     description: 'No one-size-fits-all pitch. She starts with your family, your income and what you want to achieve.',
     span: 'lg:col-span-5',
+    tint: 'bg-white',
   },
   {
     id: 'concierge',
@@ -34,6 +34,7 @@ const PILLARS = [
     title: 'One person you can always reach',
     description: 'Message or call Jigisha directly for policy changes, premium questions or an urgent claim.',
     span: 'lg:col-span-12',
+    tint: 'bg-ink text-white',
   },
 ] as const;
 
@@ -41,65 +42,55 @@ const WhyUs = () => {
   const onMove = useSpotlight();
 
   return (
-    <section className="py-14 lg:py-24 bg-midnight text-white relative overflow-hidden">
-      <div aria-hidden="true" className="absolute inset-0">
-        <GridPattern
-          size={64}
-          className="text-white/[0.07] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black_30%,transparent_80%)]"
-        />
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[140px]" />
-      </div>
-
-      <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-7 lg:mb-14">
-          <div className="max-w-xl">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-display font-medium leading-tight">
-              22 years of LIC experience, <span className="text-gold italic">one person to talk to</span>
-            </h2>
-          </div>
-          <p className="text-gray-400 font-light leading-relaxed max-w-sm text-sm sm:text-base">
+    <section className="py-14 lg:py-24 bg-paper border-t border-border">
+      <div className="container">
+        <div className="max-w-2xl mb-8 lg:mb-12">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem] leading-[1.05]">
+            22 years of LIC experience, <span className="text-emerald">one person to talk to.</span>
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-ink/60 max-w-xl">
             Simple explanations and personal help at every stage, from your first question to your last claim.
           </p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4">
-          {PILLARS.map((p) => (
-            <GlowCard
-              key={p.id}
-              className={`${p.span} rounded-3xl`}
-              glowColor="rgba(243, 214, 180, 0.95)"
-            >
+          {PILLARS.map((p) => {
+            const dark = p.tint.includes('bg-ink');
+            return (
               <div
+                key={p.id}
                 onMouseMove={onMove}
-                className="spotlight-card spotlight-dark relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-5 lg:p-8 flex flex-col justify-center transition-colors duration-300 group-hover:border-gold/30 group-hover:bg-white/[0.06] h-full shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+                className={`spotlight-card ${dark ? 'spotlight-dark' : ''} group relative overflow-hidden rounded-2xl border p-5 lg:p-7 flex flex-col justify-center transition-all duration-300 hover:-translate-y-0.5 ${p.span} ${
+                  dark ? 'border-ink bg-ink' : 'border-border hover:border-emerald/40'
+                } ${p.tint}`}
               >
                 <div className="relative z-10 flex items-start gap-3.5 sm:gap-4">
-                  <div className="shrink-0 w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gold/15 border border-gold/20 flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
-                    <p.icon size={18} aria-hidden="true" className="text-gold group-hover:text-midnight transition-colors duration-300" />
+                  <div className={`shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                    dark ? 'bg-emerald' : 'bg-sage group-hover:bg-emerald'
+                  }`}>
+                    <p.icon size={18} aria-hidden="true" className={`transition-colors duration-300 ${dark ? 'text-white' : 'text-emerald-deep group-hover:text-white'}`} />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-base lg:text-xl font-bold font-display mb-1.5 sm:text-lg text-white">{p.title}</h3>
-                    <p className="text-[13px] lg:text-[15px] text-gray-400 leading-relaxed font-light max-w-md sm:text-sm">{p.description}</p>
+                    <h3 className={`font-display text-base lg:text-xl font-bold tracking-tight mb-1.5 sm:text-lg ${dark ? 'text-white' : 'text-ink'}`}>{p.title}</h3>
+                    <p className={`text-[13px] lg:text-[15px] leading-relaxed max-w-md sm:text-sm ${dark ? 'text-white/60' : 'text-ink/60'}`}>{p.description}</p>
                   </div>
                 </div>
               </div>
-            </GlowCard>
-          ))}
+            );
+          })}
         </div>
 
-        <div className="mt-8 lg:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <MovingBorderButton containerClassName="inline-block" borderColor="#f3d6b4">
-            <a
-              href={whatsappUrl('Hi Jigisha ben, I found you on your website. I would like to talk about my family’s insurance.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cta="whyus-whatsapp"
-              className="inline-flex items-center gap-3 px-8 py-4 text-white font-bold text-base min-h-11"
-            >
-              <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
-              Chat with Jigisha on WhatsApp
-            </a>
-          </MovingBorderButton>
+        <div className="mt-8 lg:mt-12">
+          <a
+            href={whatsappUrl('Hi Jigisha ben, I found you on your website. I would like to talk about my family’s insurance.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cta="whyus-whatsapp"
+            className="inline-flex items-center gap-2.5 rounded-full bg-whatsapp px-7 py-3.5 text-white font-bold text-sm min-h-11 transition-colors hover:bg-whatsapp-dark active:scale-[0.98]"
+          >
+            <MessageCircle className="w-5 h-5 fill-current" aria-hidden="true" />
+            Chat with Jigisha on WhatsApp
+          </a>
         </div>
       </div>
     </section>

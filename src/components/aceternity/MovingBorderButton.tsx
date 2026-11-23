@@ -20,7 +20,7 @@ export function MovingBorderButton({
   className,
   containerClassName,
   duration = 3000,
-  borderColor = '#c4772a',
+  borderColor = '#0e6b4a',
 }: MovingBorderButtonProps) {
   const progress = useMotionValue(0)
 
